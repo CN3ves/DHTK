@@ -1,0 +1,36 @@
+#####
+Usage
+#####
+
+.. include:: ./usage/getting_started.rst
+
+.. include:: ./usage/dhtk101.rst
+
+.. include:: ./usage/guides.rst
+
+Usage Examples
+==============
+
+Searching in Gutenberg
+----------------------
+
+.. literalinclude:: ./examples/find_book_and_print_info.py
+    :lines: 6-
+
+
+Get a corpus
+------------
+
+
+.. literalinclude:: ./examples/get_play_corpus.py
+    :lines: 6-
+
+.. literalinclude:: ./examples/seek_and_get.py
+    :lines: 6-
+
+
+Search metadata
+---------------
+.. literalinclude:: ./examples/metadata.py
+    :lines: 6-
+

@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core API references &#8212; Digital Humanities ToolKit (DHTK) 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Gutenberg API references" href="gutenberg.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="core-api-references">
+<h1>Core API references<a class="headerlink" href="#core-api-references" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="manager-classes">
+<h2>Manager classes<a class="headerlink" href="#manager-classes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configurations">
+<h3>Configurations()<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="dhtk.managers.configurations.Configurations">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.managers.configurations.</code><code class="sig-name descname">Configurations</code><span class="sig-paren">(</span><em class="sig-param">dhtk_dir=PosixPath('/Users/s05mm2')</em>, <em class="sig-param">dhtk_user='s05mm2'</em>, <em class="sig-param">logs=&lt;Logger dhtk.managers.configurations (WARNING)&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to manage all DHTK configurations.</p>
+<p>Instantiates an object that checks, loads and saves all DHTK configurations.</p>
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations..config_file">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">config_file</code><a class="headerlink" href="#dhtk.managers.configurations.Configurations..config_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>File where the configurations are stored</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations..configs">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">configs</code><a class="headerlink" href="#dhtk.managers.configurations.Configurations..configs" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Configurations loaded to memory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.LOGS # coreƒ</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Public methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">--------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations..check">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">configuration</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations..check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations..get_configuration">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">get_configuration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">configuration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations..get_configuration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations..modify_config">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">modify_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">configuration</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">overwrite</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations..modify_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations..remove_config">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">remove_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">configurations</span><span class="o">=</span><span class="default_value">'all'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations..remove_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations..print">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations..print" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Private methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">---------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations.._load_configs">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">_load_configs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations.._load_configs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.configurations.Configurations.._write_config">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">_write_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations.._write_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.configurations.Configurations.check">
+<code class="sig-name descname">check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configuration</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if a configuration exists.
+If not, the configuration is set with the default value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>[</strong><strong>string</strong><strong>]</strong> (<em>configuration</em>) – </p></li>
+<li><p><strong>[</strong><strong>Any</strong><strong>]</strong> (<em>default</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.configurations.Configurations.get_configuration">
+<code class="sig-name descname">get_configuration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configuration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations.get_configuration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve the values for a configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[</strong><strong>string</strong><strong>]</strong> (<em>configuration</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Values for configuration requested.</em></p></li>
+<li><p><em>If configuration doesn’t exist, returns None</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.configurations.Configurations.modify_config">
+<code class="sig-name descname">modify_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configuration</span></em>, <em class="sig-param"><span class="n">value</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">overwrite</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations.modify_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to modify or add a configuration.
+The changes are automatically written to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>[</strong><strong>String</strong><strong>]</strong> (<em>configuration</em>) – </p></li>
+<li><p><strong>[</strong><strong>Any</strong><strong>]</strong> (<em>value</em>) – </p></li>
+<li><p><strong>[</strong><strong>Boolean</strong><strong>]</strong> (<em>overwrite</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.configurations.Configurations.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations.print" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to print DHTK configurations in an easily human readable way</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.configurations.Configurations.remove_config">
+<code class="sig-name descname">remove_config</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configurations</span><span class="o">=</span><span class="default_value">'all'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.configurations.Configurations.remove_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to remove a configuration.
+The changes are automatically written to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[</strong><strong>String/List</strong><strong>]</strong> (<em>configurations</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="endpoint">
+<h3>Endpoint()<a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="dhtk.managers.client.Endpoint">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.managers.client.</code><code class="sig-name descname">Endpoint</code><span class="sig-paren">(</span><em class="sig-param">configurations</em>, <em class="sig-param">endpoint='local'</em>, <em class="sig-param">logs=&lt;Logger dhtk.managers.client (WARNING)&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to manage DHTK connection to the triplestore endpoint.</p>
+<p>Instantiates an object that tries to connect to the required triplestore.
+If the triplestore is local, it sets up a fuseki container on Docker.</p>
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint..client">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">client</code><a class="headerlink" href="#dhtk.managers.client.Endpoint..client" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.CONFIGS # core</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.LOGS # core</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Public methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">--------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint..connect">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="n">pause</span><span class="o">=</span><span class="default_value">30</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint..connect" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint..get_client">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">get_client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint..get_client" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint..get_objects">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">get_objects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">client</span></em>, <em class="sig-param"><span class="n">type</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint..get_objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Private methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">---------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint.._check_endpoint">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">_check_endpoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint.._check_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint.._check_docker">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">_check_docker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint.._check_docker" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint.._default_containers">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">_default_containers</code><a class="headerlink" href="#dhtk.managers.client.Endpoint.._default_containers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint.._check_images">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">_check_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">images</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint.._check_images" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.managers.client.Endpoint.._check_containers">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">_check_containers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">containers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint.._check_containers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">._correct_credsstore() #STATIC</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.client.Endpoint.connect">
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">10</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to connect to local Docker client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[</strong><strong>integer</strong><strong>]</strong> (<em>timeout</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.client.Endpoint.get_client">
+<code class="sig-name descname">get_client</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint.get_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to return connection to triplestore client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Connection to triplestore</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.managers.client.Endpoint.get_objects">
+<code class="sig-name descname">get_objects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span></em>, <em class="sig-param"><span class="n">types</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Endpoint.get_objects" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check stored configurations for triplestore endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[</strong><strong>string/list</strong><strong>]</strong> (<em>types</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Docker objects available</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="installers">
+<h3>Installers()<a class="headerlink" href="#installers" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="dhtk.managers.client.Installers">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.managers.client.</code><code class="sig-name descname">Installers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configurations</span></em>, <em class="sig-param"><span class="n">logs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.managers.client.Installers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class wrapper around Docker installation procedures</p>
+<p>_docker_mac(url, configurations) #STATIC</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="dhtk.utils.helpers.Library">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.utils.helpers.</code><code class="sig-name descname">Library</code><span class="sig-paren">(</span><em class="sig-param">logs=&lt;Logger dhtk.utils.helpers (WARNING)&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.helpers.Library" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class to manage DHTK dependencies.
+This should be very useful as</p>
+<dl class="py attribute">
+<dt id="dhtk.utils.helpers.Library..required_modules">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">required_modules</code><a class="headerlink" href="#dhtk.utils.helpers.Library..required_modules" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.utils.helpers.Library..standard_modules">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">standard_modules</code><a class="headerlink" href="#dhtk.utils.helpers.Library..standard_modules" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.LOGS # core</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Public methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">--------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.utils.helpers.Library.load_all">
+<code class="sig-name descname">load_all</code><span class="sig-paren">(</span><em class="sig-param">globals=globals(</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.helpers.Library.load_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.utils.helpers.Library.update_all">
+<code class="sig-name descname">update_all</code><a class="headerlink" href="#dhtk.utils.helpers.Library.update_all" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id0">
+<code class="sig-name descname">load_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to load all DHTK dependencies</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>A modified globals() object to update the existing one as</em></p></li>
+<li><p><em>globals().update(library.load_all())</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.utils.helpers.Library.remove_all">
+<code class="sig-name descname">remove_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.helpers.Library.remove_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to remove all DHTK dependencies using pip</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id1">
+<code class="sig-name descname">update_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to install and update all DHTK dependencies using pip</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="dhtk.utils.interface.Managers">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.utils.interface.</code><code class="sig-name descname">Managers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">username</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">working_directory</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">endpoint</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.interface.Managers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class wrapper to define and manage all DHTK manager objects, unifying the DHTK API</p>
+<dl class="py attribute">
+<dt id="dhtk.utils.interface.Managers..managers">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">managers</code><a class="headerlink" href="#dhtk.utils.interface.Managers..managers" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>Dictionary containing the various DHTK manager objects</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Public methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">--------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.utils.interface.Managers..get_manager">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">get_manager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">manager</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.interface.Managers..get_manager" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.utils.interface.Managers..check_datasets">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">check_datasets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">configurations</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.interface.Managers..check_datasets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.utils.interface.Managers._cmd_options">
+<code class="sig-name descname">_cmd_options</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.interface.Managers._cmd_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Private methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">---------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">._check_modules(configurations) #STATIC</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">._load_module(configurations, available) #STATIC</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">._get_datasets(configurations, extension) #STATIC</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.utils.interface.Managers.check_datasets">
+<code class="sig-name descname">check_datasets</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configurations</span></em>, <em class="sig-param"><span class="n">endpoint</span></em>, <em class="sig-param"><span class="n">logs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.interface.Managers.check_datasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve the required the DHTK extension.
+It checks available extensions (datasets) and asks the user to selected which one
+to use, loading or setting it up.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[</strong><strong>object</strong><strong>]</strong> (<em>configurations</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Extension moduled selected by the user</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.utils.interface.Managers.get_manager">
+<code class="sig-name descname">get_manager</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">manager</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.interface.Managers.get_manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve a manager from an Managers’ object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>manager</strong> (<em>Name of the manager to retrieve.</em>) – Default is None, which retrieves the complete dictionary of managers</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Either the dictionary containing all managers or the manager requested.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="dhtk.utils.interface.start">
+<code class="sig-prename descclassname">dhtk.utils.interface.</code><code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">username</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">working_directory</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">endpoint</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.utils.interface.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Automated wrapper of DHTK module to help users.
+It sets up the managers automatically and provides the user with the may options available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>[</strong><strong>string</strong><strong>]</strong> (<em>endpoint</em>) – </p></li>
+<li><p><strong>[</strong><strong>string</strong><strong>]</strong> – </p></li>
+<li><p><strong>[</strong><strong>string</strong><strong>]</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>managers</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>metaclass containing all the manager objects required for DHTK usage</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="extension-metaclass">
+<h2>Extension Metaclass<a class="headerlink" href="#extension-metaclass" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="abstractextension">
+<h3>AbstractExtension()<a class="headerlink" href="#abstractextension" title="Permalink to this headline">¶</a></h3>
+<dl class="py class">
+<dt id="dhtk.extensions.extensions.AbstractExtension">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.extensions.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configurations</span></em>, <em class="sig-param"><span class="n">endpoint</span></em>, <em class="sig-param"><span class="n">logs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract Class that serves as a blueprint for the DHTK extension modules
+and additional datasets.</p>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.name #ABSTRACT</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.url #ABSTRACT</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.option #ABSTRACT</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.CONFIGS # core</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.LOGS # core</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">.CLIENT # core</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Default methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">---------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.extensions.AbstractExtension.set_up">
+<code class="sig-name descname">set_up</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension.set_up" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.extensions.AbstractExtension.get_options">
+<code class="sig-name descname">get_options</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension.get_options" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.extensions.AbstractExtension._download_metadata">
+<code class="sig-name descname">_download_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension._download_metadata" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.extensions.AbstractExtension._fuseki_upload">
+<code class="sig-name descname">_fuseki_upload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">rdf</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">'Uploading metadata to local server'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension._fuseki_upload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.extensions.AbstractExtension._prepare_upload">
+<code class="sig-name descname">_prepare_upload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">rdf</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension._prepare_upload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.extensions.AbstractExtension._upload_check">
+<code class="sig-name descname">_upload_check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">volume</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension._upload_check" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">Required methods</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">----------------</code></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.extensions.AbstractExtension..query">
+<code class="sig-prename descclassname">.</code><code class="sig-name descname">query</code><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension..query" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname">get_options</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve the available options for the extension module.
+The options are presented to the user as part of the DHTK interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Options for DHTK user interface</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.extensions.AbstractExtension.query">
+<em class="property">abstract </em><code class="sig-name descname">query</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.extensions.AbstractExtension.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract method to wrap the query options for each new DHTK extension.
+This method should call  _ask_query(self)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname">set_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve the DHTK extension dataset stored on Zenodo and
+upload it to the local Fuseki server</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Digital Humanities ToolKit (DHTK)</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Core API references</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#manager-classes">Manager classes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configurations">Configurations()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#endpoint">Endpoint()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installers">Installers()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#utilities">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extension-metaclass">Extension Metaclass</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#abstractextension">AbstractExtension()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gutenberg.html">Gutenberg API references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute to DHTK?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dhtk.unil.ch/WeDH/">Demo</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://dhtk.unil.ch:3030/">Triplet store</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
+      <li>Next: <a href="gutenberg.html" title="next chapter">Gutenberg API references</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Davide Picca, Mattia Egloff and Carlos Neves.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

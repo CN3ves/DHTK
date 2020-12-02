@@ -1,0 +1,66 @@
+.. dhtk documentation master file, created by
+   sphinx-quickstart on Tue Apr 16 09:33:26 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+###################
+Core API references
+###################
+
+**************
+Manager classes
+**************
+
+
+Configurations()
+================
+
+.. autoclass:: dhtk.managers.configurations.Configurations
+   :members:
+
+
+Endpoint()
+==========
+
+.. autoclass:: dhtk.managers.client.Endpoint
+   :members:
+
+Installers()
+============
+
+.. autoclass:: dhtk.managers.client.Installers
+   :members:
+
+*********
+Utilities
+*********
+
+Library()
+---------
+
+.. autoclass:: dhtk.utils.helpers.Library
+   :members:
+
+Managers()
+----------
+
+.. autoclass:: dhtk.utils.interface.Managers
+   :members:
+
+
+starter()
+---------
+
+.. autofunction:: dhtk.utils.interface.start
+
+
+*******************
+Extension Metaclass
+*******************
+
+
+AbstractExtension()
+===================
+
+.. autoclass:: dhtk.extensions.extensions.AbstractExtension
+   :members:

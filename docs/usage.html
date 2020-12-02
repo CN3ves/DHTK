@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usage &#8212; Digital Humanities ToolKit (DHTK) 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Core API references" href="api.html" />
+    <link rel="prev" title="Community" href="community.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="usage-examples">
+<h2>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="searching-in-gutenberg">
+<h3>Searching in Gutenberg<a class="headerlink" href="#searching-in-gutenberg" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span> <span class="k">as</span> <span class="n">Gs</span>
+
+<span class="n">author</span> <span class="o">=</span> <span class="s2">&quot;Sacher-Masoch&quot;</span>
+
+<span class="c1"># Initialise class GutenbergData as gutenberg_search</span>
+<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">Gs</span><span class="p">()</span>
+
+<span class="c1"># Data the books by author and create a list of the books using book_id</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="n">author</span><span class="p">)</span>
+<span class="n">books</span> <span class="o">=</span> <span class="p">[</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+
+<span class="c1"># print the books information</span>
+<span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
+    <span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-a-corpus">
+<h3>Get a corpus<a class="headerlink" href="#get-a-corpus" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">from</span> <span class="nn">dhtk.common.corpus</span> <span class="kn">import</span> <span class="n">Corpus</span>
+<span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span>
+
+<span class="c1"># Initialise class GutenbergData as gutenberg_search</span>
+<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">()</span>
+
+<span class="c1">#  search the books by bookshelf and store the id of books in the list</span>
+<span class="n">books_found</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_bookshelf</span><span class="p">(</span><span class="s1">&#39;plays&#39;</span><span class="p">)</span>
+<span class="n">book_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">books_found</span><span class="p">]</span>
+
+<span class="c1"># add the id of books searched by subject to the list&#39;book_ids&#39;</span>
+<span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ollantay (Play)&quot;</span><span class="p">,</span> <span class="s1">&#39;Play&#39;</span><span class="p">,</span> <span class="s1">&#39;Playwriting&#39;</span><span class="p">,</span> <span class="s1">&#39;Playwriting -- Drama&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">:</span>
+    <span class="n">book_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_subject</span><span class="p">(</span><span class="n">subject</span><span class="p">)])</span>
+
+<span class="c1"># search in all bookshelves the word &#39;paly&#39;</span>
+<span class="n">bookshelves</span> <span class="o">=</span> <span class="p">[</span><span class="n">bookshelf</span> <span class="k">for</span> <span class="n">bookshelf</span> <span class="ow">in</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">all_bookshelves</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;Play&quot;</span> <span class="ow">in</span> <span class="n">bookshelf</span><span class="p">]</span>
+
+<span class="c1"># add the id of books searched by related bookshelf to the list&#39;book_ids&#39;</span>
+<span class="k">for</span> <span class="n">bookshelf</span> <span class="ow">in</span> <span class="n">bookshelves</span><span class="p">:</span>
+    <span class="n">book_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_bookshelf</span><span class="p">(</span><span class="n">bookshelf</span><span class="p">)])</span>
+
+<span class="c1"># store the id of books in a set in order to avoid the Duplicate books</span>
+<span class="n">books</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">book_id</span> <span class="ow">in</span> <span class="n">book_ids</span><span class="p">:</span>
+    <span class="n">books</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">book_id</span><span class="p">))</span>
+
+
+<span class="c1"># create the corpus of books contain the name of author and the books related to play</span>
+<span class="n">book_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">books</span><span class="p">:</span>
+    <span class="n">corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span>
+        <span class="s2">&quot;plays&quot;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span>
+        <span class="n">corpora_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Desktop/&quot;</span><span class="p">),</span>
+        <span class="n">book_list</span><span class="o">=</span><span class="n">books</span>
+    <span class="p">)</span>
+<span class="c1"># convert the books of the corpus to dictionary form and add it to the book list</span>
+<span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">:</span>
+    <span class="n">book_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">book_list</span><span class="p">)</span>
+
+<span class="c1"># print list of books in the corpus and download it</span>
+<span class="n">corpus</span><span class="o">.</span><span class="n">print_book_list</span><span class="p">()</span>
+<span class="n">corpus</span><span class="o">.</span><span class="n">download_book_corpus</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span>
+
+<span class="c1"># Initialise GutenbergData class</span>
+<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">()</span>
+
+<span class="c1"># search the books by  different author and add them to the list&#39;books&#39;</span>
+<span class="n">books</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="s2">&quot;Sacher-Masoch&quot;</span><span class="p">)</span>
+<span class="n">books</span> <span class="o">+=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="s2">&quot;Dickens&quot;</span><span class="p">)</span>
+<span class="n">books</span> <span class="o">+=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="s2">&quot;Shakespear&quot;</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot; use the user&#39;s home directory for saving the data&quot;&quot;&quot;</span>
+<span class="n">save_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Desktop/dhtk_books&quot;</span><span class="p">)</span>
+
+<span class="sd">&quot;&quot;&quot; create a directory in case it does not exist&quot;&quot;&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
+    <span class="c1"># print the information for all of the book and save it at directory&quot;&quot;&quot;</span>
+    <span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;book_id&quot;</span><span class="p">])</span>
+    <span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_repository</span><span class="p">()</span><span class="o">.</span><span class="n">get_original_text</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+    <span class="n">book</span><span class="o">.</span><span class="n">get_repository</span><span class="p">()</span><span class="o">.</span><span class="n">save_original_text_file_to</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">book_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Book saved : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">book_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="search-metadata">
+<h3>Search metadata<a class="headerlink" href="#search-metadata" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span>
+<span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
+
+<span class="c1"># Initialise class GutenbergData as gutenberg_search</span>
+<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">()</span>
+
+<span class="c1"># search the book using gutenberg_id&quot;&quot;&quot;</span>
+<span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="s1">&#39;http://www.gutenberg.org/ebooks/2489&#39;</span><span class="p">)</span>
+
+<span class="c1"># Initialise class DbpediaMetadata as dbpedia_metadata</span>
+<span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
+
+<span class="c1"># get the metadata of book from bdpedia and add it to the book_id</span>
+<span class="n">dbpedia_uri</span> <span class="o">=</span> <span class="n">dbpedia_metadata</span><span class="o">.</span><span class="n">get_books_metadata_uri</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">dbpedia_metadata</span><span class="o">.</span><span class="n">get_book_metadata</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+<span class="n">book</span><span class="o">.</span><span class="n">update_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
+
+<span class="c1"># print the medata of book from dbpedia</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Digital Humanities ToolKit (DHTK)</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage-examples">Usage Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#searching-in-gutenberg">Searching in Gutenberg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-a-corpus">Get a corpus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-metadata">Search metadata</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Core API references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gutenberg.html">Gutenberg API references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute to DHTK?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices and tables</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://dhtk.unil.ch/WeDH/">Demo</a></li>
+<li class="toctree-l1"><a class="reference external" href="http://dhtk.unil.ch:3030/">Triplet store</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="community.html" title="previous chapter">Community</a></li>
+      <li>Next: <a href="api.html" title="next chapter">Core API references</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Davide Picca, Mattia Egloff and Carlos Neves.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

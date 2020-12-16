@@ -1,6 +1,0 @@
-############
-Publications
-############
-
-Davide Picca and Mattia Egloff, 2016, *DHTK: The Digital Humanities ToolKit* at Workshop on Humanities in the Semantic
-Web - WHiSe II (`paper <https://pdfs.semanticscholar.org/b9fd/9f58aaec580e8feba2ee9ff3a69cdc079620.pdf">`_)

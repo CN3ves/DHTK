@@ -7,60 +7,71 @@
 Core API references
 ###################
 
-**************
-Manager classes
-**************
+*************
+DHTK Settings 
+*************
 
 
-Configurations()
-================
-
-.. autoclass:: dhtk.managers.configurations.Configurations
-   :members:
-
-
-Endpoint()
+Settings()
 ==========
 
-.. autoclass:: dhtk.managers.client.Endpoint
+.. automodule:: dhtk.core.settings
+   :members:
+
+***************
+SPARQL Endpoint
+***************
+
+Client()
+========
+
+.. autoclass:: dhtk.core.client.Client
+   :members:
+
+.. autoclass:: dhtk.core.client.Installers
    :members:
 
 Installers()
 ============
 
-.. autoclass:: dhtk.managers.client.Installers
+.. autoclass:: dhtk.core.client.Installers
    :members:
 
-*********
-Utilities
-*********
+***************
+Dataset Manager
+***************
+
+DatasetLoader()
+===============
+
+.. autoclass:: dhtk.core.dataset.DatasetLoader
+   :members:
+
+*****
+Other
+*****
 
 Library()
 ---------
 
-.. autoclass:: dhtk.utils.helpers.Library
+.. autoclass:: dhtk.core.helpers.Library
    :members:
 
-Managers()
+download_files()
 ----------
 
-.. autoclass:: dhtk.utils.interface.Managers
-   :members:
+.. autofunction:: dhtk.core.helpers.download_files
 
 
-starter()
+load_requests()
 ---------
 
-.. autofunction:: dhtk.utils.interface.start
-
-
-*******************
-Extension Metaclass
-*******************
-
+.. autofunction:: dhtk.core.helpers.load_requests
 
 AbstractExtension()
-===================
-
-.. autoclass:: dhtk.extensions.extensions.AbstractExtension
+---------
+.. autoclass:: dhtk.extensions.blueprint.AbstractExtension
    :members:
+
+
+

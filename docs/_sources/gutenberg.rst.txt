@@ -7,29 +7,36 @@
 Gutenberg API references
 ##############
 
-**************
-Common classes
-**************
-
-
-Author()
-========
-
-.. autoclass:: dhtk.extensions.gutenberg.AbstractClasses.Author
+************
+DHTK Implementation
+************
+.. autoclass:: dhtk.extensions.gutenberg.__init__.Module
    :members:
 
 
-Book()
+************
+Base classes
+************
+
+
+GutenbergAuthor()
+========
+
+.. autoclass:: dhtk.extensions.gutenberg.Author.GutenbergAuthor
+   :members:
+
+
+GutenbergBook()
 ======
 
-.. autoclass:: dhtk.extensions.gutenberg.AbstractClasses.Book
+.. autoclass:: dhtk.extensions.gutenberg.Book.GutenbergBook
    :members:
 
 
 Corpus()
 ========
 
-.. autoclass:: dhtk.extensions.gutenberg.AbstractClasses.Corpus
+.. autoclass:: dhtk.extensions.gutenberg.Corpus.Corpus
    :members:
 
 
@@ -40,21 +47,6 @@ Data Catalogs
 
 Project Gutenberg
 =================
-
-
-GutenbergAuthor()
------------------
-
-.. automodule:: dhtk.extensions.gutenberg.Author
-   :members:
-
-
-GutenbergBook()
----------------
-
-.. automodule:: dhtk.extensions.gutenberg.Book
-   :members:
-
 
 GutenbergData()
 ---------------
@@ -74,31 +66,6 @@ TextPartDetector()
 ------------------
 
 .. automodule:: dhtk.extensions.gutenberg.Text_part_detector
-   :members:
-
-
-Abstract classes
-================
-
-
-Data()
-------
-
-.. autoclass:: dhtk.extensions.gutenberg.AbstractClasses.Data
-   :members:
-
-
-TextRepository()
-----------------
-
-.. autoclass:: dhtk.extensions.gutenberg.AbstractClasses.TextRepository
-   :members:
-
-
-Metadata()
-----------
-
-.. autoclass:: dhtk.extensions.gutenberg.AbstractClasses.Metadata
    :members:
 
 

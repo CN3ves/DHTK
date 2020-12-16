@@ -48,7 +48,7 @@
 
 <span class="c1"># Data the books by author and create a list of the books using book_id</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="n">author</span><span class="p">)</span>
-<span class="n">books</span> <span class="o">=</span> <span class="p">[</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
+<span class="n">books</span> <span class="o">=</span> <span class="p">[</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
 
 <span class="c1"># print the books information</span>
 <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
@@ -85,7 +85,7 @@
 <span class="c1"># store the id of books in a set in order to avoid the Duplicate books</span>
 <span class="n">books</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">book_id</span> <span class="ow">in</span> <span class="n">book_ids</span><span class="p">:</span>
-    <span class="n">books</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">book_id</span><span class="p">))</span>
+    <span class="n">books</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">book_id</span><span class="p">))</span>
 
 
 <span class="c1"># create the corpus of books contain the name of author and the books related to play</span>
@@ -129,7 +129,7 @@
 
 <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
     <span class="c1"># print the information for all of the book and save it at directory&quot;&quot;&quot;</span>
-    <span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;book_id&quot;</span><span class="p">])</span>
+    <span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;book_id&quot;</span><span class="p">])</span>
     <span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_repository</span><span class="p">()</span><span class="o">.</span><span class="n">get_original_text</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
     <span class="n">book</span><span class="o">.</span><span class="n">get_repository</span><span class="p">()</span><span class="o">.</span><span class="n">save_original_text_file_to</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">)</span>
@@ -149,7 +149,7 @@
 <span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">()</span>
 
 <span class="c1"># search the book using gutenberg_id&quot;&quot;&quot;</span>
-<span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="s1">&#39;http://www.gutenberg.org/ebooks/2489&#39;</span><span class="p">)</span>
+<span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="s1">&#39;http://www.gutenberg.org/ebooks/2489&#39;</span><span class="p">)</span>
 
 <span class="c1"># Initialise class DbpediaMetadata as dbpedia_metadata</span>
 <span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>

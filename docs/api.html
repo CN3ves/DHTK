@@ -1,38 +1,137 @@
-
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Core API references &#8212; Digital Humanities ToolKit (DHTK) 0.0.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Gutenberg API references" href="gutenberg.html" />
-    <link rel="prev" title="Usage" href="usage.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  </head><body>
-  
+    <title>Core API references</title>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+    
+        
+        <link rel="stylesheet" href="_static/css/main.css">
+        
+        <link rel="stylesheet" href="_static/pygments.css" type="text/css"/>
+        
+        
+    
 
-          <div class="body" role="main">
-            
+    <script type="text/javascript" src="_static/js/main.js"></script>
+
+        <script type="text/javascript" id="documentation_options"
+                data-url_root="./"
+                src="_static/documentation_options.js"></script>
+
+        
+            <script src="_static/jquery.js"></script>
+            <script src="_static/underscore.js"></script>
+            <script src="_static/doctools.js"></script>
+            <script src="_static/language_data.js"></script>
+    
+
+    
+        
+        <link rel="shortcut icon" href="_static/img/favicon.ico"/>
+    
+            <link rel="index" title="Index" href="genindex.html"/>
+            <link rel="search" title="Search" href="search.html"/>
+
+    
+
+    
+</head>
+<body>
+
+
+    <header>
+        
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="./">
+                            
+                                <img src="_static/img/logo.svg"
+                                     alt="Logo"/>
+                            
+                        </a>
+                        <!--<a role="button" class="navbar-burger burger" aria-label="menu"
+                           aria-expanded="false"
+                           data-target="navbarMenu">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>-->
+                    </div>
+
+                    
+                        <div id="navbarMenu" class="navbar-menu">
+                            <div class="navbar-end">
+                                <a class="navbar-item" href="https://documatt.com">Documatt</a>
+                                <a class="navbar-item"
+                                   href="https://snippets.documatt.com">Snippets</a>
+                                <a class="navbar-item is-active" href="https://blog.documatt.com">Blog</a>
+                            </div>
+                        </div>
+                    
+                </div>
+            </nav>
+        
+
+        
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <div class="container">
+                    <ul>
+                        <li><a href="./">Digital Humanities ToolKit (DHTK)</a></li>
+                        
+
+    <li class="is-active">Core API references</li>
+
+                    </ul>
+                </div>
+            </nav>
+        
+    </header>
+
+
+
+    <section class="section site-cover" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                        
+                            <h1 class="title is-2 has-text-primary">
+                                <a href="./">Digital Humanities ToolKit (DHTK)</a>
+                            </h1>
+                            <h2 class="subtitle is-4">
+                                Write and read beautiful books and documentation in easy way with our powerful writing platform.
+                            </h2>
+                        
+                    
+                </div>
+                <div class="column">
+                    
+                        e.g. [twitter follow]
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<hr>
+
+
+    
+        <section class="section is-paddingless" id="document">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-2">
+                        
+                    </div>
+                    <div class="column is-8">
+                        
+                        <article class="content is-medium sphinx-body">
+                            
   <div class="section" id="core-api-references">
 <h1>Core API references<a class="headerlink" href="#core-api-references" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dhtk-settings">
@@ -42,7 +141,7 @@
 <p>DHTK setting and configurations module</p>
 <dl class="py class">
 <dt id="dhtk.core.settings.Settings">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.settings.</code><code class="sig-name descname">Settings</code><span class="sig-paren">(</span><em class="sig-param">wd: Union[str</em>, <em class="sig-param">pathlib.PosixPath] = PosixPath('/Users/s05mm2/DHTK')</em>, <em class="sig-param">user: str = 's05mm2'</em>, <em class="sig-param">endpoint: str = None</em>, <em class="sig-param">dataset: str = None</em>, <em class="sig-param">modules: List[str] = &lt;factory&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.settings.Settings" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.settings.</code><code class="sig-name descname">Settings</code><span class="sig-paren">(</span><em class="sig-param">user: str = 's05mm2'</em>, <em class="sig-param">wd: Union[str</em>, <em class="sig-param">pathlib.PosixPath] = '~/DHTK'</em>, <em class="sig-param">endpoint: str = None</em>, <em class="sig-param">dataset: str = None</em>, <em class="sig-param">modules: dict = &lt;factory&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.settings.Settings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data class to manage DHTK’s settings and behaviour.</p>
 <dl class="simple">
 <dt>wd: string or pathlib.PosixPath [default: pathlib.Path.home() / “DHTK”]</dt><dd><p>DHTK working directory to save logs, setting, configurations and temporary files</p>
@@ -200,23 +299,6 @@ Probably not very useful from the user’s perspective</p>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt id="dhtk.core.helpers.load_requests">
-<code class="sig-prename descclassname">dhtk.core.helpers.</code><code class="sig-name descname">load_requests</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>pathlib.PosixPath<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#dhtk.core.helpers.load_requests" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to load stored results of DHTK’s queries</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>file</strong> (<em>string</em>) – Path to the requests file to load</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>file</strong> – Path to the requests file to load</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>string</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py class">
 <dt id="dhtk.extensions.blueprint.AbstractExtension">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>
@@ -229,12 +311,6 @@ and additional datasets.</p>
 </dd>
 </dl>
 <p>query: A function wrapper unifying the extension utilities</p>
-<dl class="py method">
-<dt id="dhtk.extensions.blueprint.AbstractExtension.save_requests">
-<code class="sig-name descname">save_requests</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.save_requests" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to save the results of DHTK’s queries</p>
-</dd></dl>
-
 <dl class="py method">
 <dt id="dhtk.extensions.blueprint.AbstractExtension.set_up">
 <code class="sig-name descname">set_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.set_up" title="Permalink to this definition">¶</a></dt>
@@ -255,98 +331,29 @@ and update the local Fuseki endpoint</p>
 </div>
 
 
-          </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Digital Humanities ToolKit (DHTK)</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Core API references</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dhtk-settings">DHTK Settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.core.settings">Settings()</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#sparql-endpoint">SPARQL Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#client">Client()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installers">Installers()</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#dataset-manager">Dataset Manager</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#datasetloader">DatasetLoader()</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#other">Other</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="gutenberg.html">Gutenberg API references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute to DHTK?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices and tables</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://dhtk.unil.ch/WeDH/">Demo</a></li>
-<li class="toctree-l1"><a class="reference external" href="http://dhtk.unil.ch:3030/">Triplet store</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
-      <li>Next: <a href="gutenberg.html" title="next chapter">Gutenberg API references</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2020, Davide Picca, Mattia Egloff and Carlos Neves.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/api.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
+                        </article>
+                    </div>
+                    <div class="column is-2">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
     
 
-    
-  </body>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered has-text-primary">
+                <a href="./">
+                <img
+                        src="_static/img/logo.svg"
+                        alt="Logo" style="width: 10rem;"></a>
+                <p>Write and read beautiful books and documentation in easy way with our powerful writing platform.</p>
+                <p>2020, Davide Picca, Mattia Egloff and Carlos Neves</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
 </html>

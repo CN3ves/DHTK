@@ -1,38 +1,137 @@
-
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gutenberg API references &#8212; Digital Humanities ToolKit (DHTK) 0.0.1 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="How to contribute to DHTK?" href="contribute.html" />
-    <link rel="prev" title="Core API references" href="api.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  </head><body>
-  
+    <title>Gutenberg API references</title>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+    
+        
+        <link rel="stylesheet" href="_static/css/main.css">
+        
+        <link rel="stylesheet" href="_static/pygments.css" type="text/css"/>
+        
+        
+    
 
-          <div class="body" role="main">
-            
+    <script type="text/javascript" src="_static/js/main.js"></script>
+
+        <script type="text/javascript" id="documentation_options"
+                data-url_root="./"
+                src="_static/documentation_options.js"></script>
+
+        
+            <script src="_static/jquery.js"></script>
+            <script src="_static/underscore.js"></script>
+            <script src="_static/doctools.js"></script>
+            <script src="_static/language_data.js"></script>
+    
+
+    
+        
+        <link rel="shortcut icon" href="_static/img/favicon.ico"/>
+    
+            <link rel="index" title="Index" href="genindex.html"/>
+            <link rel="search" title="Search" href="search.html"/>
+
+    
+
+    
+</head>
+<body>
+
+
+    <header>
+        
+            <nav class="navbar" role="navigation" aria-label="main navigation">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" href="./">
+                            
+                                <img src="_static/img/logo.svg"
+                                     alt="Logo"/>
+                            
+                        </a>
+                        <!--<a role="button" class="navbar-burger burger" aria-label="menu"
+                           aria-expanded="false"
+                           data-target="navbarMenu">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>-->
+                    </div>
+
+                    
+                        <div id="navbarMenu" class="navbar-menu">
+                            <div class="navbar-end">
+                                <a class="navbar-item" href="https://documatt.com">Documatt</a>
+                                <a class="navbar-item"
+                                   href="https://snippets.documatt.com">Snippets</a>
+                                <a class="navbar-item is-active" href="https://blog.documatt.com">Blog</a>
+                            </div>
+                        </div>
+                    
+                </div>
+            </nav>
+        
+
+        
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <div class="container">
+                    <ul>
+                        <li><a href="./">Digital Humanities ToolKit (DHTK)</a></li>
+                        
+
+    <li class="is-active">Gutenberg API references</li>
+
+                    </ul>
+                </div>
+            </nav>
+        
+    </header>
+
+
+
+    <section class="section site-cover" style="padding-bottom: 0;">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                        
+                            <h1 class="title is-2 has-text-primary">
+                                <a href="./">Digital Humanities ToolKit (DHTK)</a>
+                            </h1>
+                            <h2 class="subtitle is-4">
+                                Write and read beautiful books and documentation in easy way with our powerful writing platform.
+                            </h2>
+                        
+                    
+                </div>
+                <div class="column">
+                    
+                        e.g. [twitter follow]
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<hr>
+
+
+    
+        <section class="section is-paddingless" id="document">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-2">
+                        
+                    </div>
+                    <div class="column is-8">
+                        
+                        <article class="content is-medium sphinx-body">
+                            
   <div class="section" id="gutenberg-api-references">
 <h1>Gutenberg API references<a class="headerlink" href="#gutenberg-api-references" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dhtk-implementation">
@@ -449,7 +548,7 @@ biography and bibliography.</p>
 <h3>GutenbergBook()<a class="headerlink" href="#gutenbergbook" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extends the Book class for Project Gutenberg books.</p>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
@@ -626,12 +725,6 @@ value corresponding to the key “first_edition_date” in dict metadata for Boo
 </div>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_repository">
-<code class="sig-name descname">get_repository</code><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_repository" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts" title="dhtk.extensions.gutenberg.Texts.GutenbergTexts"><code class="xref py py-class docutils literal notranslate"><span class="pre">dhtk.extensions.gutenberg.Texts.GutenbergTexts</span></code></a></p>
-</dd></dl>
-
 <dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_same_as">
 <code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_same_as" title="Permalink to this definition">¶</a></dt>
@@ -686,18 +779,15 @@ and on the file encoding.</p>
 <dd><p>Return a good filename for a book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>Return</strong> – Returns the id number of the gutenberg book adding the extension “-gutenberg.txt”.</p>
+<dd class="field-odd"><p><strong>file_name</strong> – Example”Virginia_Woolf-Jacob’s_Room.txt”</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>str</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>This is useful when working on large corpora as the txt files remain identifiable by the id
-and the original repository.</p>
 <p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">get_text_file_name</span><span class="p">())</span>
-<span class="c1"># 2701-gutenberg.txt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_text_file_name</span><span class="p">()</span>
+<span class="c1"># &#39;Virginia_Woolf-Mrs_Dalloway.txt&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1792,7 +1882,7 @@ Subject counts sub-subjects too.</p>
 The cleaning of the texts was adapted from: <a class="reference external" href="https://github.com/okfn/gutenizer">https://github.com/okfn/gutenizer</a></p>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Texts.</code><code class="sig-name descname">GutenbergTexts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">repository_uri</span><span class="o">=</span><span class="default_value">'http://aleph.gutenberg.org'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Texts.</code><code class="sig-name descname">GutenbergTexts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em>, <em class="sig-param"><span class="n">repository_uri</span><span class="o">=</span><span class="default_value">'http://aleph.gutenberg.org'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clean up Gutenberg texts by removing all the header and footer bumpf.</p>
 <p class="rubric">Notes</p>
 <p>Part of this class have to be reworked.</p>
@@ -1805,7 +1895,7 @@ The cleaning of the texts was adapted from: <a class="reference external" href="
 
 <dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_clean_text">
-<code class="sig-name descname">get_clean_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_clean_text" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_clean_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_clean_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return text without header, footer, notes or annotations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1822,7 +1912,7 @@ The cleaning of the texts was adapted from: <a class="reference external" href="
 
 <dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_original_text">
-<code class="sig-name descname">get_original_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_original_text" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_original_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_original_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns original text of a given book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1839,7 +1929,7 @@ The cleaning of the texts was adapted from: <a class="reference external" href="
 
 <dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_clean_text_file_to">
-<code class="sig-name descname">save_clean_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em>, <em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_clean_text_file_to" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save_clean_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_clean_text_file_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the clean text to a text-file in or at destination.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1859,7 +1949,7 @@ The cleaning of the texts was adapted from: <a class="reference external" href="
 
 <dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_original_text_file_to">
-<code class="sig-name descname">save_original_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em>, <em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_original_text_file_to" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">save_original_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_original_text_file_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the original text to a text-file in or at destination.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2287,101 +2377,29 @@ or else the dict: {“boolean”: False}.</p>
 </div>
 
 
-          </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Digital Humanities ToolKit (DHTK)</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">Core API references</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Gutenberg API references</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dhtk-implementation">DHTK Implementation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#base-classes">Base classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#gutenbergauthor">GutenbergAuthor()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gutenbergbook">GutenbergBook()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#corpus">Corpus()</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#data-catalogs">Data Catalogs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#project-gutenberg">Project Gutenberg</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#metadata-classes">Metadata classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#dbpediametadata">DbpediaMetadata()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#viafmetadata">ViafMetadata()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#wikidatametadata">WikidataMetadata()</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contribute.html">How to contribute to DHTK?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="indices.html">Indices and tables</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://dhtk.unil.ch/WeDH/">Demo</a></li>
-<li class="toctree-l1"><a class="reference external" href="http://dhtk.unil.ch:3030/">Triplet store</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="api.html" title="previous chapter">Core API references</a></li>
-      <li>Next: <a href="contribute.html" title="next chapter">How to contribute to DHTK?</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2020, Davide Picca, Mattia Egloff and Carlos Neves.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/gutenberg.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
+                        </article>
+                    </div>
+                    <div class="column is-2">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
     
 
-    
-  </body>
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered has-text-primary">
+                <a href="./">
+                <img
+                        src="_static/img/logo.svg"
+                        alt="Logo" style="width: 10rem;"></a>
+                <p>Write and read beautiful books and documentation in easy way with our powerful writing platform.</p>
+                <p>2020, Davide Picca, Mattia Egloff and Carlos Neves</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
 </html>

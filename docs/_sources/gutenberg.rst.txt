@@ -1,0 +1,96 @@
+.. dhtk documentation master file, created by
+   sphinx-quickstart on Tue Apr 16 09:33:26 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+##############
+Gutenberg API references
+##############
+
+************
+DHTK Implementation
+************
+.. autoclass:: dhtk.extensions.gutenberg.__init__.Module
+   :members:
+
+
+************
+Base classes
+************
+
+
+GutenbergAuthor()
+========
+
+.. autoclass:: dhtk.extensions.gutenberg.Author.GutenbergAuthor
+   :members:
+
+
+GutenbergBook()
+======
+
+.. autoclass:: dhtk.extensions.gutenberg.Book.GutenbergBook
+   :members:
+
+
+Corpus()
+========
+
+.. autoclass:: dhtk.extensions.gutenberg.Corpus.Corpus
+   :members:
+
+
+*************
+Data Catalogs
+*************
+
+
+Project Gutenberg
+=================
+
+GutenbergData()
+---------------
+
+.. automodule:: dhtk.extensions.gutenberg.Data
+   :members:
+
+
+GutenbergTexts()
+----------------
+
+.. automodule:: dhtk.extensions.gutenberg.Texts
+   :members:
+
+
+TextPartDetector()
+------------------
+
+.. automodule:: dhtk.extensions.gutenberg.Text_part_detector
+   :members:
+
+
+****************
+Metadata classes
+****************
+
+
+DbpediaMetadata()
+=================
+
+.. autoclass:: dhtk.extensions.gutenberg.Metadata.DbpediaMetadata
+   :members:
+
+
+ViafMetadata()
+==============
+
+.. autoclass:: dhtk.extensions.gutenberg.Metadata.ViafMetadata
+   :members:
+
+
+
+WikidataMetadata()
+==================
+
+.. autoclass:: dhtk.extensions.gutenberg.Metadata.WikidataMetadata
+   :members:

@@ -1,0 +1,77 @@
+.. dhtk documentation master file, created by
+   sphinx-quickstart on Tue Apr 16 09:33:26 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+###################
+Core API references
+###################
+
+*************
+DHTK Settings 
+*************
+
+
+Settings()
+==========
+
+.. automodule:: dhtk.core.settings
+   :members:
+
+***************
+SPARQL Endpoint
+***************
+
+Client()
+========
+
+.. autoclass:: dhtk.core.client.Client
+   :members:
+
+.. autoclass:: dhtk.core.client.Installers
+   :members:
+
+Installers()
+============
+
+.. autoclass:: dhtk.core.client.Installers
+   :members:
+
+***************
+Dataset Manager
+***************
+
+DatasetLoader()
+===============
+
+.. autoclass:: dhtk.core.dataset.DatasetLoader
+   :members:
+
+*****
+Other
+*****
+
+Library()
+---------
+
+.. autoclass:: dhtk.core.helpers.Library
+   :members:
+
+download_files()
+----------
+
+.. autofunction:: dhtk.core.helpers.download_files
+
+
+load_requests()
+---------
+
+.. autofunction:: dhtk.core.helpers.load_requests
+
+AbstractExtension()
+---------
+.. autoclass:: dhtk.extensions.blueprint.AbstractExtension
+   :members:
+
+
+

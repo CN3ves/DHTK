@@ -3,13 +3,13 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-##############
+########################
 Gutenberg API references
-##############
+########################
 
-************
+*******************
 DHTK Implementation
-************
+*******************
 .. autoclass:: dhtk.extensions.gutenberg.__init__.Module
    :members:
 
@@ -20,14 +20,14 @@ Base classes
 
 
 GutenbergAuthor()
-========
+=================
 
 .. autoclass:: dhtk.extensions.gutenberg.Author.GutenbergAuthor
    :members:
 
 
 GutenbergBook()
-======
+===============
 
 .. autoclass:: dhtk.extensions.gutenberg.Book.GutenbergBook
    :members:

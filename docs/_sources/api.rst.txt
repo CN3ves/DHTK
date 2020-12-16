@@ -28,9 +28,6 @@ Client()
 .. autoclass:: dhtk.core.client.Client
    :members:
 
-.. autoclass:: dhtk.core.client.Installers
-   :members:
-
 Installers()
 ============
 
@@ -47,6 +44,12 @@ DatasetLoader()
 .. autoclass:: dhtk.core.dataset.DatasetLoader
    :members:
 
+AbstractExtension()
+-------------------
+.. autoclass:: dhtk.extensions.blueprint.AbstractExtension
+   :members:
+
+
 *****
 Other
 *****
@@ -58,20 +61,7 @@ Library()
    :members:
 
 download_files()
-----------
+----------------
 
 .. autofunction:: dhtk.core.helpers.download_files
-
-
-load_requests()
----------
-
-.. autofunction:: dhtk.core.helpers.load_requests
-
-AbstractExtension()
----------
-.. autoclass:: dhtk.extensions.blueprint.AbstractExtension
-   :members:
-
-
 

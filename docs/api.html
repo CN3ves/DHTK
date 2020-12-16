@@ -1,137 +1,125 @@
 <!DOCTYPE html>
+
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Core API references</title>
-
     
-        
-        <link rel="stylesheet" href="_static/css/main.css">
-        
-        <link rel="stylesheet" href="_static/pygments.css" type="text/css"/>
-        
-        
+    <title>Core API references &mdash; Digital Humanities ToolKit (DHTK) 0.0.1 documentation</title>
     
+    <link rel="stylesheet" type="text/css" href="_static/css/spc-bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="_static/css/spc-extend.css">
+    <link rel="stylesheet" href="_static/enthought.css" type="text/css" >
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" >
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        LINK_SUFFIX: '.html',
+        SOURCELINK_SUFFIX: '.txt',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/js/copybutton.js"></script>
+    <script type="text/javascript" src="_static/js/wrap_on_dot.js"></script>
+    <link rel="index" title="Index" href="genindex.html" >
+    <link rel="search" title="Search" href="search.html" >
+    <link rel="top" title="Digital Humanities ToolKit (DHTK) 0.0.1 documentation" href="index.html" > 
+  </head>
+  <body>
+  <div class="container">
+    <div class="header">
+    </div>
+  </div>
 
-    <script type="text/javascript" src="_static/js/main.js"></script>
-
-        <script type="text/javascript" id="documentation_options"
-                data-url_root="./"
-                src="_static/documentation_options.js"></script>
-
+    <div class="container">
+      <div class="main">
         
-            <script src="_static/jquery.js"></script>
-            <script src="_static/underscore.js"></script>
-            <script src="_static/doctools.js"></script>
-            <script src="_static/language_data.js"></script>
-    
-
-    
-        
-        <link rel="shortcut icon" href="_static/img/favicon.ico"/>
-    
-            <link rel="index" title="Index" href="genindex.html"/>
-            <link rel="search" title="Search" href="search.html"/>
-
-    
-
-    
-</head>
-<body>
-
-
-    <header>
-        
-            <nav class="navbar" role="navigation" aria-label="main navigation">
-                <div class="container">
-                    <div class="navbar-brand">
-                        <a class="navbar-item" href="./">
-                            
-                                <img src="_static/img/logo.svg"
-                                     alt="Logo"/>
-                            
-                        </a>
-                        <!--<a role="button" class="navbar-burger burger" aria-label="menu"
-                           aria-expanded="false"
-                           data-target="navbarMenu">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                        </a>-->
-                    </div>
-
-                    
-                        <div id="navbarMenu" class="navbar-menu">
-                            <div class="navbar-end">
-                                <a class="navbar-item" href="https://documatt.com">Documatt</a>
-                                <a class="navbar-item"
-                                   href="https://snippets.documatt.com">Snippets</a>
-                                <a class="navbar-item is-active" href="https://blog.documatt.com">Blog</a>
-                            </div>
-                        </div>
-                    
-                </div>
-            </nav>
+	<div class="row-fluid">
+	  <div class="span12">
+	    <div class="spc-navbar">
+              
+    <ul class="nav nav-pills pull-left">
+        <li class="active"><a href="https://dhtk.unil.ch/">Old DKTH</a></li>
+	
+        <li class="active"><a href="index.html">Digital Humanities ToolKit (DHTK) 0.0.1 documentation</a></li>
+	 
+    </ul>
+              
+              
+    <ul class="nav nav-pills pull-right">
+      <li class="active">
+        <a href="genindex.html" title="General Index"
+           accesskey="I">index</a>
+      </li>
+      <li class="active">
+        <a href="py-modindex.html" title="Python Module Index"
+           >modules</a>
+      </li>
+    </ul>
+              
+	    </div>
+	  </div>
+	</div>
         
 
-        
-            <nav class="breadcrumb" aria-label="breadcrumbs">
-                <div class="container">
-                    <ul>
-                        <li><a href="./">Digital Humanities ToolKit (DHTK)</a></li>
-                        
+	<div class="row-fluid">
+      <div class="spc-rightsidebar span3">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/img/e-logo.png" alt="Logo">
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Core API references</a><ul>
+<li><a class="reference internal" href="#dhtk-settings">DHTK Settings</a><ul>
+<li><a class="reference internal" href="#module-dhtk.core.settings">Settings()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#sparql-endpoint">SPARQL Endpoint</a><ul>
+<li><a class="reference internal" href="#client">Client()</a></li>
+<li><a class="reference internal" href="#installers">Installers()</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#dataset-manager">Dataset Manager</a><ul>
+<li><a class="reference internal" href="#datasetloader">DatasetLoader()</a><ul>
+<li><a class="reference internal" href="#abstractextension">AbstractExtension()</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other">Other</a></li>
+</ul>
+</li>
+</ul>
 
-    <li class="is-active">Core API references</li>
-
-                    </ul>
-                </div>
-            </nav>
-        
-    </header>
-
-
-
-    <section class="section site-cover" style="padding-bottom: 0;">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8 is-offset-2">
-                        
-                            <h1 class="title is-2 has-text-primary">
-                                <a href="./">Digital Humanities ToolKit (DHTK)</a>
-                            </h1>
-                            <h2 class="subtitle is-4">
-                                Write and read beautiful books and documentation in easy way with our powerful writing platform.
-                            </h2>
-                        
-                    
-                </div>
-                <div class="column">
-                    
-                        e.g. [twitter follow]
-                    
-                </div>
-            </div>
+  <h3>This Page</h3>
+  <div>
+    <a href="_sources/api.rst.txt"
+       rel="nofollow">Show Source</a>
+  </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
-    </section>
-
-
-<hr>
-
-
-    
-        <section class="section is-paddingless" id="document">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-2">
-                        
-                    </div>
-                    <div class="column is-8">
-                        
-                        <article class="content is-medium sphinx-body">
-                            
+      </div>
+          <div class="span9">
+            
+        <div class="bodywrapper">
+          <div class="body" id="spc-section-body" role="main">
+            
   <div class="section" id="core-api-references">
 <h1>Core API references<a class="headerlink" href="#core-api-references" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dhtk-settings">
@@ -204,6 +192,9 @@ If the triplestore is local, it sets up a Fuseki container on Docker.</p>
 
 </dd></dl>
 
+</div>
+<div class="section" id="installers">
+<h3>Installers()<a class="headerlink" href="#installers" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="dhtk.core.client.Installers">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Installers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Installers" title="Permalink to this definition">¶</a></dt>
@@ -212,21 +203,6 @@ Class wrapper for Docker installation procedures</p>
 <dl class="py attribute">
 <dt id="dhtk.core.client.Installers.logging">
 <code class="sig-name descname">logging</code><em class="property"> = &lt;module 'logging' from '/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/logging/__init__.py'&gt;</em><a class="headerlink" href="#dhtk.core.client.Installers.logging" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="installers">
-<h3>Installers()<a class="headerlink" href="#installers" title="Permalink to this headline">¶</a></h3>
-<dl class="py class">
-<dt id="id0">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Installers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>!!!EXPERIMENTAL FEATURE!!!
-Class wrapper for Docker installation procedures</p>
-<dl class="py attribute">
-<dt id="id1">
-<code class="sig-name descname">logging</code><em class="property"> = &lt;module 'logging' from '/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/logging/__init__.py'&gt;</em><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -243,6 +219,37 @@ Class wrapper for Docker installation procedures</p>
 <dd><p>Class to retrieve the required DHTK extension (dataset) module</p>
 </dd></dl>
 
+<div class="section" id="abstractextension">
+<h4>AbstractExtension()<a class="headerlink" href="#abstractextension" title="Permalink to this headline">¶</a></h4>
+<dl class="py class">
+<dt id="dhtk.extensions.blueprint.AbstractExtension">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abstract Class that serves as a blueprint for the DHTK extension modules
+and additional datasets.</p>
+<dl class="simple">
+<dt>name: string</dt><dd><p>Name of extension</p>
+</dd>
+<dt>url: string</dt><dd><p>URL to the extension RDF file</p>
+</dd>
+</dl>
+<p>query: A function wrapper unifying the extension utilities</p>
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension.set_up">
+<code class="sig-name descname">set_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.set_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve the DHTK extension dataset stored on Zenodo and
+upload it to the local Fuseki server</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check for remote changes to the dataset RDF file
+and update the local Fuseki endpoint</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 </div>
 </div>
 <div class="section" id="other">
@@ -299,61 +306,35 @@ Probably not very useful from the user’s perspective</p>
 </dl>
 </dd></dl>
 
-<dl class="py class">
-<dt id="dhtk.extensions.blueprint.AbstractExtension">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>
-<dd><p>Abstract Class that serves as a blueprint for the DHTK extension modules
-and additional datasets.</p>
-<dl class="simple">
-<dt>name: string</dt><dd><p>Name of extension</p>
-</dd>
-<dt>url: string</dt><dd><p>URL to the extension RDF file</p>
-</dd>
-</dl>
-<p>query: A function wrapper unifying the extension utilities</p>
-<dl class="py method">
-<dt id="dhtk.extensions.blueprint.AbstractExtension.set_up">
-<code class="sig-name descname">set_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.set_up" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to retrieve the DHTK extension dataset stored on Zenodo and
-upload it to the local Fuseki server</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.blueprint.AbstractExtension.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to check for remote changes to the dataset RDF file
-and update the local Fuseki endpoint</p>
-</dd></dl>
-
-</dd></dl>
-
 </div>
 </div>
 
 
-                        </article>
-                    </div>
-                    <div class="column is-2">
-                        
-                    </div>
-                </div>
-            </div>
-        </section>
-    
-
-    <footer class="footer">
-        <div class="container">
-            <div class="content has-text-centered has-text-primary">
-                <a href="./">
-                <img
-                        src="_static/img/logo.svg"
-                        alt="Logo" style="width: 10rem;"></a>
-                <p>Write and read beautiful books and documentation in easy way with our powerful writing platform.</p>
-                <p>2020, Davide Picca, Mattia Egloff and Carlos Neves</p>
-            </div>
+          </div>
         </div>
-    </footer>
+          </div>
+        </div>
+      </div>
+    </div>
 
-
-</body>
+    <div class="container container-navbar-bottom">
+      <div class="spc-navbar">
+        
+      </div>
+    </div>
+    <div class="container">
+    <div class="footer">
+    <div class="row-fluid">
+    <ul class="inline pull-left">
+      <li>
+        &copy; Copyright 2020, Davide Picca, Mattia Egloff and Carlos Neves
+      </li>
+      <li>
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.3.1.
+      </li>
+    </ul>
+    </div>
+    </div>
+    </div>
+  </body>
 </html>

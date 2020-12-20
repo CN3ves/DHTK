@@ -18,16 +18,21 @@ Different APIs and different metadata make these repositories difficult to explo
 
 Finding resources, checking metadata and finally cleaning data, can be long and tedious process. This is where DHTK comes in as it proposes a unified API to accomplish those tasks and thus support research in Digital
 
+############
+Publications
+############
+
+Davide Picca and Mattia Egloff, 2016, *DHTK: The Digital Humanities ToolKit* at Workshop on Humanities in the Semantic
+Web - WHiSe II (`pa
+
 .. toctree::
    :hidden:
    :maxdepth: 3
    :caption: Contents:
 
-   community
-   usage
+   intro
    api
    gutenberg
-   contribute
+   community
    developers
-   publications
-   indices
+

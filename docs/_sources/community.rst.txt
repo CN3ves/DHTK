@@ -32,3 +32,13 @@ Frequently Asked Questions
     You can find a contact form on the `Contribute <\contribute.html>`_ page.
 
 
+##########################
+How to contribute to DHTK?
+##########################
+
+Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
+DHTK community!
+
+Please write us at: davide.picca@unil.ch
+
+

@@ -22,21 +22,21 @@ Base classes
 GutenbergAuthor()
 =================
 
-.. autoclass:: dhtk.extensions.gutenberg.Author.GutenbergAuthor
+.. automodule:: dhtk.extensions.gutenberg.Author
    :members:
 
 
 GutenbergBook()
 ===============
 
-.. autoclass:: dhtk.extensions.gutenberg.Book.GutenbergBook
+.. automodule:: dhtk.extensions.gutenberg.Book
    :members:
 
 
 Corpus()
 ========
 
-.. autoclass:: dhtk.extensions.gutenberg.Corpus.Corpus
+.. automodule:: dhtk.extensions.gutenberg.Corpus
    :members:
 
 

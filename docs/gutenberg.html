@@ -92,9 +92,9 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gutenberg API references</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dhtk-implementation">DHTK Implementation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#base-classes">Base classes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#gutenbergauthor">GutenbergAuthor()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gutenbergbook">GutenbergBook()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#corpus">Corpus()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.extensions.gutenberg.Author">GutenbergAuthor()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.extensions.gutenberg.Book">GutenbergBook()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.extensions.gutenberg.Corpus">Corpus()</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#data-catalogs">Data Catalogs</a><ul>
@@ -174,8 +174,9 @@ If all, retrieve all information available</p></li>
 </div>
 <div class="section" id="base-classes">
 <h2>Base classes<a class="headerlink" href="#base-classes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="gutenbergauthor">
-<h3>GutenbergAuthor()<a class="headerlink" href="#gutenbergauthor" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-dhtk.extensions.gutenberg.Author">
+<span id="gutenbergauthor"></span><h3>GutenbergAuthor()<a class="headerlink" href="#module-dhtk.extensions.gutenberg.Author" title="Permalink to this headline">¶</a></h3>
+<p>Contains the GutenbergAuthor Class.</p>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Author.</code><code class="sig-name descname">GutenbergAuthor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor" title="Permalink to this definition">¶</a></dt>
@@ -550,8 +551,11 @@ biography and bibliography.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="gutenbergbook">
-<h3>GutenbergBook()<a class="headerlink" href="#gutenbergbook" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-dhtk.extensions.gutenberg.Book">
+<span id="gutenbergbook"></span><h3>GutenbergBook()<a class="headerlink" href="#module-dhtk.extensions.gutenberg.Book" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="contains-the-gutenbergbook-class">
+<h4>Contains the GutenbergBook Class.<a class="headerlink" href="#contains-the-gutenbergbook-class" title="Permalink to this headline">¶</a></h4>
+<p>Returns a Book object which is extended to contain parameters for gutenberg id</p>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
@@ -975,8 +979,9 @@ and on the file encoding.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="corpus">
-<h3>Corpus()<a class="headerlink" href="#corpus" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="module-dhtk.extensions.gutenberg.Corpus">
+<span id="corpus"></span><h3>Corpus()<a class="headerlink" href="#module-dhtk.extensions.gutenberg.Corpus" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Corpus.Corpus">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Corpus.</code><code class="sig-name descname">Corpus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">corpora_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">book_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.Corpus" title="Permalink to this definition">¶</a></dt>

@@ -94,12 +94,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#sparql-endpoint">SPARQL Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#client">Client()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#installers">Installers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.core.client">Client()</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#dataset-manager">Dataset Manager</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#datasetloader">DatasetLoader()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.core.dataset">DatasetLoader()</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#other">Other</a></li>
@@ -180,8 +179,9 @@ NOTE that dataset must be set at least once!!</p>
 </div>
 <div class="section" id="sparql-endpoint">
 <h2>SPARQL Endpoint<a class="headerlink" href="#sparql-endpoint" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="client">
-<h3>Client()<a class="headerlink" href="#client" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-dhtk.core.client">
+<span id="client"></span><h3>Client()<a class="headerlink" href="#module-dhtk.core.client" title="Permalink to this headline">¶</a></h3>
+<p>Module for setting up and connecting to triplestore</p>
 <dl class="py class">
 <dt id="dhtk.core.client.Client">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Client" title="Permalink to this definition">¶</a></dt>
@@ -207,9 +207,6 @@ If the triplestore is local, it sets up a Fuseki container on Docker.</p>
 
 </dd></dl>
 
-</div>
-<div class="section" id="installers">
-<h3>Installers()<a class="headerlink" href="#installers" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
 <dt id="dhtk.core.client.Installers">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Installers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Installers" title="Permalink to this definition">¶</a></dt>
@@ -226,16 +223,18 @@ Class wrapper for Docker installation procedures</p>
 </div>
 <div class="section" id="dataset-manager">
 <h2>Dataset Manager<a class="headerlink" href="#dataset-manager" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="datasetloader">
-<h3>DatasetLoader()<a class="headerlink" href="#datasetloader" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="module-dhtk.core.dataset">
+<span id="datasetloader"></span><h3>DatasetLoader()<a class="headerlink" href="#module-dhtk.core.dataset" title="Permalink to this headline">¶</a></h3>
+<p>Module to load DHTK extensions modules</p>
 <dl class="py class">
 <dt id="dhtk.core.dataset.DatasetLoader">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.core.dataset.</code><code class="sig-name descname">DatasetLoader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.dataset.DatasetLoader" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to retrieve the required DHTK extension (dataset) module</p>
 </dd></dl>
 
-<div class="section" id="abstractextension">
-<h4>AbstractExtension()<a class="headerlink" href="#abstractextension" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="module-dhtk.extensions.blueprint">
+<span id="abstractextension"></span><h4>AbstractExtension()<a class="headerlink" href="#module-dhtk.extensions.blueprint" title="Permalink to this headline">¶</a></h4>
+<p>Abstract class to be used as template for new extension modules __init__ script</p>
 <dl class="py class">
 <dt id="dhtk.extensions.blueprint.AbstractExtension">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>

@@ -25,14 +25,9 @@ SPARQL Endpoint
 Client()
 ========
 
-.. autoclass:: dhtk.core.client.Client
+.. automodule:: dhtk.core.client
    :members:
 
-Installers()
-============
-
-.. autoclass:: dhtk.core.client.Installers
-   :members:
 
 ***************
 Dataset Manager
@@ -41,12 +36,12 @@ Dataset Manager
 DatasetLoader()
 ===============
 
-.. autoclass:: dhtk.core.dataset.DatasetLoader
+.. automodule:: dhtk.core.dataset
    :members:
 
 AbstractExtension()
 -------------------
-.. autoclass:: dhtk.extensions.blueprint.AbstractExtension
+.. automodule:: dhtk.extensions.blueprint
    :members:
 
 

@@ -1,0 +1,26 @@
+
+****************
+Metadata classes
+****************
+
+
+DbpediaMetadata()
+=================
+
+.. autoclass:: dhtk.processing.Metadata.DbpediaMetadata
+   :members:
+
+
+ViafMetadata()
+==============
+
+.. autoclass:: dhtk.processing.Metadata.ViafMetadata
+   :members:
+
+
+
+WikidataMetadata()
+==================
+
+.. autoclass:: dhtk.processing.Metadata.WikidataMetadata
+   :members:

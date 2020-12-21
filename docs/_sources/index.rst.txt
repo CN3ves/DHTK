@@ -66,7 +66,8 @@ Changelog 102
    intro
    architecture
    api
-   gutenberg
+   process
+   extensions
    community
    contributors
 

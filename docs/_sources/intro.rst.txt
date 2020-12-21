@@ -32,21 +32,26 @@ DHTK is a module for Python3.x. As such, it is accessible using any Python conso
 DHTK access occurs in four steps:
 
 1) Importing DHTK module
+
 .. literalinclude:: ./examples/usage.py
     :language: python
     :lines: 3-11
-    :emphasize-lines: 3
+    :emphasize-lines: 1
+
 2) Define DHTK settings
+
 .. literalinclude:: ./examples/usage.py
     :language: python
     :lines: 12-21
-    :emphasize-lines: 12
+    :emphasize-lines: 1
+
 3) Connect to a `SPARQL <https://en.wikipedia.org/wiki/SPARQL>`_ endpoint
 4) Load and use a custom DHTK extension
+
 .. literalinclude:: ./examples/usage.py
     :language: python
     :lines: 22-28
-    :emphasize-lines: 22
+    :emphasize-lines: 1
 
 
 

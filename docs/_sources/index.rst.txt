@@ -64,8 +64,9 @@ Changelog 102
    :caption: Contents:
 
    intro
+   architecture
    api
    gutenberg
    community
-   developers
+   contributors
 

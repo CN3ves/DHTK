@@ -409,29 +409,3 @@ TextPartDetector()
 .. automodule:: dhtk.extensions.gutenberg.Text_part_detector
    :members:
 
-
-****************
-Metadata classes
-****************
-
-
-DbpediaMetadata()
-=================
-
-.. autoclass:: dhtk.extensions.gutenberg.Metadata.DbpediaMetadata
-   :members:
-
-
-ViafMetadata()
-==============
-
-.. autoclass:: dhtk.extensions.gutenberg.Metadata.ViafMetadata
-   :members:
-
-
-
-WikidataMetadata()
-==================
-
-.. autoclass:: dhtk.extensions.gutenberg.Metadata.WikidataMetadata
-   :members:

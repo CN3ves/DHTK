@@ -78,12 +78,13 @@
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Get started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Core API references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gutenberg.html">Gutenberg API references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community.html#how-to-contribute-to-dhtk">How to contribute to DHTK?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="developers.html">Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
 </ul>
 
 <div id="searchbox" style="display: none" role="search">
@@ -118,15 +119,20 @@
  | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
  
 </div>
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="process.html#dhtk.processing.Metadata.ViafMetadata._author_query_base_uri">_author_query_base_uri (dhtk.processing.Metadata.ViafMetadata attribute)</a>
+</li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Data.GutenbergData._query_head">_query_head (dhtk.extensions.gutenberg.Data.GutenbergData attribute)</a>
 </li>
   </ul></td>
@@ -194,6 +200,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api.html#dhtk.core.dataset.DatasetLoader">DatasetLoader (class in dhtk.core.dataset)</a>
+</li>
+      <li><a href="process.html#dhtk.processing.Metadata.DbpediaMetadata">DbpediaMetadata (class in dhtk.processing.Metadata)</a>
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Corpus.Corpus.description">description() (dhtk.extensions.gutenberg.Corpus.Corpus method)</a>
 </li>
@@ -307,6 +315,8 @@
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Book.GutenbergBook.get_book_id_number">get_book_id_number() (dhtk.extensions.gutenberg.Book.GutenbergBook method)</a>
 </li>
+      <li><a href="process.html#dhtk.processing.Metadata.DbpediaMetadata.get_book_metadata">get_book_metadata() (dhtk.processing.Metadata.DbpediaMetadata method)</a>
+</li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_books">get_books() (dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector method)</a>
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_chapters">get_chapters() (dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector method)</a>
@@ -325,14 +335,14 @@
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_full_name">get_full_name() (dhtk.extensions.gutenberg.Author.GutenbergAuthor method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_gutenberg_id">get_gutenberg_id() (dhtk.extensions.gutenberg.Author.GutenbergAuthor method)</a>
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_header_text_footer">get_header_text_footer() (dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector method)</a>
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_last_name">get_last_name() (dhtk.extensions.gutenberg.Author.GutenbergAuthor method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Book.GutenbergBook.get_metadata">get_metadata() (dhtk.extensions.gutenberg.Book.GutenbergBook method)</a>
 
       <ul>
@@ -349,6 +359,22 @@
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_parts">get_parts() (dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector method)</a>
 </li>
+      <li><a href="process.html#dhtk.processing.Metadata.DbpediaMetadata.get_possible_author_uri_list">get_possible_author_uri_list() (dhtk.processing.Metadata.DbpediaMetadata static method)</a>
+
+      <ul>
+        <li><a href="process.html#dhtk.processing.Metadata.ViafMetadata.get_possible_author_uri_list">(dhtk.processing.Metadata.ViafMetadata static method)</a>
+</li>
+        <li><a href="process.html#dhtk.processing.Metadata.WikidataMetadata.get_possible_author_uri_list">(dhtk.processing.Metadata.WikidataMetadata static method)</a>
+</li>
+      </ul></li>
+      <li><a href="process.html#dhtk.processing.Metadata.DbpediaMetadata.get_possible_book_uri_list">get_possible_book_uri_list() (dhtk.processing.Metadata.DbpediaMetadata static method)</a>
+
+      <ul>
+        <li><a href="process.html#dhtk.processing.Metadata.ViafMetadata.get_possible_book_uri_list">(dhtk.processing.Metadata.ViafMetadata static method)</a>
+</li>
+        <li><a href="process.html#dhtk.processing.Metadata.WikidataMetadata.get_possible_book_uri_list">(dhtk.processing.Metadata.WikidataMetadata static method)</a>
+</li>
+      </ul></li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Book.GutenbergBook.get_publisher">get_publisher() (dhtk.extensions.gutenberg.Book.GutenbergBook method)</a>
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_same_as">get_same_as() (dhtk.extensions.gutenberg.Author.GutenbergAuthor method)</a>
@@ -461,6 +487,14 @@
   </ul></td>
 </tr></table>
 
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="process.html#dhtk.processing.Metadata.DbpediaMetadata.query_dbpedia">query_dbpedia() (dhtk.processing.Metadata.DbpediaMetadata method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -482,12 +516,28 @@
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_original_text_file_to">save_original_text_file_to() (dhtk.extensions.gutenberg.Texts.GutenbergTexts method)</a>
 </li>
+      <li><a href="process.html#dhtk.processing.Metadata.DbpediaMetadata.search_authors_metadata_uri">search_authors_metadata_uri() (dhtk.processing.Metadata.DbpediaMetadata method)</a>
+
+      <ul>
+        <li><a href="process.html#dhtk.processing.Metadata.ViafMetadata.search_authors_metadata_uri">(dhtk.processing.Metadata.ViafMetadata method)</a>
+</li>
+        <li><a href="process.html#dhtk.processing.Metadata.WikidataMetadata.search_authors_metadata_uri">(dhtk.processing.Metadata.WikidataMetadata method)</a>
+</li>
+      </ul></li>
+      <li><a href="process.html#dhtk.processing.Metadata.DbpediaMetadata.search_books_metadata_uri">search_books_metadata_uri() (dhtk.processing.Metadata.DbpediaMetadata method)</a>
+
+      <ul>
+        <li><a href="process.html#dhtk.processing.Metadata.ViafMetadata.search_books_metadata_uri">(dhtk.processing.Metadata.ViafMetadata method)</a>
+</li>
+        <li><a href="process.html#dhtk.processing.Metadata.WikidataMetadata.search_books_metadata_uri">(dhtk.processing.Metadata.WikidataMetadata method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Data.GutenbergData.search_by_author">search_by_author() (dhtk.extensions.gutenberg.Data.GutenbergData method)</a>
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Data.GutenbergData.search_by_bookshelf">search_by_bookshelf() (dhtk.extensions.gutenberg.Data.GutenbergData method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Data.GutenbergData.search_by_subject">search_by_subject() (dhtk.extensions.gutenberg.Data.GutenbergData method)</a>
 </li>
       <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Data.GutenbergData.search_by_title">search_by_title() (dhtk.extensions.gutenberg.Data.GutenbergData method)</a>
@@ -542,6 +592,22 @@
         <li><a href="gutenberg.html#dhtk.extensions.gutenberg.Book.GutenbergBook.update_metadata">(dhtk.extensions.gutenberg.Book.GutenbergBook method)</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="process.html#dhtk.processing.Metadata.ViafMetadata">ViafMetadata (class in dhtk.processing.Metadata)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="process.html#dhtk.processing.Metadata.WikidataMetadata">WikidataMetadata (class in dhtk.processing.Metadata)</a>
+</li>
   </ul></td>
 </tr></table>
 

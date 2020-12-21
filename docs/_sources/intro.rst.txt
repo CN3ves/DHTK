@@ -2,28 +2,23 @@
 Get started
 ###########
 
-
-Installation
-============
-In order to install DHTK, please follow this `link <https://gitlab.com/dhtk/dhtk/tree/master>`_ and download the source
-code in your preferred format. Extract the DHTK files and access them via console.
-
-Get started
-===========
-
-
 Installation
 ------------
 
-In order to install DHTK, please head to https://gitlab.com/dhtk/dhtk/tree/master and download the source code in your
-preferred format. Extract the DHTK files and access them via console.
+In order to install DHTK, `Python 3.x <https://www.python.org/downloads/>`_ is required.
+Note that when using a local triplestore, `Docker <https://docs.docker.com/get-docker/>`_ application is required as DHTK uses a Fuseki container as endpoint.
+
+There are two main ways to get DHTK python module:
+
+1) Download the `DHTK source code <https://gitlab.com/dhtk/dhtk/tree/master>`_ in your preferred format, extract the DHTK files and access them via console.
 
 ::
 
     $ cd dhtk
     $ python setup.py
 
-or use pip:
+
+2) or use pip:
 
 ::
 
@@ -31,26 +26,21 @@ or use pip:
 
 
 
-Requirements
-------------
-
-In order to be able to use DHTK, there are some things that need to be installed on your computer.
-Here is what you need and how to install it via console:
-
-
-1. Python 3+
-2. Appdirs
-3. Psutil
-4. Requests
-5. Urllib3
-6. SPARQLWrapper
-7. Nameparser
-
-
 How to use
 ----------
+DHTK is a module for Python3.x. As such, it is accessible using any Python console or environment.
+DHTK access occurs in four steps:
 
-While a graphical interface is being created, the only way to use DHTK at this point in time is via console. Numerous classes and methods are available in order to help the user obtain the desired results. A thourough guide on how to use those classes can be found further down on this very page.
+1) Importing DHTK module
+2) Define DHTK settings
+3) Connect to a `SPARQL <https://en.wikipedia.org/wiki/SPARQL>`_ endpoint
+4) Load and use a custom DHTK extension
+
+
+Search metadata
+---------------
+.. literalinclude:: ./examples/usage.py
+    :language: python
 
 
 
@@ -135,7 +125,7 @@ Once the class is instanced, several methods are accessible. Those can be separa
 
 
 1.1 Search
-^^^^^^^^^^
+----------
 
 The “Search” methods do just that - search. In the following example we use a “search_by_author()” method:
 ::
@@ -157,7 +147,7 @@ Other methods work in a similar way.
 
 
 1.2 All
-^^^^^^^
+-------
 
 The “All” methods allow to retrieve a list of all the authors, books, subjects or themes. The method all_books(), for instance, provides a list of all the books found in the database:
 
@@ -192,7 +182,7 @@ Below is an example of a result. Notice the presence of the “author_id” and 
 
 
 1.3 Book:
-^^^^^^^^^
+---------
 
 The “Book” methods allow retrieving specific items from the Gutenberg database – namely, books – thanks to the identifiers (book_id/author_id) obtained via “search” methods (see section 1.1). Here is an example of how to retrieve a book by using its identifier:
 
@@ -226,7 +216,7 @@ In DHTK, specific searches result in the Book() objects. Those are digital repre
 
 
 2.1 Get_author()
-^^^^^^^^^^^^^^^^
+----------------
 
 The get_author() method allows generating an “author” object which contains information on the author of a given item:
 
@@ -236,7 +226,7 @@ The get_author() method allows generating an “author” object which contains 
 
 
 2.2 Get_repository()
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 The get_repository() method is what retrieves the original text. The method’s output is an object called GutenbergBook() which is the object that is needed to access a series of methods that allow manipulating the text of the book in question. The text_original() method, for example, allows to display the original text of the book:
 
@@ -324,7 +314,7 @@ The corpus class then provides an object and so, a series of methods:
 
 
 3.1. Add/Remove/Clear Methods
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------^^
 
 The Add, Remove and Clear methods are simple tools that allow to add one or several books to a corpus, remove them from said corpus or to clear that corpus altogether. Here is a non-exhaustive list of methods:
 
@@ -359,7 +349,7 @@ The new book is added at the end of the list.
 
 
 3.2. Methods Get/Print
-^^^^^^^^^^^^^^^^^^^^^^
+---------------------^
 
 The Get and Print methods help with:
 
@@ -384,7 +374,7 @@ As such, the method get_book_list() for instance allows retrieving all of the bo
 
 
 3.3. The Download methods
-^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------^
 
 These methods allows downloading a book or the whole of your corpus. The methods create a directory with the name of your corpus in the directory that you chose when initializing the class (path) and retrieve the “.txt” files.
 Here are said methods:

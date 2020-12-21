@@ -23,7 +23,7 @@ Publications
 ############
 
 * Davide Picca and Mattia Egloff, `DHTK: The Digital Humanities ToolKit <https://pdfs.semanticscholar.org/b9fd/9f58aaec580e8feba2ee9ff3a69cdc079620.pdf>`_, WHiSe 2017
-* Mattia Egloff, Alessandro Adamou, Davide Picca,``Enabling Ontology-Based Data Access to Project Gutenberg <http://ceur-ws.org/Vol-2695/>`_, WHiSe 2020
+* Mattia Egloff, Alessandro Adamou, Davide Picca, `Enabling Ontology-Based Data Access to Project Gutenberg <http://ceur-ws.org/Vol-2695/>`_, WHiSe 2020
 
 .. toctree::
    :hidden:

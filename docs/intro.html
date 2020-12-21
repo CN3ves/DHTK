@@ -182,29 +182,29 @@ DHTK access occurs in four steps:</p>
 <li><p>Importing DHTK module</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span> <span class="nn">dhtk</span>
-</span><span class="c1"># ###################################################</span>
-<span class="c1"># Welcome to the Digital Humanities ToolKit,</span>
-<span class="c1"># the  user - friendly Python API for</span>
-<span class="c1"># Digital Humanities research.</span>
-<span class="c1">#</span>
-<span class="c1"># For more information, please visit DHTK &#39;s website:</span>
-<span class="c1"># [https: // dhtk.unil.ch /]</span>
-<span class="c1">#####################################################</span>
+</span><span class="c1">###################################################</span>
+<span class="n">Welcome</span> <span class="n">to</span> <span class="n">the</span> <span class="n">Digital</span> <span class="n">Humanities</span> <span class="n">ToolKit</span><span class="p">,</span>
+<span class="n">the</span>  <span class="n">user</span> <span class="o">-</span> <span class="n">friendly</span> <span class="n">Python</span> <span class="n">API</span> <span class="k">for</span>
+<span class="n">Digital</span> <span class="n">Humanities</span> <span class="n">research</span><span class="o">.</span>
+
+<span class="n">For</span> <span class="n">more</span> <span class="n">information</span><span class="p">,</span> <span class="n">please</span> <span class="n">visit</span> <span class="n">DHTK</span> <span class="s1">&#39;s website:</span>
+<span class="p">[</span><span class="n">https</span><span class="p">:</span> <span class="o">//</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">unil</span><span class="o">.</span><span class="n">ch</span> <span class="o">/</span><span class="p">]</span>
+<span class="c1">####################################################</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>Define DHTK settings</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
-</span><span class="c1"># Current DHTK settings:</span>
-<span class="c1"># [user]: s05mm2</span>
-<span class="c1"># [wd]: /Users/s05mm2/DHTK/s05mm2</span>
-<span class="c1"># [endpoint]: localhost</span>
-<span class="c1"># [dataset]: gutenberg</span>
-<span class="c1"># [modules]: {&#39;gutenberg&#39;: datetime.datetime(2020, 12, 16, 13, 52, 26, 965388)}</span>
-<span class="c1"># [_file]: /Users/s05mm2/DHTK/s05mm2/s05mm2.config</span>
-<span class="c1"># [logger]: &lt;Logger dhtk(DEBUG)&gt;</span>
-<span class="c1"># [_connect]: 30</span>
+</span><span class="n">Current</span> <span class="n">DHTK</span> <span class="n">settings</span><span class="p">:</span>
+<span class="p">[</span><span class="n">user</span><span class="p">]:</span> <span class="n">s05mm2</span>
+<span class="p">[</span><span class="n">wd</span><span class="p">]:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">s05mm2</span><span class="o">/</span><span class="n">DHTK</span><span class="o">/</span><span class="n">s05mm2</span>
+<span class="p">[</span><span class="n">endpoint</span><span class="p">]:</span> <span class="n">localhost</span>
+<span class="p">[</span><span class="n">dataset</span><span class="p">]:</span> <span class="n">gutenberg</span>
+<span class="p">[</span><span class="n">modules</span><span class="p">]:</span> <span class="p">{</span><span class="s1">&#39;gutenberg&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">965388</span><span class="p">)}</span>
+<span class="p">[</span><span class="n">_file</span><span class="p">]:</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">s05mm2</span><span class="o">/</span><span class="n">DHTK</span><span class="o">/</span><span class="n">s05mm2</span><span class="o">/</span><span class="n">s05mm2</span><span class="o">.</span><span class="n">config</span>
+<span class="p">[</span><span class="n">logger</span><span class="p">]:</span> <span class="o">&lt;</span><span class="n">Logger</span> <span class="n">dhtk</span><span class="p">(</span><span class="n">DEBUG</span><span class="p">)</span><span class="o">&gt;</span>
+<span class="p">[</span><span class="n">_connect</span><span class="p">]:</span> <span class="mi">30</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
@@ -212,12 +212,12 @@ DHTK access occurs in four steps:</p>
 <li><p>Load and use a custom DHTK extension</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">module</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
-</span><span class="c1"># DHTK Gutenberg statistics:</span>
-<span class="c1"># Last update: 16 Dec 20</span>
-<span class="c1"># number of books: 56913</span>
-<span class="c1"># number of authors: 21031</span>
-<span class="c1"># number of bookshelves: 337</span>
-<span class="c1"># number of subjects: 34045</span>
+</span><span class="n">DHTK</span> <span class="n">Gutenberg</span> <span class="n">statistics</span><span class="p">:</span>
+<span class="n">Last</span> <span class="n">update</span><span class="p">:</span> <span class="mi">16</span> <span class="n">Dec</span> <span class="mi">20</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">books</span><span class="p">:</span> <span class="mi">56913</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">authors</span><span class="p">:</span> <span class="mi">21031</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">bookshelves</span><span class="p">:</span> <span class="mi">337</span>
+<span class="n">number</span> <span class="n">of</span> <span class="n">subjects</span><span class="p">:</span> <span class="mi">34045</span>
 </pre></div>
 </div>
 </div>

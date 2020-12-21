@@ -3,27 +3,27 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Digital Humanities ToolKit (DHTK)'s documentation!
-=============================================================
+Welcome to Digital Humanities Tool Kit (DHTK)'s documentation!
+==============================================================
 
 #####################################################################
 A tool for processing digital text in different formats and languages
 #####################################################################
 
-DHTK is a project aims at creating a library with the intent to help researchers in digital humanities finding data and metadata in a simple way.
-The main idea is that scholars involved in Digital Humanities research often need a certain number of datasets concerning cultural data.
-Internet is a great source for this kind of information and repositories such as Project Gutenberg, Europeana, Archive.org, et similia, are great resources.
-Unfortunately, these resources are organized and structured in different ways and often incompatible.
-Different APIs and different metadata make these repositories difficult to exploit.
+Scholars involved in Digital Humanities research often need a certain number of datasets concerning cultural data.
+The Internet is a great source for this kind of information and repositories such as Project Gutenberg, Europeana, Archive.org, *et similia*, are great resources.
+Unfortunately, these resources are organized and structured in different ways and often incompatible, having different APIs and different metadata, which make these repositories difficult to exploit.
 
-Finding resources, checking metadata and finally cleaning data, can be long and tedious process. This is where DHTK comes in as it proposes a unified API to accomplish those tasks and thus support research in Digital
+Finding resources, checking metadata and finally cleaning data, can be a long and tedious process.
+DHTK is a project aimed at creating a library with the intent to help researchers in Digital Humanities finding data and metadata in a simple way,
+proposing a unified API to accomplish those tasks and thus supporting and simplifying research in Digital Humanities.
 
 ############
 Publications
 ############
 
-Davide Picca and Mattia Egloff, 2016, *DHTK: The Digital Humanities ToolKit* at Workshop on Humanities in the Semantic
-Web - WHiSe II (`pa
+* Davide Picca and Mattia Egloff, 2017, *[DHTK: The Digital Humanities ToolKit](https://www.semanticscholar.org/paper/DHTK%3A-The-Digital-Humanities-ToolKit-Picca-Egloff/b9fd9f58aaec580e8feba2ee9ff3a69cdc079620)* at Workshop on Humanities in the Semantic Web
+* Mattia Egloff, Alessandro Adamou, Davide Picca, 2020 *[Enabling Ontology-Based Data Access to Project Gutenberg](http://ceur-ws.org/Vol-2695/)* at Workshop on Humanities in the Semantic Web
 
 .. toctree::
    :hidden:

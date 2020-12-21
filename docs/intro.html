@@ -90,7 +90,6 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#search-metadata">Search metadata</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#changelog">Changelog</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#dhtk-101">DHTK 101</a></li>
@@ -120,7 +119,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#searching-in-gutenberg">Searching in Gutenberg</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#get-a-corpus">Get a corpus</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Search metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search-metadata">Search metadata</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Core API references</a></li>
@@ -185,18 +184,34 @@ DHTK access occurs in four steps:</p>
 <li><p>Connect to a <a class="reference external" href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> endpoint</p></li>
 <li><p>Load and use a custom DHTK extension</p></li>
 </ol>
-</div>
-<div class="section" id="search-metadata">
-<h2>Search metadata<a class="headerlink" href="#search-metadata" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pylint: disable=invalid-name</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Example of DHTK usage</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example of DHTK usage&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">dhtk</span>
-
-<span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
-<span class="n">module</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">()</span>
+<span class="hll"><span class="kn">import</span> <span class="nn">dhtk</span>
+</span><span class="c1"># ###################################################</span>
+<span class="c1"># Welcome to the Digital Humanities ToolKit,</span>
+<span class="c1"># the  user - friendly Python API for</span>
+<span class="c1"># Digital Humanities research.</span>
+<span class="c1">#</span>
+<span class="c1"># For more information, please visit DHTK &#39;s website:</span>
+<span class="c1"># [https: // dhtk.unil.ch /]</span>
+<span class="c1">#####################################################</span>
+<span class="hll"><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
+</span><span class="c1"># Current DHTK settings:</span>
+<span class="c1"># [user]: s05mm2</span>
+<span class="c1"># [wd]: /Users/s05mm2/DHTK/s05mm2</span>
+<span class="c1"># [endpoint]: localhost</span>
+<span class="c1"># [dataset]: gutenberg</span>
+<span class="c1"># [modules]: {&#39;gutenberg&#39;: datetime.datetime(2020, 12, 16, 13, 52, 26, 965388)}</span>
+<span class="c1"># [_file]: /Users/s05mm2/DHTK/s05mm2/s05mm2.config</span>
+<span class="c1"># [logger]: &lt;Logger dhtk(DEBUG)&gt;</span>
+<span class="c1"># [_connect]: 30</span>
+<span class="hll"><span class="n">module</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+</span><span class="c1"># DHTK Gutenberg statistics:</span>
+<span class="c1"># Last update: 16 Dec 20</span>
+<span class="c1"># number of books: 56913</span>
+<span class="c1"># number of authors: 21031</span>
+<span class="c1"># number of bookshelves: 337</span>
+<span class="c1"># number of subjects: 34045</span>
 </pre></div>
 </div>
 </div>
@@ -604,8 +619,8 @@ Here are said methods:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id1">
-<h2>Search metadata<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="search-metadata">
+<h2>Search metadata<a class="headerlink" href="#search-metadata" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 <span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span>
 <span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>

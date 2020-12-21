@@ -37,10 +37,9 @@ DHTK access occurs in four steps:
 4) Load and use a custom DHTK extension
 
 
-Search metadata
----------------
 .. literalinclude:: ./examples/usage.py
     :language: python
+    :emphasize-lines: 3, 12, 22
 
 
 

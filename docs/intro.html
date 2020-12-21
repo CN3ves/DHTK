@@ -178,42 +178,54 @@ $ python setup.py
 <h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
 <p>DHTK is a module for Python3.x. As such, it is accessible using any Python console or environment.
 DHTK access occurs in four steps:</p>
-<ol class="arabic simple">
-<li><p>Importing DHTK module</p></li>
-<li><p>Define DHTK settings</p></li>
+<p>1) Importing DHTK module
+.. literalinclude:: ./examples/usage.py</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">language</dt>
+<dd class="field-odd"><p>python</p>
+</dd>
+<dt class="field-even">lines</dt>
+<dd class="field-even"><p>3-11</p>
+</dd>
+<dt class="field-odd">emphasize-lines</dt>
+<dd class="field-odd"><p>3</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>2) Define DHTK settings
+.. literalinclude:: ./examples/usage.py</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">language</dt>
+<dd class="field-odd"><p>python</p>
+</dd>
+<dt class="field-even">lines</dt>
+<dd class="field-even"><p>12-21</p>
+</dd>
+<dt class="field-odd">emphasize-lines</dt>
+<dd class="field-odd"><p>12</p>
+</dd>
+</dl>
+</div></blockquote>
+<ol class="arabic simple" start="3">
 <li><p>Connect to a <a class="reference external" href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> endpoint</p></li>
-<li><p>Load and use a custom DHTK extension</p></li>
 </ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example of DHTK usage&quot;&quot;&quot;</span>
-
-<span class="hll"><span class="kn">import</span> <span class="nn">dhtk</span>
-</span><span class="c1"># ###################################################</span>
-<span class="c1"># Welcome to the Digital Humanities ToolKit,</span>
-<span class="c1"># the  user - friendly Python API for</span>
-<span class="c1"># Digital Humanities research.</span>
-<span class="c1">#</span>
-<span class="c1"># For more information, please visit DHTK &#39;s website:</span>
-<span class="c1"># [https: // dhtk.unil.ch /]</span>
-<span class="c1">#####################################################</span>
-<span class="hll"><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
-</span><span class="c1"># Current DHTK settings:</span>
-<span class="c1"># [user]: s05mm2</span>
-<span class="c1"># [wd]: /Users/s05mm2/DHTK/s05mm2</span>
-<span class="c1"># [endpoint]: localhost</span>
-<span class="c1"># [dataset]: gutenberg</span>
-<span class="c1"># [modules]: {&#39;gutenberg&#39;: datetime.datetime(2020, 12, 16, 13, 52, 26, 965388)}</span>
-<span class="c1"># [_file]: /Users/s05mm2/DHTK/s05mm2/s05mm2.config</span>
-<span class="c1"># [logger]: &lt;Logger dhtk(DEBUG)&gt;</span>
-<span class="c1"># [_connect]: 30</span>
-<span class="hll"><span class="n">module</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
-</span><span class="c1"># DHTK Gutenberg statistics:</span>
-<span class="c1"># Last update: 16 Dec 20</span>
-<span class="c1"># number of books: 56913</span>
-<span class="c1"># number of authors: 21031</span>
-<span class="c1"># number of bookshelves: 337</span>
-<span class="c1"># number of subjects: 34045</span>
-</pre></div>
-</div>
+<p>4) Load and use a custom DHTK extension
+.. literalinclude:: ./examples/usage.py</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">language</dt>
+<dd class="field-odd"><p>python</p>
+</dd>
+<dt class="field-even">lines</dt>
+<dd class="field-even"><p>22-28</p>
+</dd>
+<dt class="field-odd">emphasize-lines</dt>
+<dd class="field-odd"><p>22</p>
+</dd>
+</dl>
+</div></blockquote>
 </div>
 <div class="section" id="changelog">
 <h2>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h2>

@@ -49,9 +49,9 @@
               
     <ul class="nav nav-pills pull-left">
         <li class="active"><a href="./index">home</a></li>
-        <li class="active"><a href="./extensions/api.html">Core</a></li>
-        <li class="active"><a href="./extensions/extensions.html">Extensions</a></li>
-        <li class="active"><a href="./extensions/process.html">Processing</a></li>
+        <li class="active"><a href="./api.html">Core</a></li>
+        <li class="active"><a href="./extensions.html">Extensions</a></li>
+        <li class="active"><a href="./process.html">Processing</a></li>
 	
         <li class="active"><a href="index.html">Digital Humanities ToolKit (DHTK) 1.0.2 documentation</a></li>
 	 
@@ -169,13 +169,14 @@ contributor can add then directly to the code and submit a merge request.</p>
 <p>DHTK core modules are responsible to locate and load any module within the extension directory.
 Due to the modular architecture of DHTK, these extensions can be easily developed as self-sufficient Python modules,
 which are alter integrated into the DHTK framework. Doing so requires two steps:</p>
-<blockquote>
-<div><ol class="arabic simple">
+<ol class="arabic simple">
 <li><p>All new module must be place inside this directory <em>(./dhtk/extensions/new_module)</em></p></li>
+<li><dl class="simple">
+<dt>The __init__ file for the module must contains a class named Module, inheriting from the</dt><dd><p><a class="reference external" href="./extensions.html">AbstractExtension</a> blueprint.</p>
+</dd>
+</dl>
+</li>
 </ol>
-<p>2) The __init__ file for the module must contains a class named Module, inheriting from the
-<a class="reference external" href="./extensions.html">AbstractExtension</a> blueprint.</p>
-</div></blockquote>
 <p>The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
 The new Module class is essentially a wrapper around a DHTK extension, defining the self attributes name and url
 (name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and

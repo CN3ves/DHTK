@@ -95,11 +95,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Core API references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="process.html">Metadata classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Gutenberg API references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">Processing API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extension API references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#how-to-contribute-to-dhtk">How to contribute to DHTK?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
 </ul>
 
@@ -128,30 +126,25 @@
             
   <div class="section" id="architecture">
 <h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
-<p>DHTK is divided in two parts: the core modules and the extension modules.
-A third part, the processing modules, will be added in later version to leverage
-computational methods for automated analyses and process of DHTK data and metadata
-(<em>e.g.</em> natural language processing of texts)</p>
+<p>DHTK is divided in three parts: the core modules, the extension modules and
+the processing modules as described below.</p>
 <div class="section" id="core-modules">
 <h2>Core Modules<a class="headerlink" href="#core-modules" title="Permalink to this headline">¶</a></h2>
-<p>The core modules determine DHTK configurations, logging and query to the data and metadata,
-providing the initial framework to work with the extended functionality modules.
-These modules include the <a class="reference external" href="../api#settings">settings</a>,
-<a class="reference external" href="../api#client">client</a>, <a class="reference external" href="../api#dataset">dataset</a>
-and <a class="reference external" href="../api#helpers">helpers</a> modules.</p>
-<p>For more information, see <a class="reference external" href="../api">Core API reference</a></p>
+<p>The core modules define DHTK configurations, logging and functionality loading,
+providing the initial framework underlying the modularisation of DHTK.
+For more information, see <a class="reference external" href="../api.html">Core API reference</a></p>
 </div>
 <div class="section" id="extension-modules">
 <h2>Extension modules<a class="headerlink" href="#extension-modules" title="Permalink to this headline">¶</a></h2>
-<p>The extension modules are modules tailored for querying and searching specific databases or
-data type, adding functionalities better suited for the different DHTK users. It includes the
-<a class="reference external" href="../extensions#blueprint">blueprint</a> to help with development and contribution from the
-Digital Humanities’ <a class="reference external" href="../community">community</a></p>
+<p>The extension modules are modules that add functionalities for querying and searching
+specific databases or data types. It includes the <a class="reference external" href="../extensions#blueprint">blueprint</a> to help with development and contribution from the
+Digital Humanities’ <a class="reference external" href="../community">community</a>, allowing easy integration of new modules and
+continuous growth to better suit the different DHTK users.</p>
 <p>The current version focuses on textual resources such as
 <a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a> and <a class="reference external" href="https://auchinleck.nls.uk/">Auchinkleck manuscript</a>,
 because of its immediate relevance in the Humanities community and the
 lack of automatic tools available in order to exploit these specific resources.</p>
-<p>For more information, see <a class="reference external" href="../extensions">Extensions API reference</a></p>
+<p>For more information, see <a class="reference external" href="../extensions.html">Extensions API reference</a></p>
 </div>
 <div class="section" id="processing-modules">
 <h2>Processing modules<a class="headerlink" href="#processing-modules" title="Permalink to this headline">¶</a></h2>
@@ -159,7 +152,7 @@ lack of automatic tools available in order to exploit these specific resources.<
 of texts but also the metadata coming with texts. Unfortunately, not all
 repositories have complete. For example, Project Gutenberg does not store the original
 publishing date of its books, which can represent a problem if a corpus needs be
-delimited to a decade of published literature. DBpedia, thanks to its encyclopaedic
+delimited to a decade of published literature. Resources like DBpedia, thanks to its encyclopaedic
 nature, helps to rethink these elements.</p>
 <p>In addition, many statistical, classification
 and predictive have been recently developed they can help the researcher to further
@@ -169,7 +162,7 @@ explore and generate new insight from the relevant dataset.</p>
 <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</a> technologies
 (<em>e.g</em> <a class="reference external" href="vhttps://en.wikipedia.org/wiki/Natural_language_processing">NLP</a>),
 DHTK aims to make these tools easily accessible to the Humanities scholar soon.</p>
-<p>For more information, see <a class="reference external" href="../process">Processing API reference</a></p>
+<p>For more information, see <a class="reference external" href="../process.html">Processing API reference</a></p>
 </div>
 </div>
 

@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" >
     <link rel="search" title="Search" href="search.html" >
     <link rel="top" title="Digital Humanities ToolKit (DHTK) 1.0.2 documentation" href="index.html" >
-    <link rel="next" title="Metadata classes" href="process.html" >
+    <link rel="next" title="Processing API reference" href="process.html" >
     <link rel="prev" title="Architecture" href="architecture.html" > 
   </head>
   <body>
@@ -64,7 +64,7 @@
            >modules</a>
       </li>
       <li class="active">
-        <a href="process.html" title="Metadata classes"
+        <a href="process.html" title="Processing API reference"
            accesskey="N">next</a>
       </li>
       <li class="active">
@@ -90,26 +90,15 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Get started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Core API references</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dhtk-settings">DHTK Settings</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.core.settings">Settings()</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dhtk.core.settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dhtk.core.client">SPARQL Endpoint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dhtk.core.dataset">Dataset Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dhtk.core.helpers.Library">Helpers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#sparql-endpoint">SPARQL Endpoint</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.core.client">Client()</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#dataset-manager">Dataset Manager</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#module-dhtk.core.dataset">DatasetLoader()</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#other">Other</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="process.html">Metadata classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Gutenberg API references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">Processing API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extension API references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#how-to-contribute-to-dhtk">How to contribute to DHTK?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
 </ul>
 
@@ -118,7 +107,7 @@
                         title="previous chapter">Architecture</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="process.html"
-                        title="next chapter">Metadata classes</a></p>
+                        title="next chapter">Processing API reference</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -138,10 +127,8 @@
             
   <div class="section" id="core-api-references">
 <h1>Core API references<a class="headerlink" href="#core-api-references" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dhtk-settings">
-<h2>DHTK Settings<a class="headerlink" href="#dhtk-settings" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-dhtk.core.settings">
-<span id="settings"></span><h3>Settings()<a class="headerlink" href="#module-dhtk.core.settings" title="Permalink to this headline">¶</a></h3>
+<span id="settings"></span><h2>Settings<a class="headerlink" href="#module-dhtk.core.settings" title="Permalink to this headline">¶</a></h2>
 <p>DHTK setting and configurations module</p>
 <dl class="py class">
 <dt id="dhtk.core.settings.Settings">
@@ -178,11 +165,8 @@ NOTE that dataset must be set at least once!!</p>
 </dd></dl>
 
 </div>
-</div>
-<div class="section" id="sparql-endpoint">
-<h2>SPARQL Endpoint<a class="headerlink" href="#sparql-endpoint" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-dhtk.core.client">
-<span id="client"></span><h3>Client()<a class="headerlink" href="#module-dhtk.core.client" title="Permalink to this headline">¶</a></h3>
+<span id="sparql-endpoint"></span><h2>SPARQL Endpoint<a class="headerlink" href="#module-dhtk.core.client" title="Permalink to this headline">¶</a></h2>
 <p>Module for setting up and connecting to triplestore</p>
 <dl class="py class">
 <dt id="dhtk.core.client.Client">
@@ -222,11 +206,8 @@ Class wrapper for Docker installation procedures</p>
 </dd></dl>
 
 </div>
-</div>
-<div class="section" id="dataset-manager">
-<h2>Dataset Manager<a class="headerlink" href="#dataset-manager" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="module-dhtk.core.dataset">
-<span id="datasetloader"></span><h3>DatasetLoader()<a class="headerlink" href="#module-dhtk.core.dataset" title="Permalink to this headline">¶</a></h3>
+<span id="dataset-manager"></span><h2>Dataset Manager<a class="headerlink" href="#module-dhtk.core.dataset" title="Permalink to this headline">¶</a></h2>
 <p>Module to load DHTK extensions modules</p>
 <dl class="py class">
 <dt id="dhtk.core.dataset.DatasetLoader">
@@ -234,94 +215,11 @@ Class wrapper for Docker installation procedures</p>
 <dd><p>Class to retrieve the required DHTK extension (dataset) module</p>
 </dd></dl>
 
-<div class="section" id="module-dhtk.extensions.blueprint">
-<span id="abstractextension"></span><h4>AbstractExtension()<a class="headerlink" href="#module-dhtk.extensions.blueprint" title="Permalink to this headline">¶</a></h4>
-<p>Abstract class to be used as template for new extension modules __init__ script</p>
-<dl class="py class">
-<dt id="dhtk.extensions.blueprint.AbstractExtension">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>
-<dd><p>Abstract Class that serves as a blueprint for the DHTK extension modules
-and additional datasets.</p>
-<dl class="simple">
-<dt>name: string</dt><dd><p>Name of extension</p>
-</dd>
-<dt>url: string</dt><dd><p>URL to the extension RDF file</p>
-</dd>
-</dl>
-<p>query: A function wrapper unifying the extension utilities</p>
-<dl class="py method">
-<dt id="dhtk.extensions.blueprint.AbstractExtension.set_up">
-<code class="sig-name descname">set_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.set_up" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to retrieve the DHTK extension dataset stored on Zenodo and
-upload it to the local Fuseki server</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.blueprint.AbstractExtension.update">
-<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to check for remote changes to the dataset RDF file
-and update the local Fuseki endpoint</p>
-</dd></dl>
-
-</dd></dl>
-
 </div>
-</div>
-</div>
-<div class="section" id="other">
-<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="dhtk.core.helpers.Library">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.helpers.</code><code class="sig-name descname">Library</code><a class="headerlink" href="#dhtk.core.helpers.Library" title="Permalink to this definition">¶</a></dt>
-<dd><p>Class to manage DHTK dependencies.
+<div class="section" id="module-dhtk.core.helpers.Library">
+<span id="helpers"></span><h2>Helpers<a class="headerlink" href="#module-dhtk.core.helpers.Library" title="Permalink to this headline">¶</a></h2>
+<p>Class to manage DHTK dependencies.
 Probably not very useful from the user’s perspective</p>
-<dl class="py method">
-<dt id="dhtk.core.helpers.Library.load_all">
-<code class="sig-name descname">load_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.helpers.Library.load_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to load all DHTK dependencies.</p>
-<p>Call as globals().update(Library.load_all())</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>A modified globals() object to use for updating available modules.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.core.helpers.Library.remove_all">
-<code class="sig-name descname">remove_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.helpers.Library.remove_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to remove all DHTK dependencies using pip</p>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.core.helpers.Library.update_all">
-<code class="sig-name descname">update_all</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.helpers.Library.update_all" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to install and update all DHTK dependencies using pip</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt id="dhtk.core.helpers.download_files">
-<code class="sig-prename descclassname">dhtk.core.helpers.</code><code class="sig-name descname">download_files</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">urls</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">desc</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'Downloading files'</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>str<span class="p">, </span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#dhtk.core.helpers.download_files" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to download files from the Web.
-:param urls: URLs of the files to be downloaded
-:type urls: string of list of strings
-:param desc: Description to show on the progress bar during download
-:type desc: string [default: “Downloading files”]</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>Names for all the files downloaded</p>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 </div>
 

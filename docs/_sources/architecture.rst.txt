@@ -1,37 +1,31 @@
 ============
 Architecture
 ============
-DHTK is divided in two parts: the core modules and the extension modules.
-A third part, the processing modules, will be added in later version to leverage
-computational methods for automated analyses and process of DHTK data and metadata
-(*e.g.* natural language processing of texts)
+DHTK is divided in three parts: the core modules, the extension modules and
+the processing modules as described below.
 
 
 Core Modules
 ------------
 
-The core modules determine DHTK configurations, logging and query to the data and metadata,
-providing the initial framework to work with the extended functionality modules.
-These modules include the `settings <../api#settings>`_,
-`client <../api#client>`_, `dataset <../api#dataset>`_
-and `helpers <../api#helpers>`_ modules.
-
-For more information, see `Core API reference <../api>`_
+The core modules define DHTK configurations, logging and functionality loading,
+providing the initial framework underlying the modularisation of DHTK.
+For more information, see `Core API reference <../api.html>`_
 
 Extension modules
 -----------------
 
-The extension modules are modules tailored for querying and searching specific databases or
-data type, adding functionalities better suited for the different DHTK users. It includes the
-`blueprint <../extensions#blueprint>`_ to help with development and contribution from the
-Digital Humanities' `community <../community>`_
+The extension modules are modules that add functionalities for querying and searching
+specific databases or data types. It includes the `blueprint <../extensions#blueprint>`_ to help with development and contribution from the
+Digital Humanities' `community <../community>`_, allowing easy integration of new modules and
+continuous growth to better suit the different DHTK users.
 
 The current version focuses on textual resources such as
 `Project Gutenberg <https://www.gutenberg.org/>`_ and `Auchinkleck manuscript <https://auchinleck.nls.uk/>`_,
 because of its immediate relevance in the Humanities community and the
 lack of automatic tools available in order to exploit these specific resources.
 
-For more information, see `Extensions API reference <../extensions>`_
+For more information, see `Extensions API reference <../extensions.html>`_
 
 Processing modules
 ------------------
@@ -40,7 +34,7 @@ One of the most important aspects for a humanist is not just the availability
 of texts but also the metadata coming with texts. Unfortunately, not all
 repositories have complete. For example, Project Gutenberg does not store the original
 publishing date of its books, which can represent a problem if a corpus needs be
-delimited to a decade of published literature. DBpedia, thanks to its encyclopaedic
+delimited to a decade of published literature. Resources like DBpedia, thanks to its encyclopaedic
 nature, helps to rethink these elements.
 
 In addition, many statistical, classification
@@ -53,4 +47,4 @@ Leveraging the power of cutting-edge
 (*e.g* `NLP <vhttps://en.wikipedia.org/wiki/Natural_language_processing>`_),
 DHTK aims to make these tools easily accessible to the Humanities scholar soon.
 
-For more information, see `Processing API reference <../process>`_
+For more information, see `Processing API reference <../process.html>`_

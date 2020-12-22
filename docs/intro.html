@@ -32,7 +32,7 @@
     <link rel="search" title="Search" href="search.html" >
     <link rel="top" title="Digital Humanities ToolKit (DHTK) 1.0.2 documentation" href="index.html" >
     <link rel="next" title="Architecture" href="architecture.html" >
-    <link rel="prev" title="Welcome to Digital Humanities Tool Kit (DHTK)’s documentation!" href="index.html" > 
+    <link rel="prev" title="Welcome to DHTK’s documentation!" href="index.html" > 
   </head>
   <body>
   <div class="container">
@@ -68,7 +68,7 @@
            accesskey="N">next</a>
       </li>
       <li class="active">
-        <a href="index.html" title="Welcome to Digital Humanities Tool Kit (DHTK)’s documentation!"
+        <a href="index.html" title="Welcome to DHTK’s documentation!"
            accesskey="P">previous</a>
       </li>
     </ul>
@@ -94,17 +94,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Core API references</a></li>
-<li class="toctree-l1"><a class="reference internal" href="process.html">Metadata classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="extensions.html">Gutenberg API references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">Processing API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extensions.html">Extension API references</a></li>
 <li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#frequently-asked-questions">Frequently Asked Questions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="community.html#how-to-contribute-to-dhtk">How to contribute to DHTK?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
-                        title="previous chapter">Welcome to Digital Humanities Tool Kit (DHTK)’s documentation!</a></p>
+                        title="previous chapter">Welcome to DHTK’s documentation!</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="architecture.html"
                         title="next chapter">Architecture</a></p>
@@ -130,23 +128,19 @@
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>In order to install DHTK, <a class="reference external" href="https://www.python.org/downloads/">Python 3.x</a> is required.
-Note that when using a local triplestore, <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a> application is required
+Note that when using a local endpoint, <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a> application is required
 as DHTK uses a Fuseki container as endpoint.</p>
-<p>There are two main ways to get DHTK python module:</p>
-<p>1) Download the <a class="reference external" href="https://gitlab.com/dhtk/dhtk/tree/master">DHTK source code</a> in your preferred format,
+<p>There are two ways to get DHTK python module:</p>
+<p><strong>1)</strong> Download the <a class="reference external" href="https://gitlab.com/dhtk/dhtk/tree/master">DHTK source code</a> in your preferred format,
 extract the DHTK files and access them via console.</p>
-<dl class="simple">
-<dt>::</dt><dd><p>$ cd dhtk
-$ python setup.py</p>
-</dd>
-</dl>
-<ol class="arabic simple" start="2">
-<li><p>or use pip:</p></li>
-</ol>
-<dl class="simple">
-<dt>::</dt><dd><p>$ pip install git+https://gitlab.com/dhtk/dhtk.git</p>
-</dd>
-</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd dhtk
+$ python setup.py
+</pre></div>
+</div>
+<p><strong>2)</strong> Use package installer for Python (pip):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install git+https://gitlab.com/dhtk/dhtk.git
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-use">
 <h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>

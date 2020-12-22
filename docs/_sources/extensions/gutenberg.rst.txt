@@ -1,0 +1,384 @@
+
+
+GutenbergData()
+---------------
+
+.. automodule:: dhtk.extensions.gutenberg.Data
+   :members:
+
+GutenbergAuthor()
+=================
+
+.. automodule:: dhtk.extensions.gutenberg.Author
+   :members:
+
+
+GutenbergBook()
+===============
+
+.. automodule:: dhtk.extensions.gutenberg.Book
+   :members:
+
+
+Corpus()
+========
+
+.. automodule:: dhtk.extensions.gutenberg.Corpus
+   :members:
+
+
+GutenbergTexts()
+----------------
+
+.. automodule:: dhtk.extensions.gutenberg.Texts
+   :members:
+
+
+TextPartDetector()
+------------------
+
+.. automodule:: dhtk.extensions.gutenberg.Text_part_detector
+   :members:
+
+
+**CHECK THESE FOR THE EXAMPLES**
+
+
+Guides
+======
+
+
+1. Searching the Gutenberg databases: the “GutenbergSearchTripletStore()” class
+-------------------------------------------------------------------------------
+
+The main class of DHTK is the “GutenbergSearchTripletStore” (GS). GS is a class that allows instancing a search session in the Gutenberg database. The class is initialized as follows:
+
+::
+
+    >>> from dhtk.catalogs.gutenberg.search_triplet_store import GutenbergSearchTripletStore
+    >>> gutenberg_search = GutenbergSearchTripletStore()
+
+Once the class is instanced, several methods are accessible. Those can be separated into three groups:
+
+
+1.1 Search
+----------
+
+The “Search” methods do just that - search. In the following example we use a “search_by_author()” method:
+::
+
+    >>> search_result = guteberg_search.search_by_author(“Charles Darwin”)
+
+It is not the only method available as there are multiple other ways of searching the database, such as:
+
+- search_by_title()
+- search_by_bookshelves()
+- search_by_subject()
+
+You can see an example of how to use the search_by_title() method below:
+::
+
+    >>> Search_result = gutenberg_search.search_by_title(“On The Origin of Species”)
+
+Other methods work in a similar way.
+
+
+1.2 All
+-------
+
+The “All” methods allow to retrieve a list of all the authors, books, subjects or themes. The method all_books(), for instance, provides a list of all the books found in the database:
+
+::
+
+    >>> all_books_list = gutenberg_search.all_books()
+
+NOTE:
+
+The Search and All methods thus allow to:
+
+1. Consult the Gutenberg database to gain a general understanding of what it contains. The search results will include note in a form of a dictionary. 2. Obtain the unique identifiers that match to the search terms
+
+- Thus, DHTK enables a transition between the semantics of humanities and those of computer sciences.
+
+Below is an example of a result. Notice the presence of the “author_id” and “book_id” keys. Those keys are what will allow you to fetch book in the Gutenberg archive.
+
+::
+
+    >>> from dhtk.catalogs.gutenberg.search_triplet_store import GutenbergSearchTripletStore
+    >>> from pprint import pprint
+    >>> gutenberg_seearch = GutenbergSearchTripletStore()
+    >>> result = gutenberg_seearch.search_by_title("The Origin of Species")
+    >>> pprint(result[0])
+    {
+        'author': 'Darwin, Charles',
+        'author_id': 'http://www.gutenberg.org/2009/agents/485',
+        'book_id': 'http://www.gutenberg.org/ebooks/8205',
+        'language': 'en',
+        'title': 'On the Origin of Species'
+    }
+
+
+1.3 Book:
+---------
+
+The “Book” methods allow retrieving specific items from the Gutenberg database – namely, books – thanks to the identifiers (book_id/author_id) obtained via “search” methods (see section 1.1). Here is an example of how to retrieve a book by using its identifier:
+
+::
+
+    >>> result = gutenberg_search.search_by_title("The Origin of Species")
+    >>> book_id = result[0]['book_id'] #get any result book id
+    >>> book = gutenberg_search.book_from_book_id(book_id)
+    >>> pprint(book.print_book_information())
+
+    Title : On the Origin of Species
+
+    Author : Charles Darwin
+
+    Metadata :
+
+    - gutenberg_id: http://www.gutenberg.org/ebooks/8205
+
+    None
+
+
+NOTE:
+
+a Book() object which allows working with another type of the Book() class.
+
+
+2. Retrieving books: the “Book()” class
+---------------------------------------
+
+In DHTK, specific searches result in the Book() objects. Those are digital representations of book contained in the Gutenberg database. The Book() class can be used with following methods:
+
+
+2.1 Get_author()
+----------------
+
+The get_author() method allows generating an “author” object which contains information on the author of a given item:
+
+::
+
+    >>> book.get_author().print_info()
+
+
+2.2 Get_repository()
+--------------------
+
+The get_repository() method is what retrieves the original text. The method’s output is an object called GutenbergBook() which is the object that is needed to access a series of methods that allow manipulating the text of the book in question. The text_original() method, for example, allows to display the original text of the book:
+
+::
+
+    >>> text = book.get_repository()
+    >>> print(text.get_original_text(book))
+
+::
+
+    The Project Gutenberg EBook of On the Origin of Species, by Charles Darwin
+
+
+
+    This eBook is for the use of anyone anywhere at no cost and with
+
+    almost no restrictions whatsoever. You may copy it, give it away or
+
+    re-use it under the terms of the Project Gutenberg License included
+
+    with this eBook or online at www.gutenberg.org
+
+
+
+    Title: On the Origin of Species
+
+    1st Edition
+
+    Author: Charles Darwin
+
+    Release Date: Release Date: March, 1998 [EBook #1228]
+
+    Posting Date: November 23, 2009
+
+    Language: English
+
+    Character set encoding: ASCII
+
+
+
+    *** START OF THIS PROJECT GUTENBERG EBOOK ON THE ORIGIN OF SPECIES ***
+
+    (…)
+
+Other methods that are accessible via the get_repository() method are:
+
+- text_original()
+- clean_text()
+- save_text()
+
+GutenberSearchTripletStore(), Book() and Author() include a lot of other methods. In order to use them or to obtain technical details on those classes and their associated methods, please refer to documentation.
+
+
+3. Creating a corpus: the Corpus() class
+----------------------------------------
+
+DHTK offers a class called Corpus(). This class allows creating a digital representation of a collection of books from Gutenberg, which become Book() objects.
+
+The Corpus() class takes multiple parameters: a title, an access path, a list of books. You can initialize a Corpus() object as follows:
+
+::
+
+    >>> from dhtk.common.corpus import Corpus
+    >>> # first, create a book list
+    >>> books = [gutenberg_search.book_from_book_id(book['book_id']) for book in result]
+    >>> my_corpus = Corpus(
+        name='Corpus des oeuvres de et sur Darwin',
+        description='Contient les oeuvres complètes de/sur Darwin’,
+        corpora_path=os.path.expanduser("~/Desktop/"),
+        book_list=books
+    )
+    >>> print(my_corpus)
+    0 Charles Darwin, On the Origin of Species
+    1 Charles Darwin, On the Origin of Species By Means of Natural Selection Or, the (…)
+    2 Charles Darwin, On the Origin of Species by Means of Natural Selection
+    3 Charles Darwin, On the Origin of Species by Means of Natural Selection or the (…)
+    4 Charles Darwin, The Foundations of the Origin of Species Two Essays written (…)
+    5 Charles Darwin, The Origin of Species by Means of Natural Selection Or, the (…)
+    (…)
+
+
+Naturally, it is possible to initialize a Coprus() object without adding books. Your corpus will then be empty.
+
+The corpus class then provides an object and so, a series of methods:
+
+
+3.1. Add/Remove/Clear Methods
+---------------------------^^
+
+The Add, Remove and Clear methods are simple tools that allow to add one or several books to a corpus, remove them from said corpus or to clear that corpus altogether. Here is a non-exhaustive list of methods:
+
+• add_book()
+
+• add_books()
+
+• remove_book()
+
+• clear()
+
+Below is an example of how to add a book to your corpus with help of the add_book() method:
+
+::
+
+    >>> result2 = gutenberg_search.search_by_title("Charles Lyell")
+    >>> book_id = result2[0]['book_id']
+    >>> my_book = gutenberg_search.book_from_book_id(book_id)
+    >>> my_corpus.add_book(my_book)
+    >>> print(my_corpus)
+    0 Charles Darwin, On the Origin of Species
+    1 Charles Darwin, On the Origin of Species By Means of Natural Selection Or, the (…)
+    2 Charles Darwin, On the Origin of Species by Means of Natural Selection
+    3 Charles Darwin, On the Origin of Species by Means of Natural Selection or the (…)
+    4 Charles Darwin, The Foundations of the Origin of Species Two Essays written (…)
+    5 Charles Darwin, The Origin of Species by Means of Natural Selection Or, the (…)
+    (…)
+
+    9 Thomas George Bonney, Charles Lyell and Modern Geology
+
+The new book is added at the end of the list.
+
+
+3.2. Methods Get/Print
+---------------------^
+
+The Get and Print methods help with:
+
+- retrieving a given book’s title
+
+- retrieving a list of books that are in the corpus
+
+- retrieving the name, access path or the description of the corpus
+
+As such, the method get_book_list() for instance allows retrieving all of the books that are present in the corpus:
+
+::
+
+    >>> books = my_corpus.get_book_list()
+    >>> print(books)
+    [<dhtk.catalogs.gutenberg.book.GutenbergBook object at 0x102978e10>,
+    >>> <dhtk.catalogs.gutenberg.book.GutenbergBook object at 0x102985b70>,
+    (…)
+    >>> <dhtk.catalogs.gutenberg.book.GutenbergBook object at 0x102978860>]
+
+    The method’s output in this case is a series of objects. Those are your books.
+
+
+3.3. The Download methods
+------------------------^
+
+These methods allows downloading a book or the whole of your corpus. The methods create a directory with the name of your corpus in the directory that you chose when initializing the class (path) and retrieve the “.txt” files.
+Here are said methods:
+
+- download_book()
+- download_book_corpus()
+
+Here is an example of how to download a book with the download_book() method:
+
+::
+
+    >>> book_list = my_corpus.get_book_list()
+    >>> my_corpus.download_book(book_list[0])
+
+The Corpus() class offers additional methods. In order to find out more, please refer to our documentation.
+
+
+4. Retrieving/adding metadata: the DbpediaMetadata() class
+----------------------------------------------------------
+
+Another important class of DHTK is the DbpediaMetadata() class. Dbpedia is an API of Wikipedia. This API allows retrieving secondary information (metadata) from Wikipedia notes. The Dbpedia() class is initialized as follows:
+
+::
+
+    >>> from dhtk.metadata.dbpedia import DbpediaMetadata
+    >>> dbpedia_metadata = DbpediaMetadata()
+
+The DbpediaMetadata() objects give you access to several methods, including, but not limited to:
+
+- get_book_metadata()
+
+- get_author_metadata()
+
+The get_book_metadata() method is used as follows:
+
+::
+
+    >>> from dhtk.metadata.dbpedia import DbpediaMetadata
+    >>> dbpedia_metadata = DbpediaMetadata()
+    >>> book_metadata = dbpedia_metadata.get_book_metadata(book)
+    >>> book.update_metadata(book_metadata)
+    >>> book.print_info()
+
+Note that metadata can be saved and used to update the “metadata” field of your Book() objects. The DbpediaMetadata() contains other methods as well. To get more information on those, please see the documentation.
+
+Usage Examples
+==============
+
+Searching in Gutenberg
+----------------------
+
+.. literalinclude:: ./examples/find_book_and_print_info.py
+    :lines: 6-
+
+
+Get a corpus
+------------
+
+
+.. literalinclude:: ./examples/get_play_corpus.py
+    :lines: 6-
+
+.. literalinclude:: ./examples/seek_and_get.py
+    :lines: 6-
+
+
+Search metadata
+---------------
+.. literalinclude:: ./examples/metadata.py
+    :lines: 6-

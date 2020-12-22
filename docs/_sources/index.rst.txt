@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Digital Humanities Tool Kit (DHTK)'s documentation!
+Welcome to DHTK's documentation!
 ==============================================================
 
 #####################################################################
@@ -23,7 +23,7 @@ fit the needs of the humanities community. These resources are organized and str
 different ways and often incompatible, having different APIs and different metadata, which make these repositories
 difficult to exploit. Finding resources, checking metadata and finally cleaning data, can be a long and tedious process.
 
-By introducing the Digital Humanities Tool Kit, we present a new python library whose scope is to overcome these
+By introducing the Digital Humanities Tool Kit (DHTK), we present a new python library whose scope is to overcome these
 limits by providing a fast and intuitive tool for a large-scale study of large literary databases by leveraging
 on some well-known semantic knowledge resources, supporting and simplifying research in Digital Humanities.
 
@@ -42,16 +42,14 @@ Features
 - The ability to analyze resources in an extended way
 - Efficient and time effective
 
-Changelog 101
--------------
-
-Latest changes :
+Changelog
+---------
+**v1.0.1:**
 
 - Added the "Clean Text" module that gets rid of header, footer and footnotes
 - Added "Tests" files that will help us provide you with a stable working toolkit, as well as help in adding new features and implementing contributions by our community 7
 
-Changelog 102
--------------
+**v1.0.2**
 
 - Simplified programmatic use
 - Unified structure for easier extension dataset integration

@@ -3,9 +3,9 @@ Community
 #########
 We are proud to say that the DHTK community is growing continuously. Being created by the researchers of the "Informatique pour les Sciences Humaines" of the University of Lausanne, the project has seen an increased interest from both the teachers of other sections and the students, both from Bachelor and Master programs. DHTK was also presented at the Second Workshop on Humanities in the Semantic Web (WHiSeII) co-located with 16th International Semantic Web Conference (ISWC 2017),held in Vienna, Austria in 2017.Multiple visitors of the workshop have expressed interest in DHTK and the project was well received. As such, people from different walks of life from different parts of the world have already become a part of our community. You can do so too by `contributing </contribute>`_ to the project.
 
-##########################
+==========================
 Frequently Asked Questions
-##########################
+==========================
 
 
 - What is DHTK?
@@ -32,9 +32,9 @@ Frequently Asked Questions
     You can find a contact form on the `Contribute <\contribute.html>`_ page.
 
 
-##########################
+==========================
 How to contribute to DHTK?
-##########################
+==========================
 
 Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
 DHTK community!

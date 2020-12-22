@@ -17,4 +17,4 @@ For more information, see `Community <./community.html>`_
 
 Gutenberg extension
 -------------------
-.. include:: ./extensions/gutenberg.rst
+.. include:: ./gutenberg.rst

@@ -90,7 +90,6 @@ Publications
 .. toctree::
    :hidden:
    :maxdepth: 3
-   :caption: Contents:
 
    intro
    architecture

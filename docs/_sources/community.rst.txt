@@ -63,25 +63,29 @@ the methods to query and save the results. Any additional method that improves t
 Contributors
 ============
 
-**Project Manager**
+Project Manager
+---------------
 
 - Davide Picca
 
 Maitre d'Enseignement et de Recherche at the department of `Language and Information Science <http://unil.ch/sli>`_ at the University of Lausanne (Switzerland).
 
-**Technical Leaders**
+Technical Leaders
+-----------------
 
 - Mattia Egloff
 
 Phd Candidate and researcher at the department of `Language and Information Science <http://unil.ch/sli>`_ at the University of Lausanne (Switzerland).
 
-**Main Developers**
+Main Developers
+---------------
 
 - Alessandro Amadou
 
 Research fellow at the `Insight Centre for Data Analytics <http://www.insight-centre.org>`_, National University of Ireland, Galway.
 
-**Student Contributors**
+Student Contributors
+--------------------
 
 Students of UNIL's Python object oriented programming class contribute to the project.
 

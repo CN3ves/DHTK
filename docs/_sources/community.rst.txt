@@ -16,6 +16,7 @@ project.
 How to contribute to DHTK?
 ==========================
 
+DHTK is an open-source team effort.
 Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
 DHTK community!
 
@@ -57,3 +58,55 @@ The DHTK AbstractExtension class contains most of the required methods to prepar
 The new Module class is essentially a wrapper around a DHTK extension, defining the self attributes name and url
 (name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and
 the methods to query and save the results. Any additional method that improves the Module class can be freely included.
+
+============
+Contributors
+============
+
+**Project Manager**
+
+- Davide Picca
+
+Maitre d'Enseignement et de Recherche at the department of `Language and Information Science <http://unil.ch/sli>`_ at the University of Lausanne (Switzerland).
+
+**Technical Leaders**
+
+- Mattia Egloff
+
+Phd Candidate and researcher at the department of `Language and Information Science <http://unil.ch/sli>`_ at the University of Lausanne (Switzerland).
+
+**Main Developers**
+
+- Alessandro Amadou
+
+Research fellow at the `Insight Centre for Data Analytics <http://www.insight-centre.org>`_, National University of Ireland, Galway.
+
+**Student Contributors**
+
+Students of UNIL's Python object oriented programming class contribute to the project.
+
+- Loïc Aubrays
+- Asiyeh Balabeglookaviji
+- Gavon Balharry
+- Maxime Bony
+- Rafael Bruni Baschino
+- Noémie Carette
+- Leonardo Cavaliere
+- Lucien Chapuisat
+- Nahuel Degonda
+- Renato Diaz
+- Petra Draskovic
+- Olivia Edelman
+- Mounira Elmezrigui
+- Daniel Escoval
+- David Flühmann
+- Cyrille Gay-Crosier
+- Saara Jones
+- Basile Maillard
+- Vijeany Manguila
+- Kirill Melnikov
+- Robin Pitteloud
+- Loris Rimaz
+- Daniela-Maria Toma
+- Fabio Torres Cabral
+- Sorcha Walsh

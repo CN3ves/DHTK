@@ -55,7 +55,7 @@ DHTK access occurs in 5 steps:
     :lines: 22-28
     :emphasize-lines: 1
 
-5) Query the dataset using `DHTK extended functionalities <../architecture#extension_modules>`_.
+5) Query the dataset using `DHTK extended functionalities <./architecture.html#extension-modules>`_.
 Current extensions include:
 
 * `Project Gutenberg <https://www.gutenberg.org/>`_

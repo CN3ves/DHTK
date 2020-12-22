@@ -10,14 +10,14 @@ Core Modules
 
 The core modules define DHTK configurations, logging and functionality loading,
 providing the initial framework underlying the modularisation of DHTK.
-For more information, see `Core API reference <../api.html>`_
+For more information, see `Core API reference <./api.html>`_
 
 Extension modules
 -----------------
 
 The extension modules are modules that add functionalities for querying and searching
-specific databases or data types. It includes the `blueprint <../extensions#blueprint>`_ to help with development and contribution from the
-Digital Humanities' `community <../community>`_, allowing easy integration of new modules and
+specific databases or data types. It includes the `blueprint <./extensions#blueprint>`_ to help with development and contribution from the
+Digital Humanities' `community <./community>`_, allowing easy integration of new modules and
 continuous growth to better suit the different DHTK users.
 
 The current version focuses on textual resources such as
@@ -25,7 +25,7 @@ The current version focuses on textual resources such as
 because of its immediate relevance in the Humanities community and the
 lack of automatic tools available in order to exploit these specific resources.
 
-For more information, see `Extensions API reference <../extensions.html>`_
+For more information, see `Extensions API reference <./extensions.html>`_
 
 Processing modules
 ------------------
@@ -47,4 +47,4 @@ Leveraging the power of cutting-edge
 (*e.g* `NLP <vhttps://en.wikipedia.org/wiki/Natural_language_processing>`_),
 DHTK aims to make these tools easily accessible to the Humanities scholar soon.
 
-For more information, see `Processing API reference <../process.html>`_
+For more information, see `Processing API reference <./process.html>`_

@@ -4,9 +4,6 @@ Gutenberg module
 .. autoclass:: dhtk.extensions.gutenberg.__init__.Module
    :members:
 
-
-
-
 GutenbergData()
 ---------------
 

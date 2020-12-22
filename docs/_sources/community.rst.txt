@@ -29,7 +29,7 @@ for review as a merge request. All suggestions and improvements are welcomed, th
 
 DHTK modularisation
 --------------------------
-DHTK is divided into three parts as described in the `architecture <../architecture.html>`_ page.
+DHTK is divided into three parts as described in the `architecture <./architecture.html>`_ page.
 Active development is expected mostly for the extension processing modules as new datasets and methods are added to
 DHTK. The three parts are organised in separate directories (core, extensions, processing) for easier identification
 and navigation.
@@ -51,7 +51,7 @@ which are alter integrated into the DHTK framework. Doing so requires two steps:
 
     1) All new module must be place inside this directory *(./dhtk/extensions/new_module)*
     2) The __init__ file for the module must contains a class named Module, inheriting from the
-    `AbstractExtension <../extensions.html>`_ blueprint.
+    `AbstractExtension <./extensions.html>`_ blueprint.
 
 The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
 The new Module class is essentially a wrapper around a DHTK extension, defining the self attributes name and url

@@ -412,6 +412,28 @@ particularly the corpus name, which is used as the directory where the books wil
 <div class="section" id="old-usage-examples">
 <h3>OLD Usage Examples<a class="headerlink" href="#old-usage-examples" title="Permalink to this headline">¶</a></h3>
 <p>It looks like get metadata is not implemented!</p>
+<div class="section" id="retrieving-adding-metadata-the-dbpediametadata-class">
+<h4>4. Retrieving/adding metadata: the DbpediaMetadata() class<a class="headerlink" href="#retrieving-adding-metadata-the-dbpediametadata-class" title="Permalink to this headline">¶</a></h4>
+<p>Another important class of DHTK is the DbpediaMetadata() class. Dbpedia is an API of Wikipedia. This API allows retrieving secondary information (metadata) from Wikipedia notes. The Dbpedia() class is initialized as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The DbpediaMetadata() objects give you access to several methods, including, but not limited to:</p>
+<ul class="simple">
+<li><p>get_book_metadata()</p></li>
+<li><p>get_author_metadata()</p></li>
+</ul>
+<p>The get_book_metadata() method is used as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">book_metadata</span> <span class="o">=</span> <span class="n">dbpedia_metadata</span><span class="o">.</span><span class="n">get_book_metadata</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">update_metadata</span><span class="p">(</span><span class="n">book_metadata</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that metadata can be saved and used to update the “metadata” field of your Book() objects. The DbpediaMetadata() contains other methods as well. To get more information on those, please see the documentation.</p>
+</div>
 <div class="section" id="search-metadata">
 <h4>Search metadata<a class="headerlink" href="#search-metadata" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>

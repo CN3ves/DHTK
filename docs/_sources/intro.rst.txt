@@ -163,7 +163,33 @@ OLD Usage Examples
 ==================
 It looks like get metadata is not implemented!
 
-.. include:: ./usage/guides.rst
+4. Retrieving/adding metadata: the DbpediaMetadata() class
+----------------------------------------------------------
+
+Another important class of DHTK is the DbpediaMetadata() class. Dbpedia is an API of Wikipedia. This API allows retrieving secondary information (metadata) from Wikipedia notes. The Dbpedia() class is initialized as follows:
+
+::
+
+    >>> from dhtk.metadata.dbpedia import DbpediaMetadata
+    >>> dbpedia_metadata = DbpediaMetadata()
+
+The DbpediaMetadata() objects give you access to several methods, including, but not limited to:
+
+- get_book_metadata()
+
+- get_author_metadata()
+
+The get_book_metadata() method is used as follows:
+
+::
+
+    >>> from dhtk.metadata.dbpedia import DbpediaMetadata
+    >>> dbpedia_metadata = DbpediaMetadata()
+    >>> book_metadata = dbpedia_metadata.get_book_metadata(book)
+    >>> book.update_metadata(book_metadata)
+    >>> book.print_info()
+
+Note that metadata can be saved and used to update the “metadata” field of your Book() objects. The DbpediaMetadata() contains other methods as well. To get more information on those, please see the documentation.
 
 Search metadata
 ---------------

@@ -257,13 +257,11 @@ retrieving all the available information on these as book Corpus that can be sav
 </div>
 <p>As you can see, a (Python) dictionary-like syntax can be used to search the dataset using
 only a small number of arguments:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p><em>what</em> to search for.</p></li>
 <li><p><em>name</em> of what is being searched. If no name is provided, all available options are retrieved.</p></li>
 <li><p><em>add</em> to corpus or just check results first?</p></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="get-book-information">
 <h4>5. Get book information<a class="headerlink" href="#get-book-information" title="Permalink to this headline">¶</a></h4>
@@ -379,7 +377,10 @@ only a small number of arguments:</p>
 </div>
 <div class="section" id="save-corpus">
 <h4>8. Save Corpus<a class="headerlink" href="#save-corpus" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Random horror&quot;</span><span class="p">,</span>
+<p>Before saving the Corpus to disk (books and Python object), it is important to change the corpus descriptions,
+particularly the corpus name, which is used as the directory where the books will be stored.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify Corpus descriptions</span>
+<span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Random horror&quot;</span><span class="p">,</span>
 </span><span class="hll">                 <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Horror stuff from Gutenberg (french songs included!)&quot;</span><span class="p">)</span>
 </span><span class="c1"># Corpus name:</span>
 <span class="c1"># 	Random horror</span>
@@ -396,6 +397,8 @@ only a small number of arguments:</p>
 <span class="c1"># 5	P.-C. de La Gelière          	Recueil de chansons en patois de la Bresse</span>
 <span class="c1"># 6	Louis Ange Pitou             	Le chanteur parisien Recueil des chansons de L.A. Pitou</span>
 <span class="c1"># 7	Robert William Chambers      	The King in Yellow</span>
+
+<span class="c1"># Save Corpus to disk</span>
 <span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </span><span class="c1"># ##########################</span>
 <span class="c1"># Thanks you for using DHTK!</span>

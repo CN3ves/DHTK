@@ -122,9 +122,9 @@ retrieving all the available information on these as book Corpus that can be sav
 As you can see, a (Python) dictionary-like syntax can be used to search the dataset using
 only a small number of arguments:
 
-    * *what* to search for.
-    * *name* of what is being searched. If no name is provided, all available options are retrieved.
-    * *add* to corpus or just check results first?
+* *what* to search for.
+* *name* of what is being searched. If no name is provided, all available options are retrieved.
+* *add* to corpus or just check results first?
 
 5. Get book information
 ------------------------
@@ -149,10 +149,14 @@ only a small number of arguments:
 
 8. Save Corpus
 --------------
+Before saving the Corpus to disk (books and Python object), it is important to change the corpus descriptions,
+particularly the corpus name, which is used as the directory where the books will be stored.
+
 .. literalinclude:: ./examples/usage.py
     :language: python
-    :lines: 146-168
-    :emphasize-lines: 1,2,18
+    :lines: 146-171
+    :emphasize-lines: 2,3,21
+
 
 
 OLD Usage Examples

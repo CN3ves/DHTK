@@ -94,9 +94,6 @@ Publications
 
    intro
    architecture
-   api
-   process
-   extensions
    community
    contributors
 

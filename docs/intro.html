@@ -90,8 +90,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#guides">Guides</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#usage-examples">Usage Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gutenberg">Gutenberg</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#old-usage-examples">OLD Usage Examples</a></li>
 </ul>
 </li>
 </ul>
@@ -149,10 +149,8 @@ $ python setup.py
 <div class="section" id="how-to-use">
 <h2>How to use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
 <p>DHTK is a module for Python3.x. As such, it is accessible using any Python console or environment.
-DHTK access occurs in 5 steps:</p>
-<ol class="arabic simple">
-<li><p>Importing DHTK module</p></li>
-</ol>
+DHTK access occurs in 4 steps:</p>
+<p><strong>1) Import DHTK module</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="kn">import</span> <span class="nn">dhtk</span>
 </span><span class="c1"># ###################################################</span>
 <span class="c1"># Welcome to the Digital Humanities ToolKit,</span>
@@ -164,9 +162,7 @@ DHTK access occurs in 5 steps:</p>
 <span class="c1"># ####################################################</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
-<li><p>Define DHTK settings</p></li>
-</ol>
+<p><strong>2) Define DHTK settings</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
 </span><span class="c1"># Current DHTK settings:</span>
 <span class="c1"># [user]: s05mm2</span>
@@ -179,12 +175,34 @@ DHTK access occurs in 5 steps:</p>
 <span class="c1"># [_connect]: 30</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="3">
-<li><p>Connect to a <a class="reference external" href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> endpoint</p></li>
-<li><p>Load the required DHTK extension</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">module</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
-</span><span class="c1"># DHTK Gutenberg statistics:</span>
+<p>Settings can be defined by passing then as argument at instantiation (<a class="reference external" href="./api.html">dhtk.start(**kwarg)</a>) or
+they can be modified using the dot notation.
+.. literalinclude:: ./examples/usage.py</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">language</dt>
+<dd class="field-odd"><p>python</p>
+</dd>
+<dt class="field-even">lines</dt>
+<dd class="field-even"><p>22-31</p>
+</dd>
+<dt class="field-odd">emphasize-lines</dt>
+<dd class="field-odd"><p>1</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>The main settings are <em>user</em> and <em>wd</em>, respectively the user name and the DHTK’s working directory.
+These two settings are used to search for saved configurations and correctly
+organize the logs and save the search results in the DHTK folder structure.</p>
+<p><strong>3 a) Connect to a `SPARQL &lt;https://en.wikipedia.org/wiki/SPARQL&gt;`_ endpoint</strong></p>
+<p>If you’re using a remote SPARQL endpoint, you can provide it as a URL (website)
+using the <em>endpoint</em> setting. After DHTK is set up, this step is simply connects to the
+SPARQL endpoint to use. As such, it is integrated with the next step for moist user cases.
+However, note that this step performs important checks to ensure DHTK is properly set up.</p>
+<p><strong>3 b) Load the required DHTK extension</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1"># [_connect]: 30</span>
+</span><span class="n">gutenberg</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+<span class="c1"># DHTK Gutenberg statistics:</span>
 <span class="c1"># Last update: 16 Dec 20</span>
 <span class="c1"># number of books: 56913</span>
 <span class="c1"># number of authors: 21031</span>
@@ -192,367 +210,205 @@ DHTK access occurs in 5 steps:</p>
 <span class="c1"># number of subjects: 34045</span>
 </pre></div>
 </div>
-<p>5) Query the dataset using <a class="reference external" href="./architecture.html#extension-modules">DHTK extended functionalities</a>.
+<p>Note that the <em>dataset</em> setting, defining the DHTK extension module to use, must be defined for the first time,
+otherwise DHTK is not aware of which module to load!</p>
+<p>Once the module is loaded, DHTK functionalities are ready to use!</p>
+<p><strong>4) Query the dataset using `DHTK extended functionalities &lt;./architecture.html#extension-modules&gt;`_.</strong>
 Current extensions include:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a></p></li>
-<li><p><a class="reference external" href="https://auchinleck.nls.uk/">Auchinkleck manuscript</a></p></li>
+<li><p><a class="reference external" href="./intro#gutenberg">Project Gutenberg</a></p></li>
+<li><p><a class="reference external" href="/intro#auchinleck/">Auchinkleck manuscript</a></p></li>
 </ul>
-<div class="section" id="guides">
-<h3>Guides<a class="headerlink" href="#guides" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="searching-the-gutenberg-databases-the-gutenbergsearchtripletstore-class">
-<h4>1. Searching the Gutenberg databases: the “GutenbergSearchTripletStore()” class<a class="headerlink" href="#searching-the-gutenberg-databases-the-gutenbergsearchtripletstore-class" title="Permalink to this headline">¶</a></h4>
-<p>The main class of DHTK is the “GutenbergSearchTripletStore” (GS). GS is a class that allows instancing a search session in the Gutenberg database. The class is initialized as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.search_triplet_store</span> <span class="kn">import</span> <span class="n">GutenbergSearchTripletStore</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergSearchTripletStore</span><span class="p">()</span>
+<div class="section" id="gutenberg">
+<h3>Gutenberg<a class="headerlink" href="#gutenberg" title="Permalink to this headline">¶</a></h3>
+<p>DHTK uses a blueprint for the development of all extension modules, simplifying and unifying the
+different functionalities. Using this framework, the Gutenberg extension dataset allows you to
+search <a class="reference external" href="gutenberg.org/">Gutenberg.org</a> for <strong>books, authors, bookshelves and subjects</strong>,
+retrieving all the available information on these as book Corpus that can be saved.</p>
+<div class="section" id="searching-for-an-author">
+<h4>1. Searching for an author<a class="headerlink" href="#searching-for-an-author" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Lovecraft, Howard Phillips&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="c1"># [&#39;Lovecraft, H. P. (Howard Phillips) (Lovecraft, Howard Phillips)&#39;]</span>
 </pre></div>
 </div>
-<p>Once the class is instanced, several methods are accessible. Those can be separated into three groups:</p>
 </div>
-<div class="section" id="search">
-<h4>1.1 Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h4>
-<p>The “Search” methods do just that - search. In the following example we use a “search_by_author()” method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; search_result = guteberg_search.search_by_author(“Charles Darwin”)
+<div class="section" id="searching-for-an-subject">
+<h4>2. Searching for an subject<a class="headerlink" href="#searching-for-an-subject" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Horror films&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="c1"># [&#39;[SUBJECTS: Horror films]: Night of the Living Dead  by Romero, George A.&#39;]</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;shelves&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FR Chansons&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It is not the only method available as there are multiple other ways of searching the database, such as:</p>
-<ul class="simple">
-<li><p>search_by_title()</p></li>
-<li><p>search_by_bookshelves()</p></li>
-<li><p>search_by_subject()</p></li>
+</div>
+<div class="section" id="searching-for-an-bookshelf">
+<h4>3. Searching for an bookshelf<a class="headerlink" href="#searching-for-an-bookshelf" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;shelves&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;FR Chansons&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="c1"># [&#39;[SHELF: FR Chansons]: La chanson des joujoux  by Jouy, Jules&#39;,</span>
+<span class="c1"># &#39;[SHELF: FR Chansons]: Recueil de chansons en patois de la Bresse  by La Gelière, P.-C. de&#39;,</span>
+<span class="c1"># &#39;[SHELF: FR Chansons]: Le chanteur parisien\nRecueil des chansons de L.A. Pitou  by Pitou, Louis Ange&#39;]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="searching-for-an-book">
+<h4>4. Searching for an book<a class="headerlink" href="#searching-for-an-book" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="c1"># [&#39;The King in Yellow by Chambers, Robert W. (Robert William) (en)&#39;]</span>
+</pre></div>
+</div>
+<p>As you can see, a (Python) dictionary-like syntax can be used to search the dataset using
+only a small number of arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>what</em> to search for.</p></li>
+<li><p><em>name</em> of what is being searched. If no name is provided, all available options are retrieved.</p></li>
+<li><p><em>add</em> to corpus or just check results first?</p></li>
 </ul>
-<p>You can see an example of how to use the search_by_title() method below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Search_result = gutenberg_search.search_by_title(“On The Origin of Species”)
-</pre></div>
+</div></blockquote>
 </div>
-<p>Other methods work in a similar way.</p>
-</div>
-<div class="section" id="all">
-<h4>1.2 All<a class="headerlink" href="#all" title="Permalink to this headline">¶</a></h4>
-<p>The “All” methods allow to retrieve a list of all the authors, books, subjects or themes. The method all_books(), for instance, provides a list of all the books found in the database:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">all_books_list</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">all_books</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>NOTE:</p>
-<p>The Search and All methods thus allow to:</p>
-<ol class="arabic simple">
-<li><p>Consult the Gutenberg database to gain a general understanding of what it contains. The search results will include note in a form of a dictionary. 2. Obtain the unique identifiers that match to the search terms</p></li>
-</ol>
-<ul class="simple">
-<li><p>Thus, DHTK enables a transition between the semantics of humanities and those of computer sciences.</p></li>
-</ul>
-<p>Below is an example of a result. Notice the presence of the “author_id” and “book_id” keys. Those keys are what will allow you to fetch book in the Gutenberg archive.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.search_triplet_store</span> <span class="kn">import</span> <span class="n">GutenbergSearchTripletStore</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gutenberg_seearch</span> <span class="o">=</span> <span class="n">GutenbergSearchTripletStore</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">gutenberg_seearch</span><span class="o">.</span><span class="n">search_by_title</span><span class="p">(</span><span class="s2">&quot;The Origin of Species&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="go">{</span>
-<span class="go">    &#39;author&#39;: &#39;Darwin, Charles&#39;,</span>
-<span class="go">    &#39;author_id&#39;: &#39;http://www.gutenberg.org/2009/agents/485&#39;,</span>
-<span class="go">    &#39;book_id&#39;: &#39;http://www.gutenberg.org/ebooks/8205&#39;,</span>
-<span class="go">    &#39;language&#39;: &#39;en&#39;,</span>
-<span class="go">    &#39;title&#39;: &#39;On the Origin of Species&#39;</span>
-<span class="go">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="book">
-<h4>1.3 Book:<a class="headerlink" href="#book" title="Permalink to this headline">¶</a></h4>
-<p>The “Book” methods allow retrieving specific items from the Gutenberg database – namely, books – thanks to the identifiers (book_id/author_id) obtained via “search” methods (see section 1.1). Here is an example of how to retrieve a book by using its identifier:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_title</span><span class="p">(</span><span class="s2">&quot;The Origin of Species&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book_id</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span> <span class="c1">#get any result book id</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">print_book_information</span><span class="p">())</span>
-
-<span class="go">Title : On the Origin of Species</span>
-
-<span class="go">Author : Charles Darwin</span>
-
-<span class="go">Metadata :</span>
-
-<span class="go">- gutenberg_id: http://www.gutenberg.org/ebooks/8205</span>
-
-<span class="go">None</span>
-</pre></div>
-</div>
-<p>NOTE:</p>
-<p>a Book() object which allows working with another type of the Book() class.</p>
-</div>
-<div class="section" id="retrieving-books-the-book-class">
-<h4>2. Retrieving books: the “Book()” class<a class="headerlink" href="#retrieving-books-the-book-class" title="Permalink to this headline">¶</a></h4>
-<p>In DHTK, specific searches result in the Book() objects. Those are digital representations of book contained in the Gutenberg database. The Book() class can be used with following methods:</p>
-</div>
-<div class="section" id="get-author">
-<h4>2.1 Get_author()<a class="headerlink" href="#get-author" title="Permalink to this headline">¶</a></h4>
-<p>The get_author() method allows generating an “author” object which contains information on the author of a given item:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+<div class="section" id="get-book-information">
+<h4>5. Get book information<a class="headerlink" href="#get-book-information" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+</span><span class="c1"># Title       : The King in Yellow</span>
+<span class="c1"># Author      : Robert William Chambers</span>
+<span class="c1"># Metadata    :</span>
+<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/ebooks/8492</span>
+<span class="c1">#     - subject     :</span>
+<span class="c1">#             - Short stories, American</span>
+<span class="c1">#             - Horror tales, American</span>
+<span class="c1">#             - United States--Social life and customs--19th century--Fiction</span>
+<span class="c1">#     - bookshelf   :</span>
+<span class="c1">#             - Horror</span>
+<span class="c1">#     - gutenberg_type: http://www.gutenberg.org/2009/pgterms/ebook</span>
+<span class="c1">#     - gutenberg_downloads:         2802</span>
+<span class="c1">#     - gutenberg_publisher: Project Gutenberg</span>
+<span class="c1">#     - gutenberg_hasFormat:</span>
+<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-8.txt</span>
+<span class="c1">#             - http://www.gutenberg.org/cache/epub/8492/pg8492.cover.small.jpg</span>
+<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-8.zip</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.rdf</span>
+<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-h.zip</span>
+<span class="c1">#             - http://www.gutenberg.org/files/8492/8492.txt</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.epub.images</span>
+<span class="c1">#             - http://www.gutenberg.org/files/8492/8492.zip</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.kindle.noimages</span>
+<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-h/8492-h.htm</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.txt.utf-8</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.kindle.images</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.epub.noimages</span>
+<span class="c1">#             - http://www.gutenberg.org/cache/epub/8492/pg8492.cover.medium.jpg</span>
+<span class="c1">#     - gutenberg_language:           en</span>
+<span class="c1">#     - gutenberg_rights: Public domain in the USA.</span>
+<span class="c1">#     - gutenberg_title: The King in Yellow</span>
+<span class="c1">#     - gutenberg_issued:   2005-07-01</span>
+<span class="c1">#     - gutenberg_creator: http://www.gutenberg.org/2009/agents/38191</span>
+<span class="c1">#     - gutenberg_license: http://www.gutenberg.org/license</span>
+<span class="c1">#     - gutenberg_tableOfContents: http://www.gutenberg.org/ebooks/8492#_toc</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="get-repository">
-<h4>2.2 Get_repository()<a class="headerlink" href="#get-repository" title="Permalink to this headline">¶</a></h4>
-<p>The get_repository() method is what retrieves the original text. The method’s output is an object called GutenbergBook() which is the object that is needed to access a series of methods that allow manipulating the text of the book in question. The text_original() method, for example, allows to display the original text of the book:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_repository</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">get_original_text</span><span class="p">(</span><span class="n">book</span><span class="p">))</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The Project Gutenberg EBook of On the Origin of Species, by Charles Darwin
-
-
-
-This eBook is for the use of anyone anywhere at no cost and with
-
-almost no restrictions whatsoever. You may copy it, give it away or
-
-re-use it under the terms of the Project Gutenberg License included
-
-with this eBook or online at www.gutenberg.org
-
-
-
-Title: On the Origin of Species
-
-1st Edition
-
-Author: Charles Darwin
-
-Release Date: Release Date: March, 1998 [EBook #1228]
-
-Posting Date: November 23, 2009
-
-Language: English
-
-Character set encoding: ASCII
-
-
-
-*** START OF THIS PROJECT GUTENBERG EBOOK ON THE ORIGIN OF SPECIES ***
-
-(…)
-</pre></div>
-</div>
-<p>Other methods that are accessible via the get_repository() method are:</p>
-<ul class="simple">
-<li><p>text_original()</p></li>
-<li><p>clean_text()</p></li>
-<li><p>save_text()</p></li>
-</ul>
-<p>GutenberSearchTripletStore(), Book() and Author() include a lot of other methods. In order to use them or to obtain technical details on those classes and their associated methods, please refer to documentation.</p>
-</div>
-<div class="section" id="creating-a-corpus-the-corpus-class">
-<h4>3. Creating a corpus: the Corpus() class<a class="headerlink" href="#creating-a-corpus-the-corpus-class" title="Permalink to this headline">¶</a></h4>
-<p>DHTK offers a class called Corpus(). This class allows creating a digital representation of a collection of books from Gutenberg, which become Book() objects.</p>
-<p>The Corpus() class takes multiple parameters: a title, an access path, a list of books. You can initialize a Corpus() object as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.common.corpus</span> <span class="kn">import</span> <span class="n">Corpus</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># first, create a book list</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">books</span> <span class="o">=</span> <span class="p">[</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">my_corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span>
-<span class="go">    name=&#39;Corpus des oeuvres de et sur Darwin&#39;,</span>
-<span class="go">    description=&#39;Contient les oeuvres complètes de/sur Darwin’,</span>
-<span class="go">    corpora_path=os.path.expanduser(&quot;~/Desktop/&quot;),</span>
-<span class="go">    book_list=books</span>
-<span class="go">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_corpus</span><span class="p">)</span>
-<span class="go">0 Charles Darwin, On the Origin of Species</span>
-<span class="go">1 Charles Darwin, On the Origin of Species By Means of Natural Selection Or, the (…)</span>
-<span class="go">2 Charles Darwin, On the Origin of Species by Means of Natural Selection</span>
-<span class="go">3 Charles Darwin, On the Origin of Species by Means of Natural Selection or the (…)</span>
-<span class="go">4 Charles Darwin, The Foundations of the Origin of Species Two Essays written (…)</span>
-<span class="go">5 Charles Darwin, The Origin of Species by Means of Natural Selection Or, the (…)</span>
-<span class="go">(…)</span>
-</pre></div>
-</div>
-<p>Naturally, it is possible to initialize a Coprus() object without adding books. Your corpus will then be empty.</p>
-<p>The corpus class then provides an object and so, a series of methods:</p>
-<p>3.1. Add/Remove/Clear Methods
-—————————^^</p>
-<p>The Add, Remove and Clear methods are simple tools that allow to add one or several books to a corpus, remove them from said corpus or to clear that corpus altogether. Here is a non-exhaustive list of methods:</p>
-<ul class="simple">
-<li><p>add_book()</p></li>
-<li><p>add_books()</p></li>
-<li><p>remove_book()</p></li>
-<li><p>clear()</p></li>
-</ul>
-<p>Below is an example of how to add a book to your corpus with help of the add_book() method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result2</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_title</span><span class="p">(</span><span class="s2">&quot;Charles Lyell&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book_id</span> <span class="o">=</span> <span class="n">result2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">my_book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">book_from_book_id</span><span class="p">(</span><span class="n">book_id</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">my_corpus</span><span class="o">.</span><span class="n">add_book</span><span class="p">(</span><span class="n">my_book</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">my_corpus</span><span class="p">)</span>
-<span class="go">0 Charles Darwin, On the Origin of Species</span>
-<span class="go">1 Charles Darwin, On the Origin of Species By Means of Natural Selection Or, the (…)</span>
-<span class="go">2 Charles Darwin, On the Origin of Species by Means of Natural Selection</span>
-<span class="go">3 Charles Darwin, On the Origin of Species by Means of Natural Selection or the (…)</span>
-<span class="go">4 Charles Darwin, The Foundations of the Origin of Species Two Essays written (…)</span>
-<span class="go">5 Charles Darwin, The Origin of Species by Means of Natural Selection Or, the (…)</span>
-<span class="go">(…)</span>
-
-<span class="go">9 Thomas George Bonney, Charles Lyell and Modern Geology</span>
-</pre></div>
-</div>
-<p>The new book is added at the end of the list.</p>
-<p>3.2. Methods Get/Print
-———————^</p>
-<p>The Get and Print methods help with:</p>
-<ul class="simple">
-<li><p>retrieving a given book’s title</p></li>
-<li><p>retrieving a list of books that are in the corpus</p></li>
-<li><p>retrieving the name, access path or the description of the corpus</p></li>
-</ul>
-<p>As such, the method get_book_list() for instance allows retrieving all of the books that are present in the corpus:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">books</span> <span class="o">=</span> <span class="n">my_corpus</span><span class="o">.</span><span class="n">get_book_list</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">books</span><span class="p">)</span>
-<span class="go">[&lt;dhtk.catalogs.gutenberg.book.GutenbergBook object at 0x102978e10&gt;,</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">dhtk</span><span class="o">.</span><span class="n">catalogs</span><span class="o">.</span><span class="n">gutenberg</span><span class="o">.</span><span class="n">book</span><span class="o">.</span><span class="n">GutenbergBook</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x102985b70</span><span class="o">&gt;</span><span class="p">,</span>
-<span class="go">(…)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="o">&lt;</span><span class="n">dhtk</span><span class="o">.</span><span class="n">catalogs</span><span class="o">.</span><span class="n">gutenberg</span><span class="o">.</span><span class="n">book</span><span class="o">.</span><span class="n">GutenbergBook</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x102978860</span><span class="o">&gt;</span><span class="p">]</span>
-
-<span class="go">The method’s output in this case is a series of objects. Those are your books.</span>
-</pre></div>
-</div>
-<p>3.3. The Download methods
-————————^</p>
-<p>These methods allows downloading a book or the whole of your corpus. The methods create a directory with the name of your corpus in the directory that you chose when initializing the class (path) and retrieve the “.txt” files.
-Here are said methods:</p>
-<ul class="simple">
-<li><p>download_book()</p></li>
-<li><p>download_book_corpus()</p></li>
-</ul>
-<p>Here is an example of how to download a book with the download_book() method:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">book_list</span> <span class="o">=</span> <span class="n">my_corpus</span><span class="o">.</span><span class="n">get_book_list</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">my_corpus</span><span class="o">.</span><span class="n">download_book</span><span class="p">(</span><span class="n">book_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-<p>The Corpus() class offers additional methods. In order to find out more, please refer to our documentation.</p>
-</div>
-<div class="section" id="retrieving-adding-metadata-the-dbpediametadata-class">
-<h4>4. Retrieving/adding metadata: the DbpediaMetadata() class<a class="headerlink" href="#retrieving-adding-metadata-the-dbpediametadata-class" title="Permalink to this headline">¶</a></h4>
-<p>Another important class of DHTK is the DbpediaMetadata() class. Dbpedia is an API of Wikipedia. This API allows retrieving secondary information (metadata) from Wikipedia notes. The Dbpedia() class is initialized as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>The DbpediaMetadata() objects give you access to several methods, including, but not limited to:</p>
-<ul class="simple">
-<li><p>get_book_metadata()</p></li>
-<li><p>get_author_metadata()</p></li>
-</ul>
-<p>The get_book_metadata() method is used as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book_metadata</span> <span class="o">=</span> <span class="n">dbpedia_metadata</span><span class="o">.</span><span class="n">get_book_metadata</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">update_metadata</span><span class="p">(</span><span class="n">book_metadata</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Note that metadata can be saved and used to update the “metadata” field of your Book() objects. The DbpediaMetadata() contains other methods as well. To get more information on those, please see the documentation.</p>
-</div>
-</div>
-<div class="section" id="usage-examples">
-<h3>Usage Examples<a class="headerlink" href="#usage-examples" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="searching-in-gutenberg">
-<h4>Searching in Gutenberg<a class="headerlink" href="#searching-in-gutenberg" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span> <span class="k">as</span> <span class="n">Gs</span>
-
-<span class="n">author</span> <span class="o">=</span> <span class="s2">&quot;Sacher-Masoch&quot;</span>
-
-<span class="c1"># Initialise class GutenbergData as gutenberg_search</span>
-<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">Gs</span><span class="p">()</span>
-
-<span class="c1"># Data the books by author and create a list of the books using book_id</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="n">author</span><span class="p">)</span>
-<span class="n">books</span> <span class="o">=</span> <span class="p">[</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">results</span><span class="p">]</span>
-
-<span class="c1"># print the books information</span>
-<span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
-    <span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+<div class="section" id="get-book-text">
+<h4>6. Get book text<a class="headerlink" href="#get-book-text" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">original_text</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
+</span><span class="c1">#</span>
+<span class="c1"># http://aleph.gutenberg.org/8/4/9/8492/8492 down?</span>
+<span class="c1">#</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="get-a-corpus">
-<h4>Get a corpus<a class="headerlink" href="#get-a-corpus" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
-<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
-<span class="kn">from</span> <span class="nn">dhtk.common.corpus</span> <span class="kn">import</span> <span class="n">Corpus</span>
-<span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span>
-
-<span class="c1"># Initialise class GutenbergData as gutenberg_search</span>
-<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">()</span>
-
-<span class="c1">#  search the books by bookshelf and store the id of books in the list</span>
-<span class="n">books_found</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_bookshelf</span><span class="p">(</span><span class="s1">&#39;plays&#39;</span><span class="p">)</span>
-<span class="n">book_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">books_found</span><span class="p">]</span>
-
-<span class="c1"># add the id of books searched by subject to the list&#39;book_ids&#39;</span>
-<span class="n">subjects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ollantay (Play)&quot;</span><span class="p">,</span> <span class="s1">&#39;Play&#39;</span><span class="p">,</span> <span class="s1">&#39;Playwriting&#39;</span><span class="p">,</span> <span class="s1">&#39;Playwriting -- Drama&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">:</span>
-    <span class="n">book_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_subject</span><span class="p">(</span><span class="n">subject</span><span class="p">)])</span>
-
-<span class="c1"># search in all bookshelves the word &#39;paly&#39;</span>
-<span class="n">bookshelves</span> <span class="o">=</span> <span class="p">[</span><span class="n">bookshelf</span> <span class="k">for</span> <span class="n">bookshelf</span> <span class="ow">in</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">all_bookshelves</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;Play&quot;</span> <span class="ow">in</span> <span class="n">bookshelf</span><span class="p">]</span>
-
-<span class="c1"># add the id of books searched by related bookshelf to the list&#39;book_ids&#39;</span>
-<span class="k">for</span> <span class="n">bookshelf</span> <span class="ow">in</span> <span class="n">bookshelves</span><span class="p">:</span>
-    <span class="n">book_ids</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;book_id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_bookshelf</span><span class="p">(</span><span class="n">bookshelf</span><span class="p">)])</span>
-
-<span class="c1"># store the id of books in a set in order to avoid the Duplicate books</span>
-<span class="n">books</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">book_id</span> <span class="ow">in</span> <span class="n">book_ids</span><span class="p">:</span>
-    <span class="n">books</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">book_id</span><span class="p">))</span>
-
-
-<span class="c1"># create the corpus of books contain the name of author and the books related to play</span>
-<span class="n">book_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-<span class="k">if</span> <span class="n">books</span><span class="p">:</span>
-    <span class="n">corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span>
-        <span class="s2">&quot;plays&quot;</span><span class="p">,</span>
-        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span>
-        <span class="n">corpora_path</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Desktop/&quot;</span><span class="p">),</span>
-        <span class="n">book_list</span><span class="o">=</span><span class="n">books</span>
-    <span class="p">)</span>
-<span class="c1"># convert the books of the corpus to dictionary form and add it to the book list</span>
-<span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">corpus</span><span class="p">:</span>
-    <span class="n">book_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
-<span class="n">pprint</span><span class="p">(</span><span class="n">book_list</span><span class="p">)</span>
-
-<span class="c1"># print list of books in the corpus and download it</span>
-<span class="n">corpus</span><span class="o">.</span><span class="n">print_book_list</span><span class="p">()</span>
-<span class="n">corpus</span><span class="o">.</span><span class="n">download_book_corpus</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span>
-
-<span class="c1"># Initialise GutenbergData class</span>
-<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">()</span>
-
-<span class="c1"># search the books by  different author and add them to the list&#39;books&#39;</span>
-<span class="n">books</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="s2">&quot;Sacher-Masoch&quot;</span><span class="p">)</span>
-<span class="n">books</span> <span class="o">+=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="s2">&quot;Dickens&quot;</span><span class="p">)</span>
-<span class="n">books</span> <span class="o">+=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="s2">&quot;Shakespear&quot;</span><span class="p">)</span>
-
-<span class="sd">&quot;&quot;&quot; use the user&#39;s home directory for saving the data&quot;&quot;&quot;</span>
-<span class="n">save_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~/Desktop/dhtk_books&quot;</span><span class="p">)</span>
-
-<span class="sd">&quot;&quot;&quot; create a directory in case it does not exist&quot;&quot;&quot;</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">save_dir</span><span class="p">)</span>
-
-
-<span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
-    <span class="c1"># print the information for all of the book and save it at directory&quot;&quot;&quot;</span>
-    <span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;book_id&quot;</span><span class="p">])</span>
-    <span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-    <span class="n">text</span> <span class="o">=</span> <span class="n">book</span><span class="o">.</span><span class="n">get_repository</span><span class="p">()</span><span class="o">.</span><span class="n">get_original_text</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
-    <span class="n">book</span><span class="o">.</span><span class="n">get_repository</span><span class="p">()</span><span class="o">.</span><span class="n">save_original_text_file_to</span><span class="p">(</span><span class="n">book</span><span class="p">,</span> <span class="n">save_dir</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">book_file</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">save_dir</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Book saved : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="n">book_file</span><span class="p">)</span>
+<div class="section" id="get-author-information">
+<h4>7. Get author information<a class="headerlink" href="#get-author-information" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+</span><span class="c1"># Robert William Chambers</span>
+<span class="c1"># Metadata    :</span>
+<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/2009/agents/38191</span>
+<span class="c1">#     - gutenberg_name: Chambers, Robert W. (Robert William)</span>
+<span class="c1">#     - alias       :</span>
+<span class="c1">#             - Robert W. Chambers</span>
+<span class="c1">#             - Chambers, Robert William</span>
+<span class="c1">#     - name        : Robert William Chambers</span>
+<span class="c1">#     - birth_date  :         1865</span>
+<span class="c1">#     - death_date  :         1933</span>
+<span class="c1">#     - webpage     : http://en.wikipedia.org/wiki/Robert_W._Chambers</span>
+<span class="c1">#     - gutenberg_type: http://www.gutenberg.org/2009/pgterms/agent</span>
+<span class="c1">#     - bibliography:</span>
+<span class="c1">#             - A Young Man in a Hurry, and Other Short Stories</span>
+<span class="c1">#             - Ailsa Paige: A Novel</span>
+<span class="c1">#             - Athalie</span>
+<span class="c1">#             - Barbarians</span>
+<span class="c1">#             - Between Friends</span>
+<span class="c1">#             - Blue-Bird Weather</span>
+<span class="c1">#             - Cardigan</span>
+<span class="c1">#             - In Search of the Unknown</span>
+<span class="c1">#             - In Secret</span>
+<span class="c1">#             - In the Quarter</span>
+<span class="c1">#             - Iole</span>
+<span class="c1">#             - Japonette</span>
+<span class="c1">#             - Lorraine: A Romance</span>
+<span class="c1">#             - Police!!!</span>
+<span class="c1">#             - Quick Action</span>
+<span class="c1">#             - Special Messenger</span>
+<span class="c1">#             - The Adventures of a Modest Man</span>
+<span class="c1">#             - The Business of Life</span>
+<span class="c1">#             - The Common Law</span>
+<span class="c1">#             - The Crimson Tide: A Novel</span>
+<span class="c1">#             - The Danger Mark</span>
+<span class="c1">#             - The Dark Star</span>
+<span class="c1">#             - The Fighting Chance</span>
+<span class="c1">#             - The Firing Line</span>
+<span class="c1">#             - The Flaming Jewel</span>
+<span class="c1">#             - The Gay Rebellion</span>
+<span class="c1">#             - The Girl Philippa</span>
+<span class="c1">#             - The Green Mouse</span>
+<span class="c1">#             - The Hidden Children</span>
+<span class="c1">#             - The King in Yellow</span>
+<span class="c1">#             - The Laughing Girl</span>
+<span class="c1">#             - The Little Red Foot</span>
+<span class="c1">#             - The Maid-At-Arms: A Novel</span>
+<span class="c1">#             - The Maids of Paradise</span>
+<span class="c1">#             - The Moonlit Way: A Novel</span>
+<span class="c1">#             - The Mystery of Choice</span>
+<span class="c1">#             - The Reckoning</span>
+<span class="c1">#             - The Restless Sex</span>
+<span class="c1">#             - The Slayer of Souls</span>
+<span class="c1">#             - The Streets of Ascalon: Episodes in the Unfinished Career of Richard Quarren, Esqre.</span>
+<span class="c1">#             - The Tracer of Lost Persons</span>
+<span class="c1">#             - The Younger Set</span>
+<span class="c1">#             - Who Goes There!</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="save-corpus">
+<h4>8. Save Corpus<a class="headerlink" href="#save-corpus" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Random horror&quot;</span><span class="p">,</span>
+</span><span class="hll">                 <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Horror stuff from Gutenberg (french songs included!)&quot;</span><span class="p">)</span>
+</span><span class="c1"># Corpus name:</span>
+<span class="c1"># 	Random horror</span>
+<span class="c1"># Corpus description:</span>
+<span class="c1"># 	Horror stuff from Gutenberg (french songs included!)</span>
+<span class="c1"># Corpus path:</span>
+<span class="c1"># 	/Users/s05mm2/DHTK/s05mm2/requests/Random_horror</span>
+<span class="c1"># Corpus books:</span>
+<span class="c1"># 0	Howard Phillips Lovecraft    	The Dunwich Horror</span>
+<span class="c1"># 1	Howard Phillips Lovecraft    	The Shunned House</span>
+<span class="c1"># 2	Howard Phillips Lovecraft    	Writings in the United Amateur, 1915-1922</span>
+<span class="c1"># 3	George A. Romero             	Night of the Living Dead</span>
+<span class="c1"># 4	Jules Jouy                   	La chanson des joujoux</span>
+<span class="c1"># 5	P.-C. de La Gelière          	Recueil de chansons en patois de la Bresse</span>
+<span class="c1"># 6	Louis Ange Pitou             	Le chanteur parisien Recueil des chansons de L.A. Pitou</span>
+<span class="c1"># 7	Robert William Chambers      	The King in Yellow</span>
+<span class="hll"><span class="n">gutenberg</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</span><span class="c1"># ##########################</span>
+<span class="c1"># Thanks you for using DHTK!</span>
+<span class="c1"># ##########################</span>
+<span class="c1"># If you&#39;re done use exit() or Ctrl-D (i.e. EOF) to exit</span>
+<span class="c1"># Please send them any comments or suggestions to davide.picca@unil.ch.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="old-usage-examples">
+<h3>OLD Usage Examples<a class="headerlink" href="#old-usage-examples" title="Permalink to this headline">¶</a></h3>
+<p>It looks like get metadata is not implemented!</p>
 <div class="section" id="search-metadata">
 <h4>Search metadata<a class="headerlink" href="#search-metadata" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>

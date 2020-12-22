@@ -93,8 +93,13 @@
 <li class="toctree-l1"><a class="reference internal" href="process.html">Processing API reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="extensions.html">Extension API references</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Community</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#frequently-asked-questions">Frequently Asked Questions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-contribute-to-dhtk">How to contribute to DHTK?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-contribute-to-dhtk">How to contribute to DHTK?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#contributing-to-dhtk">Contributing to DHTK</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dhtk-modularisation">DHTK modularisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-functionalities">Adding new functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrating-new-modules">Integrating new modules</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
@@ -125,37 +130,56 @@
             
   <div class="section" id="community">
 <h1>Community<a class="headerlink" href="#community" title="Permalink to this headline">¶</a></h1>
-<p>We are proud to say that the DHTK community is growing continuously. Being created by the researchers of the “Informatique pour les Sciences Humaines” of the University of Lausanne, the project has seen an increased interest from both the teachers of other sections and the students, both from Bachelor and Master programs. DHTK was also presented at the Second Workshop on Humanities in the Semantic Web (WHiSeII) co-located with 16th International Semantic Web Conference (ISWC 2017),held in Vienna, Austria in 2017.Multiple visitors of the workshop have expressed interest in DHTK and the project was well received. As such, people from different walks of life from different parts of the world have already become a part of our community. You can do so too by <a class="reference external" href="/contribute">contributing</a> to the project.</p>
-<div class="section" id="frequently-asked-questions">
-<h2>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p>What is DHTK?</p>
-<blockquote>
-<div><p>DHTK stands for Digital Humanities ToolKit. Its purpose is to connect two very different disciplines: Humanities and Computer Sciences. DHTK focuses on interacting with the Gutenberg database in tandem with DBpedia to provide access to literary works and their associated metadata in an easy and intuitive way.</p>
-</div></blockquote>
-</li>
-<li><p>How do I use DHTK?</p>
-<blockquote>
-<div><p>You can find information on how to install DHTK as well as guides on how to use it on the <a class="reference external" href="usage.html">usage</a> page of this website.</p>
-</div></blockquote>
-</li>
-<li><p>I would like to have acess to some of more technical information related to DHTK</p>
-<blockquote>
-<div><p>What you are looking for will be available on the <a class="reference external" href="api.html">API</a> page.</p>
-</div></blockquote>
-</li>
-<li><p>I want to contribute to DHTK, how can I contact you?</p>
-<blockquote>
-<div><p>You can find a contact form on the <a class="reference external" href="contribute.html">Contribute</a> page.</p>
-</div></blockquote>
-</li>
-</ul>
-</div>
+<p>We are proud to say that the DHTK community is growing continuously.
+Being created by the researchers of the “Informatique pour les Sciences Humaines” of the University of Lausanne,
+the project has seen an increased interest from both the teachers of other sections and the students,
+both from Bachelor and Master programs. DHTK was also presented at the Second Workshop on Humanities in
+the Semantic Web (WHiSeII) co-located with 16th International Semantic Web Conference (ISWC 2017),
+held in Vienna, Austria in 2017. Multiple visitors of the workshop have expressed interest in DHTK and
+the project was well received. As such, people from different walks of life from different parts of the
+world have already become a part of our community. You can do so too by contributing to this open source
+project.</p>
 <div class="section" id="how-to-contribute-to-dhtk">
 <h2>How to contribute to DHTK?<a class="headerlink" href="#how-to-contribute-to-dhtk" title="Permalink to this headline">¶</a></h2>
 <p>Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
 DHTK community!</p>
-<p>Please write us at: <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
+<p>Before planning any improvement or addition to DHTK, please write us at: <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
+<div class="section" id="contributing-to-dhtk">
+<h3>Contributing to DHTK<a class="headerlink" href="#contributing-to-dhtk" title="Permalink to this headline">¶</a></h3>
+<p>DHTK is a collective open source effort. To contribute and help us improve, visit our GitHub page.
+You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
+for review as a merge request. All suggestions and improvements are welcomed, they don’t have to be major changes!</p>
+</div>
+<div class="section" id="dhtk-modularisation">
+<h3>DHTK modularisation<a class="headerlink" href="#dhtk-modularisation" title="Permalink to this headline">¶</a></h3>
+<p>DHTK is divided into three parts as described in the <a class="reference external" href="../architecture.html">architecture</a> page.
+Active development is expected mostly for the extension processing modules as new datasets and methods are added to
+DHTK. The three parts are organised in separate directories (core, extensions, processing) for easier identification
+and navigation.</p>
+</div>
+<div class="section" id="adding-new-functionalities">
+<h3>Adding new functionalities<a class="headerlink" href="#adding-new-functionalities" title="Permalink to this headline">¶</a></h3>
+<p>Adding new functionalities to DHTK is as simple as modifying the relevant file.
+If a new Python function, class or method is required to improve DHTK usability, then
+contributor can add then directly to the code and submit a merge request.</p>
+</div>
+<div class="section" id="integrating-new-modules">
+<h3>Integrating new modules<a class="headerlink" href="#integrating-new-modules" title="Permalink to this headline">¶</a></h3>
+<p>DHTK core modules are responsible to locate and load any module within the extension directory.
+Due to the modular architecture of DHTK, these extensions can be easily developed as self-sufficient Python modules,
+which are alter integrated into the DHTK framework. Doing so requires two steps:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>All new module must be place inside this directory <em>(./dhtk/extensions/new_module)</em></p></li>
+</ol>
+<p>2) The __init__ file for the module must contains a class named Module, inheriting from the
+<a class="reference external" href="../extensions.html">AbstractExtension</a> blueprint.</p>
+</div></blockquote>
+<p>The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
+The new Module class is essentially a wrapper around a DHTK extension, defining the self attributes name and url
+(name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and
+the methods to query and save the results. Any additional method that improves the Module class can be freely included.</p>
+</div>
 </div>
 </div>
 

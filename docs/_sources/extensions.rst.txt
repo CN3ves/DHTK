@@ -16,10 +16,3 @@ This blueprint can be used to wrap the new modules into DHTK.
 For more information, see `Community <../community.html>`_
 
 
-****************
-Gutenberg module
-****************
-.. autoclass:: dhtk.extensions.gutenberg.__init__.Module
-   :members:
-
-.. include:: ./extensions/gutenberg.rst

@@ -1,35 +1,15 @@
 #########
 Community
 #########
-We are proud to say that the DHTK community is growing continuously. Being created by the researchers of the "Informatique pour les Sciences Humaines" of the University of Lausanne, the project has seen an increased interest from both the teachers of other sections and the students, both from Bachelor and Master programs. DHTK was also presented at the Second Workshop on Humanities in the Semantic Web (WHiSeII) co-located with 16th International Semantic Web Conference (ISWC 2017),held in Vienna, Austria in 2017.Multiple visitors of the workshop have expressed interest in DHTK and the project was well received. As such, people from different walks of life from different parts of the world have already become a part of our community. You can do so too by `contributing </contribute>`_ to the project.
-
-==========================
-Frequently Asked Questions
-==========================
-
-
-- What is DHTK?
-
-
-    DHTK stands for Digital Humanities ToolKit. Its purpose is to connect two very different disciplines: Humanities and Computer Sciences. DHTK focuses on interacting with the Gutenberg database in tandem with DBpedia to provide access to literary works and their associated metadata in an easy and intuitive way.
-
-
-- How do I use DHTK?
-
-
-    You can find information on how to install DHTK as well as guides on how to use it on the `usage <\usage.html>`_ page of this website.
-
-
-- I would like to have acess to some of more technical information related to DHTK
-
-
-    What you are looking for will be available on the `API <\api.html>`_ page.
-
-
-- I want to contribute to DHTK, how can I contact you?
-
-
-    You can find a contact form on the `Contribute <\contribute.html>`_ page.
+We are proud to say that the DHTK community is growing continuously.
+Being created by the researchers of the "Informatique pour les Sciences Humaines" of the University of Lausanne,
+the project has seen an increased interest from both the teachers of other sections and the students,
+both from Bachelor and Master programs. DHTK was also presented at the Second Workshop on Humanities in
+the Semantic Web (WHiSeII) co-located with 16th International Semantic Web Conference (ISWC 2017),
+held in Vienna, Austria in 2017. Multiple visitors of the workshop have expressed interest in DHTK and
+the project was well received. As such, people from different walks of life from different parts of the
+world have already become a part of our community. You can do so too by contributing to this open source
+project.
 
 
 ==========================
@@ -39,6 +19,41 @@ How to contribute to DHTK?
 Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
 DHTK community!
 
-Please write us at: davide.picca@unil.ch
+Before planning any improvement or addition to DHTK, please write us at: davide.picca@unil.ch
+
+Contributing to DHTK
+--------------------
+DHTK is a collective open source effort. To contribute and help us improve, visit our GitHub page.
+You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
+for review as a merge request. All suggestions and improvements are welcomed, they don't have to be major changes!
+
+DHTK modularisation
+--------------------------
+DHTK is divided into three parts as described in the `architecture <../architecture.html>`_ page.
+Active development is expected mostly for the extension processing modules as new datasets and methods are added to
+DHTK. The three parts are organised in separate directories (core, extensions, processing) for easier identification
+and navigation.
 
 
+Adding new functionalities
+--------------------------
+Adding new functionalities to DHTK is as simple as modifying the relevant file.
+If a new Python function, class or method is required to improve DHTK usability, then
+contributor can add then directly to the code and submit a merge request.
+
+
+Integrating new modules
+-----------------------
+
+DHTK core modules are responsible to locate and load any module within the extension directory.
+Due to the modular architecture of DHTK, these extensions can be easily developed as self-sufficient Python modules,
+which are alter integrated into the DHTK framework. Doing so requires two steps:
+
+    1) All new module must be place inside this directory *(./dhtk/extensions/new_module)*
+    2) The __init__ file for the module must contains a class named Module, inheriting from the
+    `AbstractExtension <../extensions.html>`_ blueprint.
+
+The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
+The new Module class is essentially a wrapper around a DHTK extension, defining the self attributes name and url
+(name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and
+the methods to query and save the results. Any additional method that improves the Module class can be freely included.

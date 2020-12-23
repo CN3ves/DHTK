@@ -175,21 +175,19 @@ DHTK access occurs in 4 steps:</p>
 </pre></div>
 </div>
 <p>Settings can be defined by passing then as argument at instantiation (<a class="reference external" href="./api.html">dhtk.start(**kwarg)</a>) or
-they can be modified using the dot notation.
-.. literalinclude:: ./examples/usage.py</p>
-<blockquote>
-<div><dl class="field-list simple">
-<dt class="field-odd">language</dt>
-<dd class="field-odd"><p>python</p>
-</dd>
-<dt class="field-even">lines</dt>
-<dd class="field-even"><p>22-31</p>
-</dd>
-<dt class="field-odd">emphasize-lines</dt>
-<dd class="field-odd"><p>1</p>
-</dd>
-</dl>
-</div></blockquote>
+they can be modified using the dot notation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">configs</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="s2">&quot;me&quot;</span>
+</span><span class="nb">print</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+<span class="c1"># [user]: me</span>
+<span class="c1"># [wd]: /Users/s05mm2/DHTK/s05mm2</span>
+<span class="c1"># [endpoint]: localhost</span>
+<span class="c1"># [dataset]: gutenberg</span>
+<span class="c1"># [modules]: {&#39;gutenberg&#39;: datetime.datetime(2020, 12, 16, 13, 52, 26, 965388)}</span>
+<span class="c1"># [_file]: /Users/s05mm2/DHTK/s05mm2/s05mm2.config</span>
+<span class="c1"># [logger]: &lt;Logger dhtk (DEBUG)&gt;</span>
+<span class="c1"># [_connect]: 30</span>
+</pre></div>
+</div>
 <p>The main settings are <em>user</em> and <em>wd</em>, respectively the user name and the DHTK’s working directory.
 These two settings are used to search for saved configurations and correctly
 organize the logs and save the search results in the DHTK folder structure.</p>

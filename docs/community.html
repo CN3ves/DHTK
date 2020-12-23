@@ -90,8 +90,9 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Community</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-contribute-to-dhtk">How to contribute to DHTK?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#contributing-to-dhtk">Contributing to DHTK</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dhtk-modularisation">DHTK modularisation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-new-functionalities">Adding new functionalities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dhtk-modularisation">DHTK modularisation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset-rdf">Dataset RDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#integrating-new-modules">Integrating new modules</a></li>
 </ul>
 </li>
@@ -145,22 +146,29 @@ DHTK community!</p>
 <p>Before planning any improvement or addition to DHTK, please write us at: <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
 <div class="section" id="contributing-to-dhtk">
 <h3>Contributing to DHTK<a class="headerlink" href="#contributing-to-dhtk" title="Permalink to this headline">¶</a></h3>
-<p>DHTK is a collective open source effort. To contribute and help us improve, visit our GitHub page.
+<p>DHTK is a collective open source effort. To contribute and help us improve, visit our <a href="#id6"><span class="problematic" id="id7">`GitHub page &lt;&gt;`_</span></a>.
 You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
 for review as a merge request. All suggestions and improvements are welcomed, they don’t have to be major changes!</p>
-</div>
-<div class="section" id="dhtk-modularisation">
-<h3>DHTK modularisation<a class="headerlink" href="#dhtk-modularisation" title="Permalink to this headline">¶</a></h3>
-<p>DHTK is divided into three parts as described in the <a class="reference external" href="./architecture.html">architecture</a> page.
-Active development is expected mostly for the extension processing modules as new datasets and methods are added to
-DHTK. The three parts are organised in separate directories (core, extensions, processing) for easier identification
-and navigation.</p>
 </div>
 <div class="section" id="adding-new-functionalities">
 <h3>Adding new functionalities<a class="headerlink" href="#adding-new-functionalities" title="Permalink to this headline">¶</a></h3>
 <p>Adding new functionalities to DHTK is as simple as modifying the relevant file.
 If a new Python function, class or method is required to improve DHTK usability, then
 contributor can add then directly to the code and submit a merge request.</p>
+</div>
+<div class="section" id="dhtk-modularisation">
+<h3>DHTK modularisation<a class="headerlink" href="#dhtk-modularisation" title="Permalink to this headline">¶</a></h3>
+<p>DHTK is divided into three parts as described in the <a class="reference external" href="./architecture.html">architecture</a> page.
+The three parts are organised in separate directories (core, extensions, processing) for easier identification
+and navigation. Active development is expected mostly for the extension processing modules as new datasets and methods are added to
+DHTK.</p>
+</div>
+<div class="section" id="dataset-rdf">
+<h3>Dataset RDF<a class="headerlink" href="#dataset-rdf" title="Permalink to this headline">¶</a></h3>
+<p>A ready to use RDF file should be made available to the user for each new DHTK extension module. These files can be
+stored in any remotely accessible locations, though we would recommend using <a class="reference external" href="https://about.zenodo.org/">Zenodo</a>.
+For reproducibility and transparency, the full pipeline used to produce the RDF files (including instructions on
+how to use it should also be made available under the <strong>“builder directory”</strong> of the module.</p>
 </div>
 <div class="section" id="integrating-new-modules">
 <h3>Integrating new modules<a class="headerlink" href="#integrating-new-modules" title="Permalink to this headline">¶</a></h3>
@@ -176,9 +184,163 @@ which are alter integrated into the DHTK framework. Doing so requires two steps:
 </li>
 </ol>
 <p>The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
-The new Module class is essentially a wrapper around a DHTK extension, defining the self attributes name and url
+The new <strong>Module class</strong> is essentially a wrapper around a DHTK extension, defining the attributes <strong>name</strong> and <strong>url</strong>
 (name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and
-the methods to query and save the results. Any additional method that improves the Module class can be freely included.</p>
+the <strong>methods to query and save the results</strong>. Any additional method that improves the Module class can be freely
+included.</p>
+<p><em>Gutenberg __init__:</em></p>
+<p><strong>1) Define required name and url attributes</strong>
+Note the addition of the wrapper attribute which is used to reference the “query class” object</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
+
+<span class="hll">        <span class="c1"># Defaults required to be defined for each extension</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gutenberg&quot;</span>
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://sandbox.zenodo.org/record/709580/files/gutenberg_reasoned_final.ttl?download=1&quot;</span>
+
+        <span class="c1"># Instantiate a Corpus</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Corpus&quot;</span><span class="p">,</span>
+                              <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gutenberg Books&quot;</span><span class="p">,</span>
+                              <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_endpoint</span><span class="p">()</span>
+
+<span class="hll">        <span class="c1"># Get the extension</span>
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">(</span><span class="n">sparql_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ENDPOINT</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">LOGS</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>2) Defining required methods. **
+Two methods are required to be defined. The <em>get(what, name, add)</em> provides a unified wrapper around
+the possible queries, simplifying the use of new extensions. The <em>save()</em> method stores the retrieved data on disk.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+</span>        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extension wrapper method to call all DHTK functionalities with a simple syntax</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        what: string</span>
+<span class="sd">            Type of information to retrieve.</span>
+<span class="sd">            DHTK Gutenberg has the options to search for books, authors, shelves and subjects</span>
+<span class="sd">        name: string [default: &quot;all&quot;]</span>
+<span class="sd">            Name identifying the specific information to retrieve.</span>
+<span class="sd">            If all, retrieve all information available</span>
+<span class="sd">        add: boolean [default: False]</span>
+<span class="sd">            Add query results to Corpus</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Requested book information from Gutenberg dataset</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Prepare arguments</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">what</span> <span class="o">=</span> <span class="n">what</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;bo&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">all_books</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">search_by_title</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">add</span><span class="p">:</span>
+                    <span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;book_id&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">add_books</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+
+                <span class="n">response</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> by </span><span class="si">{</span><span class="n">book</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">book</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span> \
+                            <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;au&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">all_authors</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">search_by_author</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">add</span><span class="p">:</span>
+                    <span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">get_author</span><span class="p">(</span><span class="n">author</span><span class="p">[</span><span class="s2">&quot;author_id&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">add</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">author</span><span class="o">.</span><span class="n">get_bibliography</span><span class="p">():</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;book&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">book</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+                <span class="n">response</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">author</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">author</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;alias&#39;</span><span class="p">,</span> <span class="s1">&#39;no alias&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">for</span> <span class="n">author</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;sh&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">all_bookshelves</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">search_by_bookshelf</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">add</span><span class="p">:</span>
+                    <span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;book_id&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">add_books</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+
+                <span class="n">response</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;[SHELF: </span><span class="si">{</span><span class="n">shelf</span><span class="p">[</span><span class="s1">&#39;bookshelf&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">]: </span><span class="si">{</span><span class="n">shelf</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">  by </span><span class="si">{</span><span class="n">shelf</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> \
+                            <span class="k">for</span> <span class="n">shelf</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+
+        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;su&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">all_subjects</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">search_by_subject</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">add</span><span class="p">:</span>
+                    <span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="n">book</span><span class="p">[</span><span class="s2">&quot;book_id&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">add_books</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+
+                <span class="n">response</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;[SUBJECTS: </span><span class="si">{</span><span class="n">subject</span><span class="p">[</span><span class="s1">&#39;subject&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">]: </span><span class="si">{</span><span class="n">subject</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">  by </span><span class="si">{</span><span class="n">subject</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> \
+                            <span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">response</span><span class="p">]</span>
+                <span class="n">response</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Not a valid option&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Allowed arguments are:</span><span class="se">\n</span><span class="s2">book</span><span class="se">\n</span><span class="s2">author</span><span class="se">\n</span><span class="s2">shelf</span><span class="se">\n</span><span class="s2">subject&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="k">return</span> <span class="n">response</span>
+
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+        <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">path</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">CONFIGS</span><span class="o">.</span><span class="n">make_dirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">download_corpus</span><span class="p">()</span>
+
+<span class="hll">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;corpus.pk&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickled_file</span><span class="p">:</span>
+</span>            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(),</span> <span class="n">pickled_file</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+        <span class="n">pickled_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>3) Defining additional methods. **
+Gutenberg’s Module class contains two extra methods. The suggested <em>welcome()</em> method
+automatically provides the user with the dataset statistics. This method is called when a module is loaded,
+and can be used to provide the user with any (or no) information.</p>
+<p>The <em>corpus</em> method is not defined in parent AbstractExtension class, but it provides a simpler way to modify
+a corpus’ settings and retrive its representation, being a suitable intermediate method to search for book and author
+information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll">    <span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">statistics</span><span class="p">()</span>
+                <span class="k">break</span>
+            <span class="k">except</span> <span class="n">RemoteDisconnected</span><span class="p">:</span>
+                <span class="k">pass</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">CONFIGS</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;gutenberg&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">timestamp</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DHTK Gutenberg statistics:</span><span class="si">{</span><span class="n">stats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %y&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DHTK Gutenberg statistics:</span><span class="se">\n</span><span class="s2">Last update: </span><span class="si">{</span><span class="n">timestamp</span><span class="si">}{</span><span class="n">stats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="hll">
+</span>    <span class="k">def</span> <span class="nf">corpus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">description</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="contributors">

@@ -49,6 +49,7 @@ DHTK access occurs in 4 steps:
 
 Settings can be defined by passing then as argument at instantiation (`dhtk.start(**kwarg) <./api.html>`_) or
 they can be modified using the dot notation.
+
 .. literalinclude:: ./examples/usage.py
     :language: python
     :lines: 22-31

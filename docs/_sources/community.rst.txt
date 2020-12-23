@@ -24,17 +24,9 @@ Before planning any improvement or addition to DHTK, please write us at: davide.
 
 Contributing to DHTK
 --------------------
-DHTK is a collective open source effort. To contribute and help us improve, visit our GitHub page.
+DHTK is a collective open source effort. To contribute and help us improve, visit our `GitHub page <>`_.
 You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
 for review as a merge request. All suggestions and improvements are welcomed, they don't have to be major changes!
-
-DHTK modularisation
---------------------------
-DHTK is divided into three parts as described in the `architecture <./architecture.html>`_ page.
-Active development is expected mostly for the extension processing modules as new datasets and methods are added to
-DHTK. The three parts are organised in separate directories (core, extensions, processing) for easier identification
-and navigation.
-
 
 Adding new functionalities
 --------------------------
@@ -42,6 +34,20 @@ Adding new functionalities to DHTK is as simple as modifying the relevant file.
 If a new Python function, class or method is required to improve DHTK usability, then
 contributor can add then directly to the code and submit a merge request.
 
+
+DHTK modularisation
+--------------------------
+DHTK is divided into three parts as described in the `architecture <./architecture.html>`_ page.
+The three parts are organised in separate directories (core, extensions, processing) for easier identification
+and navigation. Active development is expected mostly for the extension processing modules as new datasets and methods are added to
+DHTK.
+
+Dataset RDF
+-----------
+A ready to use RDF file should be made available to the user for each new DHTK extension module. These files can be
+stored in any remotely accessible locations, though we would recommend using `Zenodo <https://about.zenodo.org/>`_.
+For reproducibility and transparency, the full pipeline used to produce the RDF files (including instructions on
+how to use it should also be made available under the **"builder directory"** of the module.
 
 Integrating new modules
 -----------------------
@@ -55,9 +61,43 @@ which are alter integrated into the DHTK framework. Doing so requires two steps:
     `AbstractExtension <./extensions.html>`_ blueprint.
 
 The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
-The new Module class is essentially a wrapper around a DHTK extension, defining the self attributes name and url
+The new **Module class** is essentially a wrapper around a DHTK extension, defining the attributes **name** and **url**
 (name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and
-the methods to query and save the results. Any additional method that improves the Module class can be freely included.
+the **methods to query and save the results**. Any additional method that improves the Module class can be freely
+included.
+
+*Gutenberg __init__:*
+
+**1) Define required name and url attributes**
+Note the addition of the wrapper attribute which is used to reference the "query class" object
+
+.. literalinclude:: ./examples/contributing.py
+    :language: python
+    :lines: 4-18
+    :emphasize-lines: 4,5,14
+
+**2) Defining required methods. **
+Two methods are required to be defined. The *get(what, name, add)* provides a unified wrapper around
+the possible queries, simplifying the use of new extensions. The *save()* method stores the retrieved data on disk.
+
+.. literalinclude:: ./examples/contributing.py
+    :language: python
+    :lines: 20-116
+    :emphasize-lines: 1,93
+
+**3) Defining additional methods. **
+Gutenberg's Module class contains two extra methods. The suggested *welcome()* method
+automatically provides the user with the dataset statistics. This method is called when a module is loaded,
+and can be used to provide the user with any (or no) information.
+
+The *corpus* method is not defined in parent AbstractExtension class, but it provides a simpler way to modify
+a corpus' settings and retrive its representation, being a suitable intermediate method to search for book and author
+information.
+
+.. literalinclude:: ./examples/contributing.py
+    :language: python
+    :lines: 118-139
+    :emphasize-lines: 1,15
 
 ============
 Contributors

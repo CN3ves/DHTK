@@ -10,25 +10,29 @@ Core API references
 Settings
 ========
 
-.. automodule:: dhtk.core.settings
+.. autoclass:: dhtk.core.settings.Settings
    :members:
 
 SPARQL Endpoint
 ===============
 
-.. automodule:: dhtk.core.client
+.. autoclass:: dhtk.core.client.Client
    :members:
 
+.. autoclass:: dhtk.core.client.Installers
+   :members:
 Dataset Manager
 ===============
 
-.. automodule:: dhtk.core.dataset
+.. autoclass:: dhtk.core.dataset.DatasetLoaders
    :members:
 
 
 Helpers
 =======
 
-.. automodule:: dhtk.core.helpers.Library
+.. autoclass:: dhtk.core.helpers.Library
    :members:
+
+.. autofunction:: dhtk.core.helpers.download_files
 

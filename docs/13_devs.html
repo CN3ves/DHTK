@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>Community &mdash; DHTK 1.0.2 documentation</title>
+    <title>How to contribute to DHTK? &mdash; DHTK 1.0.2 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/css/spc-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="_static/css/spc-extend.css">
@@ -31,7 +31,9 @@
     <link rel="index" title="Index" href="genindex.html" >
     <link rel="search" title="Search" href="search.html" >
     <link rel="top" title="DHTK 1.0.2 documentation" href="index.html" >
-    <link rel="prev" title="Processing API reference" href="process.html" > 
+    <link rel="up" title="Documentation" href="1_doc.html" >
+    <link rel="next" title="&lt;no title&gt;" href="14_api.html" >
+    <link rel="prev" title="How to use" href="12_guide.html" > 
   </head>
   <body>
   <div class="container">
@@ -49,7 +51,8 @@
     <ul class="nav nav-pills pull-left">
 	
         <li class="active"><a href="index.html">DHTK 1.0.2 documentation</a></li>
-	 
+	
+          <li class="active"><a href="1_doc.html" accesskey="U">Documentation</a></li> 
     </ul>
               
               
@@ -59,11 +62,11 @@
            accesskey="I">index</a>
       </li>
       <li class="active">
-        <a href="py-modindex.html" title="Python Module Index"
-           >modules</a>
+        <a href="14_api.html" title="&lt;no title&gt;"
+           accesskey="N">next</a>
       </li>
       <li class="active">
-        <a href="process.html" title="Processing API reference"
+        <a href="12_guide.html" title="How to use"
            accesskey="P">previous</a>
       </li>
     </ul>
@@ -81,10 +84,11 @@
             </a></p>
 <h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Getting started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Community</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#how-to-contribute-to-dhtk">How to contribute to DHTK?</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="1_doc.html">Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="11_intro.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Developer guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#contributing-to-dhtk">Contributing to DHTK</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-new-functionalities">Adding new functionalities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dhtk-modularisation">DHTK modularisation</a></li>
@@ -92,20 +96,21 @@
 <li class="toctree-l3"><a class="reference internal" href="#integrating-new-modules">Integrating new modules</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#contributors">Contributors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#project-manager">Project Manager</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#technical-leaders">Technical Leaders</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#main-developers">Main Developers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#student-contributors">Student Contributors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="141_core.html">Core API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="143_proc.html">Processing API</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="2_community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_faq.html">FAQ</a></li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="process.html"
-                        title="previous chapter">Processing API reference</a></p>
+  <p class="topless"><a href="12_guide.html"
+                        title="previous chapter">How to use</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="14_api.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -123,51 +128,40 @@
         <div class="bodywrapper">
           <div class="body" id="spc-section-body" role="main">
             
-  <div class="section" id="community">
-<h1>Community<a class="headerlink" href="#community" title="Permalink to this headline">¶</a></h1>
-<p>We are proud to say that the DHTK community is growing continuously.
-Being created by the researchers of the “Informatique pour les Sciences Humaines” of the University of Lausanne,
-the project has seen an increased interest from both the teachers of other sections and the students,
-both from Bachelor and Master programs. DHTK was also presented at the Second Workshop on Humanities in
-the Semantic Web (WHiSeII) co-located with 16th International Semantic Web Conference (ISWC 2017),
-held in Vienna, Austria in 2017. Multiple visitors of the workshop have expressed interest in DHTK and
-the project was well received. As such, people from different walks of life from different parts of the
-world have already become a part of our community. You can do so too by contributing to this open source
-project.</p>
-<div class="section" id="how-to-contribute-to-dhtk">
-<h2>How to contribute to DHTK?<a class="headerlink" href="#how-to-contribute-to-dhtk" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="how-to-contribute-to-dhtk">
+<h1>How to contribute to DHTK?<a class="headerlink" href="#how-to-contribute-to-dhtk" title="Permalink to this headline">¶</a></h1>
 <p>DHTK is an open-source team effort.
 Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
 DHTK community!</p>
 <p>Before planning any improvement or addition to DHTK, please write us at: <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
 <div class="section" id="contributing-to-dhtk">
-<h3>Contributing to DHTK<a class="headerlink" href="#contributing-to-dhtk" title="Permalink to this headline">¶</a></h3>
-<p>DHTK is a collective open source effort. To contribute and help us improve, visit our <a href="#id2"><span class="problematic" id="id3">`GitHub page &lt;&gt;`_</span></a>.
+<h2>Contributing to DHTK<a class="headerlink" href="#contributing-to-dhtk" title="Permalink to this headline">¶</a></h2>
+<p>DHTK is a collective open source effort. To contribute and help us improve, visit our <a href="#id1"><span class="problematic" id="id2">`GitHub page &lt;&gt;`_</span></a>.
 You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
 for review as a merge request. All suggestions and improvements are welcomed, they don’t have to be major changes!</p>
 </div>
 <div class="section" id="adding-new-functionalities">
-<h3>Adding new functionalities<a class="headerlink" href="#adding-new-functionalities" title="Permalink to this headline">¶</a></h3>
+<h2>Adding new functionalities<a class="headerlink" href="#adding-new-functionalities" title="Permalink to this headline">¶</a></h2>
 <p>Adding new functionalities to DHTK is as simple as modifying the relevant file.
 If a new Python function, class or method is required to improve DHTK usability, then
 contributor can add then directly to the code and submit a merge request.</p>
 </div>
 <div class="section" id="dhtk-modularisation">
-<h3>DHTK modularisation<a class="headerlink" href="#dhtk-modularisation" title="Permalink to this headline">¶</a></h3>
+<h2>DHTK modularisation<a class="headerlink" href="#dhtk-modularisation" title="Permalink to this headline">¶</a></h2>
 <p>DHTK is divided into three parts as described in the <a class="reference external" href="./architecture.html">architecture</a> page.
 The three parts are organised in separate directories (core, extensions, processing) for easier identification
 and navigation. Active development is expected mostly for the extension processing modules as new datasets and methods are added to
 DHTK.</p>
 </div>
 <div class="section" id="dataset-rdf">
-<h3>Dataset RDF<a class="headerlink" href="#dataset-rdf" title="Permalink to this headline">¶</a></h3>
+<h2>Dataset RDF<a class="headerlink" href="#dataset-rdf" title="Permalink to this headline">¶</a></h2>
 <p>A ready to use RDF file should be made available to the user for each new DHTK extension module. These files can be
 stored in any remotely accessible locations, though we would recommend using <a class="reference external" href="https://about.zenodo.org/">Zenodo</a>.
 For reproducibility and transparency, the full pipeline used to produce the RDF files (including instructions on
 how to use it should also be made available under the <strong>“builder directory”</strong> of the module.</p>
 </div>
 <div class="section" id="integrating-new-modules">
-<h3>Integrating new modules<a class="headerlink" href="#integrating-new-modules" title="Permalink to this headline">¶</a></h3>
+<h2>Integrating new modules<a class="headerlink" href="#integrating-new-modules" title="Permalink to this headline">¶</a></h2>
 <p>DHTK core modules are responsible to locate and load any module within the extension directory.
 Due to the modular architecture of DHTK, these extensions can be easily developed as self-sufficient Python modules,
 which are alter integrated into the DHTK framework. Doing so requires two steps:</p>
@@ -182,7 +176,10 @@ the <strong>methods to query and save the results</strong>. Any additional metho
 included.</p>
 <p><em>Gutenberg __init__:</em></p>
 <p><strong>1) Define required name and url attributes</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Note the addition of the wrapper attribute which is used to reference the “query class” object</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 
@@ -332,62 +329,6 @@ information.</p>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="contributors">
-<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="project-manager">
-<h3>Project Manager<a class="headerlink" href="#project-manager" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Davide Picca</p></li>
-</ul>
-<p>Maitre d’Enseignement et de Recherche at the department of <a class="reference external" href="http://unil.ch/sli">Language and Information Science</a> at the University of Lausanne (Switzerland).</p>
-</div>
-<div class="section" id="technical-leaders">
-<h3>Technical Leaders<a class="headerlink" href="#technical-leaders" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Mattia Egloff</p></li>
-</ul>
-<p>Phd Candidate and researcher at the department of <a class="reference external" href="http://unil.ch/sli">Language and Information Science</a> at the University of Lausanne (Switzerland).</p>
-</div>
-<div class="section" id="main-developers">
-<h3>Main Developers<a class="headerlink" href="#main-developers" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Alessandro Amadou</p></li>
-</ul>
-<p>Research fellow at the <a class="reference external" href="http://www.insight-centre.org">Insight Centre for Data Analytics</a>, National University of Ireland, Galway.</p>
-</div>
-<div class="section" id="student-contributors">
-<h3>Student Contributors<a class="headerlink" href="#student-contributors" title="Permalink to this headline">¶</a></h3>
-<p>Students of UNIL’s Python object oriented programming class contribute to the project.</p>
-<ul class="simple">
-<li><p>Loïc Aubrays</p></li>
-<li><p>Asiyeh Balabeglookaviji</p></li>
-<li><p>Gavon Balharry</p></li>
-<li><p>Maxime Bony</p></li>
-<li><p>Rafael Bruni Baschino</p></li>
-<li><p>Noémie Carette</p></li>
-<li><p>Leonardo Cavaliere</p></li>
-<li><p>Lucien Chapuisat</p></li>
-<li><p>Nahuel Degonda</p></li>
-<li><p>Renato Diaz</p></li>
-<li><p>Petra Draskovic</p></li>
-<li><p>Olivia Edelman</p></li>
-<li><p>Mounira Elmezrigui</p></li>
-<li><p>Daniel Escoval</p></li>
-<li><p>David Flühmann</p></li>
-<li><p>Cyrille Gay-Crosier</p></li>
-<li><p>Saara Jones</p></li>
-<li><p>Basile Maillard</p></li>
-<li><p>Vijeany Manguila</p></li>
-<li><p>Kirill Melnikov</p></li>
-<li><p>Robin Pitteloud</p></li>
-<li><p>Loris Rimaz</p></li>
-<li><p>Daniela-Maria Toma</p></li>
-<li><p>Fabio Torres Cabral</p></li>
-<li><p>Sorcha Walsh</p></li>
-</ul>
 </div>
 </div>
 </div>

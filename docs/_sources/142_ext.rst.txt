@@ -9,7 +9,7 @@ Extension API references
 
 AbstractExtension()
 -------------------
-.. automodule:: dhtk.extensions.blueprint
+.. autoclass:: dhtk.extensions.blueprint.AbstractExtension
    :members:
 
 This blueprint can be used to wrap the new modules into DHTK.
@@ -18,10 +18,4 @@ For more information, see `Community <./community.html>`_
 Gutenberg extension
 -------------------
 
-.. include:: ./extensions/gutenberg.rst
-
-.. toctree::
-   :hidden:
-   :maxdepth: 3
-
-   extensions/gutenberg
+.. include:: ./extensions/gutenberg

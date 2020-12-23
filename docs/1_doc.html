@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>Architecture &mdash; DHTK 1.0.2 documentation</title>
+    <title>Documentation &mdash; DHTK 1.0.2 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/css/spc-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="_static/css/spc-extend.css">
@@ -31,8 +31,8 @@
     <link rel="index" title="Index" href="genindex.html" >
     <link rel="search" title="Search" href="search.html" >
     <link rel="top" title="DHTK 1.0.2 documentation" href="index.html" >
-    <link rel="next" title="Core API references" href="api.html" >
-    <link rel="prev" title="Getting started" href="intro.html" > 
+    <link rel="next" title="Getting started" href="11_intro.html" >
+    <link rel="prev" title="Welcome to DHTK’s documentation!" href="index.html" > 
   </head>
   <body>
   <div class="container">
@@ -60,15 +60,11 @@
            accesskey="I">index</a>
       </li>
       <li class="active">
-        <a href="py-modindex.html" title="Python Module Index"
-           >modules</a>
-      </li>
-      <li class="active">
-        <a href="api.html" title="Core API references"
+        <a href="11_intro.html" title="Getting started"
            accesskey="N">next</a>
       </li>
       <li class="active">
-        <a href="intro.html" title="Getting started"
+        <a href="index.html" title="Welcome to DHTK’s documentation!"
            accesskey="P">previous</a>
       </li>
     </ul>
@@ -86,32 +82,26 @@
             </a></p>
 <h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Getting started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#core-modules">Core Modules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="api.html">Core API references</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Home</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="11_intro.html">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="141_core.html">Core API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="143_proc.html">Processing API</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#extension-modules">Extension modules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="extensions/gutenberg_api.html">Gutenberg module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="extensions.html">Extension API references</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#processing-modules">Processing modules</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="process.html">Processing API reference</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_community.html">Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_faq.html">FAQ</a></li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="intro.html"
-                        title="previous chapter">Getting started</a></p>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to DHTK’s documentation!</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="api.html"
-                        title="next chapter">Core API references</a></p>
+  <p class="topless"><a href="11_intro.html"
+                        title="next chapter">Getting started</a></p>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -129,20 +119,18 @@
         <div class="bodywrapper">
           <div class="body" id="spc-section-body" role="main">
             
-  <div class="section" id="architecture">
-<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
 <p>DHTK is divided in three parts: the core modules, the extension modules and
 the processing modules as described below.</p>
-<div class="section" id="core-modules">
-<h2>Core Modules<a class="headerlink" href="#core-modules" title="Permalink to this headline">¶</a></h2>
+<p class="rubric"><strong>Core Modules</strong></p>
 <p>The core modules define DHTK configurations, logging and functionality loading,
 providing the initial framework underlying the modularisation of DHTK.</p>
 <p><strong>For more information</strong>, see <a class="reference external" href="./api.html">Core API reference</a></p>
-<div class="toctree-wrapper compound">
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Extension modules</strong></p>
 </div>
-</div>
-<div class="section" id="extension-modules">
-<h2>Extension modules<a class="headerlink" href="#extension-modules" title="Permalink to this headline">¶</a></h2>
 <p>The extension modules are modules that add functionalities for querying and searching
 specific databases or data types. It includes the <a class="reference external" href="./extensions#blueprint">blueprint</a> to help with development and contribution from the
 Digital Humanities’ <a class="reference external" href="./community">community</a>, allowing easy integration of new modules and
@@ -151,12 +139,11 @@ continuous growth to better suit the different DHTK users.</p>
 <a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a> and <a class="reference external" href="https://auchinleck.nls.uk/">Auchinkleck manuscript</a>,
 because of its immediate relevance in the Humanities community and the
 lack of automatic tools available in order to exploit these specific resources.</p>
-<p><strong>For more information</strong>, see <a class="reference external" href="./extensions.html">Extensions API reference</a></p>
-<div class="toctree-wrapper compound">
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="./extensions.html">Extensions API reference</a></p>
 </div>
-</div>
-<div class="section" id="processing-modules">
-<h2>Processing modules<a class="headerlink" href="#processing-modules" title="Permalink to this headline">¶</a></h2>
+<p class="rubric"><strong>Processing modules</strong></p>
 <p>One of the most important aspects for a humanist is not just the availability
 of texts but also the metadata coming with texts. Unfortunately, not all
 repositories have complete. For example, Project Gutenberg does not store the original
@@ -171,9 +158,11 @@ explore and generate new insight from the relevant dataset.</p>
 <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</a> technologies
 (<em>e.g</em> <a class="reference external" href="vhttps://en.wikipedia.org/wiki/Natural_language_processing">NLP</a>),
 DHTK aims to make these tools easily accessible to the Humanities scholar soon.</p>
-<p><strong>For more information</strong>, see <a class="reference external" href="./process.html">Processing API reference</a></p>
-<div class="toctree-wrapper compound">
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="./process.html">Processing API reference</a></p>
 </div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 

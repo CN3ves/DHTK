@@ -1,17 +1,3 @@
-#########
-Community
-#########
-We are proud to say that the DHTK community is growing continuously.
-Being created by the researchers of the "Informatique pour les Sciences Humaines" of the University of Lausanne,
-the project has seen an increased interest from both the teachers of other sections and the students,
-both from Bachelor and Master programs. DHTK was also presented at the Second Workshop on Humanities in
-the Semantic Web (WHiSeII) co-located with 16th International Semantic Web Conference (ISWC 2017),
-held in Vienna, Austria in 2017. Multiple visitors of the workshop have expressed interest in DHTK and
-the project was well received. As such, people from different walks of life from different parts of the
-world have already become a part of our community. You can do so too by contributing to this open source
-project.
-
-
 ==========================
 How to contribute to DHTK?
 ==========================
@@ -69,7 +55,7 @@ included.
 
 **1) Define required name and url attributes**
 
-Note the addition of the wrapper attribute which is used to reference the "query class" object
+.. note:: Note the addition of the wrapper attribute which is used to reference the "query class" object
 
 .. literalinclude:: ./examples/contributing.py
     :language: python
@@ -101,58 +87,4 @@ information.
     :lines: 118-139
     :emphasize-lines: 1,16
 
-============
-Contributors
-============
 
-Project Manager
----------------
-
-- Davide Picca
-
-Maitre d'Enseignement et de Recherche at the department of `Language and Information Science <http://unil.ch/sli>`_ at the University of Lausanne (Switzerland).
-
-Technical Leaders
------------------
-
-- Mattia Egloff
-
-Phd Candidate and researcher at the department of `Language and Information Science <http://unil.ch/sli>`_ at the University of Lausanne (Switzerland).
-
-Main Developers
----------------
-
-- Alessandro Amadou
-
-Research fellow at the `Insight Centre for Data Analytics <http://www.insight-centre.org>`_, National University of Ireland, Galway.
-
-Student Contributors
---------------------
-
-Students of UNIL's Python object oriented programming class contribute to the project.
-
-- Loïc Aubrays
-- Asiyeh Balabeglookaviji
-- Gavon Balharry
-- Maxime Bony
-- Rafael Bruni Baschino
-- Noémie Carette
-- Leonardo Cavaliere
-- Lucien Chapuisat
-- Nahuel Degonda
-- Renato Diaz
-- Petra Draskovic
-- Olivia Edelman
-- Mounira Elmezrigui
-- Daniel Escoval
-- David Flühmann
-- Cyrille Gay-Crosier
-- Saara Jones
-- Basile Maillard
-- Vijeany Manguila
-- Kirill Melnikov
-- Robin Pitteloud
-- Loris Rimaz
-- Daniela-Maria Toma
-- Fabio Torres Cabral
-- Sorcha Walsh

@@ -1,32 +1,3 @@
-###############
-Getting started
-###############
-
-============
-Installation
-============
-
-In order to install DHTK, `Python 3.x <https://www.python.org/downloads/>`_ is required.
-Note that when using a local endpoint, `Docker <https://docs.docker.com/get-docker/>`_ application is required
-as DHTK uses a Fuseki container as endpoint.
-
-There are two ways to get DHTK python module:
-
-**1)** Download the `DHTK source code <https://gitlab.com/dhtk/dhtk/tree/master>`_ in your preferred format,
-extract the DHTK files and access them via console.
-
-::
-
-    $ cd dhtk
-    $ python setup.py
-
-**2)** Use package installer for Python (pip):
-
-::
-
-    $ pip install git+https://gitlab.com/dhtk/dhtk.git
-
-
 ==========
 How to use
 ==========

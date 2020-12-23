@@ -1,26 +1,18 @@
-============
-Architecture
-============
+=============
+Documentation
+=============
 DHTK is divided in three parts: the core modules, the extension modules and
 the processing modules as described below.
 
 
-Core Modules
-------------
+.. rubric:: **Core Modules**
 
 The core modules define DHTK configurations, logging and functionality loading,
 providing the initial framework underlying the modularisation of DHTK.
 
 **For more information**, see `Core API reference <./api.html>`_
 
-.. toctree::
-   :hidden:
-   :maxdepth: 3
-
-   api
-
-Extension modules
------------------
+.. seealso:: **Extension modules**
 
 The extension modules are modules that add functionalities for querying and searching
 specific databases or data types. It includes the `blueprint <./extensions#blueprint>`_ to help with development and contribution from the
@@ -32,17 +24,9 @@ The current version focuses on textual resources such as
 because of its immediate relevance in the Humanities community and the
 lack of automatic tools available in order to exploit these specific resources.
 
-**For more information**, see `Extensions API reference <./extensions.html>`_
+.. seealso:: `Extensions API reference <./extensions.html>`_
 
-.. toctree::
-   :hidden:
-   :maxdepth: 3
-
-   extensions/gutenberg_api
-   extensions
-
-Processing modules
-------------------
+.. rubric:: **Processing modules**
 
 One of the most important aspects for a humanist is not just the availability
 of texts but also the metadata coming with texts. Unfortunately, not all
@@ -61,11 +45,14 @@ Leveraging the power of cutting-edge
 (*e.g* `NLP <vhttps://en.wikipedia.org/wiki/Natural_language_processing>`_),
 DHTK aims to make these tools easily accessible to the Humanities scholar soon.
 
-**For more information**, see `Processing API reference <./process.html>`_
+.. seealso:: `Processing API reference <./process.html>`_
 
 .. toctree::
    :hidden:
-   :maxdepth: 3
+   :maxdepth: 1
 
-   process
+   Getting started <11_intro>
+   User guide <12_guide>
+   Developer guide <13_devs>
+   API details <14_api>
 

@@ -19,3 +19,9 @@ Gutenberg extension
 -------------------
 
 .. include:: ./extensions/gutenberg.rst
+
+.. toctree::
+   :hidden:
+   :maxdepth: 3
+
+   extensions/gutenberg

@@ -13,6 +13,12 @@ providing the initial framework underlying the modularisation of DHTK.
 
 **For more information**, see `Core API reference <./api.html>`_
 
+.. toctree::
+   :hidden:
+   :maxdepth: 3
+
+   api
+
 Extension modules
 -----------------
 
@@ -27,6 +33,13 @@ because of its immediate relevance in the Humanities community and the
 lack of automatic tools available in order to exploit these specific resources.
 
 **For more information**, see `Extensions API reference <./extensions.html>`_
+
+.. toctree::
+   :hidden:
+   :maxdepth: 3
+
+   extensions/gutenberg_api
+   extensions
 
 Processing modules
 ------------------
@@ -49,3 +62,10 @@ Leveraging the power of cutting-edge
 DHTK aims to make these tools easily accessible to the Humanities scholar soon.
 
 **For more information**, see `Processing API reference <./process.html>`_
+
+.. toctree::
+   :hidden:
+   :maxdepth: 3
+
+   process
+

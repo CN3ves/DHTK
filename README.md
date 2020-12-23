@@ -10,4 +10,4 @@ test page:
 https://cn3ves.github.io/DHTK/
 
 test theme:
-https://pypi.org/project/sphinx-documatt-theme/
+https://github.com/enthought/enthought-sphinx-theme

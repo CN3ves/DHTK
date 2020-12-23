@@ -7,8 +7,9 @@
 Extension API references
 ########################
 
-AbstractExtension()
--------------------
+AbstractExtension
+-----------------
+
 .. autoclass:: dhtk.extensions.blueprint.AbstractExtension
    :members:
 

@@ -24,7 +24,7 @@ SPARQL Endpoint
 Dataset Manager
 ===============
 
-.. autoclass:: dhtk.core.dataset.DatasetLoaders
+.. autoclass:: dhtk.core.dataset.DatasetLoader
    :members:
 
 

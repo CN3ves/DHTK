@@ -27,8 +27,6 @@ By introducing the Digital Humanities Tool Kit (DHTK), we present a new python l
 limits by providing a fast and intuitive tool for a large-scale study of large literary databases by leveraging
 on some well-known semantic knowledge resources, supporting and simplifying research in Digital Humanities.
 
-
-
 ========
 Features
 ========
@@ -40,13 +38,13 @@ Features
 Changelog
 ---------
 .. versionadded:: 1.0.2
-- Added the "Clean Text" module that gets rid of header, footer and footnotes
-- Added "Tests" files that will help us provide you with a stable working toolkit, as well as help in adding new features and implementing contributions by our community 7
+   - Added the "Clean Text" module that gets rid of header, footer and footnotes
+   - Added "Tests" files that will help us provide you with a stable working toolkit, as well as help in adding new features and implementing contributions by our community 7
 
 .. versionadded:: 1.0.2
-- Simplified programmatic use
-- Unified structure for easier extension dataset integration
-- Automated DHTK set up, including local Docker checking and installation (Mac only)
+   - Simplified programmatic use
+   - Unified structure for easier extension dataset integration
+   - Automated DHTK set up, including local Docker checking and installation (Mac only)
 
 ============
 Publications

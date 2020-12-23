@@ -92,14 +92,19 @@
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="141_core.html">Core API</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Extensions API</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#abstractextension">AbstractExtension()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abstractextension">AbstractExtension</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gutenberg-extension">Gutenberg extension</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#gutenberg-module">Gutenberg module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gutenberg-module">Gutenberg module</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#gutenbergdata">GutenbergData</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gutenbergauthor">GutenbergAuthor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gutenbergbook">GutenbergBook</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#corpus">Corpus</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#gutenbergtexts">GutenbergTexts</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#textpartdetector">TextPartDetector</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#gutenbergdata">GutenbergData()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gutenbergtexts">GutenbergTexts()</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#textpartdetector">TextPartDetector()</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="143_proc.html">Processing API</a></li>
@@ -135,7 +140,7 @@
   <div class="section" id="extension-api-references">
 <h1>Extension API references<a class="headerlink" href="#extension-api-references" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="abstractextension">
-<h2>AbstractExtension()<a class="headerlink" href="#abstractextension" title="Permalink to this headline">¶</a></h2>
+<h2>AbstractExtension<a class="headerlink" href="#abstractextension" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="dhtk.extensions.blueprint.AbstractExtension">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>
@@ -200,16 +205,17 @@ If all, retrieve all information available</p></li>
 
 </dd></dl>
 
-</div>
-</div>
 <div class="section" id="gutenbergdata">
-<h2>GutenbergData()<a class="headerlink" href="#gutenbergdata" title="Permalink to this headline">¶</a></h2>
+<h4>GutenbergData<a class="headerlink" href="#gutenbergdata" title="Permalink to this headline">¶</a></h4>
 <dl class="py attribute">
 <dt id="dhtk.extensions.gutenberg.Data">
 <code class="sig-prename descclassname">dhtk.extensions.gutenberg.</code><code class="sig-name descname">Data</code><a class="headerlink" href="#dhtk.extensions.gutenberg.Data" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="#dhtk.extensions.gutenberg.Data" title="dhtk.extensions.gutenberg.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">dhtk.extensions.gutenberg.Data</span></code></a></p>
 </dd></dl>
 
+</div>
+<div class="section" id="gutenbergauthor">
+<h4>GutenbergAuthor<a class="headerlink" href="#gutenbergauthor" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Author.</code><code class="sig-name descname">GutenbergAuthor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor" title="Permalink to this definition">¶</a></dt>
@@ -583,6 +589,9 @@ biography and bibliography.</p>
 
 </dd></dl>
 
+</div>
+<div class="section" id="gutenbergbook">
+<h4>GutenbergBook<a class="headerlink" href="#gutenbergbook" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
@@ -1005,6 +1014,9 @@ and on the file encoding.</p>
 
 </dd></dl>
 
+</div>
+<div class="section" id="corpus">
+<h4>Corpus<a class="headerlink" href="#corpus" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Corpus.</code><code class="sig-name descname">GutenbergCorpus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">corpora_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">book_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus" title="Permalink to this definition">¶</a></dt>
@@ -1353,7 +1365,7 @@ machine.</p>
 
 </div>
 <div class="section" id="gutenbergtexts">
-<h2>GutenbergTexts()<a class="headerlink" href="#gutenbergtexts" title="Permalink to this headline">¶</a></h2>
+<h4>GutenbergTexts<a class="headerlink" href="#gutenbergtexts" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Texts.</code><code class="sig-name descname">GutenbergTexts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em>, <em class="sig-param"><span class="n">repository_uri</span><span class="o">=</span><span class="default_value">'http://aleph.gutenberg.org'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts" title="Permalink to this definition">¶</a></dt>
@@ -1445,7 +1457,7 @@ machine.</p>
 
 </div>
 <div class="section" id="textpartdetector">
-<h2>TextPartDetector()<a class="headerlink" href="#textpartdetector" title="Permalink to this headline">¶</a></h2>
+<h4>TextPartDetector<a class="headerlink" href="#textpartdetector" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Text_part_detector.</code><code class="sig-name descname">TextPartDetector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">raw_text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector" title="Permalink to this definition">¶</a></dt>
@@ -1554,6 +1566,8 @@ Ex: “The chapter was finished” will not match</p>
 
 </dd></dl>
 
+</div>
+</div>
 </div>
 </div>
 

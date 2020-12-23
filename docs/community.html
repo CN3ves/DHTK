@@ -146,7 +146,7 @@ DHTK community!</p>
 <p>Before planning any improvement or addition to DHTK, please write us at: <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
 <div class="section" id="contributing-to-dhtk">
 <h3>Contributing to DHTK<a class="headerlink" href="#contributing-to-dhtk" title="Permalink to this headline">¶</a></h3>
-<p>DHTK is a collective open source effort. To contribute and help us improve, visit our <a href="#id6"><span class="problematic" id="id7">`GitHub page &lt;&gt;`_</span></a>.
+<p>DHTK is a collective open source effort. To contribute and help us improve, visit our <a href="#id2"><span class="problematic" id="id3">`GitHub page &lt;&gt;`_</span></a>.
 You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
 for review as a merge request. All suggestions and improvements are welcomed, they don’t have to be major changes!</p>
 </div>
@@ -177,11 +177,7 @@ Due to the modular architecture of DHTK, these extensions can be easily develope
 which are alter integrated into the DHTK framework. Doing so requires two steps:</p>
 <ol class="arabic simple">
 <li><p>All new module must be place inside this directory <em>(./dhtk/extensions/new_module)</em></p></li>
-<li><dl class="simple">
-<dt>The __init__ file for the module must contains a class named Module, inheriting from the</dt><dd><p><a class="reference external" href="./extensions.html">AbstractExtension</a> blueprint.</p>
-</dd>
-</dl>
-</li>
+<li><p>The __init__ file for the module must contains a class named Module, inheriting from the <a class="reference external" href="./extensions.html">AbstractExtension</a> blueprint.</p></li>
 </ol>
 <p>The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
 The new <strong>Module class</strong> is essentially a wrapper around a DHTK extension, defining the attributes <strong>name</strong> and <strong>url</strong>
@@ -189,27 +185,27 @@ The new <strong>Module class</strong> is essentially a wrapper around a DHTK ext
 the <strong>methods to query and save the results</strong>. Any additional method that improves the Module class can be freely
 included.</p>
 <p><em>Gutenberg __init__:</em></p>
-<p><strong>1) Define required name and url attributes</strong>
-Note the addition of the wrapper attribute which is used to reference the “query class” object</p>
+<p><strong>1) Define required name and url attributes</strong></p>
+<p>Note the addition of the wrapper attribute which is used to reference the “query class” object</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 
-<span class="hll">        <span class="c1"># Defaults required to be defined for each extension</span>
-</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gutenberg&quot;</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://sandbox.zenodo.org/record/709580/files/gutenberg_reasoned_final.ttl?download=1&quot;</span>
-
+        <span class="c1"># Defaults required to be defined for each extension</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gutenberg&quot;</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://sandbox.zenodo.org/record/709580/files/gutenberg_reasoned_final.ttl?download=1&quot;</span>
+</span>
         <span class="c1"># Instantiate a Corpus</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Corpus&quot;</span><span class="p">,</span>
                               <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gutenberg Books&quot;</span><span class="p">,</span>
                               <span class="n">settings</span><span class="o">=</span><span class="n">settings</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_endpoint</span><span class="p">()</span>
 
-<span class="hll">        <span class="c1"># Get the extension</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">(</span><span class="n">sparql_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ENDPOINT</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">LOGS</span><span class="p">)</span>
-</pre></div>
+        <span class="c1"># Get the extension</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">(</span><span class="n">sparql_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ENDPOINT</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">LOGS</span><span class="p">)</span>
+</span></pre></div>
 </div>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>2) Defining required methods. **
-Two methods are required to be defined. The <em>get(what, name, add)</em> provides a unified wrapper around
+<p><strong>2) Defining required methods.</strong></p>
+<p>Two methods are required to be defined. The <em>get(what, name, add)</em> provides a unified wrapper around
 the possible queries, simplifying the use of new extensions. The <em>save()</em> method stores the retrieved data on disk.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 </span>        <span class="sd">&quot;&quot;&quot;</span>
@@ -294,8 +290,8 @@ the possible queries, simplifying the use of new extensions. The <em>save()</em>
 
         <span class="k">return</span> <span class="n">response</span>
 
-    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
+<span class="hll">    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span>
         <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">path</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
@@ -303,19 +299,19 @@ the possible queries, simplifying the use of new extensions. The <em>save()</em>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">download_corpus</span><span class="p">()</span>
 
-<span class="hll">        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;corpus.pk&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickled_file</span><span class="p">:</span>
-</span>            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(),</span> <span class="n">pickled_file</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;corpus.pk&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickled_file</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(),</span> <span class="n">pickled_file</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
         <span class="n">pickled_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>3) Defining additional methods. **
-Gutenberg’s Module class contains two extra methods. The suggested <em>welcome()</em> method
+<p><strong>3) Defining additional methods.</strong></p>
+<p>Gutenberg’s Module class contains two extra methods. The suggested <em>welcome()</em> method
 automatically provides the user with the dataset statistics. This method is called when a module is loaded,
 and can be used to provide the user with any (or no) information.</p>
 <p>The <em>corpus</em> method is not defined in parent AbstractExtension class, but it provides a simpler way to modify
-a corpus’ settings and retrive its representation, being a suitable intermediate method to search for book and author
+a corpus’ settings and retrieve its representation, being a suitable intermediate method to search for book and author
 information.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll">    <span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 </span>
@@ -331,9 +327,9 @@ information.</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">timestamp</span> <span class="o">=</span> <span class="n">timestamp</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> %b %y&quot;</span><span class="p">)</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">DHTK Gutenberg statistics:</span><span class="se">\n</span><span class="s2">Last update: </span><span class="si">{</span><span class="n">timestamp</span><span class="si">}{</span><span class="n">stats</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="hll">
-</span>    <span class="k">def</span> <span class="nf">corpus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="hll">    <span class="k">def</span> <span class="nf">corpus</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span>        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">description</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>

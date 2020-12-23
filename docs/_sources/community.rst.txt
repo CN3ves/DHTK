@@ -57,8 +57,7 @@ Due to the modular architecture of DHTK, these extensions can be easily develope
 which are alter integrated into the DHTK framework. Doing so requires two steps:
 
 1) All new module must be place inside this directory *(./dhtk/extensions/new_module)*
-2) The __init__ file for the module must contains a class named Module, inheriting from the
-    `AbstractExtension <./extensions.html>`_ blueprint.
+2) The __init__ file for the module must contains a class named Module, inheriting from the `AbstractExtension <./extensions.html>`_ blueprint.
 
 The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
 The new **Module class** is essentially a wrapper around a DHTK extension, defining the attributes **name** and **url**
@@ -69,35 +68,38 @@ included.
 *Gutenberg __init__:*
 
 **1) Define required name and url attributes**
+
 Note the addition of the wrapper attribute which is used to reference the "query class" object
 
 .. literalinclude:: ./examples/contributing.py
     :language: python
     :lines: 4-18
-    :emphasize-lines: 4,5,14
+    :emphasize-lines: 5,6,15
 
-**2) Defining required methods. **
+**2) Defining required methods.**
+
 Two methods are required to be defined. The *get(what, name, add)* provides a unified wrapper around
 the possible queries, simplifying the use of new extensions. The *save()* method stores the retrieved data on disk.
 
 .. literalinclude:: ./examples/contributing.py
     :language: python
     :lines: 20-116
-    :emphasize-lines: 1,93
+    :emphasize-lines: 1,84
 
-**3) Defining additional methods. **
+**3) Defining additional methods.**
+
 Gutenberg's Module class contains two extra methods. The suggested *welcome()* method
 automatically provides the user with the dataset statistics. This method is called when a module is loaded,
 and can be used to provide the user with any (or no) information.
 
 The *corpus* method is not defined in parent AbstractExtension class, but it provides a simpler way to modify
-a corpus' settings and retrive its representation, being a suitable intermediate method to search for book and author
+a corpus' settings and retrieve its representation, being a suitable intermediate method to search for book and author
 information.
 
 .. literalinclude:: ./examples/contributing.py
     :language: python
     :lines: 118-139
-    :emphasize-lines: 1,15
+    :emphasize-lines: 1,16
 
 ============
 Contributors

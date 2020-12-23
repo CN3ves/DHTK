@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>Get started &mdash; Digital Humanities ToolKit (DHTK) 1.0.2 documentation</title>
+    <title>Getting started &mdash; DHTK 1.0.2 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/css/spc-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="_static/css/spc-extend.css">
@@ -30,7 +30,7 @@
     <link rel="shortcut icon" href="_static/img/favicon.ico">
     <link rel="index" title="Index" href="genindex.html" >
     <link rel="search" title="Search" href="search.html" >
-    <link rel="top" title="Digital Humanities ToolKit (DHTK) 1.0.2 documentation" href="index.html" >
+    <link rel="top" title="DHTK 1.0.2 documentation" href="index.html" >
     <link rel="next" title="Architecture" href="architecture.html" >
     <link rel="prev" title="Welcome to DHTK’s documentation!" href="index.html" > 
   </head>
@@ -49,7 +49,7 @@
               
     <ul class="nav nav-pills pull-left">
 	
-        <li class="active"><a href="index.html">Digital Humanities ToolKit (DHTK) 1.0.2 documentation</a></li>
+        <li class="active"><a href="index.html">DHTK 1.0.2 documentation</a></li>
 	 
     </ul>
               
@@ -86,7 +86,7 @@
             </a></p>
 <h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Get started</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting started</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#how-to-use">How to use</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#gutenberg">Gutenberg</a></li>
@@ -122,8 +122,8 @@
         <div class="bodywrapper">
           <div class="body" id="spc-section-body" role="main">
             
-  <div class="section" id="get-started">
-<h1>Get started<a class="headerlink" href="#get-started" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>In order to install DHTK, <a class="reference external" href="https://www.python.org/downloads/">Python 3.x</a> is required.
@@ -187,15 +187,14 @@ they can be modified using the dot notation.</p>
 <p>The main settings are <em>user</em> and <em>wd</em>, respectively the user name and the DHTK’s working directory.
 These two settings are used to search for saved configurations and correctly
 organize the logs and save the search results in the DHTK folder structure.</p>
-<p><strong>3 a) Connect to a `SPARQL &lt;https://en.wikipedia.org/wiki/SPARQL&gt;`_ endpoint</strong></p>
+<p><strong>3 a) Connect to a</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> <strong>endpoint</strong></p>
 <p>If you’re using a remote SPARQL endpoint, you can provide it as a URL (website)
 using the <em>endpoint</em> setting. After DHTK is set up, this step is simply connects to the
 SPARQL endpoint to use. As such, it is integrated with the next step for moist user cases.
 However, note that this step performs important checks to ensure DHTK is properly set up.</p>
 <p><strong>3 b) Load the required DHTK extension</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1"># [_connect]: 30</span>
-</span><span class="n">gutenberg</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
-<span class="c1"># DHTK Gutenberg statistics:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="n">gutenberg</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">configs</span><span class="p">)</span>
+</span><span class="c1"># DHTK Gutenberg statistics:</span>
 <span class="c1"># Last update: 16 Dec 20</span>
 <span class="c1"># number of books: 56913</span>
 <span class="c1"># number of authors: 21031</span>

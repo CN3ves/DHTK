@@ -7,14 +7,14 @@ Processing API reference
 DbpediaMetadata()
 =================
 
-.. autoclass:: dhtk.processing.Metadata.DbpediaMetadata
+.. autoclass:: dhtk.process.Metadata.DbpediaMetadata
    :members:
 
 
 ViafMetadata()
 ==============
 
-.. autoclass:: dhtk.processing.Metadata.ViafMetadata
+.. autoclass:: dhtk.process.Metadata.ViafMetadata
    :members:
 
 
@@ -22,5 +22,5 @@ ViafMetadata()
 WikidataMetadata()
 ==================
 
-.. autoclass:: dhtk.processing.Metadata.WikidataMetadata
+.. autoclass:: dhtk.process.Metadata.WikidataMetadata
    :members:

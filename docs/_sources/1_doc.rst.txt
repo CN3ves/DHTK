@@ -10,9 +10,9 @@ the processing modules as described below.
 The core modules define DHTK configurations, logging and functionality loading,
 providing the initial framework underlying the modularisation of DHTK.
 
-**For more information**, see `Core API reference <./api.html>`_
+.. seealso:: `Core API reference <./api.html>`_
 
-.. seealso:: **Extension modules**
+.. rubric:: **Extension modules**
 
 The extension modules are modules that add functionalities for querying and searching
 specific databases or data types. It includes the `blueprint <./extensions#blueprint>`_ to help with development and contribution from the
@@ -49,7 +49,7 @@ DHTK aims to make these tools easily accessible to the Humanities scholar soon.
 
 .. toctree::
    :hidden:
-   :maxdepth: 1
+   :maxdepth: 3
 
    Getting started <11_intro>
    User guide <12_guide>

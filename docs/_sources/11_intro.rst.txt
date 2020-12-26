@@ -2,29 +2,64 @@
 Getting started
 ###############
 
-============
 Installation
 ============
 
-In order to install DHTK, `Python 3.x <https://www.python.org/downloads/>`_ is required.
-Note that when using a local endpoint, `Docker <https://docs.docker.com/get-docker/>`_ application is required
-as DHTK uses a Fuseki container as endpoint.
+**Install Python**
 
-There are two ways to get DHTK python module:
+As DHTK is a Python modules, make sure you have Python installed on your system.
+You can do this in three different ways:
 
-**1)** Download the `DHTK source code <https://gitlab.com/dhtk/dhtk/tree/master>`_ in your preferred format,
-extract the DHTK files and access them via console.
+1) Manually search the common locations where your system saves applications.
+2) You can use the search file options from you system to find the Python application
+3) You can type `python --version` on your command line or powershell (Windows)
+
+If you don't have Python 3 installs, please `download it <https://www.python.org/downloads/>`_ and
+follow the instructions. We recommend using the most up-to-date Python 3 version,
+but DHTK is compatible with at least Python 3.5+.
+
+**Install Docker**
+
+In addition to Python 3, you are likely to use a local SPARQL endpoint when using
+DHTK to search pre-processed data. This requires setting up a Fuseki server container
+on the Docker application. To do so, you will need to
+`download Docker <https://docs.docker.com/get-docker/>`_ before running DHTK.
+
+.. note:: DHTK may attempt to install docker and set up all required containers and volumes. However,
+this feature is experimental and is only available of macOS systems at the moment.
+
+**Install DHTK**
+
+DHTK can be installed as a regular python modules, using the
+package installer for Python (pip):
+
+::
+
+    $ pip install git+https://gitlab.com/dhtk/dhtk.git
+
+Alternatively, you may download the `DHTK source code <https://gitlab.com/dhtk/dhtk/tree/master>`_ in your
+preferred format. Once you extract the DHTK files from the archive, you can access them via command line
+(or powershell).
 
 ::
 
     $ cd dhtk
     $ python setup.py
 
-**2)** Use package installer for Python (pip):
 
-::
+Using Gutenberg.org
+===================
 
-    $ pip install git+https://gitlab.com/dhtk/dhtk.git
+To start exploring DHTK's `Project Gutenberg <https://www.gutenberg.org/>`_ dataset,
+run:
+
+.. literalinclude:: ./examples/quick_gutenberg.py
+    :language: python
+
+.. note:: DHTK runs a number of system check to try to guarantee if can run without any problem.
+If this is the first time you're running it, keep in mind that it may take considerable time to
+complete the the full set.
+
 
 
 

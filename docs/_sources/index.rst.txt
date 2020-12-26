@@ -3,52 +3,57 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+################################
 Welcome to DHTK's documentation!
-==============================================================
+################################
 
-#####################################################################
-A tool for processing digital text in different formats and languages
-#####################################################################
+In recent years, Digital Humanities have received a particular attention from both the Humanities
+and Computer Science communities. Scholars working in Digital Humanities research often need access
+datasets concerning cultural data.
 
-In recent years, Digital Humanities have received a particular attention in both the humanities and
-computer science communities.
+The Internet is a great source for searching and retrieving this kind of information and repositories
+such as Project Gutenberg, Europeana, Archive.org, *et similia*, provide many relevant dataset for
+researchers. However, many of these resources are organized and structured in different ways and are
+often incompatible, having different APIs and different metadata structures, which make these repositories
+difficult to exploit.
 
-Scholars involved in Digital Humanities research often need a certain number of datasets concerning cultural data.
-The Internet is a great source for this kind of information and repositories such as Project Gutenberg, Europeana,
-Archive.org, *et similia*, are great resources.
+Moreover, a number of powerful automatic methods for text, sound and image analyses have been developed,
+but these tools are technical difficult or do not properly fit the needs of the Humanities community.
 
-Although automatic tools for text or image analysis have already been created for
-some time, many of these tools have technical difficulties or scientific objectives that do not properly
-fit the needs of the humanities community. These resources are organized and structured in
-different ways and often incompatible, having different APIs and different metadata, which make these repositories
-difficult to exploit. Finding resources, checking metadata and finally cleaning data, can be a long and tedious process.
+*As a result, finding resources, checking metadata and finally processing cultural data and metadate,
+can be a long, tedious and complex process.*
 
-By introducing the Digital Humanities Tool Kit (DHTK), we present a new python library whose scope is to overcome these
-limits by providing a fast and intuitive tool for a large-scale study of large literary databases by leveraging
-on some well-known semantic knowledge resources, supporting and simplifying research in Digital Humanities.
+By introducing the Digital Humanities Tool Kit (DHTK), we propose a new python library whose scope is
+to overcome these limits by providing an intuitive tool for a large-scale study of large cultural databases,
+leveraging cutting-edge computation methods to support and simplifying research in Digital Humanities.
 
-========
-Features
-========
+.. seealso:: `Getting started <11_intro.html>`_
+
+.. rubric:: Features
+
 - Easy to use
 - Access to a wide range of literary works
 - The ability to analyze resources in an extended way
 - Efficient and time effective
 
-Changelog
----------
-.. versionadded:: 1.0.2
-   - Added the "Clean Text" module that gets rid of header, footer and footnotes
-   - Added "Tests" files that will help us provide you with a stable working toolkit, as well as help in adding new features and implementing contributions by our community 7
+.. rubric:: Changelog
+
+.. versionchanged:: 1.0.2
+
+- Unified framework for simplified programmatic access
+- Modularisation and addition of "module wrapper template" for easier integration of additional modules
 
 .. versionadded:: 1.0.2
-   - Simplified programmatic use
-   - Unified structure for easier extension dataset integration
-   - Automated DHTK set up, including local Docker checking and installation (Mac only)
 
-============
-Publications
-============
+- Automated DHTK's system check, including local Docker installation and configuration checks for local endpoints (macOS only)
+
+
+.. versionadded:: 1.0.1
+
+- *"Clean Text"* module to remove Gutenberg's header, footer and footnotes
+- *"Test"* files that will help us provide you with a stable working toolkit, as well as help in adding new features and implementing contributions from the community
+
+.. rubric:: Publications
 
 * Davide Picca and Mattia Egloff, `DHTK: The Digital Humanities ToolKit <https://pdfs.semanticscholar.org/b9fd/9f58aaec580e8feba2ee9ff3a69cdc079620.pdf>`_, WHiSe 2017
 * Mattia Egloff, Alessandro Adamou, Davide Picca, `Enabling Ontology-Based Data Access to Project Gutenberg <http://ceur-ws.org/Vol-2695/>`_, WHiSe 2020

@@ -88,6 +88,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="1_doc.html">Documentation</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Getting started</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-gutenberg-org">Using Gutenberg.org</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
@@ -126,20 +127,142 @@
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
-<p>In order to install DHTK, <a class="reference external" href="https://www.python.org/downloads/">Python 3.x</a> is required.
-Note that when using a local endpoint, <a class="reference external" href="https://docs.docker.com/get-docker/">Docker</a> application is required
-as DHTK uses a Fuseki container as endpoint.</p>
-<p>There are two ways to get DHTK python module:</p>
-<p><strong>1)</strong> Download the <a class="reference external" href="https://gitlab.com/dhtk/dhtk/tree/master">DHTK source code</a> in your preferred format,
-extract the DHTK files and access them via console.</p>
+<p><strong>Install Python</strong></p>
+<p>As DHTK is a Python modules, make sure you have Python installed on your system.
+You can do this in three different ways:</p>
+<ol class="arabic simple">
+<li><p>Manually search the common locations where your system saves applications.</p></li>
+<li><p>You can use the search file options from you system to find the Python application</p></li>
+<li><p>You can type <cite>python –version</cite> on your command line or powershell (Windows)</p></li>
+</ol>
+<p>If you don’t have Python 3 installs, please <a class="reference external" href="https://www.python.org/downloads/">download it</a> and
+follow the instructions. We recommend using the most up-to-date Python 3 version,
+but DHTK is compatible with at least Python 3.5+.</p>
+<p><strong>Install Docker</strong></p>
+<p>In addition to Python 3, you are likely to use a local SPARQL endpoint when using
+DHTK to search pre-processed data. This requires setting up a Fuseki server container
+on the Docker application. To do so, you will need to
+<a class="reference external" href="https://docs.docker.com/get-docker/">download Docker</a> before running DHTK.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DHTK may attempt to install docker and set up all required containers and volumes. However,</p>
+</div>
+<p>this feature is experimental and is only available of macOS systems at the moment.</p>
+<p><strong>Install DHTK</strong></p>
+<p>DHTK can be installed as a regular python modules, using the
+package installer for Python (pip):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install git+https://gitlab.com/dhtk/dhtk.git
+</pre></div>
+</div>
+<p>Alternatively, you may download the <a class="reference external" href="https://gitlab.com/dhtk/dhtk/tree/master">DHTK source code</a> in your
+preferred format. Once you extract the DHTK files from the archive, you can access them via command line
+(or powershell).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd dhtk
 $ python setup.py
 </pre></div>
 </div>
-<p><strong>2)</strong> Use package installer for Python (pip):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install git+https://gitlab.com/dhtk/dhtk.git
+</div>
+<div class="section" id="using-gutenberg-org">
+<h2>Using Gutenberg.org<a class="headerlink" href="#using-gutenberg-org" title="Permalink to this headline">¶</a></h2>
+<p>To start exploring DHTK’s <a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a> dataset,
+run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dhtk</span>
+<span class="c1"># ##################################################</span>
+<span class="c1"># Welcome to the Digital Humanities ToolKit,</span>
+<span class="c1"># the user-friendly Python API for</span>
+<span class="c1"># Digital Humanities research.</span>
+<span class="c1">#</span>
+<span class="c1"># For more information, please visit DHTK&#39;s website:</span>
+<span class="c1"># [https://dhtk.unil.ch/]</span>
+<span class="c1"># ##################################################</span>
+
+<span class="n">dhtk_configurations</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
+<span class="c1"># Current DHTK settings:</span>
+<span class="c1"># [user]: me</span>
+<span class="c1"># [wd]: /Users/me/DHTK/me</span>
+<span class="c1"># [endpoint]: localhost</span>
+<span class="c1"># [dataset]: gutenberg</span>
+<span class="c1"># [modules]: {}</span>
+<span class="c1"># [_file]: /Users/me/DHTK/me/me.config</span>
+<span class="c1"># [logger]: &lt;Logger dhtk (DEBUG)&gt;</span>
+<span class="c1"># [_port]: 3030</span>
+<span class="c1"># [_connect]: 30</span>
+
+<span class="n">gutenberg</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">dhtk_configurations</span><span class="p">)</span>
+<span class="c1"># DHTK Gutenberg statistics:</span>
+<span class="c1"># Last update: 26 Dec 20</span>
+<span class="c1"># number of books        :	 56913</span>
+<span class="c1"># number of authors      :	 21031</span>
+<span class="c1"># number of bookshelves  :	   337</span>
+<span class="c1"># number of subjects     :	 34045</span>
+
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Melville, Herman&quot;</span><span class="p">)</span>
+<span class="c1"># {&#39;Herman Melville&#39;: &lt;Author: Melville, Herman (http://www.gutenberg.org/2009/agents/9&gt;)}</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Melville, Herman&quot;</span><span class="p">)[</span><span class="s2">&quot;Herman Melville&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+<span class="c1"># Herman Melville</span>
+<span class="c1"># Metadata    :</span>
+<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/2009/agents/9</span>
+<span class="c1">#     - gutenberg_name: Melville, Herman</span>
+<span class="c1">#     - alias       : Melville, Hermann</span>
+<span class="c1">#     - name        : Herman Melville</span>
+<span class="c1">#     - birth_date  :         1819</span>
+<span class="c1">#     - death_date  :         1891</span>
+<span class="c1">#     - webpage     : http://en.wikipedia.org/wiki/Herman_Melville</span>
+<span class="c1">#     - gutenberg_type: http://www.gutenberg.org/2009/pgterms/agent</span>
+<span class="c1">#     - bibliography:</span>
+<span class="c1">#             - Bartleby, the Scrivener: A Story of Wall-Street</span>
+<span class="c1">#             - Battle-Pieces and Aspects of the War</span>
+<span class="c1">#             - I and My Chimney</span>
+<span class="c1">#             - Index of the Project Gutenberg Works of Herman Melville</span>
+<span class="c1">#             - Israel Potter: His Fifty Years of Exile</span>
+<span class="c1">#             - John Marr and Other Poems</span>
+<span class="c1">#             - Mardi: and A Voyage Thither, Vol. I</span>
+<span class="c1">#             - Mardi: and A Voyage Thither, Vol. II</span>
+<span class="c1">#             - Moby Dick</span>
+<span class="c1">#             - Moby Dick; Or, The Whale</span>
+<span class="c1">#             - Omoo: Adventures in the South Seas</span>
+<span class="c1">#             - Pierre; or The Ambiguities</span>
+<span class="c1">#             - Redburn. His First Voyage</span>
+<span class="c1"># Being the Sailor Boy Confessions and Reminiscences of the Son-Of-A-Gentleman in the Merchant Navy</span>
+<span class="c1">#             - The Apple-Tree Table, and Other Sketches</span>
+<span class="c1">#             - The Confidence-Man: His Masquerade</span>
+<span class="c1">#             - The Piazza Tales</span>
+<span class="c1">#             - Typee</span>
+<span class="c1">#             - Typee: A Romance of the South Seas</span>
+<span class="c1">#             - White Jacket; Or, The World on a Man-of-War</span>
+
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Moby Dick&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># {&#39;Moby Dick&#39;: &lt;Book: Herman Melville - Moby Dick (http://www.gutenberg.org/ebooks/15)&gt;,</span>
+<span class="c1"># &#39;Moby Dick; Or, The W&#39;: &lt;Book: Herman Melville - Moby Dick; Or, The Whale (http://www.gutenberg.org/ebooks/2701)&gt;}</span>
+
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span>
+<span class="c1"># Corpus name:</span>
+<span class="c1"># 	Gutenberg Corpus</span>
+<span class="c1"># Corpus description:</span>
+<span class="c1"># 	Gutenberg Books</span>
+<span class="c1"># Corpus path:</span>
+<span class="c1"># 	/Users/me/DHTK/me/requests/Gutenberg_Corpus</span>
+<span class="c1"># Corpus books:</span>
+<span class="c1"># 0	Herman Melville    	Moby Dick</span>
+<span class="c1"># 1	Herman Melville    	Moby Dick; Or, The Whale</span>
+<span class="c1"># 2	Herman Melville    	Moby Dick; Or, The Whale</span>
+
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="c1"># Corpus saved to /Users/me/DHTK/me/requests/Gutenberg_Corpus</span>
+
+<span class="c1"># ##########################</span>
+<span class="c1"># Thanks you for using DHTK!</span>
+<span class="c1"># ##########################</span>
+<span class="c1"># If you&#39;re done use exit() or Ctrl-D (i.e. EOF) to exit</span>
+<span class="c1"># Please send them any comments or suggestions to davide.picca@unil.ch.</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DHTK runs a number of system check to try to guarantee if can run without any problem.</p>
+</div>
+<p>If this is the first time you’re running it, keep in mind that it may take considerable time to
+complete the the full set.</p>
 </div>
 </div>
 

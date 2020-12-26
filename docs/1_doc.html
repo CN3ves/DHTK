@@ -119,46 +119,46 @@
             
   <div class="section" id="documentation">
 <h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
-<p>DHTK is divided in three parts: the core modules, the extension modules and
-the processing modules as described below.</p>
+<p>DHTK is organised in three main parts, each representing a function or concept of the DHTK structure:</p>
 <p class="rubric"><strong>Core Modules</strong></p>
-<p>The core modules define DHTK configurations, logging and functionality loading,
-providing the initial framework underlying the modularisation of DHTK.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference external" href="./api.html">Core API reference</a></p>
-</div>
+<p>The core modules define DHTK configurations, logging, system checks and extension loading.
+These modules control DHTK’s “start-up” forming the framework that underlying DHTK modularisation.</p>
 <p class="rubric"><strong>Extension modules</strong></p>
-<p>The extension modules are modules that add functionalities for querying and searching
-specific databases or data types. It includes the <a class="reference external" href="./extensions#blueprint">blueprint</a> to help with development and contribution from the
-Digital Humanities’ <a class="reference external" href="./community">community</a>, allowing easy integration of new modules and
-continuous growth to better suit the different DHTK users.</p>
-<p>The current version focuses on textual resources such as
+<p>The extension modules the modules adding DHTK’s for information querying and retrieval functionalities.
+DHTK modularity has most impact as new, stand-alone modules, can be easily integrated to extend DHTK capabilities.
+Each extension added to DHTK is associated to a specific resource, database or data types and adds specific
+functionalities tailored to the user’s needs, making DHTK a highly adaptable project, focused on addressing
+the community needs.</p>
+<p>The current DHTK version focuses on retrieving and processing metadata for textual resources such as
 <a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a> and <a class="reference external" href="https://auchinleck.nls.uk/">Auchinkleck manuscript</a>,
 because of its immediate relevance in the Humanities community and the
 lack of automatic tools available in order to exploit these specific resources.</p>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<p><a class="reference external" href="./extensions.html">Extensions API reference</a></p>
-</div>
 <p class="rubric"><strong>Processing modules</strong></p>
-<p>One of the most important aspects for a humanist is not just the availability
-of texts but also the metadata coming with texts. Unfortunately, not all
-repositories have complete. For example, Project Gutenberg does not store the original
+<p><strong>Linked Data</strong>:
+One of the most important aspects for a Humanities researcher is not just the availability
+of original data (<em>e.g.</em> text, sound, image) but also the metadata associated with it.
+Unfortunately, not all repositories are not completely annotated. For example,
+<a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a> does not store the original
 publishing date of its books, which can represent a problem if a corpus needs be
-delimited to a decade of published literature. Resources like DBpedia, thanks to its encyclopaedic
-nature, helps to rethink these elements.</p>
-<p>In addition, many statistical, classification
-and predictive have been recently developed they can help the researcher to further
-explore and generate new insight from the relevant dataset.</p>
-<p>Leveraging the power of cutting-edge
-<a class="reference external" href="https://en.wikipedia.org/wiki/Linked_data">Linked Open Data</a> and
-<a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</a> technologies
-(<em>e.g</em> <a class="reference external" href="vhttps://en.wikipedia.org/wiki/Natural_language_processing">NLP</a>),
-DHTK aims to make these tools easily accessible to the Humanities scholar soon.</p>
+delimited to a decade of published literature.
+Resources like <a class="reference external" href="https://wiki.dbpedia.org/">DBpedia</a> , thanks to its
+encyclopedic nature, helps to rethink these elements. DHTK data mining functionalities
+make use of the principles of the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Linked_data">Linked Open Data</a>  to explore
+available Web resources and identify relevant metadata to simplify collection of the most
+relevant metadata.</p>
+<p><strong>Machine Learning</strong>:
+Recent years have seen major developments of computational methods of statistical,
+classification and prediction analyses, These methods can automate many routine analyses,
+with gains in speed and often accuracy, helping the researcher to further explore and
+generate new insights from the relevant dataset. Unfortunately, many of these methods
+require an understanding of advanced programming, algorithmic and mathematical concepts,
+making it difficult to use by non-specialists. DHTK aims to progressively make these
+<a class="reference external" href="https://en.wikipedia.org/wiki/Machine_learning">machine learning</a> methods
+(<em>e.g</em> natural language processing, image processing) easily accessible to the Humanities scholar.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="./process.html">Processing API reference</a></p>
+<p><a class="reference external" href="14_api.html">API reference</a></p>
 </div>
 <div class="toctree-wrapper compound">
 </div>

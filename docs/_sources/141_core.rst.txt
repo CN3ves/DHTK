@@ -21,6 +21,7 @@ SPARQL Endpoint
 
 .. autoclass:: dhtk.core.client.Installers
    :members:
+
 Dataset Manager
 ===============
 

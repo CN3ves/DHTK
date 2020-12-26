@@ -1,6 +1,9 @@
 ==========================
 How to contribute to DHTK?
 ==========================
+It includes the `blueprint <./extensions#blueprint>`_ to help with development and contribution from the
+Digital Humanities' `community <./community>`_, allowing easy integration of new modules and
+continuous growth to better suit the different DHTK users.
 
 DHTK is an open-source team effort.
 Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
@@ -10,7 +13,7 @@ Before planning any improvement or addition to DHTK, please write us at: davide.
 
 Contributing to DHTK
 --------------------
-DHTK is a collective open source effort. To contribute and help us improve, visit our `GitHub page <>`_.
+DHTK is a collective open source effort. To contribute and help us improve, visit our `GitHub page <https://github.com/CN3ves/DHTK>`_.
 You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
 for review as a merge request. All suggestions and improvements are welcomed, they don't have to be major changes!
 

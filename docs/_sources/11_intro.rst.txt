@@ -50,15 +50,16 @@ preferred format. Once you extract the DHTK files from the archive, you can acce
 Using Gutenberg.org
 ===================
 
+.. note:: DHTK runs a number of system check to try to guarantee if can run without any problem. If this is the first time you're running it, keep in mind that it may take considerable time to
+complete the the full set.
+
 To start exploring DHTK's `Project Gutenberg <https://www.gutenberg.org/>`_ dataset,
 run:
 
 .. literalinclude:: ./examples/quick_gutenberg.py
     :language: python
 
-.. note:: DHTK runs a number of system check to try to guarantee if can run without any problem.
-If this is the first time you're running it, keep in mind that it may take considerable time to
-complete the the full set.
+
 
 
 

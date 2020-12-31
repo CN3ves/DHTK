@@ -1,142 +1,233 @@
+##########
+User Guide
+##########
+
+Start DHTK
 ==========
-How to use
-==========
-DHTK is a module for Python3.x. As such, it is accessible using any Python console or environment.
-DHTK access occurs in 4 steps:
 
-**1) Import DHTK module**
+Loading DHTK
+------------
 
-.. literalinclude:: ./examples/usage.py
+As a Python module, DHTK can be accessed from any Python console or environment
+by `importing <https://docs.python.org/3/reference/import.html?highlight=import>`_
+it as normally.
+
+.. literalinclude:: ./examples/12_guide_start.py
     :language: python
-    :lines: 3-11
-    :emphasize-lines: 1
+    :lines: 5
 
-**2) Define DHTK settings**
-
-.. literalinclude:: ./examples/usage.py
+.. literalinclude:: ./examples/12_guide_start.py
     :language: python
-    :lines: 12-21
-    :emphasize-lines: 1
+    :lines: 9-16
 
-Settings can be defined by passing then as argument at instantiation (`dhtk.start(**kwarg) <./api.html>`_) or
-they can be modified using the dot notation.
+Setting up Configurations
+-------------------------
 
-.. literalinclude:: ./examples/usage.py
+The first step to use DHTK is to set the configurations to use by calling
+`dhtk.start() <14_api.html#start>`_
+
+.. literalinclude:: ./examples/12_guide_start.py
     :language: python
-    :lines: 22-31
-    :emphasize-lines: 1
+    :lines: 20
 
-The main settings are *user* and *wd*, respectively the user name and the DHTK's working directory.
-These two settings are used to search for saved configurations and correctly
-organize the logs and save the search results in the DHTK folder structure.
+This function instantiates DHTK's configuration manager class, which searches for the user's saved
+configurations. It automatically prints all current setting for the user's information.
 
-**3 a) Connect to a** `SPARQL <https://en.wikipedia.org/wiki/SPARQL>`_ **endpoint**
-
-If you're using a remote SPARQL endpoint, you can provide it as a URL (website)
-using the *endpoint* setting. After DHTK is set up, this step is simply connects to the
-SPARQL endpoint to use. As such, it is integrated with the next step for moist user cases.
-However, note that this step performs important checks to ensure DHTK is properly set up.
-
-**3 b) Load the required DHTK extension**
-
-.. literalinclude:: ./examples/usage.py
+.. literalinclude:: ./examples/12_guide_start.py
     :language: python
-    :lines: 32-38
-    :emphasize-lines: 1
+    :lines: 24-33
+    :emphasize-lines: 5
 
-Note that the *dataset* setting, defining the DHTK extension module to use, must be defined for the first time,
-otherwise DHTK is not aware of which module to load!
+DHTK contains a number of settings which help users making repetitive use of the package.
+DHTK will have a default value for most settings, but the user may want to pay
+the most attention to the following:
 
-Once the module is loaded, DHTK functionalities are ready to use!
+* *[user]*: By default, DHTK try to access the system's information to identify the user. It is possible to change this default user name, which may be particularly relevant for shared machines.
 
-**4) Query the dataset using `DHTK extended functionalities <./architecture.html#extension-modules>`_.**
-Current extensions include:
+* *[wd]*: By default, DHTK tries to set up its working directory at the user' home directory. If the user wishes to use another directory, it this can be modified.
+
+.. raw:: html
+
+   <details>
+   <summary><b><i>!!!</i></b></summary>
+
+.. note:: DHTK uses both *wd* and *user* to search for saved setting. If these are changed for any reason, the user's previous settings may not be indentified.
+
+.. raw:: html
+
+   </details>
+   <br>
+
+* *[endpoint]*: DHTK uses a local Fuseki server as its default SPARQL endpoint for queries. To use a remote (on-line) endpoints, it can be dones by adding the URL (link) to the
+remote endpoint.
+
+* *[dataset]*: DHTK is a modular packages to each extensions can be easily added. This setting determines
+which of the available extension modules DHTK with load.
+
+.. raw:: html
+
+   <details>
+   <summary><b><i>!!!</i></b></summary>
+
+.. note:: As illustrated above, dataset does not have a default value and must be set the first time DHTK is used.
+
+.. raw:: html
+
+   </details>
+   <br>
+
+.. seealso:: `Settings class <141_core.html#settings>`_
+
+Modifying configurations
+------------------------
+
+Configurations can be *set directly* by passing their values as keyword arguments to the dhtk.start function.
+
+.. literalinclude:: ./examples/12_guide_start.py
+    :language: python
+    :lines: 37-50
+
+.. role:: python(code)
+   :language: python
+
+Alternatively, all settings can be *modified* using Python's dot notation to access the configuration
+object's attributes. For example, updating the user name is as simple as :python:`configs.user = "egloff"`
+
+Loading extensions
+==================
+
+Using the the settings, DHTK will determine which SPARQL endpoint to connect and which
+extension module to load. These two functionalities
+are all handled by the function `dhtk.get_module() <14_api.html#get_module>`_.
+
+.. literalinclude:: ./examples/12_guide_start.py
+    :language: python
+    :lines: 37-50
+
+Currently, DHTK includes the following extensions:
 
 * `Project Gutenberg <./intro#gutenberg>`_
 * `Auchinkleck manuscript </intro#auchinleck/>`_
 
+.. seealso:: `Client class <141_core.html#sparql-endpoint>`_ and `DatasetLoader class <141_core.html#sparql-endpoint>`_
+
 Gutenberg
-=========
+---------
 
-DHTK uses a blueprint for the development of all extension modules, simplifying and unifying the
-different functionalities. Using this framework, the Gutenberg extension dataset allows you to
-search `Gutenberg.org <gutenberg.org/>`_ for **books, authors, bookshelves and subjects**,
-retrieving all the available information on these as book Corpus that can be saved.
+DHTK's Gutenberg extension dataset allows you to easily query `Gutenberg.org <gutenberg.org/>`_ 
+for **books, authors, bookshelves and subjects**, retrieving all the available information as a Corpus.
 
-1. Searching for an author
---------------------------
-.. literalinclude:: ./examples/usage.py
+.. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 39-40
-    :emphasize-lines: 1
+    :lines: 6-15
 
-2. Searching for an subject
----------------------------
-.. literalinclude:: ./examples/usage.py
-    :language: python
-    :lines: 41-43
-    :emphasize-lines: 1
-
-3. Searching for an bookshelf
------------------------------
-.. literalinclude:: ./examples/usage.py
-    :language: python
-    :lines: 43-46
-    :emphasize-lines: 1
-
-4. Searching for an book
-------------------------
-.. literalinclude:: ./examples/usage.py
-    :language: python
-    :lines: 47-48
-    :emphasize-lines: 1
-
-As you can see, a (Python) dictionary-like syntax can be used to search the dataset using
-only a small number of arguments:
+DHTK provides a simple dictionary-like syntax to search Guntenberg's dataset using its wrapper method
+`.get() <./142_ext.html#AbstractExtension.get>`_. This method allows the user to query the entire dataset using
+only a small number of keyword arguments:
 
 * *what* to search for.
 * *name* of what is being searched. If no name is provided, all available options are retrieved.
-* *add* to corpus or just check results first?
+* *add* to corpus or just search results?
 
-5. Get book information
-------------------------
-.. literalinclude:: ./examples/usage.py
+Searching Gutenberg
+*******************
+
+To **search** Gutenberg's data, set *add=False*. Alternatively, since this is de default value, this
+argument can be simply ignored. This returns either:
+
+**1)** a list of books matching the bookshelf or subject queried or
+**2)** a dictionary of books or authors matching the query.
+
+.. raw:: html
+
+   <details>
+   <summary><b><i>!!!</i></b></summary>
+
+.. note:: The difference in value returns is related to the fact that searching a bookshelf or a subject is a more
+general query and does not return a collection of book or author objects, but only the book titles.
+This means that no metadata is returns with this queries. On the other hand, returning books and author queries as a
+dictionary makes it easier to retrieve and explore individual entries using Python.
+
+.. raw:: html
+
+   </details>
+   <br>
+
+.. rubric:: **Searching for a bookshelf**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 19-32
+    :emphasize-lines: 9
+
+.. rubric:: **Searching for a subject**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 36-51
+    :emphasize-lines: 11
+
+.. rubric:: **Searching for a book**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 55-57
+    :emphasize-lines: 3
+
+.. rubric:: **Searching for an author**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 61-65
+    :emphasize-lines: 5
+
+Get Gutenberg's metadata
+************************
+
+.. rubric:: **Get book information**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
     :lines: 49-84
     :emphasize-lines: 1
 
-6. Get book text
-----------------
-.. literalinclude:: ./examples/usage.py
+.. rubric:: **Get book text**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
     :lines: 85-88
     :emphasize-lines: 1
 
-7. Get author information
--------------------------
-.. literalinclude:: ./examples/usage.py
+.. rubric:: **Get author information**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
     :lines: 89-145
     :emphasize-lines: 1
 
-8. Save Corpus
---------------
-Before saving the Corpus to disk (books and Python object), it is important to change the corpus descriptions,
+.. rubric:: **Get author information from book**
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 89-145
+    :emphasize-lines: 1
+
+.. rubric:: **Save Corpus**
+
+Before saving the Corpus to disk, it is important to review the Corpus descriptions,
 particularly the corpus name, which is used as the directory where the books will be stored.
 
-.. literalinclude:: ./examples/usage.py
+.. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
     :lines: 146-171
     :emphasize-lines: 2,3,21
 
 
+Dbpedia
+=======
+IT LOOKS LIKE metadata is not test (wrapped by Gutenberg) as per issue #6
 
-OLD Usage Examples
-==================
-It looks like get metadata is not implemented!
-
-4. Retrieving/adding metadata: the DbpediaMetadata() class
-----------------------------------------------------------
+.. rubric:: Retrieving/adding metadata: the DbpediaMetadata() class
 
 Another important class of DHTK is the DbpediaMetadata() class. Dbpedia is an API of Wikipedia. This API allows retrieving secondary information (metadata) from Wikipedia notes. The Dbpedia() class is initialized as follows:
 

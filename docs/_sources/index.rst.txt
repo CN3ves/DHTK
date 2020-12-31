@@ -38,6 +38,11 @@ leveraging cutting-edge computation methods to support and simplifying research 
 
 .. rubric:: Changelog
 
+.. raw:: html
+
+   <details>
+   <summary>Version 1.0.2</summary>
+
 .. versionchanged:: 1.0.2
 
 - Unified framework for simplified programmatic access
@@ -47,11 +52,23 @@ leveraging cutting-edge computation methods to support and simplifying research 
 
 - Automated DHTK's system check, including local Docker installation and configuration checks for local endpoints (macOS only)
 
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+
+   <details>
+   <summary>Version 1.0.1</summary>
 
 .. versionadded:: 1.0.1
 
 - *"Clean Text"* module to remove Gutenberg's header, footer and footnotes
 - *"Test"* files that will help us provide you with a stable working toolkit, as well as help in adding new features and implementing contributions from the community
+
+.. raw:: html
+
+   </details>
 
 .. rubric:: Publications
 

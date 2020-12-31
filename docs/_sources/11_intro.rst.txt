@@ -25,8 +25,17 @@ DHTK to search pre-processed data. This requires setting up a Fuseki server cont
 on the Docker application. To do so, you will need to
 `download Docker <https://docs.docker.com/get-docker/>`_ before running DHTK.
 
-.. note:: DHTK may attempt to install docker and set up all required containers and volumes. However,
-this feature is experimental and is only available of macOS systems at the moment.
+.. raw:: html
+
+   <details>
+   <summary><b><i>!!!</i></b></summary>
+
+.. note:: DHTK may attempt to install docker and set up all required containers and volumes. However, this feature is experimental and is only available of macOS systems at the moment.
+
+.. raw:: html
+
+   </details>
+   <br>
 
 **Install DHTK**
 
@@ -50,13 +59,22 @@ preferred format. Once you extract the DHTK files from the archive, you can acce
 Using Gutenberg.org
 ===================
 
-.. note:: DHTK runs a number of system check to try to guarantee if can run without any problem. If this is the first time you're running it, keep in mind that it may take considerable time to
-complete the the full set.
+.. raw:: html
+
+   <details>
+   <summary><b><i>!!!</i></b></summary>
+
+.. note:: DHTK runs a number of system check to try to guarantee if can run without any problem. If this is the first time you're running it, keep in mind that it may take considerable time to complete the the full set.
+
+.. raw:: html
+
+   </details>
+   <br>
 
 To start exploring DHTK's `Project Gutenberg <https://www.gutenberg.org/>`_ dataset,
 run:
 
-.. literalinclude:: ./examples/quick_gutenberg.py
+.. literalinclude:: ./examples/11_quick_gutenberg.py
     :language: python
 
 

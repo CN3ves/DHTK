@@ -13,6 +13,11 @@ Before planning any improvement or addition to DHTK, please write us at: davide.
 
 Contributing to DHTK
 --------------------
+
+DHTK uses a blueprint for the development of all extension modules, simplifying and unifying the
+different functionalities. Using this framework, 
+
+
 DHTK is a collective open source effort. To contribute and help us improve, visit our `GitHub page <https://github.com/CN3ves/DHTK>`_.
 You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
 for review as a merge request. All suggestions and improvements are welcomed, they don't have to be major changes!

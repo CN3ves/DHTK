@@ -94,16 +94,13 @@
 <li class="toctree-l4"><a class="reference internal" href="#modifying-configurations">Modifying configurations</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#loading-extensions">Loading extensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dhtk-extensions">DHTK extensions</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#gutenberg">Gutenberg</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#searching-gutenberg">Searching Gutenberg</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#get-gutenberg-s-metadata">Get Gutenberg’s metadata</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#exploring-data">Exploring Data</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#check-metadata">Check metadata</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#saving-results">Saving results</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#dbpedia">Dbpedia</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#search-metadata">Search metadata</a></li>
 </ul>
 </li>
 </ul>
@@ -149,9 +146,7 @@
 by <a class="reference external" href="https://docs.python.org/3/reference/import.html?highlight=import">importing</a>
 it as normally.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dhtk</span>
-</pre></div>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ###################################################</span>
+<span class="c1"># ###################################################</span>
 <span class="c1"># Welcome to the Digital Humanities ToolKit,</span>
 <span class="c1"># the  user - friendly Python API for</span>
 <span class="c1"># Digital Humanities research.</span>
@@ -165,12 +160,12 @@ it as normally.</p>
 <div class="section" id="setting-up-configurations">
 <h3>Setting up Configurations<a class="headerlink" href="#setting-up-configurations" title="Permalink to this headline">¶</a></h3>
 <p>The first step to use DHTK is to set the configurations to use by calling
-<a class="reference external" href="14_api.html#start">dhtk.start()</a></p>
+<strong>dhtk.start()</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This function instantiates DHTK’s configuration manager class, which searches for the user’s saved
-configurations. It automatically prints all current setting for the user’s information.</p>
+<p>This function instantiates DHTK’s settings manager class, which searches for the user’s saved
+settings. It automatically prints all current settings for the user’s information.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Current DHTK settings:</span>
 <span class="c1"># [user]: me</span>
 <span class="c1"># [wd]: /Users/me/DHTK/me</span>
@@ -183,41 +178,34 @@ configurations. It automatically prints all current setting for the user’s inf
 <span class="c1"># [_connect]: 30</span>
 </pre></div>
 </div>
-<p>DHTK contains a number of settings which help users making repetitive use of the package.
-DHTK will have a default value for most settings, but the user may want to pay
-the most attention to the following:</p>
+<p>DHTK contains a number of options to help users start up faster and automatically, most of which
+have a default value. The settings to pay more attention to are the following:</p>
 <ul class="simple">
-<li><p><em>[user]</em>: By default, DHTK try to access the system’s information to identify the user. It is possible to change this default user name, which may be particularly relevant for shared machines.</p></li>
-<li><p><em>[wd]</em>: By default, DHTK tries to set up its working directory at the user’ home directory. If the user wishes to use another directory, it this can be modified.</p></li>
+<li><p><em>[user]</em>: By default, DHTK tries to access the system’s information to identify the user. It is possible to change this default user name, which may be particularly relevant when working on shared machines.</p></li>
+<li><p><em>[wd]</em>: DHTK uses the user’ home directory to set up its working directory. This can be modified if another directory would be more suitable.</p></li>
 </ul>
 <details>
 <summary><b><i>!!!</i></b></summary><div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>DHTK uses both <em>wd</em> and <em>user</em> to search for saved setting. If these are changed for any reason, the user’s previous settings may not be indentified.</p>
+<p>DHTK uses both <em>wd</em> and <em>user</em> to search for saved settings. If different values are passed to DHTK, the user’s previous settings may not be properly acessible.</p>
 </div>
-</details>
-<br><ul class="simple">
-<li><p><em>[endpoint]</em>: DHTK uses a local Fuseki server as its default SPARQL endpoint for queries. To use a remote (on-line) endpoints, it can be dones by adding the URL (link) to the</p></li>
+</details><ul class="simple">
+<li><p><em>[endpoint]</em>: DHTK uses a local Fuseki server as its default SPARQL endpoint for querying pre-processed datasets. To use a remote (on-line) endpoint, it can be done by adding the URL (link) to the remote endpoint.</p></li>
+<li><p><em>[dataset]</em>: DHTK is a modular package to which extensions can be easily added. This setting determines which of the available extension modules DHTK should load.</p></li>
 </ul>
-<p>remote endpoint.</p>
-<ul class="simple">
-<li><p><em>[dataset]</em>: DHTK is a modular packages to each extensions can be easily added. This setting determines</p></li>
-</ul>
-<p>which of the available extension modules DHTK with load.</p>
 <details>
 <summary><b><i>!!!</i></b></summary><div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As illustrated above, dataset does not have a default value and must be set the first time DHTK is used.</p>
+<p>As illustrated above, dataset does not have a default value and must be set <strong>the first time</strong> a user runs DHTK.</p>
 </div>
-</details>
-<br><div class="admonition seealso">
+</details><div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="141_core.html#settings">Settings class</a></p>
+<p><a class="reference external" href="14_api.html#start">Start function</a></p>
 </div>
 </div>
 <div class="section" id="modifying-configurations">
 <h3>Modifying configurations<a class="headerlink" href="#modifying-configurations" title="Permalink to this headline">¶</a></h3>
-<p>Configurations can be <em>set directly</em> by passing their values as keyword arguments to the dhtk.start function.</p>
+<p>Configurations can be <em>set directly</em> by passing their values as keyword arguments to the dhtk.start() function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;Picca&quot;</span><span class="p">,</span>
                      <span class="n">wd</span><span class="o">=</span><span class="s2">&quot;MyDir&quot;</span><span class="p">,</span>
                      <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;http://dhtk.unil.ch/gutenberg/sparql&quot;</span><span class="p">,</span>
@@ -238,119 +226,130 @@ the most attention to the following:</p>
 object’s attributes. For example, updating the user name is as simple as <code class="code python docutils literal notranslate"><span class="name"><span class="pre">configs</span></span><span class="operator"><span class="pre">.</span></span><span class="name"><span class="pre">user</span></span> <span class="operator"><span class="pre">=</span></span> <span class="literal string double"><span class="pre">“egloff”</span></span></code></p>
 </div>
 </div>
-<div class="section" id="loading-extensions">
-<h2>Loading extensions<a class="headerlink" href="#loading-extensions" title="Permalink to this headline">¶</a></h2>
-<p>Using the the settings, DHTK will determine which SPARQL endpoint to connect and which
+<div class="section" id="dhtk-extensions">
+<h2>DHTK extensions<a class="headerlink" href="#dhtk-extensions" title="Permalink to this headline">¶</a></h2>
+<p>Using the settings, DHTK will determine which SPARQL endpoint to connect and which
 extension module to load. These two functionalities
-are all handled by the function <a class="reference external" href="14_api.html#get_module">dhtk.get_module()</a>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;Picca&quot;</span><span class="p">,</span>
-                     <span class="n">wd</span><span class="o">=</span><span class="s2">&quot;MyDir&quot;</span><span class="p">,</span>
-                     <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;http://dhtk.unil.ch/gutenberg/sparql&quot;</span><span class="p">,</span>
-                     <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
-<span class="c1"># Current DHTK settings:</span>
-<span class="c1"># [user]: Picca</span>
-<span class="c1"># [wd]: MyDir/Picca</span>
-<span class="c1"># [endpoint]: http://dhtk.unil.ch/gutenberg/sparql</span>
-<span class="c1"># [dataset]: gutenberg</span>
-<span class="c1"># [modules]: {}</span>
-<span class="c1"># [_file]: MyDir/Picca/Picca.config</span>
-<span class="c1"># [logger]: &lt;Logger dhtk (DEBUG)&gt;</span>
-<span class="c1"># [_port]: 3030</span>
-<span class="c1"># [_connect]: 30</span>
-</pre></div>
-</div>
+are all handled by the function <strong>dhtk.get_module()</strong>.</p>
 <p>Currently, DHTK includes the following extensions:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="./intro#gutenberg">Project Gutenberg</a></p></li>
-<li><p><a class="reference external" href="/intro#auchinleck/">Auchinkleck manuscript</a></p></li>
+<li><p><a class="reference external" href="#gutenberg">Project Gutenberg</a></p></li>
+<li><p><a class="reference external" href="#auchinleck">Auchinkleck manuscript</a></p></li>
 </ul>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="141_core.html#sparql-endpoint">Client class</a> and <a class="reference external" href="141_core.html#sparql-endpoint">DatasetLoader class</a></p>
+<p><a class="reference external" href="14_api.html#get_module">get_module() function</a></p>
 </div>
 <div class="section" id="gutenberg">
 <h3>Gutenberg<a class="headerlink" href="#gutenberg" title="Permalink to this headline">¶</a></h3>
-<p>DHTK’s Gutenberg extension dataset allows you to easily query <a class="reference external" href="gutenberg.org/">Gutenberg.org</a>
-for <strong>books, authors, bookshelves and subjects</strong>, retrieving all the available information as a Corpus.</p>
+<p>DHTK’s Gutenberg extension dataset allows the user to easily query <a class="reference external" href="http://gutenberg.org/">Gutenberg.org</a>
+for <strong>books, authors, bookshelves and subjects</strong>, retrieving all the available information as a DHTK Corpus.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dhtk_configurations</span><span class="o">.</span><span class="n">dataset</span>
 <span class="c1"># &#39;gutenberg&#39;</span>
 
 <span class="n">gutenberg</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">dhtk_configurations</span><span class="p">)</span>
 <span class="c1"># DHTK Gutenberg statistics:</span>
-<span class="c1"># Last update: 26 Dec 20</span>
+<span class="c1"># Last update: 26 Dec 2020</span>
 <span class="c1"># number of books        :	 56913</span>
 <span class="c1"># number of authors      :	 21031</span>
 <span class="c1"># number of bookshelves  :	   337</span>
 <span class="c1"># number of subjects     :	 34045</span>
 </pre></div>
 </div>
-<p>DHTK provides a simple dictionary-like syntax to search Guntenberg’s dataset using its wrapper method
-<a class="reference external" href="./142_ext.html#AbstractExtension.get">.get()</a>. This method allows the user to query the entire dataset using
-only a small number of keyword arguments:</p>
+<p>DHTK provides a simple dictionary-like syntax to search Guntenberg’s dataset using the method
+<strong>.get()</strong>. This method allows the user to easily query the entire dataset using a single interface
+with only 3 keyword arguments:</p>
 <ul class="simple">
-<li><p><em>what</em> to search for.</p></li>
-<li><p><em>name</em> of what is being searched. If no name is provided, all available options are retrieved.</p></li>
-<li><p><em>add</em> to corpus or just search results?</p></li>
+<li><p>[<em>what</em>] to search for.</p></li>
+<li><p>[<em>name</em>] of what is being searched. If no name is provided, all available options are retrieved.</p></li>
+<li><p>[<em>add</em>] to corpus or just search results?</p></li>
 </ul>
-<div class="section" id="searching-gutenberg">
-<h4>Searching Gutenberg<a class="headerlink" href="#searching-gutenberg" title="Permalink to this headline">¶</a></h4>
-<p>To <strong>search</strong> Gutenberg’s data, set <em>add=False</em>. Alternatively, since this is de default value, this
-argument can be simply ignored. This returns either:</p>
-<p><strong>1)</strong> a list of books matching the bookshelf or subject queried or
-<strong>2)</strong> a dictionary of books or authors matching the query.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="./142_ext.html#AbstractExtension.get">Module.get()</a></p>
+</div>
+<br><div class="section" id="exploring-data">
+<h4>Exploring Data<a class="headerlink" href="#exploring-data" title="Permalink to this headline">¶</a></h4>
+<p>To <strong>search</strong> Gutenberg’s data, set <em>add=False</em>. For such queries, DHTK Gutenberg’s module
+returns a dictionary of books or authors matching the query.</p>
 <details>
 <summary><b><i>!!!</i></b></summary><div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The difference in value returns is related to the fact that searching a bookshelf or a subject is a more</p>
+<p><em>add=False</em> is the default value, so this argument can be simply ignored by the user in such cases.</p>
 </div>
-<p>general query and does not return a collection of book or author objects, but only the book titles.
-This means that no metadata is returns with this queries. On the other hand, returning books and author queries as a
-dictionary makes it easier to retrieve and explore individual entries using Python.</p>
-</details>
-<br><p class="rubric"><strong>Searching for a bookshelf</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bookshelves</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;shelves&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Precursors of Science Fiction&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">bookshelves</span>
-<span class="c1"># [&#39;[SHELF: Precursors of Science Fiction]: The Dominion in 1983  by Centennius, Ralph&#39;,</span>
-<span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: Hartmann, the Anarchist; Or, The Doom of the Great City  by Fawcett, E. Douglas (Edward Douglas)&#39;, </span>
-<span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: The Electric Man\r\nBeing the One Act Version of the Three Act Farcical Comedy of the Same Name  by Hannan, Charles&#39;, </span>
-<span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: A Crystal Age  by Hudson, W. H. (William Henry)&#39;, </span>
-<span class="c1"># ...</span>
-<span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: Guirlanden um Die Urnen der Zukunft\r\nEine interessante, originelle Familiengeschichte aus dem drei und zwanzigsten Jahrhunderte  by Ruh, A. K.&#39;,</span>
-<span class="hll"><span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: Frankenstein; Or, The Modern Prometheus  by Shelley, Mary Wollstonecraft&#39;,</span>
-</span><span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: Frankenstein; Or, The Modern Prometheus  by Shelley, Mary Wollstonecraft&#39;,</span>
-<span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: Frankenstein; Or, The Modern Prometheus  by Shelley, Mary Wollstonecraft&#39;,</span>
-<span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: The Last Man  by Shelley, Mary Wollstonecraft&#39;,</span>
-<span class="c1"># &#39;[SHELF: Precursors of Science Fiction]: The Strange Case of Dr. Jekyll and Mr. Hyde  by Stevenson, Robert Louis&#39;,</span>
-<span class="c1"># ...</span>
+</details><p class="rubric"><strong>Searching for a bookshelf</strong></p>
+<p>To check which <a class="reference external" href="http://www.gutenberg.org/ebooks/bookshelf/">bookshelves</a>
+are available in DHTK’s Gutenberg, set <em>what=”shelf”</em> and <em>name=”all”</em>.</p>
+<details>
+<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>name=”all”</em> is the default value, so this argument may be simply ignored by the user.</p>
+</div>
+</details><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search all bookshelves</span>
+<span class="n">bookshelves</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;shelf&quot;</span><span class="p">)</span>
+<span class="p">[</span><span class="n">shelf</span> <span class="k">for</span> <span class="n">shelf</span> <span class="ow">in</span> <span class="n">bookshelves</span> <span class="k">if</span> <span class="s2">&quot;Science&quot;</span> <span class="ow">in</span> <span class="n">shelf</span><span class="p">]</span>
+<span class="c1"># [&#39;FR Science fiction&#39;, &#39;FR Sciences et Techniques&#39;,</span>
+<span class="c1"># &#39;Popular Science Monthly&#39;, &#39;Precursors of Science Fiction&#39;,</span>
+<span class="c1"># &#39;Science&#39;, &#39;Science Fiction&#39;, &#39;Science Fiction by Women&#39;,</span>
+<span class="c1"># &#39;The International Magazine of Literature, Art, and Science&#39;]</span>
+</pre></div>
+</div>
+<p>To search for books available for a bookshelf, the name, or part of the name, of an available bookshelf is passed to the <em>name</em>
+argument. For example, to search all books in “Science Fiction” bookshelves:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search bookshelf example</span>
+<span class="n">bookshelves</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;shelf&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Science Fiction&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The list of bookshelves matching the query are stored as the dictionary keys for easy access:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matching bookshelves found</span>
+<span class="n">bookshelves</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c1"># dict_keys([&#39;Science Fiction&#39;, &#39;Science Fiction by Women&#39;, &#39;FR Science fiction&#39;,</span>
+<span class="c1"># &#39;Precursors of Science Fiction&#39;])</span>
+</pre></div>
+</div>
+<p>The information for individual bookshelves can be easily retrieved using the dictionary key.
+This strutcture makes it easy to perform all types of regular Python operations.
+For example, to identify all books that are simultaneously found on the bookshelves “Precursors of Science Fiction”
+and “Science Fiction by Women”:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intersect two bookshelves</span>
+<span class="nb">set</span><span class="p">(</span><span class="n">bookshelves</span><span class="p">[</span><span class="s2">&quot;Precursors of Science Fiction&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">bookshelves</span><span class="p">[</span><span class="s2">&quot;Science Fiction by Women&quot;</span><span class="p">])</span>
+<span class="c1"># {&#39;The Last Man [Shelley, Mary Wollstonecraft]&#39;,</span>
+<span class="c1"># &#39;Frankenstein; Or, The Modern Prometheus [Shelley, Mary Wollstonecraft]&#39;}</span>
 </pre></div>
 </div>
 <p class="rubric"><strong>Searching for a subject</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">subjects</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Gothic fiction&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">subjects</span>
-<span class="c1"># [&#39;[SUBJECTS: Gothic fiction--Parodies, imitations, etc.]: The Heroine  by Barrett, Eaton Stannard&#39;,</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: A Sicilian Romance  by Radcliffe, Ann Ward&#39;,</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Alonzo and Melissa; Or, The Unfeeling Father: An American Tale  by Jackson, Daniel&#39;,</span>
-<span class="c1"># ...</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Dracula  by Stoker, Bram&#39;,</span>
-<span class="c1"># &quot;[SUBJECTS: Gothic fiction]: Dracula&#39;s Guest  by Stoker, Bram&quot;,</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Emmeline, the Orphan of the Castle  by Smith, Charlotte&#39;,</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Fantazius Mallare: A Mysterious Oath  by Hecht, Ben&#39;,</span>
-<span class="hll"><span class="c1"># &quot;[SUBJECTS: Gothic fiction]: Flower and Jewel; or, Daisy Forrest&#39;s Daughter  by Miller, Alex. McVeigh, Mrs.&quot;,</span>
-</span><span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Frankenstein; Or, The Modern Prometheus  by Shelley, Mary Wollstonecraft&#39;,</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Frankenstein; Or, The Modern Prometheus  by Shelley, Mary Wollstonecraft&#39;,</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Frankenstein; Or, The Modern Prometheus  by Shelley, Mary Wollstonecraft&#39;,</span>
-<span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Her Dark Inheritance  by Collins, E. Burke, Mrs.&#39;,</span>
-<span class="c1"># ...</span>
+<p>Gutenberg <a class="reference external" href="http://www.gutenberg.org/ebooks/subjects/search/">subjects</a> can be searched using <em>what=”subject”</em>.
+Subject names are structured hierarchically, making it possible to define the granularity of such queries.
+Each hierarchy is separated by -- <em>(e.g. Subject -- Sub-subject -- Sub-sub-subject)</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search subject example</span>
+<span class="n">subjects</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Gothic fiction&quot;</span><span class="p">)</span>
+
+<span class="c1"># Matching bookshelves found</span>
+<span class="n">subjects</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c1"># dict_keys([&#39;Gothic fiction&#39;, &#39;Gothic fiction--Parodies, imitations, etc.&#39;])</span>
+
+<span class="c1"># Check some book examples</span>
+<span class="n">subjects</span><span class="p">[</span><span class="s1">&#39;Gothic fiction&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">15</span><span class="p">:</span><span class="o">-</span><span class="mi">10</span><span class="p">]</span>
+<span class="c1"># [&#39;The Old English Baron: a Gothic Story [Reeve, Clara]&#39;, &#39;The Children of the Abbey: A Tale [Roche, Regina Maria]&#39;,</span>
+<span class="c1"># &#39;Varney the Vampire; Or, the Feast of Blood [Rymer, James Malcolm]&#39;,</span>
+<span class="c1"># &#39;Frankenstein; Or, The Modern Prometheus [Shelley, Mary Wollstonecraft]&#39;,</span>
+<span class="c1"># &#39;Emmeline, the Orphan of the Castle [Smith, Charlotte]&#39;]</span>
 </pre></div>
 </div>
 <p class="rubric"><strong>Searching for a book</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">books</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Frankenstein&quot;</span><span class="p">)</span>
+<p>Gutenberg books can be searched using the <em>what=”book”</em> argument. This will return a dictionary of
+books containing the text passed as <em>name</em>. To avoid long names, the dictionary keys returned are
+truncated at 20 characters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search book example</span>
+<span class="n">books</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Frankenstein&quot;</span><span class="p">)</span>
 <span class="n">books</span>
-<span class="hll"><span class="c1"># {&#39;Frankenstein; Or, Th&#39;: &lt;Book: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus (http://www.gutenberg.org/ebooks/84)&gt;}</span>
-</span></pre></div>
+<span class="c1"># {&#39;Frankenstein; Or, Th&#39;: &lt;Book: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus (http://www.gutenberg.org/ebooks/84)&gt;}</span>
+</pre></div>
 </div>
 <p class="rubric"><strong>Searching for an author</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">authors</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Shelley&quot;</span><span class="p">)</span>
+<p>Gutenberg books can be searched using the <em>what=”author”</em> argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search author example</span>
+<span class="n">authors</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Shelley&quot;</span><span class="p">)</span>
 <span class="n">authors</span>
 <span class="c1"># {&#39;Percy Bysshe Shelley&#39;: &lt;Author: Shelley, Percy (http://www.gutenberg.org/2009/agents/1529&gt;),</span>
 <span class="c1"># &#39;Henry Charles Shelley&#39;: &lt;Author: Shelley, Henry (http://www.gutenberg.org/2009/agents/2162&gt;),</span>
@@ -358,254 +357,187 @@ dictionary makes it easier to retrieve and explore individual entries using Pyth
 </span></pre></div>
 </div>
 </div>
-<div class="section" id="get-gutenberg-s-metadata">
-<h4>Get Gutenberg’s metadata<a class="headerlink" href="#get-gutenberg-s-metadata" title="Permalink to this headline">¶</a></h4>
-<p class="rubric"><strong>Get book information</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Frankenstein; Or, The Modern Prometheus  by Shelley, Mary Wollstonecraft&#39;,</span>
-</span><span class="c1"># &#39;[SUBJECTS: Gothic fiction]: Her Dark Inheritance  by Collins, E. Burke, Mrs.&#39;,</span>
-<span class="c1"># ...</span>
-
-<span class="c1"># Get book example</span>
-
-<span class="n">books</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Frankenstein&quot;</span><span class="p">)</span>
-<span class="n">books</span>
-<span class="c1"># {&#39;Frankenstein; Or, Th&#39;: &lt;Book: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus (http://www.gutenberg.org/ebooks/84)&gt;}</span>
-
-<span class="c1"># Get author example</span>
-
-<span class="n">authors</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Shelley&quot;</span><span class="p">)</span>
-<span class="n">authors</span>
-<span class="c1"># {&#39;Percy Bysshe Shelley&#39;: &lt;Author: Shelley, Percy (http://www.gutenberg.org/2009/agents/1529&gt;),</span>
-<span class="c1"># &#39;Henry Charles Shelley&#39;: &lt;Author: Shelley, Henry (http://www.gutenberg.org/2009/agents/2162&gt;),</span>
-<span class="c1"># &#39;Mary Wollstonecraft Shelley&#39;: &lt;Author: Shelley, Mary (http://www.gutenberg.org/2009/agents/61&gt;)}</span>
-
-<span class="c1"># Get book informatioon example</span>
-
+<div class="section" id="check-metadata">
+<h4>Check metadata<a class="headerlink" href="#check-metadata" title="Permalink to this headline">¶</a></h4>
+<p>DHTK Guntenberg’s module uses books and authors objects to store all the relevant information retrieved.
+These objects can be accessed directly from the dictionaries obtained while searching as described above.</p>
+<details>
+<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The book and author objects are not returned when searching for bookshelves and subjects. These queries are considered more exploratory and instantiating all objects would be less efficient in respect to both performance and memory.</p>
+</div>
+</details><p class="rubric"><strong>Get book information</strong></p>
+<p>Retrieving metadata is simple as all Gutenberg objects have the <strong>.print_info()</strong> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore book metadata</span>
 <span class="n">book</span> <span class="o">=</span> <span class="n">books</span><span class="p">[</span><span class="s1">&#39;Frankenstein; Or, Th&#39;</span><span class="p">]</span>
 
-
-
-
-
-
-
-<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-<span class="c1"># Title       : The King in Yellow</span>
-<span class="c1"># Author      : Robert William Chambers</span>
-<span class="c1"># Metadata    :</span>
-<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/ebooks/8492</span>
+<span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+<span class="c1"># Title       : Frankenstein; Or, The Modern Prometheus</span>
+<span class="hll"><span class="c1"># Author      : Mary Wollstonecraft Shelley</span>
+</span><span class="c1"># Metadata    :</span>
+<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/ebooks/84</span>
 <span class="c1">#     - subject     :</span>
-<span class="c1">#             - Short stories, American</span>
-<span class="c1">#             - Horror tales, American</span>
-</pre></div>
-</div>
-<p class="rubric"><strong>Get book text</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1">#             - United States--Social life and customs--19th century--Fiction</span>
-</span><span class="c1">#     - bookshelf   :</span>
-<span class="c1">#             - Horror</span>
+<span class="c1">#             - Gothic fiction</span>
+<span class="c1">#             - Frankenstein&#39;s monster (Fictitious character)--Fiction</span>
+<span class="c1">#             - Horror tales</span>
+<span class="c1">#             - Frankenstein, Victor (Fictitious character)--Fiction</span>
+<span class="c1">#             - Science fiction</span>
+<span class="c1">#             - Scientists--Fiction</span>
+<span class="c1">#             - Monsters--Fiction</span>
+<span class="c1">#     - bookshelf   :</span>
+<span class="c1">#             - Gothic Fiction</span>
+<span class="c1">#             - Precursors of Science Fiction</span>
+<span class="c1">#             - Movie Books</span>
+<span class="c1">#             - Science Fiction by Women</span>
 <span class="c1">#     - gutenberg_type: http://www.gutenberg.org/2009/pgterms/ebook</span>
+<span class="c1">#     - gutenberg_downloads:        34221</span>
+<span class="c1">#     - gutenberg_publisher: Project Gutenberg</span>
+<span class="c1">#     - gutenberg_hasFormat:</span>
+<span class="c1">#             - http://www.gutenberg.org/files/84/84-h.zip</span>
+<span class="c1">#             - http://www.gutenberg.org/files/84/84-0.txt</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/84.kindle.images</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/84.epub.images</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/84.epub.noimages</span>
+<span class="c1">#             - http://www.gutenberg.org/cache/epub/84/pg84.cover.medium.jpg</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/84.rdf</span>
+<span class="c1">#             - http://www.gutenberg.org/files/84/84-h/84-h.htm</span>
+<span class="c1">#             - http://www.gutenberg.org/cache/epub/84/pg84.cover.small.jpg</span>
+<span class="c1">#             - http://www.gutenberg.org/files/84/84-0.zip</span>
+<span class="c1">#             - http://www.gutenberg.org/ebooks/84.kindle.noimages</span>
+<span class="c1">#     - gutenberg_language:           en</span>
+<span class="c1">#     - gutenberg_rights: Public domain in the USA.</span>
+<span class="c1">#     - gutenberg_title: Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1">#     - gutenberg_issued:   1993-10-01</span>
+<span class="c1">#     - gutenberg_creator: http://www.gutenberg.org/2009/agents/61</span>
+<span class="c1">#     - gutenberg_license: http://www.gutenberg.org/license</span>
+<span class="c1">#     - gutenberg_description: There is an improved edition of this title, eBook #42324</span>
 </pre></div>
 </div>
 <p class="rubric"><strong>Get author information</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1">#     - gutenberg_downloads:         2802</span>
-</span><span class="c1">#     - gutenberg_publisher: Project Gutenberg</span>
-<span class="c1">#     - gutenberg_hasFormat:</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-8.txt</span>
-<span class="c1">#             - http://www.gutenberg.org/cache/epub/8492/pg8492.cover.small.jpg</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-8.zip</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.rdf</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-h.zip</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492.txt</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.epub.images</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492.zip</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.kindle.noimages</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-h/8492-h.htm</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.txt.utf-8</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.kindle.images</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.epub.noimages</span>
-<span class="c1">#             - http://www.gutenberg.org/cache/epub/8492/pg8492.cover.medium.jpg</span>
-<span class="c1">#     - gutenberg_language:           en</span>
-<span class="c1">#     - gutenberg_rights: Public domain in the USA.</span>
-<span class="c1">#     - gutenberg_title: The King in Yellow</span>
-<span class="c1">#     - gutenberg_issued:   2005-07-01</span>
-<span class="c1">#     - gutenberg_creator: http://www.gutenberg.org/2009/agents/38191</span>
-<span class="c1">#     - gutenberg_license: http://www.gutenberg.org/license</span>
-<span class="c1">#     - gutenberg_tableOfContents: http://www.gutenberg.org/ebooks/8492#_toc</span>
-<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">original_text</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
-<span class="c1">#</span>
-<span class="c1"># http://aleph.gutenberg.org/8/4/9/8492/8492 down?</span>
-<span class="c1">#</span>
-<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-<span class="c1"># Robert William Chambers</span>
-<span class="c1"># Metadata    :</span>
-<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/2009/agents/38191</span>
-<span class="c1">#     - gutenberg_name: Chambers, Robert W. (Robert William)</span>
-<span class="c1">#     - alias       :</span>
-<span class="c1">#             - Robert W. Chambers</span>
-<span class="c1">#             - Chambers, Robert William</span>
-<span class="c1">#     - name        : Robert William Chambers</span>
-<span class="c1">#     - birth_date  :         1865</span>
-<span class="c1">#     - death_date  :         1933</span>
-<span class="c1">#     - webpage     : http://en.wikipedia.org/wiki/Robert_W._Chambers</span>
-<span class="c1">#     - gutenberg_type: http://www.gutenberg.org/2009/pgterms/agent</span>
-<span class="c1">#     - bibliography:</span>
-<span class="c1">#             - A Young Man in a Hurry, and Other Short Stories</span>
-<span class="c1">#             - Ailsa Paige: A Novel</span>
-<span class="c1">#             - Athalie</span>
-<span class="c1">#             - Barbarians</span>
-<span class="c1">#             - Between Friends</span>
-<span class="c1">#             - Blue-Bird Weather</span>
-<span class="c1">#             - Cardigan</span>
-<span class="c1">#             - In Search of the Unknown</span>
-<span class="c1">#             - In Secret</span>
-<span class="c1">#             - In the Quarter</span>
-<span class="c1">#             - Iole</span>
-<span class="c1">#             - Japonette</span>
-<span class="c1">#             - Lorraine: A Romance</span>
-<span class="c1">#             - Police!!!</span>
-<span class="c1">#             - Quick Action</span>
+<p>Author objects are retrieved with author searches as described above. However, book objects also
+contain the author information as attribute. Because of this, there are two ways to access an author object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore author metadata</span>
+<span class="n">book</span> <span class="o">=</span> <span class="n">books</span><span class="p">[</span><span class="s1">&#39;Frankenstein; Or, Th&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span> <span class="c1"># author from GutenbergBook object</span>
+<span class="n">author</span> <span class="o">=</span> <span class="n">authors</span><span class="p">[</span><span class="s1">&#39;Mary Wollstonecraft Shelley&#39;</span><span class="p">]</span> <span class="c1"># author from GutenbergAuthor object</span>
+
+<span class="n">author</span> <span class="o">==</span> <span class="n">book</span>
+<span class="c1"># True</span>
 </pre></div>
 </div>
-<p class="rubric"><strong>Get author information from book</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1">#     - gutenberg_downloads:         2802</span>
-</span><span class="c1">#     - gutenberg_publisher: Project Gutenberg</span>
-<span class="c1">#     - gutenberg_hasFormat:</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-8.txt</span>
-<span class="c1">#             - http://www.gutenberg.org/cache/epub/8492/pg8492.cover.small.jpg</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-8.zip</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.rdf</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-h.zip</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492.txt</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.epub.images</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492.zip</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.kindle.noimages</span>
-<span class="c1">#             - http://www.gutenberg.org/files/8492/8492-h/8492-h.htm</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.txt.utf-8</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.kindle.images</span>
-<span class="c1">#             - http://www.gutenberg.org/ebooks/8492.epub.noimages</span>
-<span class="c1">#             - http://www.gutenberg.org/cache/epub/8492/pg8492.cover.medium.jpg</span>
-<span class="c1">#     - gutenberg_language:           en</span>
-<span class="c1">#     - gutenberg_rights: Public domain in the USA.</span>
-<span class="c1">#     - gutenberg_title: The King in Yellow</span>
-<span class="c1">#     - gutenberg_issued:   2005-07-01</span>
-<span class="c1">#     - gutenberg_creator: http://www.gutenberg.org/2009/agents/38191</span>
-<span class="c1">#     - gutenberg_license: http://www.gutenberg.org/license</span>
-<span class="c1">#     - gutenberg_tableOfContents: http://www.gutenberg.org/ebooks/8492#_toc</span>
-<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">original_text</span><span class="p">()[:</span><span class="mi">50</span><span class="p">]</span>
-<span class="c1">#</span>
-<span class="c1"># http://aleph.gutenberg.org/8/4/9/8492/8492 down?</span>
-<span class="c1">#</span>
-<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;The King in Yellow&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-<span class="c1"># Robert William Chambers</span>
+<p>Accessing the author’s information can be done as easily as for books, using the <strong>.print_info()</strong> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">author</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+<span class="c1"># Mary Wollstonecraft Shelley</span>
 <span class="c1"># Metadata    :</span>
-<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/2009/agents/38191</span>
-<span class="c1">#     - gutenberg_name: Chambers, Robert W. (Robert William)</span>
+<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/2009/agents/61</span>
+<span class="c1">#     - gutenberg_name: Shelley, Mary Wollstonecraft</span>
 <span class="c1">#     - alias       :</span>
-<span class="c1">#             - Robert W. Chambers</span>
-<span class="c1">#             - Chambers, Robert William</span>
-<span class="c1">#     - name        : Robert William Chambers</span>
-<span class="c1">#     - birth_date  :         1865</span>
-<span class="c1">#     - death_date  :         1933</span>
-<span class="c1">#     - webpage     : http://en.wikipedia.org/wiki/Robert_W._Chambers</span>
+<span class="c1">#             - Shelley, Mary Wollstonecraft Godwin</span>
+<span class="c1">#             - Shelley, Mary W.</span>
+<span class="c1">#     - name        : Mary Wollstonecraft Shelley</span>
+<span class="c1">#     - birth_date  :         1797</span>
+<span class="c1">#     - death_date  :         1851</span>
+<span class="c1">#     - webpage     : http://en.wikipedia.org/wiki/Mary_Wollstonecraft_Shelley</span>
 <span class="c1">#     - gutenberg_type: http://www.gutenberg.org/2009/pgterms/agent</span>
 <span class="c1">#     - bibliography:</span>
-<span class="c1">#             - A Young Man in a Hurry, and Other Short Stories</span>
-<span class="c1">#             - Ailsa Paige: A Novel</span>
-<span class="c1">#             - Athalie</span>
-<span class="c1">#             - Barbarians</span>
-<span class="c1">#             - Between Friends</span>
-<span class="c1">#             - Blue-Bird Weather</span>
-<span class="c1">#             - Cardigan</span>
-<span class="c1">#             - In Search of the Unknown</span>
-<span class="c1">#             - In Secret</span>
-<span class="c1">#             - In the Quarter</span>
-<span class="c1">#             - Iole</span>
-<span class="c1">#             - Japonette</span>
-<span class="c1">#             - Lorraine: A Romance</span>
-<span class="c1">#             - Police!!!</span>
-<span class="c1">#             - Quick Action</span>
+<span class="hll"><span class="c1">#             - Frankenstein; Or, The Modern Prometheus</span>
+</span><span class="c1">#             - History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
+<span class="c1">#             - Mathilda</span>
+<span class="c1">#             - Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
+<span class="c1">#             - Proserpine and Midas</span>
+<span class="c1">#             - Tales and Stories Now First Collected</span>
+<span class="c1">#             - The Last Man</span>
+</pre></div>
+</div>
+<p class="rubric"><strong>Get book text</strong></p>
+<p>The original text for a Gutenberg book can also be accessed if required, using the GutenbergBook method
+<strong>.original_text()</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore book&#39;s text</span>
+<span class="n">book</span><span class="o">.</span><span class="n">original_text</span><span class="p">()[:</span><span class="mi">1000</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">original_text</span><span class="p">()[</span><span class="mi">1749</span><span class="p">:</span><span class="mi">1961</span><span class="p">])</span>
+<span class="c1"># I am already far north of London, and as I walk in the streets of</span>
+<span class="c1"># Petersburgh, I feel a cold northern breeze play upon my cheeks, which</span>
+<span class="c1"># braces my nerves and fills me with delight.  Do you understand this</span>
+<span class="c1"># feeling?</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="./142_ext.html#gutenbergbook">GutenbergBook</a> and <a class="reference external" href="./142_ext.html#gutenbergauthor">GutenbergAuthor</a> classes</p>
+</div>
+</div>
+<div class="section" id="saving-results">
+<h4>Saving results<a class="headerlink" href="#saving-results" title="Permalink to this headline">¶</a></h4>
+<p>To add the retrieved book to a DHTK Corpus use <em>add=True</em>. A list of GutenbergBook objects
+is created containing all the textual data and metadata retrieved from
+<a class="reference external" href="http://www.gutenberg.org/">Guntenberg.org</a>.</p>
+<details>
+<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each query that uses <em>add=True</em> will add the resulting books to the same module object. This means that a new module needs to be instantiated with <strong>.get_module()</strong> function for each different corpus</p>
+</div>
+</details><p class="rubric"><strong>Make a Corpus</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save data to Corpus</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Shelley, Mary Wollstonecraft&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># {&#39;Mary Wollstonecraft Shelley&#39;: &lt;Author: Shelley, Mary (http://www.gutenberg.org/2009/agents/61&gt;)}</span>
+
+<span class="c1"># Check Corpus</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span>
+<span class="c1"># Corpus name:</span>
+<span class="c1"># 	Gutenberg Corpus</span>
+<span class="c1"># Corpus description:</span>
+<span class="c1"># 	Gutenberg Books</span>
+<span class="c1"># Corpus path:</span>
+<span class="c1"># 	/Users/me/DHTK/me/requests/Gutenberg_Corpus</span>
+<span class="c1"># Corpus books:</span>
+<span class="c1"># 0	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 1	Mary Wollstonecraft Shelley    	History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
+<span class="c1"># 2	Mary Wollstonecraft Shelley    	Mathilda</span>
+<span class="c1"># 3	Mary Wollstonecraft Shelley    	Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
+<span class="c1"># 4	Mary Wollstonecraft Shelley    	Proserpine and Midas</span>
+<span class="c1"># 5	Mary Wollstonecraft Shelley    	Tales and Stories Now First Collected</span>
+<span class="c1"># 6	Mary Wollstonecraft Shelley    	The Last Man</span>
+</pre></div>
+</div>
+<p class="rubric"><strong>Change Corpus’ description</strong></p>
+<p>Before saving the Corpus to disk, it is important to review the Corpus descriptions, particularly the corpus name,
+which is used as the directory where the books will be stored. This can be done simply by passing the
+<em>name</em> and <em>description</em> arguments to the <strong>.corpus()</strong> method used above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change Corpus settings</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Shelley&quot;</span><span class="p">,</span>
+                 <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Mary Shelley&#39;s Bibliography&quot;</span><span class="p">)</span>
+<span class="c1"># Corpus name:</span>
+<span class="c1"># 	Shelley</span>
+<span class="c1"># Corpus description:</span>
+<span class="c1"># 	Mary Shelley&#39;s Bibliography</span>
+<span class="c1"># Corpus path:</span>
+<span class="c1"># 	/Users/me/DHTK/me/requests/Shelley</span>
+<span class="c1"># Corpus books:</span>
+<span class="c1"># 0	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 1	Mary Wollstonecraft Shelley    	History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
+<span class="c1"># 2	Mary Wollstonecraft Shelley    	Mathilda</span>
+<span class="c1"># 3	Mary Wollstonecraft Shelley    	Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
+<span class="c1"># 4	Mary Wollstonecraft Shelley    	Proserpine and Midas</span>
+<span class="c1"># 5	Mary Wollstonecraft Shelley    	Tales and Stories Now First Collected</span>
+<span class="c1"># 6	Mary Wollstonecraft Shelley    	The Last Man</span>
 </pre></div>
 </div>
 <p class="rubric"><strong>Save Corpus</strong></p>
-<p>Before saving the Corpus to disk, it is important to review the Corpus descriptions,
-particularly the corpus name, which is used as the directory where the books will be stored.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#             - Special Messenger</span>
-<span class="hll"><span class="c1">#             - The Adventures of a Modest Man</span>
-</span><span class="hll"><span class="c1">#             - The Business of Life</span>
-</span><span class="c1">#             - The Common Law</span>
-<span class="c1">#             - The Crimson Tide: A Novel</span>
-<span class="c1">#             - The Danger Mark</span>
-<span class="c1">#             - The Dark Star</span>
-<span class="c1">#             - The Fighting Chance</span>
-<span class="c1">#             - The Firing Line</span>
-<span class="c1">#             - The Flaming Jewel</span>
-<span class="c1">#             - The Gay Rebellion</span>
-<span class="c1">#             - The Girl Philippa</span>
-<span class="c1">#             - The Green Mouse</span>
-<span class="c1">#             - The Hidden Children</span>
-<span class="c1">#             - The King in Yellow</span>
-<span class="c1">#             - The Laughing Girl</span>
-<span class="c1">#             - The Little Red Foot</span>
-<span class="c1">#             - The Maid-At-Arms: A Novel</span>
-<span class="c1">#             - The Maids of Paradise</span>
-<span class="c1">#             - The Moonlit Way: A Novel</span>
-<span class="hll"><span class="c1">#             - The Mystery of Choice</span>
-</span><span class="c1">#             - The Reckoning</span>
-<span class="c1">#             - The Restless Sex</span>
-<span class="c1">#             - The Slayer of Souls</span>
-<span class="c1">#             - The Streets of Ascalon: Episodes in the Unfinished Career of Richard Quarren, Esqre.</span>
-<span class="c1">#             - The Tracer of Lost Persons</span>
+<p>When all the information as been added to a corpus, it can be easily saved to disk using the
+<strong>.save()</strong> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save Corpus to disk</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+<span class="c1"># ##########################</span>
+<span class="c1"># Thanks you for using DHTK!</span>
+<span class="c1"># ##########################</span>
+<span class="c1"># If you&#39;re done use exit() or Ctrl-D (i.e. EOF) to exit</span>
+<span class="c1"># Please send them any comments or suggestions to davide.picca@unil.ch.</span>
 </pre></div>
 </div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="./142_ext.html#gutenbergcorpus">GutenbergCorpus</a></p>
 </div>
-</div>
-</div>
-<div class="section" id="dbpedia">
-<h2>Dbpedia<a class="headerlink" href="#dbpedia" title="Permalink to this headline">¶</a></h2>
-<p>IT LOOKS LIKE metadata is not test (wrapped by Gutenberg) as per issue #6</p>
-<p class="rubric">Retrieving/adding metadata: the DbpediaMetadata() class</p>
-<p>Another important class of DHTK is the DbpediaMetadata() class. Dbpedia is an API of Wikipedia. This API allows retrieving secondary information (metadata) from Wikipedia notes. The Dbpedia() class is initialized as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>The DbpediaMetadata() objects give you access to several methods, including, but not limited to:</p>
-<ul class="simple">
-<li><p>get_book_metadata()</p></li>
-<li><p>get_author_metadata()</p></li>
-</ul>
-<p>The get_book_metadata() method is used as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book_metadata</span> <span class="o">=</span> <span class="n">dbpedia_metadata</span><span class="o">.</span><span class="n">get_book_metadata</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">update_metadata</span><span class="p">(</span><span class="n">book_metadata</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-</pre></div>
-</div>
-<p>Note that metadata can be saved and used to update the “metadata” field of your Book() objects. The DbpediaMetadata() contains other methods as well. To get more information on those, please see the documentation.</p>
-<div class="section" id="search-metadata">
-<h3>Search metadata<a class="headerlink" href="#search-metadata" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="kn">from</span> <span class="nn">dhtk.catalogs.gutenberg.data</span> <span class="kn">import</span> <span class="n">GutenbergData</span>
-<span class="kn">from</span> <span class="nn">dhtk.metadata.dbpedia</span> <span class="kn">import</span> <span class="n">DbpediaMetadata</span>
-
-<span class="c1"># Initialise class GutenbergData as gutenberg_search</span>
-<span class="n">gutenberg_search</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">()</span>
-
-<span class="c1"># search the book using gutenberg_id&quot;&quot;&quot;</span>
-<span class="n">book</span> <span class="o">=</span> <span class="n">gutenberg_search</span><span class="o">.</span><span class="n">get_book</span><span class="p">(</span><span class="s1">&#39;http://www.gutenberg.org/ebooks/2489&#39;</span><span class="p">)</span>
-
-<span class="c1"># Initialise class DbpediaMetadata as dbpedia_metadata</span>
-<span class="n">dbpedia_metadata</span> <span class="o">=</span> <span class="n">DbpediaMetadata</span><span class="p">()</span>
-
-<span class="c1"># get the metadata of book from bdpedia and add it to the book_id</span>
-<span class="n">dbpedia_uri</span> <span class="o">=</span> <span class="n">dbpedia_metadata</span><span class="o">.</span><span class="n">get_books_metadata_uri</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
-<span class="n">metadata</span> <span class="o">=</span> <span class="n">dbpedia_metadata</span><span class="o">.</span><span class="n">get_book_metadata</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
-<span class="n">book</span><span class="o">.</span><span class="n">update_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="p">)</span>
-
-<span class="c1"># print the medata of book from dbpedia</span>
-<span class="n">pprint</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">metadata</span><span class="p">)</span>
-</pre></div>
 </div>
 </div>
 </div>

@@ -132,13 +132,13 @@ using the <em>endpoint</em> setting. After DHTK is set up, this step is simply c
 SPARQL endpoint to use. As such, it is integrated with the next step for moist user cases.
 However, note that this step performs important checks to ensure DHTK is properly set up.</p>
 <p><strong>3 b) Load the required DHTK extension</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1"># [_port]: 3030</span>
-</span><span class="c1"># [_connect]: 30</span>
-
-<span class="c1"># Modifying Configurations 1</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1"># Modifying Configurations 1</span>
+</span>
 <span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;Picca&quot;</span><span class="p">,</span>
                      <span class="n">wd</span><span class="o">=</span><span class="s2">&quot;MyDir&quot;</span><span class="p">,</span>
+                     <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;http://dhtk.unil.ch/gutenberg/sparql&quot;</span><span class="p">,</span>
+                     <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
+<span class="c1"># Current DHTK settings:</span>
 </pre></div>
 </div>
 <p>Note that the <em>dataset</em> setting, defining the DHTK extension module to use, must be defined for the first time,

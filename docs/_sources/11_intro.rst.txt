@@ -5,7 +5,7 @@ Getting started
 Installation
 ============
 
-**Install Python**
+.. rubric:: **Install Python**
 
 As DHTK is a Python modules, make sure you have Python installed on your system.
 You can do this in three different ways:
@@ -18,7 +18,7 @@ If you don't have Python 3 installs, please `download it <https://www.python.org
 follow the instructions. We recommend using the most up-to-date Python 3 version,
 but DHTK is compatible with at least Python 3.5+.
 
-**Install Docker**
+.. rubric:: **Install Docker**
 
 In addition to Python 3, you are likely to use a local SPARQL endpoint when using
 DHTK to search pre-processed data. This requires setting up a Fuseki server container
@@ -37,7 +37,7 @@ on the Docker application. To do so, you will need to
    </details>
    <br>
 
-**Install DHTK**
+.. rubric:: **Install DHTK**
 
 DHTK can be installed as a regular python modules, using the
 package installer for Python (pip):
@@ -59,6 +59,9 @@ preferred format. Once you extract the DHTK files from the archive, you can acce
 Using Gutenberg.org
 ===================
 
+To start exploring DHTK's `Project Gutenberg <https://www.gutenberg.org/>`_ dataset,
+run:
+
 .. raw:: html
 
    <details>
@@ -71,8 +74,6 @@ Using Gutenberg.org
    </details>
    <br>
 
-To start exploring DHTK's `Project Gutenberg <https://www.gutenberg.org/>`_ dataset,
-run:
 
 .. literalinclude:: ./examples/11_quick_gutenberg.py
     :language: python

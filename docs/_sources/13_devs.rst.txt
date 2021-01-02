@@ -1,71 +1,112 @@
-==========================
-How to contribute to DHTK?
-==========================
-It includes the `blueprint <./extensions#blueprint>`_ to help with development and contribution from the
-Digital Humanities' `community <./community>`_, allowing easy integration of new modules and
-continuous growth to better suit the different DHTK users.
+#################
+Developer's Guide
+#################
 
-DHTK is an open-source team effort.
-Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
+DHTK is an open-source team effort. Contributions are essential to our survival and growth.
+We are thankful for any contribution and are happy to welcome you to the
 DHTK community!
 
-Before planning any improvement or addition to DHTK, please write us at: davide.picca@unil.ch
 
-Contributing to DHTK
---------------------
+You can contribute to DHTK in many ways:
 
-DHTK uses a blueprint for the development of all extension modules, simplifying and unifying the
-different functionalities. Using this framework, 
+* Sending us feedback with suggestions or let us know of any issue you run into while using DHTK.
+* Add or modify minor functionalities to DHTK
+* Contribute to the development of new extensions
 
+Feedback and issues
+===================
 
-DHTK is a collective open source effort. To contribute and help us improve, visit our `GitHub page <https://github.com/CN3ves/DHTK>`_.
-You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
-for review as a merge request. All suggestions and improvements are welcomed, they don't have to be major changes!
+As DHTK grows, we aim to make it more efficient, simpler and contain more functionalities relevant to
+the Digital Humanities' community. Even if you do not have the computational expertise to program
+in Python, you can contribute as part of the DHTK community by letting us know how to improve DHTK
+to best fit your research needs.
 
-Adding new functionalities
---------------------------
-Adding new functionalities to DHTK is as simple as modifying the relevant file.
-If a new Python function, class or method is required to improve DHTK usability, then
-contributor can add then directly to the code and submit a merge request.
+If you have any question, suggestion or feedback please write to us at davide.picca@unil.ch
 
+*All suggestions and feedback are welcomed!*
 
-DHTK modularisation
---------------------------
-DHTK is divided into three parts as described in the `architecture <./architecture.html>`_ page.
+Minor changes
+=============
+
+If you think DHTK is missing some simple functionality or could be made simpler and easier in some way,
+and you want to contribute by helping us implement those changes, thanks you! However, before you do so,
+please write to us at davide.picca@unil.ch to let us know!
+
+Adding or modifying functionalities to existing DHTK module can be easily done by directly modifying the
+existing source code. As a collective effort, we remain an open to everyone's contributions. Please visit our
+`GitHub page <https://github.com/CN3ves/DHTK>`_, containing all the source code and documentation required
+to build DHTK. There, you also will find instructions on how to clone the DHTK repository, create your own branch and
+how to submit your changes for review as a pull request. You can add or modify any function, class or method you deem
+required to improve DHTK usability and submit a pull request at any point. Your request will be discussed and reviewed
+and soon as possibly using the normal
+`Github interface <https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request>`_.
+
+New extensions
+==============
+
+If you would like to integrate a new dataset to DHTK, please write to us at davide.picca@unil.ch to let us know!
+DHTK modular structure is thought out to simplify integrating new modules, features and datasets. This is done
+using a unified module wrapper class defined in the extension's __init__ file. This **Module class**
+inherits from the DHTK **AbstractExtension class** blueprint, which provides most of the common functions
+required to set up an extension, allowing easy integration of new modules and
+continuous growth to better suit the community.
+
+DHTK is divided into three parts as described in the `documentation <1_doc.html>`_ page.
 The three parts are organised in separate directories (core, extensions, processing) for easier identification
-and navigation. Active development is expected mostly for the extension processing modules as new datasets and methods are added to
-DHTK.
+and navigation during development. **Development on new modules is initiated by creating a new folder
+under the extension directory.** This guarantees that the new extension functions as a self contained module, independent
+of the core DHTK modules.
 
-Dataset RDF
+RDF Dataset
 -----------
-A ready to use RDF file should be made available to the user for each new DHTK extension module. These files can be
-stored in any remotely accessible locations, though we would recommend using `Zenodo <https://about.zenodo.org/>`_.
-For reproducibility and transparency, the full pipeline used to produce the RDF files (including instructions on
-how to use it should also be made available under the **"builder directory"** of the module.
+
+If the new extension module uses a new pre-processed dataset, the finalised RDF file should be made available to download
+so it can be added to the local Fuseki endpoint. These files can be
+stored in any remote location, as long as freely accessible, though we would recommend using `Zenodo <https://about.zenodo.org/>`_.
+
+For reproducibility and transparency, the full pipeline used to produce the provided RDF file (including clear instructions on
+how to use it) should also be made available under the **"builder directory"** of the module
+*(e.g. dhtk/extensions/gutenberg/builder/)*
 
 Integrating new modules
 -----------------------
 
 DHTK core modules are responsible to locate and load any module within the extension directory.
 Due to the modular architecture of DHTK, these extensions can be easily developed as self-sufficient Python modules,
-which are alter integrated into the DHTK framework. Doing so requires two steps:
+which are integrated into the DHTK framework in three steps:
 
-1) All new module must be place inside this directory *(./dhtk/extensions/new_module)*
-2) The __init__ file for the module must contains a class named Module, inheriting from the `AbstractExtension <./extensions.html>`_ blueprint.
+1) Create a module specific directory inside the extensions directory and move the module scripts to it.
+2) Add the class named Module, inheriting from the **AbstractExtension blueprint**, to the module's __init__ file.
+3) Complete the Module class by defining at least the required attributes and methods: *name, url, .get() and .save()*.
 
-The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
+The DHTK AbstractExtension abstract class contains most of the required methods to prepare a module for use.
 The new **Module class** is essentially a wrapper around a DHTK extension, defining the attributes **name** and **url**
 (name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and
 the **methods to query and save the results**. Any additional method that improves the Module class can be freely
 included.
 
-*Gutenberg __init__:*
+.. rubric:: **Gutenberg example**
+
+**1) Create a module specific directory**: The gutenberg subdirectory was created on the dhtk's extension directory.
+All the files from the previously tested independent module are moved to this folder.
+
+.. image:: ./images/gutenberg1.png
+   :width: 400
 
 **1) Define required name and url attributes**
 
+.. raw:: html
+
+   <details>
+   <summary><b><i>!!!</i></b></summary>
+
 .. note:: Note the addition of the wrapper attribute which is used to reference the "query class" object
 
-.. literalinclude:: ./examples/contributing.py
+.. raw:: html
+
+   </details>
+
+.. literalinclude:: ./examples/13_dev.py
     :language: python
     :lines: 4-18
     :emphasize-lines: 5,6,15
@@ -75,7 +116,7 @@ included.
 Two methods are required to be defined. The *get(what, name, add)* provides a unified wrapper around
 the possible queries, simplifying the use of new extensions. The *save()* method stores the retrieved data on disk.
 
-.. literalinclude:: ./examples/contributing.py
+.. literalinclude:: ./examples/13_dev.py
     :language: python
     :lines: 20-116
     :emphasize-lines: 1,84
@@ -90,9 +131,10 @@ The *corpus* method is not defined in parent AbstractExtension class, but it pro
 a corpus' settings and retrieve its representation, being a suitable intermediate method to search for book and author
 information.
 
-.. literalinclude:: ./examples/contributing.py
+.. literalinclude:: ./examples/13_dev.py
     :language: python
     :lines: 118-139
     :emphasize-lines: 1,16
 
+.. seealso:: `AbstractExtension class <142_ext.html#abstractextension>`_
 

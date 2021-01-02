@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>How to contribute to DHTK? &mdash; DHTK 1.0.2 documentation</title>
+    <title>Developer’s Guide &mdash; DHTK 1.0.2 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/css/spc-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="_static/css/spc-extend.css">
@@ -89,11 +89,13 @@
 <li class="toctree-l2"><a class="reference internal" href="11_intro.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Developer guide</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#contributing-to-dhtk">Contributing to DHTK</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-new-functionalities">Adding new functionalities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dhtk-modularisation">DHTK modularisation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#dataset-rdf">Dataset RDF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#integrating-new-modules">Integrating new modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#feedback-and-issues">Feedback and issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minor-changes">Minor changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#new-extensions">New extensions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rdf-dataset">RDF Dataset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#integrating-new-modules">Integrating new modules</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="14_api.html">API details</a></li>
@@ -126,64 +128,88 @@
         <div class="bodywrapper">
           <div class="body" id="spc-section-body" role="main">
             
-  <div class="section" id="how-to-contribute-to-dhtk">
-<h1>How to contribute to DHTK?<a class="headerlink" href="#how-to-contribute-to-dhtk" title="Permalink to this headline">¶</a></h1>
-<p>It includes the <a class="reference external" href="./extensions#blueprint">blueprint</a> to help with development and contribution from the
-Digital Humanities’ <a class="reference external" href="./community">community</a>, allowing easy integration of new modules and
-continuous growth to better suit the different DHTK users.</p>
-<p>DHTK is an open-source team effort.
-Contributions are essential to our survival, we are thankful for any contribution and are happy to welcome you to the
+  <div class="section" id="developer-s-guide">
+<h1>Developer’s Guide<a class="headerlink" href="#developer-s-guide" title="Permalink to this headline">¶</a></h1>
+<p>DHTK is an open-source team effort. Contributions are essential to our survival and growth.
+We are thankful for any contribution and are happy to welcome you to the
 DHTK community!</p>
-<p>Before planning any improvement or addition to DHTK, please write us at: <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
-<div class="section" id="contributing-to-dhtk">
-<h2>Contributing to DHTK<a class="headerlink" href="#contributing-to-dhtk" title="Permalink to this headline">¶</a></h2>
-<p>DHTK uses a blueprint for the development of all extension modules, simplifying and unifying the
-different functionalities. Using this framework,</p>
-<p>DHTK is a collective open source effort. To contribute and help us improve, visit our <a class="reference external" href="https://github.com/CN3ves/DHTK">GitHub page</a>.
-You will find instructions on how to clone the DHTK repository, create your own branch and how to submit your changes
-for review as a merge request. All suggestions and improvements are welcomed, they don’t have to be major changes!</p>
+<p>You can contribute to DHTK in many ways:</p>
+<ul class="simple">
+<li><p>Sending us feedback with suggestions or let us know of any issue you run into while using DHTK.</p></li>
+<li><p>Add or modify minor functionalities to DHTK</p></li>
+<li><p>Contribute to the development of new extensions</p></li>
+</ul>
+<div class="section" id="feedback-and-issues">
+<h2>Feedback and issues<a class="headerlink" href="#feedback-and-issues" title="Permalink to this headline">¶</a></h2>
+<p>As DHTK grows, we aim to make it more efficient, simpler and contain more functionalities relevant to
+the Digital Humanities’ community. Even if you do not have the computational expertise to program
+in Python, you can contribute as part of the DHTK community by letting us know how to improve DHTK
+to best fit your research needs.</p>
+<p>If you have any question, suggestion or feedback please write to us at <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
+<p><em>All suggestions and feedback are welcomed!</em></p>
 </div>
-<div class="section" id="adding-new-functionalities">
-<h2>Adding new functionalities<a class="headerlink" href="#adding-new-functionalities" title="Permalink to this headline">¶</a></h2>
-<p>Adding new functionalities to DHTK is as simple as modifying the relevant file.
-If a new Python function, class or method is required to improve DHTK usability, then
-contributor can add then directly to the code and submit a merge request.</p>
+<div class="section" id="minor-changes">
+<h2>Minor changes<a class="headerlink" href="#minor-changes" title="Permalink to this headline">¶</a></h2>
+<p>If you think DHTK is missing some simple functionality or could be made simpler and easier in some way,
+and you want to contribute by helping us implement those changes, thanks you! However, before you do so,
+please write to us at <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a> to let us know!</p>
+<p>Adding or modifying functionalities to existing DHTK module can be easily done by directly modifying the
+existing source code. As a collective effort, we remain an open to everyone’s contributions. Please visit our
+<a class="reference external" href="https://github.com/CN3ves/DHTK">GitHub page</a>, containing all the source code and documentation required
+to build DHTK. There, you also will find instructions on how to clone the DHTK repository, create your own branch and
+how to submit your changes for review as a pull request. You can add or modify any function, class or method you deem
+required to improve DHTK usability and submit a pull request at any point. Your request will be discussed and reviewed
+and soon as possibly using the normal
+<a class="reference external" href="https://docs.github.com/en/free-pro-team&#64;latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request">Github interface</a>.</p>
 </div>
-<div class="section" id="dhtk-modularisation">
-<h2>DHTK modularisation<a class="headerlink" href="#dhtk-modularisation" title="Permalink to this headline">¶</a></h2>
-<p>DHTK is divided into three parts as described in the <a class="reference external" href="./architecture.html">architecture</a> page.
+<div class="section" id="new-extensions">
+<h2>New extensions<a class="headerlink" href="#new-extensions" title="Permalink to this headline">¶</a></h2>
+<p>If you would like to integrate a new dataset to DHTK, please write to us at <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a> to let us know!
+DHTK modular structure is thought out to simplify integrating new modules, features and datasets. This is done
+using a unified module wrapper class defined in the extension’s __init__ file. This <strong>Module class</strong>
+inherits from the DHTK <strong>AbstractExtension class</strong> blueprint, which provides most of the common functions
+required to set up an extension, allowing easy integration of new modules and
+continuous growth to better suit the community.</p>
+<p>DHTK is divided into three parts as described in the <a class="reference external" href="1_doc.html">documentation</a> page.
 The three parts are organised in separate directories (core, extensions, processing) for easier identification
-and navigation. Active development is expected mostly for the extension processing modules as new datasets and methods are added to
-DHTK.</p>
-</div>
-<div class="section" id="dataset-rdf">
-<h2>Dataset RDF<a class="headerlink" href="#dataset-rdf" title="Permalink to this headline">¶</a></h2>
-<p>A ready to use RDF file should be made available to the user for each new DHTK extension module. These files can be
-stored in any remotely accessible locations, though we would recommend using <a class="reference external" href="https://about.zenodo.org/">Zenodo</a>.
-For reproducibility and transparency, the full pipeline used to produce the RDF files (including instructions on
-how to use it should also be made available under the <strong>“builder directory”</strong> of the module.</p>
+and navigation during development. <strong>Development on new modules is initiated by creating a new folder
+under the extension directory.</strong> This guarantees that the new extension functions as a self contained module, independent
+of the core DHTK modules.</p>
+<div class="section" id="rdf-dataset">
+<h3>RDF Dataset<a class="headerlink" href="#rdf-dataset" title="Permalink to this headline">¶</a></h3>
+<p>If the new extension module uses a new pre-processed dataset, the finalised RDF file should be made available to download
+so it can be added to the local Fuseki endpoint. These files can be
+stored in any remote location, as long as freely accessible, though we would recommend using <a class="reference external" href="https://about.zenodo.org/">Zenodo</a>.</p>
+<p>For reproducibility and transparency, the full pipeline used to produce the provided RDF file (including clear instructions on
+how to use it) should also be made available under the <strong>“builder directory”</strong> of the module
+<em>(e.g. dhtk/extensions/gutenberg/builder/)</em></p>
 </div>
 <div class="section" id="integrating-new-modules">
-<h2>Integrating new modules<a class="headerlink" href="#integrating-new-modules" title="Permalink to this headline">¶</a></h2>
+<h3>Integrating new modules<a class="headerlink" href="#integrating-new-modules" title="Permalink to this headline">¶</a></h3>
 <p>DHTK core modules are responsible to locate and load any module within the extension directory.
 Due to the modular architecture of DHTK, these extensions can be easily developed as self-sufficient Python modules,
-which are alter integrated into the DHTK framework. Doing so requires two steps:</p>
+which are integrated into the DHTK framework in three steps:</p>
 <ol class="arabic simple">
-<li><p>All new module must be place inside this directory <em>(./dhtk/extensions/new_module)</em></p></li>
-<li><p>The __init__ file for the module must contains a class named Module, inheriting from the <a class="reference external" href="./extensions.html">AbstractExtension</a> blueprint.</p></li>
+<li><p>Create a module specific directory inside the extensions directory and move the module scripts to it.</p></li>
+<li><p>Add the class named Module, inheriting from the <strong>AbstractExtension blueprint</strong>, to the module’s __init__ file.</p></li>
+<li><p>Complete the Module class by defining at least the required attributes and methods: <em>name, url, .get() and .save()</em>.</p></li>
 </ol>
-<p>The DHTK AbstractExtension class contains most of the required methods to prepare a module for use.
+<p>The DHTK AbstractExtension abstract class contains most of the required methods to prepare a module for use.
 The new <strong>Module class</strong> is essentially a wrapper around a DHTK extension, defining the attributes <strong>name</strong> and <strong>url</strong>
 (name of the extension and location of the RDF data file to use on with the local SPARQL endpoint), and
 the <strong>methods to query and save the results</strong>. Any additional method that improves the Module class can be freely
 included.</p>
-<p><em>Gutenberg __init__:</em></p>
+<p class="rubric"><strong>Gutenberg example</strong></p>
+<p><strong>1) Create a module specific directory</strong>: The gutenberg subdirectory was created on the dhtk’s extension directory.
+All the files from the previously tested independent module are moved to this folder.</p>
+<a class="reference internal image-reference" href="_images/gutenberg1.png"><img alt="_images/gutenberg1.png" src="_images/gutenberg1.png" style="width: 400px;" /></a>
 <p><strong>1) Define required name and url attributes</strong></p>
-<div class="admonition note">
+<details>
+<summary><b><i>!!!</i></b></summary><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Note the addition of the wrapper attribute which is used to reference the “query class” object</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+</details><div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 
         <span class="c1"># Defaults required to be defined for each extension</span>
@@ -332,6 +358,11 @@ information.</p>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span>
 </pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="142_ext.html#abstractextension">AbstractExtension class</a></p>
+</div>
 </div>
 </div>
 </div>

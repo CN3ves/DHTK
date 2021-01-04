@@ -31,9 +31,9 @@
     <link rel="index" title="Index" href="genindex.html" >
     <link rel="search" title="Search" href="search.html" >
     <link rel="top" title="DHTK 1.0.2 documentation" href="index.html" >
-    <link rel="up" title="Here is API info" href="14_api.html" >
+    <link rel="up" title="DHTK API" href="14_api.html" >
     <link rel="next" title="Extension API references" href="142_ext.html" >
-    <link rel="prev" title="Here is API info" href="14_api.html" > 
+    <link rel="prev" title="DHTK API" href="14_api.html" > 
   </head>
   <body>
   <div class="container">
@@ -53,7 +53,7 @@
         <li class="active"><a href="index.html">DHTK 1.0.2 documentation</a></li>
 	
           <li class="active"><a href="1_doc.html" >Documentation</a></li>
-          <li class="active"><a href="14_api.html" accesskey="U">Here is API info</a></li> 
+          <li class="active"><a href="14_api.html" accesskey="U">DHTK API</a></li> 
     </ul>
               
               
@@ -67,7 +67,7 @@
            accesskey="N">next</a>
       </li>
       <li class="active">
-        <a href="14_api.html" title="Here is API info"
+        <a href="14_api.html" title="DHTK API"
            accesskey="P">previous</a>
       </li>
     </ul>
@@ -91,15 +91,16 @@
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="14_api.html">API details</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Core API</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#settings">Settings</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sparql-endpoint">SPARQL Endpoint</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dataset-manager">Dataset Manager</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#helpers">Helpers</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="14_api.html#core-functions">Core Functions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="14_api.html#dhtk-start">dhtk.start()</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="14_api.html#dhtk-get-module">dhtk.get_module()</a><ul class="current">
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Core API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="143_proc.html">Processing API</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="143_proc.html">Processing API</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -110,7 +111,7 @@
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="14_api.html"
-                        title="previous chapter">Here is API info</a></p>
+                        title="previous chapter">DHTK API</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="142_ext.html"
                         title="next chapter">Extension API references</a></p>
@@ -137,7 +138,7 @@
 <h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
 <dt id="dhtk.core.settings.Settings">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.settings.</code><code class="sig-name descname">Settings</code><span class="sig-paren">(</span><em class="sig-param">user: str = 's05mm2'</em>, <em class="sig-param">wd: Union[str</em>, <em class="sig-param">pathlib.PosixPath] = '~/DHTK'</em>, <em class="sig-param">endpoint: str = None</em>, <em class="sig-param">dataset: str = None</em>, <em class="sig-param">modules: dict = &lt;factory&gt;</em>, <em class="sig-param">_port: int = 3030</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.settings.Settings" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.settings.</code><code class="sig-name descname">Settings</code><span class="sig-paren">(</span><em class="sig-param">user: str = 's05mm2'</em>, <em class="sig-param">wd: Union[str</em>, <em class="sig-param">pathlib.PosixPath] = '~/DHTK'</em>, <em class="sig-param">endpoint: str = None</em>, <em class="sig-param">dataset: str = None</em>, <em class="sig-param">modules: dict = &lt;factory&gt;</em>, <em class="sig-param">port: int = 3030</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.settings.Settings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data class to manage DHTK’s settings and behaviour.</p>
 <p>Main Attributes</p>
 <dl class="simple">
@@ -270,6 +271,72 @@ Probably not very useful from the user’s perspective</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p>Names for all the files downloaded</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dhtk.core.new_helpers.url_exists">
+<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">url_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.url_exists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if an url exists and if it is available.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>exists</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dhtk.core.new_helpers.download_file">
+<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">download_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.download_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download an uri to a destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>uri</strong> (<em>str</em>) – </p></li>
+<li><p><strong>destination</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>destination</strong> – Path of the downloaded file.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dhtk.core.new_helpers.file_creation_date">
+<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">file_creation_date</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_to_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.file_creation_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Try to get the date that a file was created,</p>
+<p>Falling back to when it was last modified if that isn’t possible.
+See <a class="reference external" href="http://stackoverflow.com/a/39501288/1709587">http://stackoverflow.com/a/39501288/1709587</a> for explanation and credit.</p>
+<p>TODO: Test on MacOS and Windows</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dhtk.core.new_helpers.unarchive_book">
+<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">unarchive_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">destination</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.unarchive_book" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> – Path of the archive of a book. A Zip file containing a single txt file.</p></li>
+<li><p><strong>destination</strong> – Path where the texfile should be extracted.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>book_text</strong> (<em>str</em>) – The raw text of the book.</p></li>
+<li><p><em>——-</em></p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>

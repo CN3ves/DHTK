@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" >
     <link rel="search" title="Search" href="search.html" >
     <link rel="top" title="DHTK 1.0.2 documentation" href="index.html" >
-    <link rel="up" title="Here is API info" href="14_api.html" >
+    <link rel="up" title="DHTK API" href="14_api.html" >
     <link rel="next" title="Community" href="2_community.html" >
     <link rel="prev" title="Extension API references" href="142_ext.html" > 
   </head>
@@ -53,7 +53,7 @@
         <li class="active"><a href="index.html">DHTK 1.0.2 documentation</a></li>
 	
           <li class="active"><a href="1_doc.html" >Documentation</a></li>
-          <li class="active"><a href="14_api.html" accesskey="U">Here is API info</a></li> 
+          <li class="active"><a href="14_api.html" accesskey="U">DHTK API</a></li> 
     </ul>
               
               
@@ -91,12 +91,14 @@
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="14_api.html">API details</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="141_core.html">Core API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Processing API</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#dbpediametadata">DbpediaMetadata()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#viafmetadata">ViafMetadata()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#wikidatametadata">WikidataMetadata()</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="14_api.html#core-functions">Core Functions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="14_api.html#dhtk-start">dhtk.start()</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="14_api.html#dhtk-get-module">dhtk.get_module()</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="141_core.html">Core API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Processing API</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -132,6 +134,223 @@
             
   <div class="section" id="processing-api-reference">
 <h1>Processing API reference<a class="headerlink" href="#processing-api-reference" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="dhtk.process.Metadata.Metadata">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.process.Metadata.</code><code class="sig-name descname">Metadata</code><a class="headerlink" href="#dhtk.process.Metadata.Metadata" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_author_metadata">
+<code class="sig-name descname">get_author_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">author</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_author_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return author’s metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>author</strong> (<em>dhtk.common.author.Author</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>metadata</strong> – Authors metadata.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_authors_metadata_uri">
+<code class="sig-name descname">get_authors_metadata_uri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">author</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_authors_metadata_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return author’s metadata URI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>author</strong> (<em>dhtk.common.author.Author</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>metadata_uri</strong> – Authors metadata uri.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_base_data_url">
+<code class="sig-name descname">get_base_data_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_base_data_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the base url of the metadata ressource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>URI</strong> – Base url of the metadata ressource.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_base_url">
+<code class="sig-name descname">get_base_url</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_base_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the base url of the metadata ressource.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>URI</strong> – Base url of the metadata ressource.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_book_metadata">
+<code class="sig-name descname">get_book_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_book_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return book’s metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>book</strong> (<em>dhtk.common.book.Book</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>metadata</strong> – Authors metadata.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_books_metadata_uri">
+<code class="sig-name descname">get_books_metadata_uri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_books_metadata_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return book’s metadata URI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>book</strong> (<em>dhtk.common.book.Book</em>) – an instance of Book in dhtk.common.book</p></li>
+<li><p><strong>author_uri</strong> (<em>str</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>uri of book</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_data">
+<code class="sig-name descname">get_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entity_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entity_id</strong> (<em>str</em>) – The id of an entity.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>data</strong> – A dictionary containing the data</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_possible_author_uri_list">
+<em class="property">abstract static </em><code class="sig-name descname">get_possible_author_uri_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">author</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_possible_author_uri_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a set of names to identify the author.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>author</strong> (<em>dhtk.common.author.Author</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>uris</strong> – Set of uris.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.get_possible_book_uri_list">
+<em class="property">abstract static </em><code class="sig-name descname">get_possible_book_uri_list</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.get_possible_book_uri_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a set of titles to identify a book.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>book</strong> (<em>dhtk.common.book.Book</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>uris</strong> – Set of uris.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>set</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.id_to_uri">
+<code class="sig-name descname">id_to_uri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">entity_id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.id_to_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert entity id to uri of the entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entity_id</strong> (<em>str</em>) – Id of an entity.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>uri</strong> – URI of the entity.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.search_authors_metadata_uri">
+<em class="property">abstract </em><code class="sig-name descname">search_authors_metadata_uri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">author</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.search_authors_metadata_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return author’s metadata URI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>metadata_uri</strong> – Authors metadata uri.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.search_books_metadata_uri">
+<em class="property">abstract </em><code class="sig-name descname">search_books_metadata_uri</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.search_books_metadata_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return book’s metadata URI.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>book</strong> (<em>dhtk.common.book.Book</em>) – </p></li>
+<li><p><strong>metadata_uri</strong> (<em>str</em>) – Books metadata uri.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.process.Metadata.Metadata.uri_to_id">
+<em class="property">static </em><code class="sig-name descname">uri_to_id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.process.Metadata.Metadata.uri_to_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an uri to the id of en entity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>uri</strong> (<em>str</em>) – The uri of an entity.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entity_id</strong> – The id of the entity.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <div class="section" id="dbpediametadata">
 <h2>DbpediaMetadata()<a class="headerlink" href="#dbpediametadata" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">

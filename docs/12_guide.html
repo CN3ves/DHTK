@@ -343,7 +343,9 @@ truncated at 20 characters.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search book example</span>
 <span class="n">books</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;books&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Frankenstein&quot;</span><span class="p">)</span>
 <span class="n">books</span>
-<span class="c1"># {&#39;Frankenstein; Or, Th&#39;: &lt;Book: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus (http://www.gutenberg.org/ebooks/84)&gt;}</span>
+<span class="c1"># {&#39;Frankenstein; Or, Th (41445)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 41445&gt;,</span>
+<span class="c1"># &#39;Frankenstein; Or, Th (42324)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 42324&gt;,</span>
+<span class="c1"># &#39;Frankenstein; Or, Th (84)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 84&gt;}</span>
 </pre></div>
 </div>
 <p class="rubric"><strong>Searching for an author</strong></p>
@@ -369,26 +371,26 @@ These objects can be accessed directly from the dictionaries obtained while sear
 </details><p class="rubric"><strong>Get book information</strong></p>
 <p>Retrieving metadata is simple as all Gutenberg objects have the <strong>.print_info()</strong> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore book metadata</span>
-<span class="n">book</span> <span class="o">=</span> <span class="n">books</span><span class="p">[</span><span class="s1">&#39;Frankenstein; Or, Th&#39;</span><span class="p">]</span>
+<span class="n">book</span> <span class="o">=</span> <span class="n">books</span><span class="p">[</span><span class="s1">&#39;Frankenstein; Or, Th (84)&#39;</span><span class="p">]</span>
 
 <span class="n">book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
 <span class="c1"># Title       : Frankenstein; Or, The Modern Prometheus</span>
 <span class="hll"><span class="c1"># Author      : Mary Wollstonecraft Shelley</span>
 </span><span class="c1"># Metadata    :</span>
-<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/ebooks/84</span>
 <span class="c1">#     - subject     :</span>
-<span class="c1">#             - Gothic fiction</span>
-<span class="c1">#             - Frankenstein&#39;s monster (Fictitious character)--Fiction</span>
 <span class="c1">#             - Horror tales</span>
-<span class="c1">#             - Frankenstein, Victor (Fictitious character)--Fiction</span>
-<span class="c1">#             - Science fiction</span>
 <span class="c1">#             - Scientists--Fiction</span>
+<span class="c1">#             - Gothic fiction</span>
+<span class="c1">#             - Frankenstein, Victor (Fictitious character)--Fiction</span>
 <span class="c1">#             - Monsters--Fiction</span>
+<span class="c1">#             - Frankenstein&#39;s monster (Fictitious character)--Fiction</span>
+<span class="c1">#             - Science fiction</span>
 <span class="c1">#     - bookshelf   :</span>
-<span class="c1">#             - Gothic Fiction</span>
 <span class="c1">#             - Precursors of Science Fiction</span>
-<span class="c1">#             - Movie Books</span>
 <span class="c1">#             - Science Fiction by Women</span>
+<span class="c1">#             - Movie Books</span>
+<span class="c1">#             - Gothic Fiction</span>
+<span class="c1">#     - gutenberg_id: http://www.gutenberg.org/ebooks/84</span>
 <span class="c1">#     - gutenberg_type: http://www.gutenberg.org/2009/pgterms/ebook</span>
 <span class="c1">#     - gutenberg_downloads:        34221</span>
 <span class="c1">#     - gutenberg_publisher: Project Gutenberg</span>
@@ -417,10 +419,10 @@ These objects can be accessed directly from the dictionaries obtained while sear
 <p>Author objects are retrieved with author searches as described above. However, book objects also
 contain the author information as attribute. Because of this, there are two ways to access an author object:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore author metadata</span>
-<span class="n">book</span> <span class="o">=</span> <span class="n">books</span><span class="p">[</span><span class="s1">&#39;Frankenstein; Or, Th&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span> <span class="c1"># author from GutenbergBook object</span>
+<span class="n">book_author</span> <span class="o">=</span> <span class="n">books</span><span class="p">[</span><span class="s1">&#39;Frankenstein; Or, Th (84)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span> <span class="c1"># author from GutenbergBook object</span>
 <span class="n">author</span> <span class="o">=</span> <span class="n">authors</span><span class="p">[</span><span class="s1">&#39;Mary Wollstonecraft Shelley&#39;</span><span class="p">]</span> <span class="c1"># author from GutenbergAuthor object</span>
 
-<span class="n">author</span> <span class="o">==</span> <span class="n">book</span>
+<span class="n">author</span> <span class="o">==</span> <span class="n">book_author</span>
 <span class="c1"># True</span>
 </pre></div>
 </div>
@@ -429,11 +431,11 @@ contain the author information as attribute. Because of this, there are two ways
 <span class="c1"># Mary Wollstonecraft Shelley</span>
 <span class="c1"># Metadata    :</span>
 <span class="c1">#     - gutenberg_id: http://www.gutenberg.org/2009/agents/61</span>
+<span class="c1">#     - id          : http://www.gutenberg.org/2009/agents/61</span>
 <span class="c1">#     - gutenberg_name: Shelley, Mary Wollstonecraft</span>
-<span class="c1">#     - alias       :</span>
+<span class="c1">#     - aliases     :</span>
 <span class="c1">#             - Shelley, Mary Wollstonecraft Godwin</span>
 <span class="c1">#             - Shelley, Mary W.</span>
-<span class="c1">#     - name        : Mary Wollstonecraft Shelley</span>
 <span class="c1">#     - birth_date  :         1797</span>
 <span class="c1">#     - death_date  :         1851</span>
 <span class="c1">#     - webpage     : http://en.wikipedia.org/wiki/Mary_Wollstonecraft_Shelley</span>
@@ -452,8 +454,6 @@ contain the author information as attribute. Because of this, there are two ways
 <p>The original text for a Gutenberg book can also be accessed if required, using the GutenbergBook method
 <strong>.original_text()</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore book&#39;s text</span>
-<span class="n">book</span><span class="o">.</span><span class="n">original_text</span><span class="p">()[:</span><span class="mi">1000</span><span class="p">]</span>
-
 <span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">original_text</span><span class="p">()[</span><span class="mi">1749</span><span class="p">:</span><span class="mi">1961</span><span class="p">])</span>
 <span class="c1"># I am already far north of London, and as I walk in the streets of</span>
 <span class="c1"># Petersburgh, I feel a cold northern breeze play upon my cheeks, which</span>
@@ -488,18 +488,61 @@ is created containing all the textual data and metadata retrieved from
 <span class="c1"># Corpus description:</span>
 <span class="c1"># 	Gutenberg Books</span>
 <span class="c1"># Corpus path:</span>
-<span class="c1"># 	/Users/me/DHTK/me/requests/Gutenberg_Corpus</span>
+<span class="c1"># 	/Users/s05mm2/DHTK/s05mm2/requests/Gutenberg_Corpus</span>
 <span class="c1"># Corpus books:</span>
-<span class="c1"># 0	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
-<span class="c1"># 1	Mary Wollstonecraft Shelley    	History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
-<span class="c1"># 2	Mary Wollstonecraft Shelley    	Mathilda</span>
-<span class="c1"># 3	Mary Wollstonecraft Shelley    	Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
-<span class="c1"># 4	Mary Wollstonecraft Shelley    	Proserpine and Midas</span>
-<span class="c1"># 5	Mary Wollstonecraft Shelley    	Tales and Stories Now First Collected</span>
-<span class="c1"># 6	Mary Wollstonecraft Shelley    	The Last Man</span>
+<span class="c1"># 0	Mary Wollstonecraft Shelley    	The Last Man</span>
+<span class="c1"># 1	Mary Wollstonecraft Shelley    	Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
+<span class="c1"># 2	Mary Wollstonecraft Shelley    	Tales and Stories Now First Collected</span>
+<span class="c1"># 3	Mary Wollstonecraft Shelley    	Proserpine and Midas</span>
+<span class="c1"># 4	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 5	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 6	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 7	Mary Wollstonecraft Shelley    	History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
+<span class="c1"># 8	Mary Wollstonecraft Shelley    	Mathilda</span>
 </pre></div>
 </div>
-<p class="rubric"><strong>Change Corpus’ description</strong></p>
+<p class="rubric"><strong>Retrieve books</strong></p>
+<p>Individual books can be retrieved from a Gutenberg Corpus using the <strong>.books()</strong> method and
+passing a book name to the <em>get</em> argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Retrieving books from Corpus</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;Frankenstein; Or, The Modern Prometheus&quot;</span><span class="p">)</span>
+<span class="c1"># {&#39;Frankenstein; Or, Th (84)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 84&gt;,</span>
+<span class="c1"># &#39;Frankenstein; Or, Th (41445)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 41445&gt;,</span>
+<span class="c1"># &#39;Frankenstein; Or, Th (42324)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 42324&gt;}</span>
+
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;Frankenstein; Or, Th (84)&quot;</span><span class="p">)</span>
+<span class="c1"># &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 84&gt;</span>
+</pre></div>
+</div>
+<p>Passing the value <em>get=”all”</em> will return a dictionary of books added to the corpus.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="c1"># {&#39;Tales and Stories No (56665)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Tales and Stories Now First Collected gutenberg_id: 56665&gt;,</span>
+<span class="c1"># &#39;Notes to the Complet (4695)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Notes to the Complete Poetical Works of Percy Bysshe Shelley gutenberg_id: 4695&gt;,</span>
+<span class="c1"># &#39;History of a Six Wee (52790)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni. gutenberg_id: 52790&gt;,</span>
+<span class="c1"># &#39;Mathilda (15238)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Mathilda gutenberg_id: 15238&gt;,</span>
+<span class="c1"># &#39;Frankenstein; Or, Th (42324)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 42324&gt;,</span>
+<span class="c1"># &#39;Frankenstein; Or, Th (84)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 84&gt;,</span>
+<span class="c1"># &#39;Frankenstein; Or, Th (41445)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Frankenstein; Or, The Modern Prometheus gutenberg_id: 41445&gt;,</span>
+<span class="c1"># &#39;The Last Man (18247)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - The Last Man gutenberg_id: 18247&gt;,</span>
+<span class="c1"># &#39;Proserpine and Midas (6447)&#39;: &lt;GutenbergBook: Mary Wollstonecraft Shelley - Proserpine and Midas gutenberg_id: 6447&gt;}</span>
+</pre></div>
+</div>
+<p class="rubric"><strong>Modifying Corpus</strong></p>
+<p>As seem in the “Get book information” above, the book <em>Frankenstein; Or, The Modern Prometheus</em> with ID <em>http://www.gutenberg.org/ebooks/84</em>
+has “an improved edition”. To remove the old edition, the argument <em>remove=True</em> can be passed to the method <strong>.books()</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove book</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">(</span><span class="n">get</span><span class="o">=</span><span class="s2">&quot;Frankenstein; Or, Th (84)&quot;</span><span class="p">,</span> <span class="n">remove</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">gutenberg</span><span class="o">.</span><span class="n">corpus</span><span class="p">()</span><span class="o">.</span><span class="n">books</span><span class="p">()</span>
+<span class="c1"># 0 Mary Wollstonecraft Shelley History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
+<span class="c1"># 1 Mary Wollstonecraft Shelley Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
+<span class="c1"># 2 Mary Wollstonecraft Shelley Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 3 Mary Wollstonecraft Shelley Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 4 Mary Wollstonecraft Shelley Proserpine and Midas</span>
+<span class="c1"># 5 Mary Wollstonecraft Shelley Tales and Stories Now First Collected</span>
+<span class="c1"># 6 Mary Wollstonecraft Shelley Mathilda</span>
+<span class="c1"># 7 Mary Wollstonecraft Shelley The Last Man</span>
+</pre></div>
+</div>
 <p>Before saving the Corpus to disk, it is important to review the Corpus descriptions, particularly the corpus name,
 which is used as the directory where the books will be stored. This can be done simply by passing the
 <em>name</em> and <em>description</em> arguments to the <strong>.corpus()</strong> method used above.</p>
@@ -511,15 +554,16 @@ which is used as the directory where the books will be stored. This can be done 
 <span class="c1"># Corpus description:</span>
 <span class="c1"># 	Mary Shelley&#39;s Bibliography</span>
 <span class="c1"># Corpus path:</span>
-<span class="c1"># 	/Users/me/DHTK/me/requests/Shelley</span>
+<span class="c1"># 	/Users/s05mm2/DHTK/s05mm2/requests/Shelley</span>
 <span class="c1"># Corpus books:</span>
-<span class="c1"># 0	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
-<span class="c1"># 1	Mary Wollstonecraft Shelley    	History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
-<span class="c1"># 2	Mary Wollstonecraft Shelley    	Mathilda</span>
-<span class="c1"># 3	Mary Wollstonecraft Shelley    	Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
+<span class="c1"># 0	Mary Wollstonecraft Shelley    	History of a Six Weeks&#39; Tour Through a Part of France, Switzerland, Germany, and Holland: With Letters Descriptive of a Sail Round the Lake of Geneva, and of the Glaciers of Chamouni.</span>
+<span class="c1"># 1	Mary Wollstonecraft Shelley    	Notes to the Complete Poetical Works of Percy Bysshe Shelley</span>
+<span class="c1"># 2	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
+<span class="c1"># 3	Mary Wollstonecraft Shelley    	Frankenstein; Or, The Modern Prometheus</span>
 <span class="c1"># 4	Mary Wollstonecraft Shelley    	Proserpine and Midas</span>
 <span class="c1"># 5	Mary Wollstonecraft Shelley    	Tales and Stories Now First Collected</span>
-<span class="c1"># 6	Mary Wollstonecraft Shelley    	The Last Man</span>
+<span class="c1"># 6	Mary Wollstonecraft Shelley    	Mathilda</span>
+<span class="c1"># 7	Mary Wollstonecraft Shelley    	The Last Man</span>
 </pre></div>
 </div>
 <p class="rubric"><strong>Save Corpus</strong></p>

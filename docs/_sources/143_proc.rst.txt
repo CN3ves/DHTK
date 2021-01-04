@@ -3,6 +3,8 @@
 Processing API reference
 ########################
 
+.. autoclass:: dhtk.process.Metadata.Metadata
+   :members:
 
 DbpediaMetadata()
 =================

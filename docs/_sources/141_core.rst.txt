@@ -37,3 +37,11 @@ Helpers
 
 .. autofunction:: dhtk.core.helpers.download_files
 
+.. autofunction:: dhtk.core.new_helpers.url_exists
+
+.. autofunction:: dhtk.core.new_helpers.download_file
+
+.. autofunction:: dhtk.core.new_helpers.file_creation_date
+
+.. autofunction:: dhtk.core.new_helpers.unarchive_book
+

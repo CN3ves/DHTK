@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" >
     <link rel="search" title="Search" href="search.html" >
     <link rel="top" title="DHTK 1.0.2 documentation" href="index.html" >
-    <link rel="up" title="Here is API info" href="14_api.html" >
+    <link rel="up" title="DHTK API" href="14_api.html" >
     <link rel="next" title="Processing API reference" href="143_proc.html" >
     <link rel="prev" title="Core API references" href="141_core.html" > 
   </head>
@@ -53,7 +53,7 @@
         <li class="active"><a href="index.html">DHTK 1.0.2 documentation</a></li>
 	
           <li class="active"><a href="1_doc.html" >Documentation</a></li>
-          <li class="active"><a href="14_api.html" accesskey="U">Here is API info</a></li> 
+          <li class="active"><a href="14_api.html" accesskey="U">DHTK API</a></li> 
     </ul>
               
               
@@ -91,16 +91,16 @@
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="14_api.html">API details</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="141_core.html">Core API</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Extensions API</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#abstractextension">AbstractExtension</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gutenberg-extension">Gutenberg extension</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#gutenberg-module">Gutenberg module</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="14_api.html#core-functions">Core Functions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="14_api.html#dhtk-start">dhtk.start()</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="14_api.html#dhtk-get-module">dhtk.get_module()</a><ul class="current">
+<li class="toctree-l5"><a class="reference internal" href="141_core.html">Core API</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">Extensions API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="143_proc.html">Processing API</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="143_proc.html">Processing API</a></li>
 </ul>
 </li>
 </ul>
@@ -141,13 +141,33 @@
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract Class that serves as a blueprint for the DHTK extension modules
 and additional datasets.</p>
-<dl class="simple">
-<dt>name: string</dt><dd><p>Name of extension</p>
-</dd>
-<dt>url: string</dt><dd><p>URL to the extension RDF file</p>
+<dl class="py attribute">
+<dt id="dhtk.extensions.blueprint.AbstractExtension.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name of extension</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
 </dd>
 </dl>
-<p>query: A function wrapper unifying the extension utilities</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="dhtk.extensions.blueprint.AbstractExtension.url">
+<code class="sig-name descname">url</code><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>URL to the extension RDF file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">query: A function wrapper unifying the extension utilities</code></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt id="dhtk.extensions.blueprint.AbstractExtension.set_up">
 <code class="sig-name descname">set_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.set_up" title="Permalink to this definition">¶</a></dt>
@@ -169,6 +189,674 @@ For more information, see <a class="reference external" href="./community.html">
 </div>
 <div class="section" id="gutenberg-extension">
 <h2>Gutenberg extension<a class="headerlink" href="#gutenberg-extension" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="gutenberg-abstract-classes">
+<h2>Gutenberg abstract classes<a class="headerlink" href="#gutenberg-abstract-classes" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="dhtk.extensions.abstract_text.Author">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.abstract_text.</code><code class="sig-name descname">Author</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">metadata</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class for a generic author.</p>
+<p>An Author is defined by his name and by various metadata,
+which may contain his birth date, biography or bibliography.</p>
+<p>This class should be parent to all authors used with the dhtk library.</p>
+<p class="rubric">Notes</p>
+<p>This is the basic Author class, it serves as parent class for all Author
+classes found in the catalogs (for example:
+dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
+<p class="rubric">Example</p>
+<p>Model example to be used for further uses in the class.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="kn">from</span> <span class="nn">nameparser</span> <span class="kn">import</span> <span class="n">HumanName</span>
+
+<span class="kn">from</span> <span class="nn">dhtk.common.author</span> <span class="kn">import</span> <span class="n">Author</span>
+
+<span class="n">charles_dickens_author</span> <span class="o">=</span> <span class="n">Author</span><span class="p">(</span>
+    <span class="n">HumanName</span><span class="p">(</span><span class="s2">&quot;Charles John Huffam Dickens&quot;</span><span class="p">),</span>
+    <span class="n">metadata</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+    <span class="n">birth_date</span><span class="o">=</span><span class="s2">&quot;07/02/1812&quot;</span><span class="p">,</span>
+    <span class="n">death_date</span><span class="o">=</span><span class="s2">&quot;09/06/1870&quot;</span><span class="p">,</span>
+    <span class="n">biography</span><span class="o">=</span>                <span class="s2">&quot;Charles John Huffam Dickens (/ˈdɪkɪnz/; 7 February 1812 – 9 June 1870) was an &quot;</span>                 <span class="s2">&quot;English writer and social critic. He created some of the world&#39;s best-known &quot;</span>                 <span class="s2">&quot;fictional characters and is regarded by many as the greatest novelist of the&quot;</span>                 <span class="s2">&quot;Victorian era. His works enjoyed unprecedented popularity during his lifetime, &quot;</span>                 <span class="s2">&quot;and by the 20th century critics and scholars had recognised him as a literary &quot;</span>                 <span class="s2">&quot;genius. His novels and short stories are still widely read today.&quot;</span><span class="p">,</span>
+    <span class="n">bibliography</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Great Expectations&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Oliver Twist&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;David Copperfield&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Bleak House &quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">same_as</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;http://dbpedia.org/page/Charles_Dickens&#39;</span><span class="p">:</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;https://viaf.org/viaf/88666393/&#39;</span><span class="p">:</span> <span class="s1">&#39;User&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_bibliography">
+<code class="sig-name descname">get_bibliography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_bibliography" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s bibliography.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>bibliography</strong> – The author’s bibliography.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_bibliography</span><span class="p">())</span>
+<span class="c1"># [&#39;Great Expectations&#39;, &#39;Oliver Twist&#39;, &#39;David Copperfield&#39;, &#39;Bleak House &#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_biography">
+<code class="sig-name descname">get_biography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_biography" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s biography.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>bigraphy</strong> – The author’s biography.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_biography</span><span class="p">())</span>
+<span class="c1"># Charles John Huffam Dickens (/ˈdɪkɪnz/; 7 February 1812 – 9 June 1870) was an</span>
+<span class="c1"># English writer and social critic. He created some of the world&#39;s best-known</span>
+<span class="c1"># fictional characters and is regarded by many as the greatest novelist of the</span>
+<span class="c1"># Victorian era. His works enjoyed unprecedented popularity during his lifetime,</span>
+<span class="c1"># and by the 20th century critics and scholars had recognised him as a literary</span>
+<span class="c1"># genius. His novels and short stories are still widely read today.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_birth_date">
+<code class="sig-name descname">get_birth_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_birth_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s birth date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>birth_date</strong> – The author’s birth date.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>we pick the author Charles John Huffam Dickens and get_birth_date returns str “07/02/1812”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_birth_date</span><span class="p">())</span>
+<span class="c1"># 07/02/1812</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_death_date">
+<code class="sig-name descname">get_death_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_death_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s death date.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>death_date</strong> – The author’s death date.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>we pick the author Charles John Huffam Dickens and get_birth_date returns str “07/02/1812”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_death_date</span><span class="p">())</span>
+<span class="mi">09</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">1870</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_first_name">
+<code class="sig-name descname">get_first_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_first_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s first name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>first_name</strong> – The author’s first name.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>we pick the author Charles John Huffam Dickens and get_first_name returns str “Charles”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_first_name</span><span class="p">())</span>
+<span class="c1"># Charles</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_full_name">
+<code class="sig-name descname">get_full_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_full_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s full name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>full_name</strong> – The author’s full name.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_full_name</span><span class="p">())</span>
+<span class="c1"># Charles John Huffam Dickens</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_last_name">
+<code class="sig-name descname">get_last_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_last_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s last name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>last_name</strong> – The author’s last name.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>we pick the author Charles John Huffam Dickens and get_last_name returns str “Dickens”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_last_name</span><span class="p">())</span>
+<span class="c1"># Dickens</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_middle_name">
+<code class="sig-name descname">get_middle_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_middle_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get author’s middle name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>middle_name</strong> – The author’s middle name.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>we pick the author Charles John Huffam Dickens and get_middle_name returns str “John Huffam”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_middle_name</span><span class="p">())</span>
+<span class="c1"># John Huffam</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.get_same_as">
+<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return gathered metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>same_as</strong> – The key is the uri of the same_as
+The value is the name of the source of the uri.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_bibliography</span><span class="p">())</span>
+<span class="c1"># {</span>
+    <span class="s1">&#39;http://dbpedia.org/page/Charles_Dickens&#39;</span><span class="p">:</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;https://viaf.org/viaf/88666393/&#39;</span><span class="p">:</span> <span class="s1">&#39;User&#39;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.print_info">
+<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.print_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print information about the author.</p>
+<p class="rubric">Example</p>
+<p>print_info of Charles Dickens infos returns a print with his names, birth date,
+biography and bibliography.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+<span class="c1"># Charles John Huffam Dickens</span>
+<span class="c1"># Metadata    :</span>
+<span class="c1">#     - birth_date  :   07/02/1812</span>
+<span class="c1">#     - death_date  :   09/06/1870</span>
+<span class="c1">#     - biography   : Charles John Huffam Dickens (/ˈdɪkɪnz/; 7 February 1812 – ...</span>
+<span class="c1">#     - bibliography:</span>
+<span class="c1">#             - Great Expectations</span>
+<span class="c1">#             - Oliver Twist</span>
+<span class="c1">#             - David Copperfield</span>
+<span class="c1">#             - Bleak House</span>
+<span class="c1">#     - name        : Charles John Huffam Dickens</span>
+<span class="c1">#     - first_name  :      Charles</span>
+<span class="c1">#     - middle_name :  John Huffam</span>
+<span class="c1">#     - last_name   :      Dickens</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to python dict for general purpose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>author_as_dict</strong> – A dictionary version of the Author’s data.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="c1"># {&#39;bibliography&#39;: [&#39;Great Expectations&#39;,</span>
+<span class="c1">#                    &#39;Oliver Twist&#39;,</span>
+<span class="c1">#                    &#39;David Copperfield&#39;,</span>
+<span class="c1">#                    &#39;Bleak House &#39;],</span>
+<span class="c1">#   &#39;biography&#39;: &#39;Charles John Huffam Dickens (/ˈdɪkɪnz/; 7 February 1812 – 9 &#39;</span>
+<span class="c1">#                &#39;June 1870) was an English writer and social critic. He created &#39;</span>
+<span class="c1">#                &quot;some of the world&#39;s best-known fictional characters and is &quot;</span>
+<span class="c1">#                &#39;regarded by many as the greatest novelist of theVictorian era. &#39;</span>
+<span class="c1">#                &#39;His works enjoyed unprecedented popularity during his &#39;</span>
+<span class="c1">#                &#39;lifetime, and by the 20th century critics and scholars had &#39;</span>
+<span class="c1">#                &#39;recognised him as a literary genius. His novels and short &#39;</span>
+<span class="c1">#                &#39;stories are still widely read today.&#39;,</span>
+<span class="c1">#   &#39;birth_date&#39;: &#39;07/02/1812&#39;,</span>
+<span class="c1">#   &#39;death_date&#39;: &#39;09/06/1870&#39;,</span>
+<span class="c1">#   &#39;first_name&#39;: &#39;Charles&#39;,</span>
+<span class="c1">#   &#39;last_name&#39;: &#39;Dickens&#39;,</span>
+<span class="c1">#   &#39;middle_name&#39;: &#39;John Huffam&#39;,</span>
+<span class="c1">#   &#39;name&#39;: &#39;Charles John Huffam Dickens&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.to_pandas_dataframe">
+<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the author’s information into a pandas.DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>pandas_dataframe</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">()</span>
+
+<span class="c1">#                                        bibliography  ...                         name</span>
+<span class="c1"># 0  [Great Expectations, Oliver Twist, David Coppe...  ...  Charles John Huffam Dickens</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Author.update_metadata">
+<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.update_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge old metadata with new metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>metadata</strong> (<em>dict</em>) – <dl class="simple">
+<dt>can include:</dt><dd><ul class="simple">
+<li><p>number of pages</p></li>
+<li><p>editor</p></li>
+<li><p>publisher</p></li>
+<li><p>first edition date</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="dhtk.extensions.abstract_text.Book">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.abstract_text.</code><code class="sig-name descname">Book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span><span class="o">=</span><span class="default_value">'Anonymous'</span></em>, <em class="sig-param"><span class="n">metadata</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book" title="Permalink to this definition">¶</a></dt>
+<dd><p>The general book class of dhtk.</p>
+<p>Books implemented in submodules of dhtk should have this class as parent.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="kn">from</span> <span class="nn">dhtk.common.book</span> <span class="kn">import</span> <span class="n">Book</span>
+
+<span class="n">mrs_dalloway_book</span> <span class="o">=</span> <span class="n">Book</span><span class="p">(</span>
+    <span class="s2">&quot;Mrs Dalloway&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Virginia Woolf&quot;</span><span class="p">,</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;publisher&quot;</span><span class="p">:</span> <span class="s2">&quot;Hogarth Press&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;published&quot;</span><span class="p">:</span> <span class="s2">&quot;14 May 1925&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;first_edition_date&quot;</span><span class="p">:</span> <span class="s2">&quot;14 May 1925&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;United Kingdom&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">language</span><span class="o">=</span><span class="s2">&quot;English&quot;</span><span class="p">,</span>
+    <span class="n">ISBN</span><span class="o">=</span><span class="s2">&quot;0-15-662870-8&quot;</span><span class="p">,</span>
+    <span class="n">same_as</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;http://dbpedia.org/page/Mrs_Dalloway&quot;</span><span class="p">:</span> <span class="s2">&quot;User&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_author">
+<code class="sig-name descname">get_author</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_author" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the book’s author from Book</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>author</strong> – an instance of Author in dhtk.common.author</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dhtk.common.author.Author</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span>
+<span class="c1"># &lt;Author: Virginia Woolf&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_editor">
+<code class="sig-name descname">get_editor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_editor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the book’s editor.</p>
+<p>The value corresponding to the key “editor” in dict metadata for Book</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>editor</strong> – The editor of the book</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_first_edition_date">
+<code class="sig-name descname">get_first_edition_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_first_edition_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the first edition date of the book:
+value corresponding to the key “first_edition_date” in dict metadata for Book</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>first_edition_date</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_first_edition_date</span><span class="p">()</span>
+<span class="c1"># &#39;14 May 1925&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_metadata">
+<code class="sig-name descname">get_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return gathered metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>metadata</strong> – Book’s metadata dictionary.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">())</span>
+<span class="c1"># {&#39;ISBN&#39;: &#39;0-15-662870-8&#39;,</span>
+<span class="c1">#  &#39;country&#39;: &#39;United Kingdom&#39;,</span>
+<span class="c1">#  &#39;first_edition_date&#39;: &#39;14 May 1925&#39;,</span>
+<span class="c1">#  &#39;language&#39;: &#39;English&#39;,</span>
+<span class="c1">#  &#39;published&#39;: &#39;14 May 1925&#39;,</span>
+<span class="c1">#  &#39;publisher&#39;: &#39;Hogarth Press&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_number_of_pages">
+<code class="sig-name descname">get_number_of_pages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_number_of_pages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of pages of the book.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>number_of_pages</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_publisher">
+<code class="sig-name descname">get_publisher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_publisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the book’s publisher.</p>
+<p>The value corresponding to the key “publisher” in dict metadata for Book</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>publisher</strong> – The publisher of the book</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_publisher</span><span class="p">()</span>
+<span class="c1"># &#39;Hogarth Press&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_same_as">
+<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_same_as" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return gathered metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>same_as</strong> – The key is the uri of the same_as
+The value is the name of the source of the uri.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_same_as</span><span class="p">())</span>
+<span class="c1"># {&#39;http://dbpedia.org/page/Mrs_Dalloway&#39;: &#39;User&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_text_file_name">
+<code class="sig-name descname">get_text_file_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_text_file_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a good filename for a book.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>file_name</strong> – Example”Virginia_Woolf-Jacob’s_Room.txt”</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_text_file_name</span><span class="p">()</span>
+<span class="c1"># &#39;Virginia_Woolf-Mrs_Dalloway.txt&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.get_title">
+<code class="sig-name descname">get_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the book’s title from Book</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>title</strong> – The title of the book from self._title</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_title</span><span class="p">()</span>
+<span class="c1"># &#39;Mrs Dalloway&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.pickeled">
+<code class="sig-name descname">pickeled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.pickeled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a pickled version of the book.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>picke_dump</strong> – Serialised version of Book class instance</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dhtk.common.book.Book</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.print_info">
+<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.print_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print information about the book.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
+<span class="c1"># Title       : Mrs Dalloway</span>
+<span class="c1"># Author      : Virginia Woolf</span>
+<span class="c1"># Metadata    :</span>
+<span class="c1">#     - publisher   : Hogarth Press</span>
+<span class="c1">#     - published   :  14 May 1925</span>
+<span class="c1">#     - first_edition_date:  14 May 1925</span>
+<span class="c1">#     - country     : United Kingdom</span>
+<span class="c1">#     - language    :      English</span>
+<span class="c1">#     - ISBN        : 0-15-662870-8</span>
+<span class="c1">#     - summary     :</span>
+<span class="c1">#     This brilliant novel explores the hidden springs of thought and action in one day</span>
+<span class="c1">#     of a woman&#39;s life. Direct and vivid in her account of the details of Clarissa</span>
+<span class="c1">#     Dalloway&#39;s preparations for a party she is to give that evening, Woolf ultimately</span>
+<span class="c1">#     managed to reveal much more. For it is the feeling behind these daily events that</span>
+<span class="c1">#     gives Mrs. Dalloway its texture and richness and makes it so memorable.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert to python dict for general purpose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>book_as_dict</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
+<span class="c1"># {&#39;author_first_name&#39;: &#39;Virginia&#39;,</span>
+<span class="c1"># &#39;author_last_name&#39;: &#39;Woolf&#39;,</span>
+<span class="c1"># &#39;author_middle_name&#39;: &#39;&#39;,</span>
+<span class="c1"># &#39;author_name&#39;: &#39;Virginia Woolf&#39;,</span>
+<span class="c1"># &#39;bookISBN&#39;: &#39;0-15-662870-8&#39;,</span>
+<span class="c1"># &#39;book_title&#39;: &#39;Mrs Dalloway&#39;,</span>
+<span class="c1"># &#39;book_country&#39;: &#39;United Kingdom&#39;,</span>
+<span class="c1"># &#39;book_first_edition_date&#39;: &#39;14 May 1925&#39;,</span>
+<span class="c1"># &#39;book_language&#39;: &#39;English&#39;,</span>
+<span class="c1"># &#39;book_published&#39;: &#39;14 May 1925&#39;,</span>
+<span class="c1"># &#39;book_publisher&#39;: &#39;Hogarth Press&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.to_pandas_dataframe">
+<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert the book’s information into a pandas.DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>pandas_dataframe</strong></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">()</span>
+<span class="c1">#  author_first_name author_last_name  ... book_published  book_publisher</span>
+<span class="c1"># 0          Virginia            Woolf  ...   14 May 1925  Hogarth Press</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.abstract_text.Book.update_metadata">
+<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.update_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge old metadata with new metadata.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>metadata</strong> (<em>dict</em>) – <dl class="simple">
+<dt>can include:</dt><dd><ul class="simple">
+<li><p>number of pages</p></li>
+<li><p>editor</p></li>
+<li><p>publisher</p></li>
+<li><p>first edition date</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">update_metadata</span><span class="p">({</span><span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    This brilliant novel explores the hidden springs of thought and action in one day</span>
+<span class="s1">    of a woman&#39;s life. Direct and vivid in her account of the details of Clarissa</span>
+<span class="s1">    Dalloway&#39;s preparations for a party she is to give that evening, Woolf ultimately</span>
+<span class="s1">    managed to reveal much more. For it is the feeling behind these daily events that</span>
+<span class="s1">    gives Mrs. Dalloway its texture and richness and makes it so memorable.&#39;&#39;&#39;</span>
+<span class="p">})</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">())</span>
+<span class="c1"># {&#39;ISBN&#39;: &#39;0-15-662870-8&#39;,</span>
+<span class="c1">#  &#39;country&#39;: &#39;United Kingdom&#39;,</span>
+<span class="c1">#  &#39;first_edition_date&#39;: &#39;14 May 1925&#39;,</span>
+<span class="c1">#  &#39;language&#39;: &#39;English&#39;,</span>
+<span class="c1">#  &#39;published&#39;: &#39;14 May 1925&#39;,</span>
+<span class="c1">#  &#39;publisher&#39;: &#39;Hogarth Press&#39;,</span>
+<span class="c1">#  &#39;summary&#39;: &#39;    This brilliant novel explores the hidden springs of thought &#39;</span>
+<span class="c1">#             &#39;and action in one day &#39;</span>
+<span class="c1">#             &quot;    of a woman&#39;s life. Direct and vivid in her account of the &quot;</span>
+<span class="c1">#             &#39;details of Clarissa &#39;</span>
+<span class="c1">#             &quot;    Dalloway&#39;s preparations for a party she is to give that &quot;</span>
+<span class="c1">#             &#39;evening, Woolf ultimately &#39;</span>
+<span class="c1">#             &#39;    managed to reveal much more. For it is the feeling behind &#39;</span>
+<span class="c1">#             &#39;these daily events that &#39;</span>
+<span class="c1">#             &#39;    gives Mrs. Dalloway its texture and richness and makes it so &#39;</span>
+<span class="c1">#             &#39;memorable.&#39;}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="gutenberg-implementation">
+<h2>Gutenberg implementation<a class="headerlink" href="#gutenberg-implementation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="gutenberg-module">
 <h3>Gutenberg module<a class="headerlink" href="#gutenberg-module" title="Permalink to this headline">¶</a></h3>
 <dl class="py class">
@@ -213,7 +901,7 @@ If all, retrieve all information available</p></li>
 <h4>GutenbergAuthor<a class="headerlink" href="#gutenbergauthor" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Author.</code><code class="sig-name descname">GutenbergAuthor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Author.</code><code class="sig-name descname">GutenbergAuthor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">aliases</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">web_pages</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor" title="Permalink to this definition">¶</a></dt>
 <dd><p>The class for an author extended with variables from the gutenberg project.
 Child of the generic Author class.</p>
 <p class="rubric">Example</p>
@@ -273,128 +961,6 @@ Child of the generic Author class.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_bibliography">
-<code class="sig-name descname">get_bibliography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_bibliography" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s bibliography.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>bibliography</strong> – The author’s bibliography.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_bibliography</span><span class="p">())</span>
-<span class="c1"># [&#39;Great Expectations&#39;, &#39;Oliver Twist&#39;, &#39;David Copperfield&#39;, &#39;Bleak House &#39;]</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_biography">
-<code class="sig-name descname">get_biography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_biography" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s biography.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>bigraphy</strong> – The author’s biography.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_biography</span><span class="p">())</span>
-<span class="c1"># Charles John Huffam Dickens (/ˈdɪkɪnz/; 7 February 1812 – 9 June 1870) was an</span>
-<span class="c1"># English writer and social critic. He created some of the world&#39;s best-known</span>
-<span class="c1"># fictional characters and is regarded by many as the greatest novelist of the</span>
-<span class="c1"># Victorian era. His works enjoyed unprecedented popularity during his lifetime,</span>
-<span class="c1"># and by the 20th century critics and scholars had recognised him as a literary</span>
-<span class="c1"># genius. His novels and short stories are still widely read today.</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_birth_date">
-<code class="sig-name descname">get_birth_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_birth_date" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s birth date.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>birth_date</strong> – The author’s birth date.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<p>we pick the author Charles John Huffam Dickens and get_birth_date returns str “07/02/1812”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_birth_date</span><span class="p">())</span>
-<span class="c1"># 07/02/1812</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_death_date">
-<code class="sig-name descname">get_death_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_death_date" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s death date.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>death_date</strong> – The author’s death date.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<p>we pick the author Charles John Huffam Dickens and get_birth_date returns str “07/02/1812”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_death_date</span><span class="p">())</span>
-<span class="mi">09</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">1870</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_first_name">
-<code class="sig-name descname">get_first_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_first_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s first name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>first_name</strong> – The author’s first name.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<p>we pick the author Charles John Huffam Dickens and get_first_name returns str “Charles”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_first_name</span><span class="p">())</span>
-<span class="c1"># Charles</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_full_name">
-<code class="sig-name descname">get_full_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_full_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s full name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>full_name</strong> – The author’s full name.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_full_name</span><span class="p">())</span>
-<span class="c1"># Charles John Huffam Dickens</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_gutenberg_id">
 <code class="sig-name descname">get_gutenberg_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_gutenberg_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the gutenberg id url of the author.</p>
@@ -415,173 +981,6 @@ returns the string: “<a class="reference external" href="http://www.gutenberg.
 </div>
 </dd></dl>
 
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_last_name">
-<code class="sig-name descname">get_last_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_last_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s last name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>last_name</strong> – The author’s last name.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<p>we pick the author Charles John Huffam Dickens and get_last_name returns str “Dickens”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_last_name</span><span class="p">())</span>
-<span class="c1"># Dickens</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_middle_name">
-<code class="sig-name descname">get_middle_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_middle_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get author’s middle name.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>middle_name</strong> – The author’s middle name.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<p>we pick the author Charles John Huffam Dickens and get_middle_name returns str “John Huffam”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_middle_name</span><span class="p">())</span>
-<span class="c1"># John Huffam</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_same_as">
-<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_same_as" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return gathered metadata.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>same_as</strong> – The key is the uri of the same_as
-The value is the name of the source of the uri.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">get_bibliography</span><span class="p">())</span>
-<span class="c1"># {</span>
-    <span class="s1">&#39;http://dbpedia.org/page/Charles_Dickens&#39;</span><span class="p">:</span> <span class="s1">&#39;User&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;https://viaf.org/viaf/88666393/&#39;</span><span class="p">:</span> <span class="s1">&#39;User&#39;</span>
-  <span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.print_info">
-<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.print_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print information about the author.</p>
-<p class="rubric">Example</p>
-<p>print_info of Charles Dickens infos returns a print with his names, birth date,
-biography and bibliography.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-<span class="c1"># Charles John Huffam Dickens</span>
-<span class="c1"># Metadata    :</span>
-<span class="c1">#     - birth_date  :   07/02/1812</span>
-<span class="c1">#     - death_date  :   09/06/1870</span>
-<span class="c1">#     - biography   : Charles John Huffam Dickens (/ˈdɪkɪnz/; 7 February 1812 – ...</span>
-<span class="c1">#     - bibliography:</span>
-<span class="c1">#             - Great Expectations</span>
-<span class="c1">#             - Oliver Twist</span>
-<span class="c1">#             - David Copperfield</span>
-<span class="c1">#             - Bleak House</span>
-<span class="c1">#     - name        : Charles John Huffam Dickens</span>
-<span class="c1">#     - first_name  :      Charles</span>
-<span class="c1">#     - middle_name :  John Huffam</span>
-<span class="c1">#     - last_name   :      Dickens</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.to_dict">
-<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.to_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert to python dict for general purpose.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>author_as_dict</strong> – A dictionary version of the Author’s data.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
-<span class="c1"># {&#39;bibliography&#39;: [&#39;Great Expectations&#39;,</span>
-<span class="c1">#                    &#39;Oliver Twist&#39;,</span>
-<span class="c1">#                    &#39;David Copperfield&#39;,</span>
-<span class="c1">#                    &#39;Bleak House &#39;],</span>
-<span class="c1">#   &#39;biography&#39;: &#39;Charles John Huffam Dickens (/ˈdɪkɪnz/; 7 February 1812 – 9 &#39;</span>
-<span class="c1">#                &#39;June 1870) was an English writer and social critic. He created &#39;</span>
-<span class="c1">#                &quot;some of the world&#39;s best-known fictional characters and is &quot;</span>
-<span class="c1">#                &#39;regarded by many as the greatest novelist of theVictorian era. &#39;</span>
-<span class="c1">#                &#39;His works enjoyed unprecedented popularity during his &#39;</span>
-<span class="c1">#                &#39;lifetime, and by the 20th century critics and scholars had &#39;</span>
-<span class="c1">#                &#39;recognised him as a literary genius. His novels and short &#39;</span>
-<span class="c1">#                &#39;stories are still widely read today.&#39;,</span>
-<span class="c1">#   &#39;birth_date&#39;: &#39;07/02/1812&#39;,</span>
-<span class="c1">#   &#39;death_date&#39;: &#39;09/06/1870&#39;,</span>
-<span class="c1">#   &#39;first_name&#39;: &#39;Charles&#39;,</span>
-<span class="c1">#   &#39;last_name&#39;: &#39;Dickens&#39;,</span>
-<span class="c1">#   &#39;middle_name&#39;: &#39;John Huffam&#39;,</span>
-<span class="c1">#   &#39;name&#39;: &#39;Charles John Huffam Dickens&#39;}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.to_pandas_dataframe">
-<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert the author’s information into a pandas.DataFrame.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>pandas_dataframe</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pandas.DataFrame</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">charles_dickens_author</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">()</span>
-
-<span class="c1">#                                        bibliography  ...                         name</span>
-<span class="c1"># 0  [Great Expectations, Oliver Twist, David Coppe...  ...  Charles John Huffam Dickens</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.update_metadata">
-<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.update_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge old metadata with new metadata.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>metadata</strong> (<em>dict</em>) – <dl class="simple">
-<dt>can include:</dt><dd><ul class="simple">
-<li><p>number of pages</p></li>
-<li><p>editor</p></li>
-<li><p>publisher</p></li>
-<li><p>first edition date</p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
 </dd></dl>
 
 </div>
@@ -589,7 +988,7 @@ biography and bibliography.</p>
 <h4>GutenbergBook<a class="headerlink" href="#gutenbergbook" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extends the Book class for Project Gutenberg books.</p>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
@@ -616,25 +1015,6 @@ biography and bibliography.</p>
 <span class="c1">#     - gutenberg_id: http://www.gutenberg.org/ebooks/2701</span>
 </pre></div>
 </div>
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_author">
-<code class="sig-name descname">get_author</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_author" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the book’s author from Book</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>author</strong> – an instance of Author in dhtk.common.author</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dhtk.common.author.Author</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_author</span><span class="p">()</span>
-<span class="c1"># &lt;Author: Virginia Woolf&gt;</span>
-</pre></div>
-</div>
-</dd></dl>
-
 <dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_book_id">
 <code class="sig-name descname">get_book_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_book_id" title="Permalink to this definition">¶</a></dt>
@@ -674,119 +1054,6 @@ biography and bibliography.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_editor">
-<code class="sig-name descname">get_editor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_editor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the book’s editor.</p>
-<p>The value corresponding to the key “editor” in dict metadata for Book</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>editor</strong> – The editor of the book</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_first_edition_date">
-<code class="sig-name descname">get_first_edition_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_first_edition_date" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the first edition date of the book:
-value corresponding to the key “first_edition_date” in dict metadata for Book</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>first_edition_date</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_first_edition_date</span><span class="p">()</span>
-<span class="c1"># &#39;14 May 1925&#39;</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_metadata">
-<code class="sig-name descname">get_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return gathered metadata.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>metadata</strong> – Book’s metadata dictionary.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">())</span>
-<span class="c1"># {&#39;ISBN&#39;: &#39;0-15-662870-8&#39;,</span>
-<span class="c1">#  &#39;country&#39;: &#39;United Kingdom&#39;,</span>
-<span class="c1">#  &#39;first_edition_date&#39;: &#39;14 May 1925&#39;,</span>
-<span class="c1">#  &#39;language&#39;: &#39;English&#39;,</span>
-<span class="c1">#  &#39;published&#39;: &#39;14 May 1925&#39;,</span>
-<span class="c1">#  &#39;publisher&#39;: &#39;Hogarth Press&#39;}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_number_of_pages">
-<code class="sig-name descname">get_number_of_pages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_number_of_pages" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the number of pages of the book.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>number_of_pages</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_publisher">
-<code class="sig-name descname">get_publisher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_publisher" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the book’s publisher.</p>
-<p>The value corresponding to the key “publisher” in dict metadata for Book</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>publisher</strong> – The publisher of the book</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_publisher</span><span class="p">()</span>
-<span class="c1"># &#39;Hogarth Press&#39;</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_same_as">
-<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_same_as" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return gathered metadata.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>same_as</strong> – The key is the uri of the same_as
-The value is the name of the source of the uri.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_same_as</span><span class="p">())</span>
-<span class="c1"># {&#39;http://dbpedia.org/page/Mrs_Dalloway&#39;: &#39;User&#39;}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_text_file_dir_path">
 <code class="sig-name descname">get_text_file_dir_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_text_file_dir_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the suffix of the uri of the book in a gutenberg text repository.</p>
@@ -815,44 +1082,6 @@ and on the file encoding.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_text_file_name">
-<code class="sig-name descname">get_text_file_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_text_file_name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a good filename for a book.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>file_name</strong> – Example”Virginia_Woolf-Jacob’s_Room.txt”</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_text_file_name</span><span class="p">()</span>
-<span class="c1"># &#39;Virginia_Woolf-Mrs_Dalloway.txt&#39;</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_title">
-<code class="sig-name descname">get_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_title" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the book’s title from Book</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>title</strong> – The title of the book from self._title</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_title</span><span class="p">()</span>
-<span class="c1"># &#39;Mrs Dalloway&#39;</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_uri">
 <code class="sig-name descname">get_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the gutenberg id uri of the book.</p>
@@ -867,142 +1096,6 @@ and on the file encoding.</p>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">book</span><span class="o">.</span><span class="n">get_uri</span><span class="p">())</span>
 <span class="c1"># http: // www.gutenberg.org / ebooks / 2701</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.pickeled">
-<code class="sig-name descname">pickeled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.pickeled" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a pickled version of the book.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>picke_dump</strong> – Serialised version of Book class instance</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dhtk.common.book.Book</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.print_info">
-<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.print_info" title="Permalink to this definition">¶</a></dt>
-<dd><p>Print information about the book.</p>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
-<span class="c1"># Title       : Mrs Dalloway</span>
-<span class="c1"># Author      : Virginia Woolf</span>
-<span class="c1"># Metadata    :</span>
-<span class="c1">#     - publisher   : Hogarth Press</span>
-<span class="c1">#     - published   :  14 May 1925</span>
-<span class="c1">#     - first_edition_date:  14 May 1925</span>
-<span class="c1">#     - country     : United Kingdom</span>
-<span class="c1">#     - language    :      English</span>
-<span class="c1">#     - ISBN        : 0-15-662870-8</span>
-<span class="c1">#     - summary     :</span>
-<span class="c1">#     This brilliant novel explores the hidden springs of thought and action in one day</span>
-<span class="c1">#     of a woman&#39;s life. Direct and vivid in her account of the details of Clarissa</span>
-<span class="c1">#     Dalloway&#39;s preparations for a party she is to give that evening, Woolf ultimately</span>
-<span class="c1">#     managed to reveal much more. For it is the feeling behind these daily events that</span>
-<span class="c1">#     gives Mrs. Dalloway its texture and richness and makes it so memorable.</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.to_dict">
-<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.to_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert to python dict for general purpose.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>book_as_dict</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">to_dict</span><span class="p">())</span>
-<span class="c1"># {&#39;author_first_name&#39;: &#39;Virginia&#39;,</span>
-<span class="c1"># &#39;author_last_name&#39;: &#39;Woolf&#39;,</span>
-<span class="c1"># &#39;author_middle_name&#39;: &#39;&#39;,</span>
-<span class="c1"># &#39;author_name&#39;: &#39;Virginia Woolf&#39;,</span>
-<span class="c1"># &#39;bookISBN&#39;: &#39;0-15-662870-8&#39;,</span>
-<span class="c1"># &#39;book_title&#39;: &#39;Mrs Dalloway&#39;,</span>
-<span class="c1"># &#39;book_country&#39;: &#39;United Kingdom&#39;,</span>
-<span class="c1"># &#39;book_first_edition_date&#39;: &#39;14 May 1925&#39;,</span>
-<span class="c1"># &#39;book_language&#39;: &#39;English&#39;,</span>
-<span class="c1"># &#39;book_published&#39;: &#39;14 May 1925&#39;,</span>
-<span class="c1"># &#39;book_publisher&#39;: &#39;Hogarth Press&#39;}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.to_pandas_dataframe">
-<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert the book’s information into a pandas.DataFrame.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>pandas_dataframe</strong></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>pandas.DataFrame</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">()</span>
-<span class="c1">#  author_first_name author_last_name  ... book_published  book_publisher</span>
-<span class="c1"># 0          Virginia            Woolf  ...   14 May 1925  Hogarth Press</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.update_metadata">
-<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.update_metadata" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge old metadata with new metadata.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>metadata</strong> (<em>dict</em>) – <dl class="simple">
-<dt>can include:</dt><dd><ul class="simple">
-<li><p>number of pages</p></li>
-<li><p>editor</p></li>
-<li><p>publisher</p></li>
-<li><p>first edition date</p></li>
-</ul>
-</dd>
-</dl>
-</p>
-</dd>
-</dl>
-<p class="rubric">Example</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">update_metadata</span><span class="p">({</span><span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">    This brilliant novel explores the hidden springs of thought and action in one day</span>
-<span class="s1">    of a woman&#39;s life. Direct and vivid in her account of the details of Clarissa</span>
-<span class="s1">    Dalloway&#39;s preparations for a party she is to give that evening, Woolf ultimately</span>
-<span class="s1">    managed to reveal much more. For it is the feeling behind these daily events that</span>
-<span class="s1">    gives Mrs. Dalloway its texture and richness and makes it so memorable.&#39;&#39;&#39;</span>
-<span class="p">})</span>
-
-<span class="n">pprint</span><span class="p">(</span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">())</span>
-<span class="c1"># {&#39;ISBN&#39;: &#39;0-15-662870-8&#39;,</span>
-<span class="c1">#  &#39;country&#39;: &#39;United Kingdom&#39;,</span>
-<span class="c1">#  &#39;first_edition_date&#39;: &#39;14 May 1925&#39;,</span>
-<span class="c1">#  &#39;language&#39;: &#39;English&#39;,</span>
-<span class="c1">#  &#39;published&#39;: &#39;14 May 1925&#39;,</span>
-<span class="c1">#  &#39;publisher&#39;: &#39;Hogarth Press&#39;,</span>
-<span class="c1">#  &#39;summary&#39;: &#39;    This brilliant novel explores the hidden springs of thought &#39;</span>
-<span class="c1">#             &#39;and action in one day &#39;</span>
-<span class="c1">#             &quot;    of a woman&#39;s life. Direct and vivid in her account of the &quot;</span>
-<span class="c1">#             &#39;details of Clarissa &#39;</span>
-<span class="c1">#             &quot;    Dalloway&#39;s preparations for a party she is to give that &quot;</span>
-<span class="c1">#             &#39;evening, Woolf ultimately &#39;</span>
-<span class="c1">#             &#39;    managed to reveal much more. For it is the feeling behind &#39;</span>
-<span class="c1">#             &#39;these daily events that &#39;</span>
-<span class="c1">#             &#39;    gives Mrs. Dalloway its texture and richness and makes it so &#39;</span>
-<span class="c1">#             &#39;memorable.&#39;}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1115,7 +1208,7 @@ Each book of in the new list will be added by the method of <cite>add_book()</ci
 
 <dl class="py method">
 <dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.books">
-<code class="sig-name descname">books</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">get</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.books" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">books</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">get</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">remove</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.books" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of books in the corpus.</p>
 <p>Print list of books in the corpus.</p>
 <p>This list containing the number of books in corpus, authors’s full name and the books title.</p>

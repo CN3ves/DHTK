@@ -1,5 +1,17 @@
-Here is API info
-----------------
+########
+DHTK API
+########
+
+Core Functions
+==============
+
+dhtk.start()
+------------
+
+.. autofunction:: dhtk.core.__init__.start
+
+dhtk.get_module()
+-----------------
 
 **3 a) Connect to a** `SPARQL <https://en.wikipedia.org/wiki/SPARQL>`_ **endpoint**
 
@@ -10,15 +22,13 @@ However, note that this step performs important checks to ensure DHTK is properl
 
 **3 b) Load the required DHTK extension**
 
-.. literalinclude:: ./examples/12_guide_start.py
-    :language: python
-    :lines: 32-38
-    :emphasize-lines: 1
 
 Note that the *dataset* setting, defining the DHTK extension module to use, must be defined for the first time,
 otherwise DHTK is not aware of which module to load!
 
 Once the module is loaded, DHTK functionalities are ready to use!
+
+.. autofunction:: dhtk.core.__init__.get_module
 
 
 .. toctree::

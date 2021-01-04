@@ -19,4 +19,14 @@ For more information, see `Community <./community.html>`_
 Gutenberg extension
 -------------------
 
+Gutenberg abstract classes
+--------------------------
+.. autoclass:: dhtk.extensions.abstract_text.Author
+   :members:
+
+.. autoclass:: dhtk.extensions.abstract_text.Book
+   :members:
+
+Gutenberg implementation
+------------------------
 .. include:: ./extensions/gutenberg

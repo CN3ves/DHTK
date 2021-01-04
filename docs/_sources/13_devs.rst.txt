@@ -93,48 +93,54 @@ All the files from the previously tested independent module are moved to this fo
 .. image:: ./images/gutenberg1.png
    :width: 400
 
-**1) Define required name and url attributes**
-
-.. raw:: html
-
-   <details>
-   <summary><b><i>!!!</i></b></summary>
-
-.. note:: Note the addition of the wrapper attribute which is used to reference the "query class" object
-
-.. raw:: html
-
-   </details>
+**2) Add the class named Module to the __init__ file**
 
 .. literalinclude:: ./examples/13_dev.py
     :language: python
-    :lines: 4-18
-    :emphasize-lines: 5,6,15
+    :lines: 1-4
+    :emphasize-lines: 3
 
-**2) Defining required methods.**
+**3.1) Defining attributes**
+
+The general attributes *name* and *url* can be defined withing the class' __init__ method
+or on the class scope (outside methods).
+
+.. literalinclude:: ./examples/13_dev.py
+    :language: python
+    :lines: 4-24
+    :emphasize-lines: 3,10
+
+More specific attributes are defined to better integrate the gutenberg module: *_corpus* and *wrapper*.
+In this case, *_corpus* is used store retrieved books while the *wrapper* attribute is used to reference
+the GutenbergData "query" object
+
+**3.2) Defining .get and .save methods**
 
 Two methods are required to be defined. The *get(what, name, add)* provides a unified wrapper around
 the possible queries, simplifying the use of new extensions. The *save()* method stores the retrieved data on disk.
 
 .. literalinclude:: ./examples/13_dev.py
     :language: python
-    :lines: 20-116
-    :emphasize-lines: 1,84
+    :lines: 26-63
+    :emphasize-lines: 1,24
 
-**3) Defining additional methods.**
+**3.3) Defining additional methods**
 
 Gutenberg's Module class contains two extra methods. The suggested *welcome()* method
-automatically provides the user with the dataset statistics. This method is called when a module is loaded,
+automatically provides the user with the dataset statistics. This method is automatically called when a module is loaded,
 and can be used to provide the user with any (or no) information.
 
+.. literalinclude:: ./examples/13_dev.py
+    :language: python
+    :lines: 55-78
+
 The *corpus* method is not defined in parent AbstractExtension class, but it provides a simpler way to modify
-a corpus' settings and retrieve its representation, being a suitable intermediate method to search for book and author
+a corpus' settings and retrieve its representation, being a convenient intermediate method to search for book and author
 information.
 
 .. literalinclude:: ./examples/13_dev.py
     :language: python
-    :lines: 118-139
-    :emphasize-lines: 1,16
+    :lines: 80-86
 
 .. seealso:: `AbstractExtension class <142_ext.html#abstractextension>`_
 

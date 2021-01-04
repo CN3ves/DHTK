@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     
-    <title>Here is API info &mdash; DHTK 1.0.2 documentation</title>
+    <title>DHTK API &mdash; DHTK 1.0.2 documentation</title>
     
     <link rel="stylesheet" type="text/css" href="_static/css/spc-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="_static/css/spc-extend.css">
@@ -90,9 +90,16 @@
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">API details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="141_core.html">Core API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
-<li class="toctree-l3"><a class="reference internal" href="143_proc.html">Processing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#core-functions">Core Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dhtk-start">dhtk.start()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dhtk-get-module">dhtk.get_module()</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="141_core.html">Core API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l5"><a class="reference internal" href="143_proc.html">Processing API</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -124,27 +131,71 @@
         <div class="bodywrapper">
           <div class="body" id="spc-section-body" role="main">
             
-  <div class="section" id="here-is-api-info">
-<h1>Here is API info<a class="headerlink" href="#here-is-api-info" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dhtk-api">
+<h1>DHTK API<a class="headerlink" href="#dhtk-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="core-functions">
+<h2>Core Functions<a class="headerlink" href="#core-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="dhtk-start">
+<h3>dhtk.start()<a class="headerlink" href="#dhtk-start" title="Permalink to this headline">¶</a></h3>
+<dl class="py function">
+<dt id="dhtk.core.__init__.start">
+<code class="sig-prename descclassname">dhtk.core.__init__.</code><code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.__init__.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>DHTK initiation function.
+Instantiates a DHTK Settings data object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>keywords</em>) – <dl class="simple">
+<dt>DHTK settings passed to the Settings data object</dt><dd><p>&#64;dhtk.core.settings</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A DHTK Settings data object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="dhtk-get-module">
+<h3>dhtk.get_module()<a class="headerlink" href="#dhtk-get-module" title="Permalink to this headline">¶</a></h3>
 <p><strong>3 a) Connect to a</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> <strong>endpoint</strong></p>
 <p>If you’re using a remote SPARQL endpoint, you can provide it as a URL (website)
 using the <em>endpoint</em> setting. After DHTK is set up, this step is simply connects to the
 SPARQL endpoint to use. As such, it is integrated with the next step for moist user cases.
 However, note that this step performs important checks to ensure DHTK is properly set up.</p>
 <p><strong>3 b) Load the required DHTK extension</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll"><span class="c1"># Modifying Configurations 1</span>
-</span>
-<span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;Picca&quot;</span><span class="p">,</span>
-                     <span class="n">wd</span><span class="o">=</span><span class="s2">&quot;MyDir&quot;</span><span class="p">,</span>
-                     <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;http://dhtk.unil.ch/gutenberg/sparql&quot;</span><span class="p">,</span>
-                     <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
-<span class="c1"># Current DHTK settings:</span>
-</pre></div>
-</div>
 <p>Note that the <em>dataset</em> setting, defining the DHTK extension module to use, must be defined for the first time,
 otherwise DHTK is not aware of which module to load!</p>
 <p>Once the module is loaded, DHTK functionalities are ready to use!</p>
+<dl class="py function">
+<dt id="dhtk.core.__init__.get_module">
+<code class="sig-prename descclassname">dhtk.core.__init__.</code><code class="sig-name descname">get_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configs</span></em>, <em class="sig-param"><span class="n">install</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.__init__.get_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>DHTK function to return the dataset module required.
+Uses DHTK configurations provided to retrieve the correct
+DHTK extension module</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>configs</strong> (<em>dhtk.settings</em>) – DHTK Settings object</p></li>
+<li><p><strong>install</strong> (<em>boolean</em>) – If True, DHTK will try to install Docker automatically</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Object to access the DHTK extension module requested</p>
+</dd>
+</dl>
+</dd></dl>
+
 <div class="toctree-wrapper compound">
+</div>
+</div>
 </div>
 </div>
 

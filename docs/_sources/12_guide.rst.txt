@@ -199,7 +199,7 @@ truncated at 20 characters.
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 56-59
+    :lines: 56-61
 
 .. rubric:: **Searching for an author**
 
@@ -207,7 +207,7 @@ Gutenberg books can be searched using the *what="author"* argument.
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 62-67
+    :lines: 64-69
     :emphasize-lines: 6
 
 Check metadata
@@ -233,7 +233,7 @@ Retrieving metadata is simple as all Gutenberg objects have the **.print_info()*
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 70-112
+    :lines: 72-114
     :emphasize-lines: 6
 
 .. rubric:: **Get author information**
@@ -243,13 +243,13 @@ contain the author information as attribute. Because of this, there are two ways
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 115-120
+    :lines: 117-122
 
 Accessing the author's information can be done as easily as for books, using the **.print_info()** method:
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 122-142
+    :lines: 124-144
     :emphasize-lines: 15
 
 .. rubric:: **Get book text**
@@ -259,7 +259,7 @@ The original text for a Gutenberg book can also be accessed if required, using t
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 145-152
+    :lines: 147-152
 
 .. seealso:: `GutenbergBook <./142_ext.html#gutenbergbook>`_ and `GutenbergAuthor <./142_ext.html#gutenbergauthor>`_ classes
 
@@ -286,9 +286,31 @@ is created containing all the textual data and metadata retrieved from
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 155-174
+    :lines: 155-176
 
-.. rubric:: **Change Corpus' description**
+.. rubric:: **Retrieve books**
+
+Individual books can be retrieved from a Gutenberg Corpus using the **.books()** method and
+passing a book name to the *get* argument.
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 178-185
+
+Passing the value *get="all"* will return a dictionary of books added to the corpus.
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 187-196
+
+.. rubric:: **Modifying Corpus**
+
+As seem in the "Get book information" above, the book *Frankenstein; Or, The Modern Prometheus* with ID *http://www.gutenberg.org/ebooks/84*
+has "an improved edition". To remove the old edition, the argument *remove=True* can be passed to the method **.books()**.
+
+.. literalinclude:: ./examples/12_guide_gutenberg.py
+    :language: python
+    :lines: 198-208
 
 Before saving the Corpus to disk, it is important to review the Corpus descriptions, particularly the corpus name,
 which is used as the directory where the books will be stored. This can be done simply by passing the
@@ -296,7 +318,8 @@ which is used as the directory where the books will be stored. This can be done 
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 176-192
+    :lines: 210-227
+
 
 .. rubric:: **Save Corpus**
 
@@ -305,7 +328,7 @@ When all the information as been added to a corpus, it can be easily saved to di
 
 .. literalinclude:: ./examples/12_guide_gutenberg.py
     :language: python
-    :lines: 194-200
+    :lines: 229-235
 
 .. seealso:: `GutenbergCorpus <./142_ext.html#gutenbergcorpus>`_
 

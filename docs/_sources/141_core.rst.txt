@@ -27,7 +27,6 @@ SPARQL Endpoint
 .. autoclass:: dhtk.core.client.Client
    :noindex:
    :members:
-   :no-public-members:
    :private-members:
    :special-members:
 

@@ -7,9 +7,12 @@ Core Functions
 
 dhtk.start()
 ------------
+Main DHTK initiation function, which functions as a wrapper around the Settings class.
+It filters the most relevant arguments and passes them to Settings to set up DHTK.
 
 .. autofunction:: dhtk.core.__init__.start
 
+.. seealso:: `Usage <12_guide.html#setting-up-configurations>`_ and `Settings class <141_core.html#settings>`_
 dhtk.get_module()
 -----------------
 

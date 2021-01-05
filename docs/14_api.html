@@ -137,18 +137,21 @@
 <h2>Core Functions<a class="headerlink" href="#core-functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="dhtk-start">
 <h3>dhtk.start()<a class="headerlink" href="#dhtk-start" title="Permalink to this headline">¶</a></h3>
+<p>Main DHTK initiation function, which functions as a wrapper around the Settings class.
+It filters the most relevant arguments and passes them to Settings to set up DHTK.</p>
 <dl class="py function">
 <dt id="dhtk.core.__init__.start">
-<code class="sig-prename descclassname">dhtk.core.__init__.</code><code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.__init__.start" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dhtk.core.__init__.</code><code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wd</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">endpoint</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">extension</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#dhtk.core.__init__.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>DHTK initiation function.
 Instantiates a DHTK Settings data object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>**kwargs</strong> (<em>keywords</em>) – <dl class="simple">
-<dt>DHTK settings passed to the Settings data object</dt><dd><p>&#64;dhtk.core.settings</p>
-</dd>
-</dl>
-</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>user</strong> – </p></li>
+<li><p><strong>wd</strong> – </p></li>
+<li><p><strong>endpoint</strong> – </p></li>
+<li><p><strong>dataset</strong> – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p></p>
@@ -159,6 +162,10 @@ Instantiates a DHTK Settings data object.</p>
 </dl>
 </dd></dl>
 
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="12_guide.html#setting-up-configurations">Usage</a> and <a class="reference external" href="141_core.html#settings">Settings class</a></p>
+</div>
 </div>
 <div class="section" id="dhtk-get-module">
 <h3>dhtk.get_module()<a class="headerlink" href="#dhtk-get-module" title="Permalink to this headline">¶</a></h3>
@@ -217,7 +224,7 @@ DHTK extension module</p>
     <div class="row-fluid">
     <ul class="inline pull-left">
       <li>
-        &copy; Copyright 2020, Davide Picca, Mattia Egloff and Carlos Neves
+        &copy; Copyright 2020
       </li>
       <li>
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.3.1.

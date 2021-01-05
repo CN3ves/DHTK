@@ -200,7 +200,156 @@ If the triplestore is local, it sets up a Fuseki container on Docker.</p>
 </dd></dl>
 
 <details>
-<summary><b><i>Private members</i></b></summary></details><dl class="py class">
+<summary><b><i>Private members</i></b></summary><dl class="py class">
+<dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Class to manage DHTK connection to the triplestore endpoint.</p>
+<p>Instantiates an object that tries to connect to the required triplestore.
+If the triplestore is local, it sets up a Fuseki container on Docker.</p>
+<dl class="py method">
+<dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span></dt>
+<dd><p>Instantiation of Configuration” object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>settings</strong> (<em>DHTK Settings object</em>) – Configurations to use</p></li>
+<li><p><strong>install</strong> (<em>boolean</em><em> [</em><em>default: False</em><em>]</em>) – If True, DHTK will try to install Docker automatically</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname">__weakref__</code></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">_check_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None</dt>
+<dd><p>Method to check if the Fuseki app contains the dataset to load
+on its environment</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">_check_containers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">containers</span><span class="p">:</span> <span class="n">List<span class="p">[</span>dict<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None</dt>
+<dd><p>Method to check if the local Docker has the required containers set up.
+If not, set up required containers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>containers</strong> (<em>list of dictionaries</em>) – List of dictionaries describing the Docker containers required by DHTK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">_check_docker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; None</dt>
+<dd><p>Method to check if Docker is installed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>install</strong> (<em>boolean</em><em> [</em><em>default: False</em><em>]</em>) – If True, DHTK will try to install Docker automatically</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">_check_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">images</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None</dt>
+<dd><p>Method to check if the local Docker client has the requested images installed.
+If not, pull the requested images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>images</strong> (<em>list of strings</em>) – List of Docker images required by DHTK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property">static </em><code class="sig-name descname">_check_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Method to check the available extensions (datasets).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List DHTK extension sub-modules available</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wait</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">30</span></em><span class="sig-paren">)</span> &#x2192; int</dt>
+<dd><p>Method to connect to local Docker client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wait</strong> (<em>integer</em><em> [</em><em>default = 30</em><em>]</em>) – Number of seconds to wait between each attempt to connect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property">static </em><code class="sig-name descname">_correct_credsstore</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None</dt>
+<dd><p>credsStore value in .docker/config.json was troublesome during testing,
+this method removes it from Docker configuration allowing DHTK to work normally.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">_default_containers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datasets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>dict<span class="p">]</span></dt>
+<dd><p>Method to retrieve the default containers required by DHTK</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasets</strong> (<em>list of strings</em>) – List of datasets to be added to dhtk-app on the Fuseki server</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A list containing the dictionaries describing the Docker containers required for DHTK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datasets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None</dt>
+<dd><p>Method to update dhtk-app container from Docker.
+It removed and re-installs the container with considering
+the new dataset extensions available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasets</strong> (<em>list of strings</em>) – List of datasets to be added to dhtk-app on the Fuseki server</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">get_objects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">types</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; dict</dt>
+<dd><p>Method to check stored configurations for triplestore endpoint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>[</strong><strong>string/list</strong><strong>]</strong> (<em>types</em>) – Types of Docker “object” to get</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Docker objects available</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</details><dl class="py class">
 <dt id="dhtk.core.client.Installers">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Installers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Installers" title="Permalink to this definition">¶</a></dt>
 <dd><p>!!!EXPERIMENTAL FEATURE!!!
@@ -363,7 +512,7 @@ See <a class="reference external" href="http://stackoverflow.com/a/39501288/1709
     <div class="row-fluid">
     <ul class="inline pull-left">
       <li>
-        &copy; Copyright 2020, Davide Picca, Mattia Egloff and Carlos Neves
+        &copy; Copyright 2020
       </li>
       <li>
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 3.3.1.

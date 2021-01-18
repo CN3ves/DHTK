@@ -9,34 +9,44 @@ Core API references
 
 Settings
 ========
+The Settings dataclass is used to load, set and save all information required to DHTK.
+The user may pass as arguments:
+
+* *wd:* A string value for the path of the directory for DHTK to save logs, settings and files. By default "~/DHTK"
+* *user:* A string value identifying the user. By default, DHTK looks for the logged-in system user name.
+* *endpoint:* A string value for the SPARQL endpoint's URL. By default, DHTK used a Docker/Fuseki "localhost" endpoint
+* *dataset*: A string value naming the DHTK dataset or extension module to be used. **NOTE** that there is not default, so dataset must be set at least once!!
 
 .. autoclass:: dhtk.core.settings.Settings
    :members:
+   :private-members:
+
+DHTK uses additional settings which may be useful mostly for developers:
+
+* *modules*: A dictionary storing the data of the last update for all DHTK extensions set up locally
+* *_file*: A string containing the path to the user's configuration's file used to load and save DHTK settings.
+* *logger*: DHTK's Logger object automatically set up at instantiation.
+* *port*: An integer determining which localhost port is used by DHTK's Docker/Fuseki endpoint.
+* *_connect*: Number of seconds DHTK should wait for Docker to start. It is automatically updated with each use.
 
 SPARQL Endpoint
 ===============
 
-.. autoclass:: dhtk.core.client.Client
-   :members:
-
-.. raw:: html
-
-   <details>
-   <summary><b><i>Private members</i></b></summary>
+The Client class is used to check the SPARQL endpoint defined by `Settings <#settings>`_.endpoint.
+If "localhost", DHTK additionally checks for a `Docker application <https://www.docker.com/>`_ and Fuseki container,
+setting up the required containers locally. It returns a the client object required by the extension modules to query datasets.
 
 .. autoclass:: dhtk.core.client.Client
-   :noindex:
    :members:
    :private-members:
-   :special-members:
 
-
-.. raw:: html
-
-   </details>
+`Docker application <https://www.docker.com/>`_ is required to set up DHTK locally. As such, DHTK includes the Installers class,
+which attempts to automattically download and install Docker. At the moment, this options *is only available for macOS user
+with admin privileges*.
 
 .. autoclass:: dhtk.core.client.Installers
    :members:
+   :private-members:
 
 Dataset Manager
 ===============
@@ -53,11 +63,11 @@ Helpers
 
 .. autofunction:: dhtk.core.helpers.download_files
 
-.. autofunction:: dhtk.core.new_helpers.url_exists
+.. autofunction:: dhtk.core.helpers.url_exists
 
-.. autofunction:: dhtk.core.new_helpers.download_file
+.. autofunction:: dhtk.core.helpers.download_file
 
-.. autofunction:: dhtk.core.new_helpers.file_creation_date
+.. autofunction:: dhtk.core.helpers.file_creation_date
 
-.. autofunction:: dhtk.core.new_helpers.unarchive_book
+.. autofunction:: dhtk.core.helpers.unarchive_book
 

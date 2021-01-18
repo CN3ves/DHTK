@@ -21,7 +21,7 @@ the Digital Humanities' community. Even if you do not have the computational exp
 in Python, you can contribute as part of the DHTK community by letting us know how to improve DHTK
 to best fit your research needs.
 
-If you have any question, suggestion or feedback please write to us at davide.picca@unil.ch
+If you have any question, suggestion or feedback please write to us at davide.picca[at]unil.ch
 
 *All suggestions and feedback are welcomed!*
 
@@ -30,32 +30,51 @@ Minor changes
 
 If you think DHTK is missing some simple functionality or could be made simpler and easier in some way,
 and you want to contribute by helping us implement those changes, thanks you! However, before you do so,
-please write to us at davide.picca@unil.ch to let us know!
+please write to us at davide.picca[at]unil.ch to let us know!
 
-Adding or modifying functionalities to existing DHTK module can be easily done by directly modifying the
-existing source code. As a collective effort, we remain an open to everyone's contributions. Please visit our
-`GitHub page <https://github.com/CN3ves/DHTK>`_, containing all the source code and documentation required
-to build DHTK. There, you also will find instructions on how to clone the DHTK repository, create your own branch and
-how to submit your changes for review as a pull request. You can add or modify any function, class or method you deem
-required to improve DHTK usability and submit a pull request at any point. Your request will be discussed and reviewed
-and soon as possibly using the normal
+As a collective effort, we remain an open to everyone's contributions. Everyone can add or modify any function, class or
+method to improve DHTK usability of an existing DHTK module easily:
+
+1) Please visit our `GitHub page <https://github.com/CN3ves/DHTK>`_ to find detailed information on how to contribute.
+2) Add an issue to the repository to let us know what you will be working on.
+3) Clone the DHTK repository and create your own branch.
+4) Address the issue by modifying and testing the code locally.
+5) Submit your changes for review as a pull request.
+
+Your request will be discussed and reviewed and soon as possibly using the normal
 `Github interface <https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request>`_.
 
 New extensions
 ==============
 
-If you would like to integrate a new dataset to DHTK, please write to us at davide.picca@unil.ch to let us know!
-DHTK modular structure is thought out to simplify integrating new modules, features and datasets. This is done
-using a unified module wrapper class defined in the extension's __init__ file. This **Module class**
-inherits from the DHTK **AbstractExtension class** blueprint, which provides most of the common functions
-required to set up an extension, allowing easy integration of new modules and
-continuous growth to better suit the community.
+If you would like to integrate a new dataset to DHTK, please write to us at davide.picca[at]unil.ch to let us know!
 
+DHTK modular structure is thought out to simplify integrating new modules, features and datasets.
 DHTK is divided into three parts as described in the `documentation <1_doc.html>`_ page.
 The three parts are organised in separate directories (core, extensions, processing) for easier identification
-and navigation during development. **Development on new modules is initiated by creating a new folder
-under the extension directory.** This guarantees that the new extension functions as a self contained module, independent
+and navigation during development. This guarantees that the new extension functions as a self contained module, independent
 of the core DHTK modules.
+
+*Set up DHTK*
+
+1) Please visit our `GitHub page <https://github.com/CN3ves/DHTK>`_ to find detailed information on how to contribute.
+2) Add an issue to the repository to let us know what you will be working on.
+3) Clone the DHTK repository and create your own branch.
+
+*Develop module*
+
+4) Develop you module independently.
+5) Remember to re-use (import) functions and classes already available on DHTK (`how to add/modify helpers <#minor-changes>`_)
+
+*Integrate module*
+
+6) Creating a new folder under the extension directory with the new module's name.
+7) If you're using a new curated dataset, make the RDF file available (`see RDF Dataset <#rdf-dataset>`_)
+8) Integrate your module (after testing) into DHTK's framework (`see Integrating new modules <#integrating-new-modules>`_)
+9) Submit your changes for review as a pull request.
+
+Your request will be discussed and reviewed and soon as possibly using the normal
+`Github interface <https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request>`_.
 
 RDF Dataset
 -----------
@@ -70,7 +89,6 @@ how to use it) should also be made available under the **"builder directory"** o
 
 Integrating new modules
 -----------------------
-
 DHTK core modules are responsible to locate and load any module within the extension directory.
 Due to the modular architecture of DHTK, these extensions can be easily developed as self-sufficient Python modules,
 which are integrated into the DHTK framework in three steps:
@@ -102,27 +120,43 @@ All the files from the previously tested independent module are moved to this fo
 
 **3.1) Defining attributes**
 
-The general attributes *name* and *url* can be defined withing the class' __init__ method
-or on the class scope (outside methods).
+The general attributes *name* and *url* can be defined withing the class' __init__ method:
+
+* *name* defines the the name of the module and should be the same as the directory place under dhtk/extensions
+* *url* define the remote location of the dataset to be set up locally.
 
 .. literalinclude:: ./examples/13_dev.py
     :language: python
-    :lines: 4-24
-    :emphasize-lines: 3,10
+    :lines: 4-19
+    :emphasize-lines: 6,7
 
-More specific attributes are defined to better integrate the gutenberg module: *_corpus* and *wrapper*.
-In this case, *_corpus* is used store retrieved books while the *wrapper* attribute is used to reference
-the GutenbergData "query" object
+.. note:: More specific attributes are defined to better integrate the gutenberg module: *_corpus* and *wrapper*. In this case, *_corpus* is used store retrieved books while the *wrapper* attribute is used to reference the GutenbergData "query" object
 
 **3.2) Defining .get and .save methods**
 
-Two methods are required to be defined. The *get(what, name, add)* provides a unified wrapper around
-the possible queries, simplifying the use of new extensions. The *save()* method stores the retrieved data on disk.
+Two methods are required to be defined: .get() and save().
+
+
+The *get(what, name, add)* provides functions as the main point for DHTK integration. This method takes three arguments,
+converts then into SPARQL queries using a conditional logic and calls the correct module functionalities to retrieve information.
+
+* *what*: a string value determining what is being searched for (*e.g.* books, authors). This value is evaluated by a conditional if-then-else logic, wrapping around the main module query calls with a user-friendly and unified framework.
+* *name*: a string value identifying of what is being searched (*e.g.* book name, author name). This value is used to narrow down the general query defined by *what*, retrieving specific instances.
+* *add*: a boolean value defining if the query results should be added to the records (*e.g.* corpus) or if the user wishes to search interactively instead.
 
 .. literalinclude:: ./examples/13_dev.py
     :language: python
-    :lines: 26-63
-    :emphasize-lines: 1,24
+    :lines: 21-43
+    :emphasize-lines: 9,12,15
+
+The records generated when using *get(add=True)*
+are used by the *.save()* method to store all the retrieved data on disk
+by calling all relevant methods from the extension.
+
+.. literalinclude:: ./examples/13_dev.py
+    :language: python
+    :lines: 45-65
+    :emphasize-lines: 9,12,15
 
 **3.3) Defining additional methods**
 
@@ -132,7 +166,7 @@ and can be used to provide the user with any (or no) information.
 
 .. literalinclude:: ./examples/13_dev.py
     :language: python
-    :lines: 55-78
+    :lines: 67-80
 
 The *corpus* method is not defined in parent AbstractExtension class, but it provides a simpler way to modify
 a corpus' settings and retrieve its representation, being a convenient intermediate method to search for book and author
@@ -140,7 +174,7 @@ information.
 
 .. literalinclude:: ./examples/13_dev.py
     :language: python
-    :lines: 80-86
+    :lines: 82-88
 
 .. seealso:: `AbstractExtension class <142_ext.html#abstractextension>`_
 

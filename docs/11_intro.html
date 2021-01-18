@@ -93,7 +93,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="14_api.html">API details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_api.html">API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="2_community.html">Community</a></li>
@@ -143,13 +143,11 @@ but DHTK is compatible with at least Python 3.5+.</p>
 DHTK to search pre-processed data. This requires setting up a Fuseki server container
 on the Docker application. To do so, you will need to
 <a class="reference external" href="https://docs.docker.com/get-docker/">download Docker</a> before running DHTK.</p>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>DHTK may attempt to install docker and set up all required containers and volumes. However, this feature is experimental and is only available of macOS systems at the moment.</p>
+<p>DHTK may attempt to install docker (macOS systems only) and set up all required containers and volumes.</p>
 </div>
-</details>
-<br><p class="rubric"><strong>Install DHTK</strong></p>
+<p class="rubric"><strong>Install DHTK</strong></p>
 <p>DHTK can be installed as a regular python modules, using the
 package installer for Python (pip):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ pip install git+https://gitlab.com/dhtk/dhtk.git
@@ -167,13 +165,7 @@ $ python setup.py
 <h2>Using Gutenberg.org<a class="headerlink" href="#using-gutenberg-org" title="Permalink to this headline">¶</a></h2>
 <p>To start exploring DHTK’s <a class="reference external" href="https://www.gutenberg.org/">Project Gutenberg</a> dataset,
 run:</p>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>DHTK runs a number of system check to try to guarantee if can run without any problem. If this is the first time you’re running it, keep in mind that it may take considerable time to complete the the full set.</p>
-</div>
-</details>
-<br><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dhtk</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dhtk</span>
 <span class="c1"># ##################################################</span>
 <span class="c1"># Welcome to the Digital Humanities ToolKit,</span>
 <span class="c1"># the user-friendly Python API for</span>
@@ -263,6 +255,10 @@ run:</p>
 <span class="c1"># If you&#39;re done use exit() or Ctrl-D (i.e. EOF) to exit</span>
 <span class="c1"># Please send them any comments or suggestions to davide.picca@unil.ch.</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DHTK runs a number of system check to try to guarantee if can run without any problem. If this is the first time you’re running it, keep in mind that it may take considerable time to complete the the full set.</p>
 </div>
 </div>
 </div>

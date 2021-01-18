@@ -89,15 +89,16 @@
 <li class="toctree-l2"><a class="reference internal" href="11_intro.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">API details</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#core-functions">Core Functions</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#interface">Interface</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#dhtk-start">dhtk.start()</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dhtk-get-module">dhtk.get_module()</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="141_core.html">Core API</a></li>
-<li class="toctree-l5"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
-<li class="toctree-l5"><a class="reference internal" href="143_proc.html">Processing API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dhtk-get-module">dhtk.get_module()</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#details">Details</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="141_core.html">Core API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="143_proc.html">Processing API</a></li>
 </ul>
 </li>
 </ul>
@@ -133,51 +134,59 @@
             
   <div class="section" id="dhtk-api">
 <h1>DHTK API<a class="headerlink" href="#dhtk-api" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="core-functions">
-<h2>Core Functions<a class="headerlink" href="#core-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="interface">
+<h2>Interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h2>
+<p>For simplicity, the core DHTK functionalities are controlled using only two wrapper functions:
+start() and get_module()</p>
 <div class="section" id="dhtk-start">
 <h3>dhtk.start()<a class="headerlink" href="#dhtk-start" title="Permalink to this headline">¶</a></h3>
-<p>Main DHTK initiation function, which functions as a wrapper around the Settings class.
-It filters the most relevant arguments and passes them to Settings to set up DHTK.</p>
+<p>Main DHTK initiation function. Works as a simple interface to the DHTK Settings class,
+accepting and filtering invalid or misspelled arguments for instantiation of the DHTK Settings.</p>
 <dl class="py function">
 <dt id="dhtk.core.__init__.start">
-<code class="sig-prename descclassname">dhtk.core.__init__.</code><code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">user</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">wd</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">endpoint</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">extension</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#dhtk.core.__init__.start" title="Permalink to this definition">¶</a></dt>
-<dd><p>DHTK initiation function.
-Instantiates a DHTK Settings data object.</p>
+<code class="sig-prename descclassname">dhtk.core.__init__.</code><code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">List</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; object<a class="headerlink" href="#dhtk.core.__init__.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiates a DHTK Settings data object and prints current settings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>user</strong> – </p></li>
-<li><p><strong>wd</strong> – </p></li>
-<li><p><strong>endpoint</strong> – </p></li>
-<li><p><strong>dataset</strong> – </p></li>
-</ul>
+<dd class="field-odd"><p><strong>**kwargs</strong> (<em>dict</em>) – Key word arguments passed to instantiate a DHTK Settings data class.
+Accepts keywords [wd, user, endpoint, dataset, port]</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p><strong>Settings</strong> – A DHTK Settings data object</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>A DHTK Settings data object</p>
+<dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
 
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DHTK uses both <em>wd</em> and <em>user</em> to search for saved settings. If different values are passed to DHTK, the user’s previous settings may not be properly acessible.</p>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference external" href="12_guide.html#setting-up-configurations">Usage</a> and <a class="reference external" href="141_core.html#settings">Settings class</a></p>
+<p><a class="reference external" href="141_core.html#settings">Settings class</a></p>
 </div>
 </div>
 <div class="section" id="dhtk-get-module">
 <h3>dhtk.get_module()<a class="headerlink" href="#dhtk-get-module" title="Permalink to this headline">¶</a></h3>
-<p><strong>3 a) Connect to a</strong> <a class="reference external" href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> <strong>endpoint</strong></p>
-<p>If you’re using a remote SPARQL endpoint, you can provide it as a URL (website)
-using the <em>endpoint</em> setting. After DHTK is set up, this step is simply connects to the
-SPARQL endpoint to use. As such, it is integrated with the next step for moist user cases.
-However, note that this step performs important checks to ensure DHTK is properly set up.</p>
-<p><strong>3 b) Load the required DHTK extension</strong></p>
-<p>Note that the <em>dataset</em> setting, defining the DHTK extension module to use, must be defined for the first time,
-otherwise DHTK is not aware of which module to load!</p>
-<p>Once the module is loaded, DHTK functionalities are ready to use!</p>
+<p>DHTK’s loading function. This function uses the DHTK configurations for
+the two main start up tasks:</p>
+<ul class="simple">
+<li><p>Check and connect to the <a class="reference external" href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a> endpoint</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step includes system checks to ensure the endpoint is properly set up. As such, it may take some time to finish the first time it is run.</p>
+</div>
+<ul class="simple">
+<li><p>Load the required DHTK extension</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em>dataset</em> setting, which defines the DHTK extension module to use, must be defined for the first time and may take considerable time to set up locally.</p>
+</div>
 <dl class="py function">
 <dt id="dhtk.core.__init__.get_module">
 <code class="sig-prename descclassname">dhtk.core.__init__.</code><code class="sig-name descname">get_module</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">configs</span></em>, <em class="sig-param"><span class="n">install</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.__init__.get_module" title="Permalink to this definition">¶</a></dt>
@@ -192,16 +201,28 @@ DHTK extension module</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
+<dd class="field-even"><p><strong>Module</strong> – Wrapper module providing access to the DHTK extension module requested</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Object to access the DHTK extension module requested</p>
+<dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
 
-<div class="toctree-wrapper compound">
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="141_core.html#sparql-endpoint">Client class</a> and <a class="reference external" href="141_core.html#dataset-manager">DatasetLoader</a></p>
 </div>
+</div>
+</div>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="141_core.html">Core API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="143_proc.html">Processing API</a></li>
+</ul>
 </div>
 </div>
 </div>

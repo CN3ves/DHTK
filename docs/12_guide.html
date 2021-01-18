@@ -106,7 +106,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="14_api.html">API details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_api.html">API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="2_community.html">Community</a></li>
@@ -183,22 +183,14 @@ have a default value. The settings to pay more attention to are the following:</
 <ul class="simple">
 <li><p><em>[user]</em>: By default, DHTK tries to access the system’s information to identify the user. It is possible to change this default user name, which may be particularly relevant when working on shared machines.</p></li>
 <li><p><em>[wd]</em>: DHTK uses the user’ home directory to set up its working directory. This can be modified if another directory would be more suitable.</p></li>
-</ul>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>DHTK uses both <em>wd</em> and <em>user</em> to search for saved settings. If different values are passed to DHTK, the user’s previous settings may not be properly acessible.</p>
-</div>
-</details><ul class="simple">
 <li><p><em>[endpoint]</em>: DHTK uses a local Fuseki server as its default SPARQL endpoint for querying pre-processed datasets. To use a remote (on-line) endpoint, it can be done by adding the URL (link) to the remote endpoint.</p></li>
 <li><p><em>[dataset]</em>: DHTK is a modular package to which extensions can be easily added. This setting determines which of the available extension modules DHTK should load.</p></li>
 </ul>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>As illustrated above, dataset does not have a default value and must be set <strong>the first time</strong> a user runs DHTK.</p>
+<p>Dataset does not have a default value and must be set <strong>the first time</strong> a user runs DHTK.</p>
 </div>
-</details><div class="admonition seealso">
+<div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference external" href="14_api.html#start">Start function</a></p>
 </div>
@@ -206,24 +198,24 @@ have a default value. The settings to pay more attention to are the following:</
 <div class="section" id="modifying-configurations">
 <h3>Modifying configurations<a class="headerlink" href="#modifying-configurations" title="Permalink to this headline">¶</a></h3>
 <p>Configurations can be <em>set directly</em> by passing their values as keyword arguments to the dhtk.start() function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;Picca&quot;</span><span class="p">,</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">configs</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">start</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="s2">&quot;Demo_user&quot;</span><span class="p">,</span>
                      <span class="n">wd</span><span class="o">=</span><span class="s2">&quot;MyDir&quot;</span><span class="p">,</span>
                      <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;http://dhtk.unil.ch/gutenberg/sparql&quot;</span><span class="p">,</span>
                      <span class="n">dataset</span><span class="o">=</span><span class="s2">&quot;gutenberg&quot;</span><span class="p">)</span>
 <span class="c1"># Current DHTK settings:</span>
-<span class="c1"># [user]: Picca</span>
-<span class="c1"># [wd]: MyDir/Picca</span>
+<span class="c1"># [user]: Demo_user</span>
+<span class="c1"># [wd]: MyDir/Demo_user</span>
 <span class="c1"># [endpoint]: http://dhtk.unil.ch/gutenberg/sparql</span>
 <span class="c1"># [dataset]: gutenberg</span>
 <span class="c1"># [modules]: {}</span>
-<span class="c1"># [_file]: MyDir/Picca/Picca.config</span>
+<span class="c1"># [_file]: MyDir/Demo_user/Demo_user.config</span>
 <span class="c1"># [logger]: &lt;Logger dhtk (DEBUG)&gt;</span>
 <span class="c1"># [_port]: 3030</span>
 <span class="c1"># [_connect]: 30</span>
 </pre></div>
 </div>
 <p>Alternatively, all settings can be <em>modified</em> using Python’s dot notation to access the configuration
-object’s attributes. For example, updating the user name is as simple as <code class="code python docutils literal notranslate"><span class="name"><span class="pre">configs</span></span><span class="operator"><span class="pre">.</span></span><span class="name"><span class="pre">user</span></span> <span class="operator"><span class="pre">=</span></span> <span class="literal string double"><span class="pre">“egloff”</span></span></code></p>
+object’s attributes. For example, updating the user name is as simple as <code class="code python docutils literal notranslate"><span class="name"><span class="pre">configs</span></span><span class="operator"><span class="pre">.</span></span><span class="name"><span class="pre">user</span></span> <span class="operator"><span class="pre">=</span></span> <span class="literal string double"><span class="pre">“new_user”</span></span></code></p>
 </div>
 </div>
 <div class="section" id="dhtk-extensions">
@@ -244,10 +236,10 @@ are all handled by the function <strong>dhtk.get_module()</strong>.</p>
 <h3>Gutenberg<a class="headerlink" href="#gutenberg" title="Permalink to this headline">¶</a></h3>
 <p>DHTK’s Gutenberg extension dataset allows the user to easily query <a class="reference external" href="http://gutenberg.org/">Gutenberg.org</a>
 for <strong>books, authors, bookshelves and subjects</strong>, retrieving all the available information as a DHTK Corpus.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dhtk_configurations</span><span class="o">.</span><span class="n">dataset</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">config</span><span class="o">.</span><span class="n">dataset</span>
 <span class="c1"># &#39;gutenberg&#39;</span>
 
-<span class="n">gutenberg</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">dhtk_configurations</span><span class="p">)</span>
+<span class="n">gutenberg</span> <span class="o">=</span> <span class="n">dhtk</span><span class="o">.</span><span class="n">get_module</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
 <span class="c1"># DHTK Gutenberg statistics:</span>
 <span class="c1"># Last update: 26 Dec 2020</span>
 <span class="c1"># number of books        :	 56913</span>
@@ -272,20 +264,18 @@ with only 3 keyword arguments:</p>
 <h4>Exploring Data<a class="headerlink" href="#exploring-data" title="Permalink to this headline">¶</a></h4>
 <p>To <strong>search</strong> Gutenberg’s data, set <em>add=False</em>. For such queries, DHTK Gutenberg’s module
 returns a dictionary of books or authors matching the query.</p>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>add=False</em> is the default value, so this argument can be simply ignored by the user in such cases.</p>
 </div>
-</details><p class="rubric"><strong>Searching for a bookshelf</strong></p>
+<p class="rubric"><strong>Searching for a bookshelf</strong></p>
 <p>To check which <a class="reference external" href="http://www.gutenberg.org/ebooks/bookshelf/">bookshelves</a>
 are available in DHTK’s Gutenberg, set <em>what=”shelf”</em> and <em>name=”all”</em>.</p>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>name=”all”</em> is the default value, so this argument may be simply ignored by the user.</p>
 </div>
-</details><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search all bookshelves</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Search all bookshelves</span>
 <span class="n">bookshelves</span> <span class="o">=</span> <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;shelf&quot;</span><span class="p">)</span>
 <span class="p">[</span><span class="n">shelf</span> <span class="k">for</span> <span class="n">shelf</span> <span class="ow">in</span> <span class="n">bookshelves</span> <span class="k">if</span> <span class="s2">&quot;Science&quot;</span> <span class="ow">in</span> <span class="n">shelf</span><span class="p">]</span>
 <span class="c1"># [&#39;FR Science fiction&#39;, &#39;FR Sciences et Techniques&#39;,</span>
@@ -363,12 +353,11 @@ truncated at 20 characters.</p>
 <h4>Check metadata<a class="headerlink" href="#check-metadata" title="Permalink to this headline">¶</a></h4>
 <p>DHTK Guntenberg’s module uses books and authors objects to store all the relevant information retrieved.
 These objects can be accessed directly from the dictionaries obtained while searching as described above.</p>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The book and author objects are not returned when searching for bookshelves and subjects. These queries are considered more exploratory and instantiating all objects would be less efficient in respect to both performance and memory.</p>
 </div>
-</details><p class="rubric"><strong>Get book information</strong></p>
+<p class="rubric"><strong>Get book information</strong></p>
 <p>Retrieving metadata is simple as all Gutenberg objects have the <strong>.print_info()</strong> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore book metadata</span>
 <span class="n">book</span> <span class="o">=</span> <span class="n">books</span><span class="p">[</span><span class="s1">&#39;Frankenstein; Or, Th (84)&#39;</span><span class="p">]</span>
@@ -471,12 +460,11 @@ contain the author information as attribute. Because of this, there are two ways
 <p>To add the retrieved book to a DHTK Corpus use <em>add=True</em>. A list of GutenbergBook objects
 is created containing all the textual data and metadata retrieved from
 <a class="reference external" href="http://www.gutenberg.org/">Guntenberg.org</a>.</p>
-<details>
-<summary><b><i>!!!</i></b></summary><div class="admonition note">
+<div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Each query that uses <em>add=True</em> will add the resulting books to the same module object. This means that a new module needs to be instantiated with <strong>.get_module()</strong> function for each different corpus</p>
 </div>
-</details><p class="rubric"><strong>Make a Corpus</strong></p>
+<p class="rubric"><strong>Make a Corpus</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save data to Corpus</span>
 <span class="n">gutenberg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">what</span><span class="o">=</span><span class="s2">&quot;author&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Shelley, Mary Wollstonecraft&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># {&#39;Mary Wollstonecraft Shelley&#39;: &lt;Author: Shelley, Mary (http://www.gutenberg.org/2009/agents/61&gt;)}</span>

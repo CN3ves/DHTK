@@ -2,42 +2,57 @@
 DHTK API
 ########
 
-Core Functions
-==============
+Interface
+=========
+
+For simplicity, the core DHTK functionalities are controlled using only two wrapper functions:
+start() and get_module()
+
 
 dhtk.start()
 ------------
-Main DHTK initiation function, which functions as a wrapper around the Settings class.
-It filters the most relevant arguments and passes them to Settings to set up DHTK.
+Main DHTK initiation function. Works as a simple interface to the DHTK Settings class,
+accepting and filtering invalid or misspelled arguments for instantiation of the DHTK Settings.
 
 .. autofunction:: dhtk.core.__init__.start
 
-.. seealso:: `Usage <12_guide.html#setting-up-configurations>`_ and `Settings class <141_core.html#settings>`_
+.. note:: DHTK uses both *wd* and *user* to search for saved settings. If different values are passed to DHTK, the user's previous settings may not be properly acessible.
+
+.. seealso:: `Settings class <141_core.html#settings>`_
+
 dhtk.get_module()
 -----------------
 
-**3 a) Connect to a** `SPARQL <https://en.wikipedia.org/wiki/SPARQL>`_ **endpoint**
+DHTK's loading function. This function uses the DHTK configurations for
+the two main start up tasks:
 
-If you're using a remote SPARQL endpoint, you can provide it as a URL (website)
-using the *endpoint* setting. After DHTK is set up, this step is simply connects to the
-SPARQL endpoint to use. As such, it is integrated with the next step for moist user cases.
-However, note that this step performs important checks to ensure DHTK is properly set up.
+* Check and connect to the `SPARQL <https://en.wikipedia.org/wiki/SPARQL>`_ endpoint
 
-**3 b) Load the required DHTK extension**
+.. note:: This step includes system checks to ensure the endpoint is properly set up. As such, it may take some time to finish the first time it is run.
 
+* Load the required DHTK extension
 
-Note that the *dataset* setting, defining the DHTK extension module to use, must be defined for the first time,
-otherwise DHTK is not aware of which module to load!
-
-Once the module is loaded, DHTK functionalities are ready to use!
+.. note:: The *dataset* setting, which defines the DHTK extension module to use, must be defined for the first time and may take considerable time to set up locally.
 
 .. autofunction:: dhtk.core.__init__.get_module
 
+.. seealso:: `Client class <141_core.html#sparql-endpoint>`_ and `DatasetLoader <141_core.html#dataset-manager>`_
+
+Details
+=======
 
 .. toctree::
-   :hidden:
-   :maxdepth: 3
+   :maxdepth: 1
 
    Core API <141_core>
    Extensions API <142_ext>
    Processing API <143_proc>
+
+
+
+
+
+
+
+
+

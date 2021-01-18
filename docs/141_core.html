@@ -90,15 +90,18 @@
 <li class="toctree-l2"><a class="reference internal" href="11_intro.html">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="12_guide.html">User guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="13_devs.html">Developer guide</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="14_api.html">API details</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="14_api.html#core-functions">Core Functions</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="14_api.html#dhtk-start">dhtk.start()</a></li>
-<li class="toctree-l4 current"><a class="reference internal" href="14_api.html#dhtk-get-module">dhtk.get_module()</a><ul class="current">
-<li class="toctree-l5 current"><a class="current reference internal" href="#">Core API</a></li>
-<li class="toctree-l5"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
-<li class="toctree-l5"><a class="reference internal" href="143_proc.html">Processing API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="14_api.html">API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="14_api.html#interface">Interface</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="14_api.html#details">Details</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Core API</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#sparql-endpoint">SPARQL Endpoint</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#dataset-manager">Dataset Manager</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#helpers">Helpers</a></li>
 </ul>
 </li>
+<li class="toctree-l4"><a class="reference internal" href="142_ext.html">Extensions API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="143_proc.html">Processing API</a></li>
 </ul>
 </li>
 </ul>
@@ -136,31 +139,30 @@
 <h1>Core API references<a class="headerlink" href="#core-api-references" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="settings">
 <h2>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>The Settings dataclass is used to load, set and save all information required to DHTK.
+The user may pass as arguments:</p>
+<ul class="simple">
+<li><p><em>wd:</em> A string value for the path of the directory for DHTK to save logs, settings and files. By default “~/DHTK”</p></li>
+<li><p><em>user:</em> A string value identifying the user. By default, DHTK looks for the logged-in system user name.</p></li>
+<li><p><em>endpoint:</em> A string value for the SPARQL endpoint’s URL. By default, DHTK used a Docker/Fuseki “localhost” endpoint</p></li>
+<li><p><em>dataset</em>: A string value naming the DHTK dataset or extension module to be used. <strong>NOTE</strong> that there is not default, so dataset must be set at least once!!</p></li>
+</ul>
 <dl class="py class">
 <dt id="dhtk.core.settings.Settings">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.settings.</code><code class="sig-name descname">Settings</code><span class="sig-paren">(</span><em class="sig-param">user: str = 's05mm2'</em>, <em class="sig-param">wd: Union[str</em>, <em class="sig-param">pathlib.PosixPath] = '~/DHTK'</em>, <em class="sig-param">endpoint: str = None</em>, <em class="sig-param">dataset: str = None</em>, <em class="sig-param">modules: dict = &lt;factory&gt;</em>, <em class="sig-param">port: int = 3030</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.settings.Settings" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.settings.</code><code class="sig-name descname">Settings</code><span class="sig-paren">(</span><em class="sig-param">user: str = 's05mm2'</em>, <em class="sig-param">wd: Union[str</em>, <em class="sig-param">pathlib.PosixPath] = '~/DHTK'</em>, <em class="sig-param">endpoint: str = None</em>, <em class="sig-param">dataset: str = None</em>, <em class="sig-param">modules: dict = &lt;factory&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.settings.Settings" title="Permalink to this definition">¶</a></dt>
 <dd><p>Data class to manage DHTK’s settings and behaviour.</p>
-<p>Main Attributes</p>
-<dl class="simple">
-<dt>wd: string or pathlib.PosixPath [default: pathlib.Path.home() / “DHTK”]</dt><dd><p>DHTK working directory to save logs, setting, configurations and temporary files</p>
-</dd>
-<dt>user: string [default: pathlib.Path.home().name]</dt><dd><p>Name for user to distinguish local users in shared machines</p>
-</dd>
-<dt>endpoint: string [default: “localhost” or from saved configurations]</dt><dd><p>Either the URL for the remote triplestore client or local Docker/Fuseki triplestore</p>
-</dd>
-<dt>dataset: string [default: “” or from saved configurations]</dt><dd><p>User’s default dataset from available DHTK extensions to be queried
-NOTE that dataset must be set at least once!!</p>
-</dd>
-</dl>
 <dl class="py method">
-<dt id="dhtk.core.settings.Settings.make_dirs">
-<em class="property">static </em><code class="sig-name descname">make_dirs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">directories</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.settings.Settings.make_dirs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Function to create new directories at DHTK’s initiation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>list of strings</strong><strong> (</strong><strong>of pathlib.Path objects</strong><strong>)</strong> (<em>directories</em>) – </p>
-</dd>
-</dl>
+<dt id="dhtk.core.settings.Settings._load">
+<code class="sig-name descname">_load</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.settings.Settings._load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to load user’s DHTK configurations from if available.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.settings.Settings._set_logger">
+<code class="sig-name descname">_set_logger</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.settings.Settings._set_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to set up the logger for DHTK use.
+It automatically organises logs in the DHTK working directory
+per user date and session initiated</p>
 </dd></dl>
 
 <dl class="py method">
@@ -171,15 +173,161 @@ NOTE that dataset must be set at least once!!</p>
 
 </dd></dl>
 
+<p>DHTK uses additional settings which may be useful mostly for developers:</p>
+<ul class="simple">
+<li><p><em>modules</em>: A dictionary storing the data of the last update for all DHTK extensions set up locally</p></li>
+<li><p><em>_file</em>: A string containing the path to the user’s configuration’s file used to load and save DHTK settings.</p></li>
+<li><p><em>logger</em>: DHTK’s Logger object automatically set up at instantiation.</p></li>
+<li><p><em>port</em>: An integer determining which localhost port is used by DHTK’s Docker/Fuseki endpoint.</p></li>
+<li><p><em>_connect</em>: Number of seconds DHTK should wait for Docker to start. It is automatically updated with each use.</p></li>
+</ul>
 </div>
 <div class="section" id="sparql-endpoint">
 <h2>SPARQL Endpoint<a class="headerlink" href="#sparql-endpoint" title="Permalink to this headline">¶</a></h2>
+<p>The Client class is used to check the SPARQL endpoint defined by <a class="reference external" href="#settings">Settings</a>.endpoint.
+If “localhost”, DHTK additionally checks for a <a class="reference external" href="https://www.docker.com/">Docker application</a> and Fuseki container,
+setting up the required containers locally. It returns a the client object required by the extension modules to query datasets.</p>
 <dl class="py class">
 <dt id="dhtk.core.client.Client">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Client" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class to manage DHTK connection to the triplestore endpoint.</p>
-<p>Instantiates an object that tries to connect to the required triplestore.
+<p>Instantiates an object to connect to the required triplestore.
 If the triplestore is local, it sets up a Fuseki container on Docker.</p>
+<dl class="py method">
+<dt id="dhtk.core.client.Client._check_app">
+<code class="sig-name descname">_check_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Client._check_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if the Fuseki app contains the dataset to load
+on its environment</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._check_containers">
+<code class="sig-name descname">_check_containers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">containers</span><span class="p">:</span> <span class="n">List<span class="p">[</span>dict<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Client._check_containers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if the local Docker has the required containers set up.
+If not, set up required containers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>containers</strong> (<em>list of dictionaries</em>) – List of dictionaries describing the Docker containers required by DHTK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._check_docker">
+<code class="sig-name descname">_check_docker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Client._check_docker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if Docker is installed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>install</strong> (<em>boolean</em><em> [</em><em>default: False</em><em>]</em>) – If True, DHTK will try to install Docker automatically</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._check_images">
+<code class="sig-name descname">_check_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">images</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Client._check_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if the local Docker client has the requested images installed.
+If not, pull the requested images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>images</strong> (<em>list of strings</em>) – List of Docker images required by DHTK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._check_modules">
+<em class="property">static </em><code class="sig-name descname">_check_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Client._check_modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check the available extensions (datasets).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List DHTK extension sub-modules available</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._check_ports">
+<code class="sig-name descname">_check_ports</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">containers</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Client._check_ports" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check if Docker’s “localhost” port is available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>containers</strong> (<em>list of strings</em>) – List of the names of containers available on local Docker</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>An integer for an available port number</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._connect">
+<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wait</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">30</span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#dhtk.core.client.Client._connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to connect to local Docker client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wait</strong> (<em>integer</em><em> [</em><em>default = 30</em><em>]</em>) – Number of seconds to wait between each attempt to connect</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._correct_credsstore">
+<em class="property">static </em><code class="sig-name descname">_correct_credsstore</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Client._correct_credsstore" title="Permalink to this definition">¶</a></dt>
+<dd><p>credsStore value in .docker/config.json was troublesome during testing,
+this method removes it from Docker configuration allowing DHTK to work normally.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._default_containers">
+<code class="sig-name descname">_default_containers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datasets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>dict<span class="p">]</span><a class="headerlink" href="#dhtk.core.client.Client._default_containers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve the default containers required by DHTK</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasets</strong> (<em>list of strings</em>) – List of datasets to be added to dhtk-app on the Fuseki server</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A list containing the dictionaries describing the Docker containers required for DHTK</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._get_client">
+<code class="sig-name descname">_get_client</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Client._get_client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve a connection to local Docker application</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>A docker.client.DockerClient object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Client._update">
+<code class="sig-name descname">_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datasets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Client._update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to update dhtk-app container from Docker.
+It removes and re-installs the container with considering
+the new dataset extensions available</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>datasets</strong> (<em>list of strings</em>) – List of datasets to be added to dhtk-app on the Fuseki server</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="dhtk.core.client.Client.get_objects">
 <code class="sig-name descname">get_objects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">types</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#dhtk.core.client.Client.get_objects" title="Permalink to this definition">¶</a></dt>
@@ -199,161 +347,38 @@ If the triplestore is local, it sets up a Fuseki container on Docker.</p>
 
 </dd></dl>
 
-<details>
-<summary><b><i>Private members</i></b></summary><dl class="py class">
-<dt>
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Client</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Class to manage DHTK connection to the triplestore endpoint.</p>
-<p>Instantiates an object that tries to connect to the required triplestore.
-If the triplestore is local, it sets up a Fuseki container on Docker.</p>
+<p><a class="reference external" href="https://www.docker.com/">Docker application</a> is required to set up DHTK locally. As such, DHTK includes the Installers class,
+which attempts to automattically download and install Docker. At the moment, this options <em>is only available for macOS user
+with admin privileges</em>.</p>
+<dl class="py class">
+<dt id="dhtk.core.client.Installers">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Installers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Installers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class wrapper for Docker installation procedures</p>
 <dl class="py method">
-<dt>
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span></dt>
-<dd><p>Instantiation of Configuration” object.</p>
+<dt id="dhtk.core.client.Installers._docker_mac">
+<code class="sig-name descname">_docker_mac</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Installers._docker_mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to install Docker application on MacOS systems</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>logs</strong> (<em>logging.Logger object</em>) – Logger object to manage DHTK logs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.core.client.Installers._run_pipeline">
+<em class="property">static </em><code class="sig-name descname">_run_pipeline</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pipeline</span><span class="p">:</span> <span class="n">List</span></em>, <em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.core.client.Installers._run_pipeline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to install Docker application on MacOS systems</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>settings</strong> (<em>DHTK Settings object</em>) – Configurations to use</p></li>
-<li><p><strong>install</strong> (<em>boolean</em><em> [</em><em>default: False</em><em>]</em>) – If True, DHTK will try to install Docker automatically</p></li>
+<li><p><strong>pipeline</strong> (<em>list</em>) – System specific commands to call for Docker installations</p></li>
+<li><p><strong>logs</strong> (<em>logging.Logger object</em>) – Logger object to manage DHTK logs</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt>
-<code class="sig-name descname">__weakref__</code></dt>
-<dd><p>list of weak references to the object (if defined)</p>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">_check_app</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None</dt>
-<dd><p>Method to check if the Fuseki app contains the dataset to load
-on its environment</p>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">_check_containers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">containers</span><span class="p">:</span> <span class="n">List<span class="p">[</span>dict<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None</dt>
-<dd><p>Method to check if the local Docker has the required containers set up.
-If not, set up required containers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>containers</strong> (<em>list of dictionaries</em>) – List of dictionaries describing the Docker containers required by DHTK</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">_check_docker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">install</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; None</dt>
-<dd><p>Method to check if Docker is installed.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>install</strong> (<em>boolean</em><em> [</em><em>default: False</em><em>]</em>) – If True, DHTK will try to install Docker automatically</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">_check_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">images</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None</dt>
-<dd><p>Method to check if the local Docker client has the requested images installed.
-If not, pull the requested images.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>images</strong> (<em>list of strings</em>) – List of Docker images required by DHTK</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<em class="property">static </em><code class="sig-name descname">_check_modules</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
-<dd><p>Method to check the available extensions (datasets).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List DHTK extension sub-modules available</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">_connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wait</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">30</span></em><span class="sig-paren">)</span> &#x2192; int</dt>
-<dd><p>Method to connect to local Docker client</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>wait</strong> (<em>integer</em><em> [</em><em>default = 30</em><em>]</em>) – Number of seconds to wait between each attempt to connect</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<em class="property">static </em><code class="sig-name descname">_correct_credsstore</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None</dt>
-<dd><p>credsStore value in .docker/config.json was troublesome during testing,
-this method removes it from Docker configuration allowing DHTK to work normally.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">_default_containers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datasets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; List<span class="p">[</span>dict<span class="p">]</span></dt>
-<dd><p>Method to retrieve the default containers required by DHTK</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>datasets</strong> (<em>list of strings</em>) – List of datasets to be added to dhtk-app on the Fuseki server</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>A list containing the dictionaries describing the Docker containers required for DHTK</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">_update</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">datasets</span><span class="p">:</span> <span class="n">List<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None</dt>
-<dd><p>Method to update dhtk-app container from Docker.
-It removed and re-installs the container with considering
-the new dataset extensions available</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>datasets</strong> (<em>list of strings</em>) – List of datasets to be added to dhtk-app on the Fuseki server</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt>
-<code class="sig-name descname">get_objects</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">types</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; dict</dt>
-<dd><p>Method to check stored configurations for triplestore endpoint.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>[</strong><strong>string/list</strong><strong>]</strong> (<em>types</em>) – Types of Docker “object” to get</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Docker objects available</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-</details><dl class="py class">
-<dt id="dhtk.core.client.Installers">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.core.client.</code><code class="sig-name descname">Installers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">logs</span><span class="p">:</span> <span class="n">logging.Logger</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.client.Installers" title="Permalink to this definition">¶</a></dt>
-<dd><p>!!!EXPERIMENTAL FEATURE!!!
-Class wrapper for Docker installation procedures</p>
 <dl class="py attribute">
 <dt id="dhtk.core.client.Installers.logging">
 <code class="sig-name descname">logging</code><em class="property"> = &lt;module 'logging' from '/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/logging/__init__.py'&gt;</em><a class="headerlink" href="#dhtk.core.client.Installers.logging" title="Permalink to this definition">¶</a></dt>
@@ -426,8 +451,8 @@ Probably not very useful from the user’s perspective</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dhtk.core.new_helpers.url_exists">
-<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">url_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.url_exists" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.core.helpers.url_exists">
+<code class="sig-prename descclassname">dhtk.core.helpers.</code><code class="sig-name descname">url_exists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.helpers.url_exists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Check if an url exists and if it is available.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -443,8 +468,8 @@ Probably not very useful from the user’s perspective</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dhtk.core.new_helpers.download_file">
-<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">download_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.download_file" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.core.helpers.download_file">
+<code class="sig-prename descclassname">dhtk.core.helpers.</code><code class="sig-name descname">download_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">uri</span></em>, <em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.helpers.download_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download an uri to a destination.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -463,8 +488,8 @@ Probably not very useful from the user’s perspective</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dhtk.core.new_helpers.file_creation_date">
-<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">file_creation_date</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_to_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.file_creation_date" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.core.helpers.file_creation_date">
+<code class="sig-prename descclassname">dhtk.core.helpers.</code><code class="sig-name descname">file_creation_date</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path_to_file</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.helpers.file_creation_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>Try to get the date that a file was created,</p>
 <p>Falling back to when it was last modified if that isn’t possible.
 See <a class="reference external" href="http://stackoverflow.com/a/39501288/1709587">http://stackoverflow.com/a/39501288/1709587</a> for explanation and credit.</p>
@@ -472,8 +497,8 @@ See <a class="reference external" href="http://stackoverflow.com/a/39501288/1709
 </dd></dl>
 
 <dl class="py function">
-<dt id="dhtk.core.new_helpers.unarchive_book">
-<code class="sig-prename descclassname">dhtk.core.new_helpers.</code><code class="sig-name descname">unarchive_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">destination</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.new_helpers.unarchive_book" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.core.helpers.unarchive_book">
+<code class="sig-prename descclassname">dhtk.core.helpers.</code><code class="sig-name descname">unarchive_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">destination</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.core.helpers.unarchive_book" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

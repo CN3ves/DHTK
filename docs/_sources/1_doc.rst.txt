@@ -57,5 +57,5 @@ making it difficult to use by non-specialists. DHTK aims to progressively make t
    Getting started <11_intro>
    User guide <12_guide>
    Developer guide <13_devs>
-   API details <14_api>
+   API <14_api>
 

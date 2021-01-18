@@ -98,7 +98,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="14_api.html">API details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="14_api.html">API</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="2_community.html">Community</a></li>
@@ -145,36 +145,54 @@ DHTK community!</p>
 the Digital Humanities’ community. Even if you do not have the computational expertise to program
 in Python, you can contribute as part of the DHTK community by letting us know how to improve DHTK
 to best fit your research needs.</p>
-<p>If you have any question, suggestion or feedback please write to us at <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a></p>
+<p>If you have any question, suggestion or feedback please write to us at davide.picca[at]unil.ch</p>
 <p><em>All suggestions and feedback are welcomed!</em></p>
 </div>
 <div class="section" id="minor-changes">
 <h2>Minor changes<a class="headerlink" href="#minor-changes" title="Permalink to this headline">¶</a></h2>
 <p>If you think DHTK is missing some simple functionality or could be made simpler and easier in some way,
 and you want to contribute by helping us implement those changes, thanks you! However, before you do so,
-please write to us at <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a> to let us know!</p>
-<p>Adding or modifying functionalities to existing DHTK module can be easily done by directly modifying the
-existing source code. As a collective effort, we remain an open to everyone’s contributions. Please visit our
-<a class="reference external" href="https://github.com/CN3ves/DHTK">GitHub page</a>, containing all the source code and documentation required
-to build DHTK. There, you also will find instructions on how to clone the DHTK repository, create your own branch and
-how to submit your changes for review as a pull request. You can add or modify any function, class or method you deem
-required to improve DHTK usability and submit a pull request at any point. Your request will be discussed and reviewed
-and soon as possibly using the normal
+please write to us at davide.picca[at]unil.ch to let us know!</p>
+<p>As a collective effort, we remain an open to everyone’s contributions. Everyone can add or modify any function, class or
+method to improve DHTK usability of an existing DHTK module easily:</p>
+<ol class="arabic simple">
+<li><p>Please visit our <a class="reference external" href="https://github.com/CN3ves/DHTK">GitHub page</a> to find detailed information on how to contribute.</p></li>
+<li><p>Add an issue to the repository to let us know what you will be working on.</p></li>
+<li><p>Clone the DHTK repository and create your own branch.</p></li>
+<li><p>Address the issue by modifying and testing the code locally.</p></li>
+<li><p>Submit your changes for review as a pull request.</p></li>
+</ol>
+<p>Your request will be discussed and reviewed and soon as possibly using the normal
 <a class="reference external" href="https://docs.github.com/en/free-pro-team&#64;latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request">Github interface</a>.</p>
 </div>
 <div class="section" id="new-extensions">
 <h2>New extensions<a class="headerlink" href="#new-extensions" title="Permalink to this headline">¶</a></h2>
-<p>If you would like to integrate a new dataset to DHTK, please write to us at <a class="reference external" href="mailto:davide&#46;picca&#37;&#52;&#48;unil&#46;ch">davide<span>&#46;</span>picca<span>&#64;</span>unil<span>&#46;</span>ch</a> to let us know!
-DHTK modular structure is thought out to simplify integrating new modules, features and datasets. This is done
-using a unified module wrapper class defined in the extension’s __init__ file. This <strong>Module class</strong>
-inherits from the DHTK <strong>AbstractExtension class</strong> blueprint, which provides most of the common functions
-required to set up an extension, allowing easy integration of new modules and
-continuous growth to better suit the community.</p>
-<p>DHTK is divided into three parts as described in the <a class="reference external" href="1_doc.html">documentation</a> page.
+<p>If you would like to integrate a new dataset to DHTK, please write to us at davide.picca[at]unil.ch to let us know!</p>
+<p>DHTK modular structure is thought out to simplify integrating new modules, features and datasets.
+DHTK is divided into three parts as described in the <a class="reference external" href="1_doc.html">documentation</a> page.
 The three parts are organised in separate directories (core, extensions, processing) for easier identification
-and navigation during development. <strong>Development on new modules is initiated by creating a new folder
-under the extension directory.</strong> This guarantees that the new extension functions as a self contained module, independent
+and navigation during development. This guarantees that the new extension functions as a self contained module, independent
 of the core DHTK modules.</p>
+<p><em>Set up DHTK</em></p>
+<ol class="arabic simple">
+<li><p>Please visit our <a class="reference external" href="https://github.com/CN3ves/DHTK">GitHub page</a> to find detailed information on how to contribute.</p></li>
+<li><p>Add an issue to the repository to let us know what you will be working on.</p></li>
+<li><p>Clone the DHTK repository and create your own branch.</p></li>
+</ol>
+<p><em>Develop module</em></p>
+<ol class="arabic simple" start="4">
+<li><p>Develop you module independently.</p></li>
+<li><p>Remember to re-use (import) functions and classes already available on DHTK (<a class="reference external" href="#minor-changes">how to add/modify helpers</a>)</p></li>
+</ol>
+<p><em>Integrate module</em></p>
+<ol class="arabic simple" start="6">
+<li><p>Creating a new folder under the extension directory with the new module’s name.</p></li>
+<li><p>If you’re using a new curated dataset, make the RDF file available (<a class="reference external" href="#rdf-dataset">see RDF Dataset</a>)</p></li>
+<li><p>Integrate your module (after testing) into DHTK’s framework (<a class="reference external" href="#integrating-new-modules">see Integrating new modules</a>)</p></li>
+<li><p>Submit your changes for review as a pull request.</p></li>
+</ol>
+<p>Your request will be discussed and reviewed and soon as possibly using the normal
+<a class="reference external" href="https://docs.github.com/en/free-pro-team&#64;latest/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request">Github interface</a>.</p>
 <div class="section" id="rdf-dataset">
 <h3>RDF Dataset<a class="headerlink" href="#rdf-dataset" title="Permalink to this headline">¶</a></h3>
 <p>If the new extension module uses a new pre-processed dataset, the finalised RDF file should be made available to download
@@ -211,21 +229,19 @@ All the files from the previously tested independent module are moved to this fo
 </pre></div>
 </div>
 <p><strong>3.1) Defining attributes</strong></p>
-<p>The general attributes <em>name</em> and <em>url</em> can be defined withing the class’ __init__ method
-or on the class scope (outside methods).</p>
+<p>The general attributes <em>name</em> and <em>url</em> can be defined withing the class’ __init__ method:</p>
+<ul class="simple">
+<li><p><em>name</em> defines the the name of the module and should be the same as the directory place under dhtk/extensions</p></li>
+<li><p><em>url</em> define the remote location of the dataset to be set up locally.</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="sd">&quot;&quot;&quot;Gutenberg Triplestore Class&quot;&quot;&quot;</span>
-
-<span class="hll">    <span class="c1"># Example in class scope</span>
-</span>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gutenberg&quot;</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://sandbox.zenodo.org/record/709580/files/gutenberg_reasoned_final.ttl?download=1&quot;</span>
-
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">settings</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 
-<span class="hll">        <span class="c1"># Example in __inin__ method</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gutenberg&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://sandbox.zenodo.org/record/709580/files/gutenberg_reasoned_final.ttl?download=1&quot;</span>
-
+        <span class="c1"># Set attributes</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;gutenberg&quot;</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://sandbox.zenodo.org/record/709580/files/gutenberg_reasoned_final.ttl?download=1&quot;</span>
+</span>
         <span class="c1"># Instantiate a Corpus</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span> <span class="o">=</span> <span class="n">Corpus</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2"> Corpus&quot;</span><span class="p">,</span>
                               <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Gutenberg Books&quot;</span><span class="p">,</span>
@@ -236,28 +252,35 @@ or on the class scope (outside methods).</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span> <span class="o">=</span> <span class="n">GutenbergData</span><span class="p">(</span><span class="n">sparql_endpoint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ENDPOINT</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">LOGS</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>More specific attributes are defined to better integrate the gutenberg module: <em>_corpus</em> and <em>wrapper</em>.
-In this case, <em>_corpus</em> is used store retrieved books while the <em>wrapper</em> attribute is used to reference
-the GutenbergData “query” object</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>More specific attributes are defined to better integrate the gutenberg module: <em>_corpus</em> and <em>wrapper</em>. In this case, <em>_corpus</em> is used store retrieved books while the <em>wrapper</em> attribute is used to reference the GutenbergData “query” object</p>
+</div>
 <p><strong>3.2) Defining .get and .save methods</strong></p>
-<p>Two methods are required to be defined. The <em>get(what, name, add)</em> provides a unified wrapper around
-the possible queries, simplifying the use of new extensions. The <em>save()</em> method stores the retrieved data on disk.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="hll">    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-</span>        <span class="c1"># Prepare arguments</span>
+<p>Two methods are required to be defined: .get() and save().</p>
+<p>The <em>get(what, name, add)</em> provides functions as the main point for DHTK integration. This method takes three arguments,
+converts then into SPARQL queries using a conditional logic and calls the correct module functionalities to retrieve information.</p>
+<ul class="simple">
+<li><p><em>what</em>: a string value determining what is being searched for (<em>e.g.</em> books, authors). This value is evaluated by a conditional if-then-else logic, wrapping around the main module query calls with a user-friendly and unified framework.</p></li>
+<li><p><em>name</em>: a string value identifying of what is being searched (<em>e.g.</em> book name, author name). This value is used to narrow down the general query defined by <em>what</em>, retrieving specific instances.</p></li>
+<li><p><em>add</em>: a boolean value defining if the query results should be added to the records (<em>e.g.</em> corpus) or if the user wishes to search interactively instead.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">what</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">add</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="c1"># Prepare arguments</span>
         <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
         <span class="n">what</span> <span class="o">=</span> <span class="n">what</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;bo&quot;</span><span class="p">):</span>
             <span class="c1"># code</span>
 
-        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;au&quot;</span><span class="p">):</span>
-            <span class="c1"># code</span>
+<span class="hll">        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;au&quot;</span><span class="p">):</span>
+</span>            <span class="c1"># code</span>
 
-        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;sh&quot;</span><span class="p">):</span>
-            <span class="c1"># code</span>
+<span class="hll">        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;sh&quot;</span><span class="p">):</span>
+</span>            <span class="c1"># code</span>
 
-        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;su&quot;</span><span class="p">):</span>
-            <span class="c1"># code</span>
+<span class="hll">        <span class="k">elif</span> <span class="n">what</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;su&quot;</span><span class="p">):</span>
+</span>            <span class="c1"># code</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Not a valid option&quot;</span><span class="p">)</span>
@@ -265,38 +288,39 @@ the possible queries, simplifying the use of new extensions. The <em>save()</em>
             <span class="k">return</span>
 
         <span class="k">return</span> <span class="n">response</span>
-<span class="hll">
-</span>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>The records generated when using <em>get(add=True)</em>
+are used by the <em>.save()</em> method to store all the retrieved data on disk
+by calling all relevant methods from the extension.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">close</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 
+        <span class="c1"># Prepare save directory</span>
         <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">path</span><span class="p">()</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">CONFIGS</span><span class="o">.</span><span class="n">make_dirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">download_corpus</span><span class="p">()</span>
+<span class="hll">        <span class="c1"># Save Gutenberg Texts</span>
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">download_corpus</span><span class="p">()</span>
 
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;corpus.pk&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickled_file</span><span class="p">:</span>
+<span class="hll">        <span class="c1"># Save metadata table</span>
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">download_metadata</span><span class="p">()</span>
+
+<span class="hll">        <span class="c1"># Save Python Query Object</span>
+</span>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;corpus.pk&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickled_file</span><span class="p">:</span>
             <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(),</span> <span class="n">pickled_file</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
         <span class="n">pickled_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">close</span><span class="p">:</span>
+           <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>3.3) Defining additional methods</strong></p>
 <p>Gutenberg’s Module class contains two extra methods. The suggested <em>welcome()</em> method
 automatically provides the user with the dataset statistics. This method is automatically called when a module is loaded,
 and can be used to provide the user with any (or no) information.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>            <span class="bp">self</span><span class="o">.</span><span class="n">CONFIGS</span><span class="o">.</span><span class="n">make_dirs</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">download_corpus</span><span class="p">()</span>
-
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span> <span class="o">/</span> <span class="s2">&quot;corpus.pk&quot;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pickled_file</span><span class="p">:</span>
-            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_corpus</span><span class="o">.</span><span class="n">to_pandas_dataframe</span><span class="p">(),</span> <span class="n">pickled_file</span><span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span>
-        <span class="n">pickled_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">welcome</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="k">try</span><span class="p">:</span>

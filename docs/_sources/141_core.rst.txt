@@ -51,23 +51,8 @@ with admin privileges*.
 Dataset Manager
 ===============
 
+DHTK use the DatasetLoader class which take the *dataset* value from `Settings <#settings>`_ to load the correct extension
+module to be used from and pass the correct `SPARQL endpoint <#sparql-endpoint>`_ to query the dataset.
+
 .. autoclass:: dhtk.core.dataset.DatasetLoader
    :members:
-
-
-Helpers
-=======
-
-.. autoclass:: dhtk.core.helpers.Library
-   :members:
-
-.. autofunction:: dhtk.core.helpers.download_files
-
-.. autofunction:: dhtk.core.helpers.url_exists
-
-.. autofunction:: dhtk.core.helpers.download_file
-
-.. autofunction:: dhtk.core.helpers.file_creation_date
-
-.. autofunction:: dhtk.core.helpers.unarchive_book
-

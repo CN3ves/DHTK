@@ -102,6 +102,7 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="143_proc.html">Processing API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="144_help.html">Support functions</a></li>
 </ul>
 </li>
 </ul>
@@ -139,15 +140,18 @@
 <h1>Extension API references<a class="headerlink" href="#extension-api-references" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="abstractextension">
 <h2>AbstractExtension<a class="headerlink" href="#abstractextension" title="Permalink to this headline">¶</a></h2>
+<p>The AbstractExtension class is the main point of integration of the various extensions
+into DHTK. It provides a template that lays out a simple and unified interface for querying
+SPARQL endpoints by wrapping most common options withing one single function.</p>
 <dl class="py class">
 <dt id="dhtk.extensions.blueprint.AbstractExtension">
 <em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.blueprint.</code><code class="sig-name descname">AbstractExtension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">client</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract Class that serves as a blueprint for the DHTK extension modules
-and additional datasets.</p>
+and additional datasets. All new extensions inheriting from this class must define:</p>
 <dl class="py attribute">
 <dt id="dhtk.extensions.blueprint.AbstractExtension.name">
 <code class="sig-name descname">name</code><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>Name of extension</p>
+<dd><p>Name of the DHTK extension</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>string</p>
@@ -158,7 +162,7 @@ and additional datasets.</p>
 <dl class="py attribute">
 <dt id="dhtk.extensions.blueprint.AbstractExtension.url">
 <code class="sig-name descname">url</code><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.url" title="Permalink to this definition">¶</a></dt>
-<dd><p>URL to the extension RDF file</p>
+<dd><p>URL to the DHTK extension RDF file to be downloaded</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>string</p>
@@ -168,13 +172,137 @@ and additional datasets.</p>
 
 <dl class="py method">
 <dt>
-<code class="sig-name descname">query: A function wrapper unifying the extension utilities</code></dt>
+<code class="sig-name descname">get: A method unifying the main extension queries.</code></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">save: A method to download and store the queried information</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname">welcome: An optional method to distlay a message after extension is loaded</code></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension._check_endpoint">
+<code class="sig-name descname">_check_endpoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension._check_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to replace the local endpoint with the correct value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension._download_metadata">
+<code class="sig-name descname">_download_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension._download_metadata" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to download the data using the extension URL attribute</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Path to the downloaded RDF file containing the triples</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension._fuseki_upload">
+<code class="sig-name descname">_fuseki_upload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rdf</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">desc</span><span class="o">=</span><span class="default_value">'Uploading metadata to local server'</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension._fuseki_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to upload an RDF file to local Fuseki client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rdf</strong> (<em>string</em>) – Path to the RDF file to be uploaded</p></li>
+<li><p><strong>desc</strong> (<em>string:</em>) – Description for progress bar to show during upload</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension._prepare_upload">
+<code class="sig-name descname">_prepare_upload</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rdf</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension._prepare_upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to prepare the instruction to upload the RDF file to Fuseki</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rdf</strong> (<em>string</em>) – Path to the RDF file to be uploaded</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Fuseki load.sh script</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension._progress_bar">
+<em class="property">static </em><code class="sig-name descname">_progress_bar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rdf</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">desc</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension._progress_bar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to generate the upload progress bar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rdf</strong> (<em>string</em>) – Name of the RDF file to upload to Fuseki</p></li>
+<li><p><strong>desc</strong> (<em>string:</em>) – Description for progress bar to show during upload</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A tqdm progress bar object, the estimated total number of triples and the current progress</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension._update_progress">
+<em class="property">static </em><code class="sig-name descname">_update_progress</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">bar</span><span class="p">:</span> <span class="n">tqdm.std.tqdm</span></em>, <em class="sig-param"><span class="n">update</span><span class="p">:</span> <span class="n">List</span></em>, <em class="sig-param"><span class="n">tracker</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; tuple<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension._update_progress" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to update upload progress bar</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bar</strong> (<em>tqdm.std.tqdm</em>) – A progress bar</p></li>
+<li><p><strong>tracker</strong> (<em>integer</em>) – Number of triples uploaded or slotted to Fuseki</p></li>
+<li><p><strong>update</strong> – Evaluation of Docker logs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>An updated tqdm progress bar object (and number of completed triples)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="dhtk.extensions.blueprint.AbstractExtension._upload_check">
+<code class="sig-name descname">_upload_check</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">client</span><span class="p">:</span> <span class="n">docker.client.DockerClient</span></em>, <em class="sig-param"><span class="n">volume</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>bool<span class="p">, </span>List<span class="p">]</span><a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension._upload_check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to retrieve, check and evaluate the Docker logs during upload</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>client</strong> (<em>docker.DockerClient</em>) – Connection to local Fuseki server</p></li>
+<li><p><strong>volume</strong> (<em>string</em>) – Name of volume where the triples are being uploaded</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>The return value depends on the upload progress.</em></p></li>
+<li><p><em>If ending logs are found, return False, otherwise return True or equivalent information object.</em></p></li>
+<li><p><em>Information object contain the stage of upload (add/slot) and the number of triples already completed</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="dhtk.extensions.blueprint.AbstractExtension.set_up">
 <code class="sig-name descname">set_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#dhtk.extensions.blueprint.AbstractExtension.set_up" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method to retrieve the DHTK extension dataset stored on Zenodo and
+<dd><p>Method to retrieve the DHTK extension dataset stored remotely (on Zenodo) and
 upload it to the local Fuseki server</p>
 </dd></dl>
 
@@ -187,8 +315,10 @@ and update the local Fuseki endpoint</p>
 
 </dd></dl>
 
-<p>This blueprint can be used to wrap the new modules into DHTK.
-For more information, see <a class="reference external" href="./community.html">Community</a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="13_devs.html#integrating-new-modules">Integrating new modules into DHTK</a></p>
+</div>
 </div>
 <div class="section" id="gutenberg-extension">
 <h2>Gutenberg extension<a class="headerlink" href="#gutenberg-extension" title="Permalink to this headline">¶</a></h2>
@@ -196,8 +326,8 @@ For more information, see <a class="reference external" href="./community.html">
 <div class="section" id="gutenberg-abstract-classes">
 <h2>Gutenberg abstract classes<a class="headerlink" href="#gutenberg-abstract-classes" title="Permalink to this headline">¶</a></h2>
 <dl class="py class">
-<dt id="dhtk.extensions.abstract_text.Author">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.abstract_text.</code><code class="sig-name descname">Author</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">metadata</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.objects.abstract_text.</code><code class="sig-name descname">Author</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">metadata</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author" title="Permalink to this definition">¶</a></dt>
 <dd><p>The class for a generic author.</p>
 <p>An Author is defined by his name and by various metadata,
 which may contain his birth date, biography or bibliography.</p>
@@ -234,8 +364,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_bibliography">
-<code class="sig-name descname">get_bibliography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_bibliography" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_bibliography">
+<code class="sig-name descname">get_bibliography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_bibliography" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s bibliography.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -253,8 +383,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_biography">
-<code class="sig-name descname">get_biography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_biography" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_biography">
+<code class="sig-name descname">get_biography</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_biography" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s biography.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -277,8 +407,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_birth_date">
-<code class="sig-name descname">get_birth_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_birth_date" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_birth_date">
+<code class="sig-name descname">get_birth_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_birth_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s birth date.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -297,8 +427,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_death_date">
-<code class="sig-name descname">get_death_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_death_date" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_death_date">
+<code class="sig-name descname">get_death_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_death_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s death date.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -317,8 +447,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_first_name">
-<code class="sig-name descname">get_first_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_first_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_first_name">
+<code class="sig-name descname">get_first_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_first_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s first name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -337,8 +467,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_full_name">
-<code class="sig-name descname">get_full_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_full_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_full_name">
+<code class="sig-name descname">get_full_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_full_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s full name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -356,8 +486,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_last_name">
-<code class="sig-name descname">get_last_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_last_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_last_name">
+<code class="sig-name descname">get_last_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_last_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s last name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -376,8 +506,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_middle_name">
-<code class="sig-name descname">get_middle_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_middle_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_middle_name">
+<code class="sig-name descname">get_middle_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_middle_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get author’s middle name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -396,8 +526,8 @@ dhtk.catalogs.gutenberg.author.GutenbergAuthor).</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.get_same_as">
-<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.get_same_as" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.get_same_as">
+<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.get_same_as" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return gathered metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -419,8 +549,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.print_info">
-<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.print_info" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.print_info">
+<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.print_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print information about the author.</p>
 <p class="rubric">Example</p>
 <p>print_info of Charles Dickens infos returns a print with his names, birth date,
@@ -445,8 +575,8 @@ biography and bibliography.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.to_dict">
-<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.to_dict" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert to python dict for general purpose.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -481,8 +611,8 @@ biography and bibliography.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.to_pandas_dataframe">
-<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.to_pandas_dataframe">
+<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert the author’s information into a pandas.DataFrame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -503,8 +633,8 @@ biography and bibliography.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Author.update_metadata">
-<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Author.update_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Author.update_metadata">
+<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Author.update_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge old metadata with new metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -525,8 +655,8 @@ biography and bibliography.</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="dhtk.extensions.abstract_text.Book">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.abstract_text.</code><code class="sig-name descname">Book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span><span class="o">=</span><span class="default_value">'Anonymous'</span></em>, <em class="sig-param"><span class="n">metadata</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.objects.abstract_text.</code><code class="sig-name descname">Book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span><span class="o">=</span><span class="default_value">'Anonymous'</span></em>, <em class="sig-param"><span class="n">metadata</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book" title="Permalink to this definition">¶</a></dt>
 <dd><p>The general book class of dhtk.</p>
 <p>Books implemented in submodules of dhtk should have this class as parent.</p>
 <p class="rubric">Example</p>
@@ -550,8 +680,8 @@ biography and bibliography.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_author">
-<code class="sig-name descname">get_author</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_author" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_author">
+<code class="sig-name descname">get_author</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_author" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the book’s author from Book</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -569,8 +699,8 @@ biography and bibliography.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_editor">
-<code class="sig-name descname">get_editor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_editor" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_editor">
+<code class="sig-name descname">get_editor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_editor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the book’s editor.</p>
 <p>The value corresponding to the key “editor” in dict metadata for Book</p>
 <dl class="field-list simple">
@@ -584,8 +714,8 @@ biography and bibliography.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_first_edition_date">
-<code class="sig-name descname">get_first_edition_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_first_edition_date" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_first_edition_date">
+<code class="sig-name descname">get_first_edition_date</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_first_edition_date" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the first edition date of the book:
 value corresponding to the key “first_edition_date” in dict metadata for Book</p>
 <dl class="field-list simple">
@@ -604,8 +734,8 @@ value corresponding to the key “first_edition_date” in dict metadata for Boo
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_metadata">
-<code class="sig-name descname">get_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_metadata">
+<code class="sig-name descname">get_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return gathered metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -628,8 +758,8 @@ value corresponding to the key “first_edition_date” in dict metadata for Boo
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_number_of_pages">
-<code class="sig-name descname">get_number_of_pages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_number_of_pages" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_number_of_pages">
+<code class="sig-name descname">get_number_of_pages</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_number_of_pages" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the number of pages of the book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -642,8 +772,8 @@ value corresponding to the key “first_edition_date” in dict metadata for Boo
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_publisher">
-<code class="sig-name descname">get_publisher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_publisher" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_publisher">
+<code class="sig-name descname">get_publisher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_publisher" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the book’s publisher.</p>
 <p>The value corresponding to the key “publisher” in dict metadata for Book</p>
 <dl class="field-list simple">
@@ -662,8 +792,8 @@ value corresponding to the key “first_edition_date” in dict metadata for Boo
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_same_as">
-<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_same_as" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_same_as">
+<code class="sig-name descname">get_same_as</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_same_as" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return gathered metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -682,8 +812,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_text_file_name">
-<code class="sig-name descname">get_text_file_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_text_file_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_text_file_name">
+<code class="sig-name descname">get_text_file_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_text_file_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a good filename for a book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -701,8 +831,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.get_title">
-<code class="sig-name descname">get_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.get_title" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.get_title">
+<code class="sig-name descname">get_title</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.get_title" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the book’s title from Book</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -720,8 +850,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.pickeled">
-<code class="sig-name descname">pickeled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.pickeled" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.pickeled">
+<code class="sig-name descname">pickeled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.pickeled" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a pickled version of the book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -734,8 +864,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.print_info">
-<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.print_info" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.print_info">
+<code class="sig-name descname">print_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.print_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print information about the book.</p>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mrs_dalloway_book</span><span class="o">.</span><span class="n">print_info</span><span class="p">()</span>
@@ -759,8 +889,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.to_dict">
-<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.to_dict" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert to python dict for general purpose.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -788,8 +918,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.to_pandas_dataframe">
-<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.to_pandas_dataframe">
+<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert the book’s information into a pandas.DataFrame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -808,8 +938,8 @@ The value is the name of the source of the uri.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.abstract_text.Book.update_metadata">
-<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.abstract_text.Book.update_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.abstract_text.Book.update_metadata">
+<code class="sig-name descname">update_metadata</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">metadata</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.abstract_text.Book.update_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge old metadata with new metadata.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -894,17 +1024,17 @@ If all, retrieve all information available</p></li>
 <div class="section" id="gutenbergdata">
 <h4>GutenbergData<a class="headerlink" href="#gutenbergdata" title="Permalink to this headline">¶</a></h4>
 <dl class="py attribute">
-<dt id="dhtk.extensions.gutenberg.Data">
-<code class="sig-prename descclassname">dhtk.extensions.gutenberg.</code><code class="sig-name descname">Data</code><a class="headerlink" href="#dhtk.extensions.gutenberg.Data" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#dhtk.extensions.gutenberg.Data" title="dhtk.extensions.gutenberg.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">dhtk.extensions.gutenberg.Data</span></code></a></p>
+<dt id="dhtk.extensions.gutenberg.integration.Data">
+<code class="sig-prename descclassname">dhtk.extensions.gutenberg.integration.</code><code class="sig-name descname">Data</code><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#dhtk.extensions.gutenberg.integration.Data" title="dhtk.extensions.gutenberg.integration.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">dhtk.extensions.gutenberg.integration.Data</span></code></a></p>
 </dd></dl>
 
 </div>
 <div class="section" id="gutenbergauthor">
 <h4>GutenbergAuthor<a class="headerlink" href="#gutenbergauthor" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Author.</code><code class="sig-name descname">GutenbergAuthor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">aliases</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">web_pages</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Author.GutenbergAuthor">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.objects.Author.</code><code class="sig-name descname">GutenbergAuthor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">aliases</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">web_pages</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Author.GutenbergAuthor" title="Permalink to this definition">¶</a></dt>
 <dd><p>The class for an author extended with variables from the gutenberg project.
 Child of the generic Author class.</p>
 <p class="rubric">Example</p>
@@ -945,8 +1075,8 @@ Child of the generic Author class.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.convert_name">
-<code class="sig-name descname">convert_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">human_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.convert_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Author.GutenbergAuthor.convert_name">
+<code class="sig-name descname">convert_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">human_name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Author.GutenbergAuthor.convert_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert human_name string containing into a HumanName object.</p>
 <p class="rubric">Notes</p>
 <p>Is done in the init for every GutenbergAuthor object with initial string parameter “name”.</p>
@@ -964,8 +1094,8 @@ Child of the generic Author class.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_gutenberg_id">
-<code class="sig-name descname">get_gutenberg_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Author.GutenbergAuthor.get_gutenberg_id" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Author.GutenbergAuthor.get_gutenberg_id">
+<code class="sig-name descname">get_gutenberg_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Author.GutenbergAuthor.get_gutenberg_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the gutenberg id url of the author.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -990,8 +1120,8 @@ returns the string: “<a class="reference external" href="http://www.gutenberg.
 <div class="section" id="gutenbergbook">
 <h4>GutenbergBook<a class="headerlink" href="#gutenbergbook" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Book.GutenbergBook">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.objects.Book.</code><code class="sig-name descname">GutenbergBook</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">gutenberg_id</span></em>, <em class="sig-param"><span class="n">title</span></em>, <em class="sig-param"><span class="n">author</span></em>, <em class="sig-param"><span class="n">same_as</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Book.GutenbergBook" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extends the Book class for Project Gutenberg books.</p>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
@@ -1019,8 +1149,8 @@ returns the string: “<a class="reference external" href="http://www.gutenberg.
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_book_id">
-<code class="sig-name descname">get_book_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_book_id" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_book_id">
+<code class="sig-name descname">get_book_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_book_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the gutenberg id uri of the book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1038,8 +1168,8 @@ returns the string: “<a class="reference external" href="http://www.gutenberg.
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_book_id_number">
-<code class="sig-name descname">get_book_id_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_book_id_number" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_book_id_number">
+<code class="sig-name descname">get_book_id_number</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_book_id_number" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return Gutenberg ID without full url.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1057,8 +1187,8 @@ returns the string: “<a class="reference external" href="http://www.gutenberg.
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_text_file_dir_path">
-<code class="sig-name descname">get_text_file_dir_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_text_file_dir_path" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_text_file_dir_path">
+<code class="sig-name descname">get_text_file_dir_path</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_text_file_dir_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the suffix of the uri of the book in a gutenberg text repository.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1085,8 +1215,8 @@ and on the file encoding.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Book.GutenbergBook.get_uri">
-<code class="sig-name descname">get_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Book.GutenbergBook.get_uri" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_uri">
+<code class="sig-name descname">get_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Book.GutenbergBook.get_uri" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the gutenberg id uri of the book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1109,8 +1239,8 @@ and on the file encoding.</p>
 <div class="section" id="corpus">
 <h4>Corpus<a class="headerlink" href="#corpus" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Corpus.</code><code class="sig-name descname">GutenbergCorpus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">corpora_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">book_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.integration.Corpus.</code><code class="sig-name descname">GutenbergCorpus</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">settings</span></em>, <em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">''</span></em>, <em class="sig-param"><span class="n">corpora_path</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">book_list</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a corpus form books of type <cite>dhtk.common.Book.</cite></p>
 <p class="rubric">Notes</p>
 <p>The corpus can be created by a list of books.
@@ -1163,8 +1293,8 @@ can be also done by this class.</p>
 </pre></div>
 </div>
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.add_book">
-<code class="sig-name descname">add_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.add_book" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.add_book">
+<code class="sig-name descname">add_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.add_book" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a single book to the corpus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1185,8 +1315,8 @@ the method <cite>book_from_book_id()</cite> from :class: <cite>GutenbergData</ci
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.add_books">
-<code class="sig-name descname">add_books</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.add_books" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.add_books">
+<code class="sig-name descname">add_books</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book_list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.add_books" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add a list of books to the corpus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1210,8 +1340,8 @@ Each book of in the new list will be added by the method of <cite>add_book()</ci
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.books">
-<code class="sig-name descname">books</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">get</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">remove</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.books" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.books">
+<code class="sig-name descname">books</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">get</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">remove</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.books" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the list of books in the corpus.</p>
 <p>Print list of books in the corpus.</p>
 <p>This list containing the number of books in corpus, authors’s full name and the books title.</p>
@@ -1234,14 +1364,14 @@ Each book of in the new list will be added by the method of <cite>add_book()</ci
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.clear">
-<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.clear" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.clear">
+<code class="sig-name descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.clear" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete all files and books in the corpus.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.description">
-<code class="sig-name descname">description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.description" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.description">
+<code class="sig-name descname">description</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">description</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.description" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the description of the corpus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1259,8 +1389,8 @@ Each book of in the new list will be added by the method of <cite>add_book()</ci
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.download_book">
-<code class="sig-name descname">download_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.download_book" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.download_book">
+<code class="sig-name descname">download_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.download_book" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download the text file for a single book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1276,8 +1406,8 @@ Each book of in the new list will be added by the method of <cite>add_book()</ci
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.download_corpus">
-<code class="sig-name descname">download_corpus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.download_corpus" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.download_corpus">
+<code class="sig-name descname">download_corpus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.download_corpus" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download the text files for the full corpus to the corpus path directory.</p>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">corpus</span><span class="o">.</span><span class="n">download_book_corpus</span><span class="p">()</span>
@@ -1295,8 +1425,8 @@ Each book of in the new list will be added by the method of <cite>add_book()</ci
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.download_metadata">
-<code class="sig-name descname">download_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.download_metadata" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.download_metadata">
+<code class="sig-name descname">download_metadata</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.download_metadata" title="Permalink to this definition">¶</a></dt>
 <dd><p>Download the text files for the full corpus to the corpus path directory.</p>
 <p class="rubric">Example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">corpus</span><span class="o">.</span><span class="n">download_book_corpus</span><span class="p">()</span>
@@ -1314,8 +1444,8 @@ Each book of in the new list will be added by the method of <cite>add_book()</ci
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.get_book_file_name">
-<em class="property">static </em><code class="sig-name descname">get_book_file_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.get_book_file_name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.get_book_file_name">
+<em class="property">static </em><code class="sig-name descname">get_book_file_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.get_book_file_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a good filename for a book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1341,8 +1471,8 @@ will be also added.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.name">
-<code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.name" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.name">
+<code class="sig-name descname">name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the name of the corpus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1360,8 +1490,8 @@ will be also added.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.path">
-<code class="sig-name descname">path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.path" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.path">
+<code class="sig-name descname">path</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the path containing the text files of the books in the corpus.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1379,8 +1509,8 @@ will be also added.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.remove_book">
-<code class="sig-name descname">remove_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.remove_book" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.remove_book">
+<code class="sig-name descname">remove_book</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.remove_book" title="Permalink to this definition">¶</a></dt>
 <dd><p>Delete a book form the corpus by deleting the book form list of books and also the file of
 book in the local
 machine.</p>
@@ -1408,8 +1538,8 @@ machine.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.to_dict">
-<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.to_dict" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.to_dict">
+<code class="sig-name descname">to_dict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.to_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert to python dict for general purpose.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1444,8 +1574,8 @@ machine.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.to_pandas_dataframe">
-<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Corpus.GutenbergCorpus.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.to_pandas_dataframe">
+<code class="sig-name descname">to_pandas_dataframe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.integration.Corpus.GutenbergCorpus.to_pandas_dataframe" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert the list of books into a pandas.DataFrame.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1477,21 +1607,21 @@ machine.</p>
 <div class="section" id="gutenbergtexts">
 <h4>GutenbergTexts<a class="headerlink" href="#gutenbergtexts" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
-<dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Texts.</code><code class="sig-name descname">GutenbergTexts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em>, <em class="sig-param"><span class="n">repository_uri</span><span class="o">=</span><span class="default_value">'http://aleph.gutenberg.org'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.objects.Texts.</code><code class="sig-name descname">GutenbergTexts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">book</span></em>, <em class="sig-param"><span class="n">repository_uri</span><span class="o">=</span><span class="default_value">'http://aleph.gutenberg.org'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clean up Gutenberg texts by removing all the header and footer bumpf.</p>
 <p class="rubric">Notes</p>
 <p>Part of this class have to be reworked.</p>
 <p>Usage: init and then run _extract_text.</p>
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.close">
-<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.close" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.close" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove temporary directory if instance is closed.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_clean_text">
-<code class="sig-name descname">get_clean_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_clean_text" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.get_clean_text">
+<code class="sig-name descname">get_clean_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.get_clean_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return text without header, footer, notes or annotations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1507,8 +1637,8 @@ machine.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_original_text">
-<code class="sig-name descname">get_original_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.get_original_text" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.get_original_text">
+<code class="sig-name descname">get_original_text</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.get_original_text" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns original text of a given book.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1524,8 +1654,8 @@ machine.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_clean_text_file_to">
-<code class="sig-name descname">save_clean_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_clean_text_file_to" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.save_clean_text_file_to">
+<code class="sig-name descname">save_clean_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.save_clean_text_file_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the clean text to a text-file in or at destination.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1544,8 +1674,8 @@ machine.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_original_text_file_to">
-<code class="sig-name descname">save_original_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Texts.GutenbergTexts.save_original_text_file_to" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.save_original_text_file_to">
+<code class="sig-name descname">save_original_text_file_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">destination</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Texts.GutenbergTexts.save_original_text_file_to" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the original text to a text-file in or at destination.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1569,8 +1699,8 @@ machine.</p>
 <div class="section" id="textpartdetector">
 <h4>TextPartDetector<a class="headerlink" href="#textpartdetector" title="Permalink to this headline">¶</a></h4>
 <dl class="py class">
-<dt id="dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector">
-<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.Text_part_detector.</code><code class="sig-name descname">TextPartDetector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">raw_text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector">
+<em class="property">class </em><code class="sig-prename descclassname">dhtk.extensions.gutenberg.objects.Text_part_detector.</code><code class="sig-name descname">TextPartDetector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">raw_text</span></em><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detects various different part of gutenberg books.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1585,8 +1715,8 @@ machine.</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_books">
-<code class="sig-name descname">get_books</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_books" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_books">
+<code class="sig-name descname">get_books</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_books" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function gets the books</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1599,8 +1729,8 @@ machine.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_chapters">
-<code class="sig-name descname">get_chapters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_chapters" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_chapters">
+<code class="sig-name descname">get_chapters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_chapters" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function separates a given text into chapters or acts.</p>
 <p class="rubric">Notes</p>
 <p>Title –&gt; the text of the title,
@@ -1621,8 +1751,8 @@ Ex: “The chapter was finished” will not match</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_footnotes">
-<code class="sig-name descname">get_footnotes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_footnotes" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_footnotes">
+<code class="sig-name descname">get_footnotes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_footnotes" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function returns the footnotes of a given text.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1635,8 +1765,8 @@ Ex: “The chapter was finished” will not match</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_header_text_footer">
-<code class="sig-name descname">get_header_text_footer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_header_text_footer" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_header_text_footer">
+<code class="sig-name descname">get_header_text_footer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_header_text_footer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the indexes of the book, its header and its footer separately</p>
 <p class="rubric">Notes</p>
 <p>Focuses on the sets of <strong>*[…]*</strong> that often mark header/footer</p>
@@ -1661,8 +1791,8 @@ Ex: “The chapter was finished” will not match</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_parts">
-<code class="sig-name descname">get_parts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.Text_part_detector.TextPartDetector.get_parts" title="Permalink to this definition">¶</a></dt>
+<dt id="dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_parts">
+<code class="sig-name descname">get_parts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#dhtk.extensions.gutenberg.objects.Text_part_detector.TextPartDetector.get_parts" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function gets the parts of the text and return their number and content.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1676,6 +1806,11 @@ Ex: “The chapter was finished” will not match</p>
 
 </dd></dl>
 
+<p>import dhtk
+gutenberg = dhtk.get_module(dhtk.start(dataset=”gutenberg”))
+gutenberg.get(what=”author”, name=”James Joyce”, add = True)
+print(gutenberg.corpus(name=”JJb”, description =”James Joyce’s books”))
+gutenberg.save()</p>
 </div>
 </div>
 </div>

@@ -16,7 +16,7 @@ You can do this in three different ways:
 
 If you don't have Python 3 installs, please `download it <https://www.python.org/downloads/>`_ and
 follow the instructions. We recommend using the most up-to-date Python 3 version,
-but DHTK is compatible with at least Python 3.5+.
+but DHTK is compatible with at least Python 3.7+.
 
 .. rubric:: **Install Docker**
 

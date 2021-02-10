@@ -7,25 +7,24 @@
 Welcome to DHTK's documentation!
 ################################
 
-In recent years, Digital Humanities have received a particular attention from both the Humanities
-and Computer Science communities. Scholars working in Digital Humanities research often need access
-datasets concerning cultural data.
+In recent years, the digital humanities have received particular attention from both the humanities community
+and from computer science. Scholars working in Digital Humanities research often need to access
+to a range of data regarding cultural data.
 
-The Internet is a great source for searching and retrieving this kind of information and repositories
-such as Project Gutenberg, Europeana, Archive.org, *et similia*, provide many relevant dataset for
-researchers. However, many of these resources are organized and structured in different ways and are
+The Internet is a great source for searching and retrieving this type of information, and archives
+such as Project Gutenberg, Europeana, Archive.org, *and similia*, provide many datasets relevant to the research scientists. However, many of these resources are organized and structured in different ways and are
 often incompatible, having different APIs and different metadata structures, which make these repositories
 difficult to exploit.
 
-Moreover, a number of powerful automatic methods for text, sound and image analyses have been developed,
-but these tools are technical difficult or do not properly fit the needs of the Humanities community.
+In addition, a number of powerful automated methods for analyzing text, sound, and images have been developed,
+but these tools are technically difficult or do not adequately fit the needs of the humanities community.
 
-*As a result, finding resources, checking metadata and finally processing cultural data and metadate,
-can be a long, tedious and complex process.*
+As a result, finding resources, checking metadata, and finally processing cultural data and metadata,
+can be a long, tedious, and complex process.
 
-By introducing the Digital Humanities Tool Kit (DHTK), we propose a new python library whose scope is
-to overcome these limits by providing an intuitive tool for a large-scale study of large cultural databases,
-leveraging cutting-edge computation methods to support and simplifying research in Digital Humanities.
+By introducing the Digital Humanities Tool Kit (DHTK), we propose a new python library whose purpose is to
+overcome these limitations by providing an intuitive tool for large-scale study of large cultural databases,
+exploiting state-of-the-art computational methods to support and simplify research in the Digital Humanities.
 
 .. seealso:: `Getting started <11_intro.html>`_
 

@@ -47,6 +47,7 @@ Details
    Core API <141_core>
    Extensions API <142_ext>
    Processing API <143_proc>
+   Support functions <144_help>
 
 
 
